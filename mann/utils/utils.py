@@ -182,7 +182,7 @@ def mask_model(
     model.compile()
     return model
 
-def convert_model(model):
+def remove_layer_masks(model):
     """
     Convert a trained model from using Masking layers to using non-masking layers
 

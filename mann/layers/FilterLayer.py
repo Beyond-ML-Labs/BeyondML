@@ -19,6 +19,8 @@ class FilterLayer(Layer):
     array([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]], dtype=float32)
     >>> # Turn off the FilterLayer and call it again
     >>> model.layers[-1].turn_off()
+    >>> # Model must be recompiled after turning the layer on or off
+    >>> model.compile()
     >>> model.predict(data)
     array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)
 

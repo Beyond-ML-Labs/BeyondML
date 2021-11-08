@@ -1,6 +1,6 @@
 # MANN
 
-MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating MANN models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://theaisquared.com).
+MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating MANN models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 
 ## Installation
 
@@ -8,7 +8,7 @@ This package is not (yet) available through [PyPi](https://pypi.org), though it 
 
 ```bash
 # clone the repository and cd into it
-git clone https://github.com/theaisquaredinc/mann
+git clone https://github.com/AISquaredInc/mann
 cd mann
 
 # install dependencies
@@ -61,7 +61,7 @@ The `mann.layers` subpackage contains custom Keras-compatible layers which can b
 
 ## Additional Documentation and Training Materials
 
-Additional documentation and training materials can be found on the [AI Squared Website](theaisquared.com), which has more extensive documentation and links to other GitHub repositories our developers have created which utilize the MANN package.
+Additional documentation and training materials will be added to the [AI Squared Website](squared.ai) as we continue to develop this project and its capabilities.
 
 ## Feature Roadmap
 

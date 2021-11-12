@@ -1,6 +1,6 @@
 # MANN
 
-MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating MANN models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
+MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating sparse multitask models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 
 ## Installation
 
@@ -20,7 +20,7 @@ pip install .
 
 ### Mac M1 Users
 
-For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 platform. After those steps are complete, run the above commands *without* installing the dependencies file.
+For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, run the above commands *without* installing the dependencies file.
 
 ## Capabilities
 
@@ -28,7 +28,7 @@ The MANN package includes two subpackages, the `mann.utils` package and the `man
 
 ### Utils
 
-The `mann.utils` subpackage has three main functions, the `mask_model` function, the `get_custom_objects` function, and the `convert_model` function.
+The `mann.utils` subpackage has three main functions: the `mask_model` function, the `get_custom_objects` function, and the `convert_model` function.
 
 1. `mask_model`
     - The `mask_model` function is central to the RSN2 training procedure and enables masking/pruning a model so a large percentage of the weights are inactive.

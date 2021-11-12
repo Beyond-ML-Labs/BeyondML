@@ -5,7 +5,7 @@ This package contains custom utilities and layers to use to build Multitask Arti
 in conjunction with TensorFlow and Keras.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.1.0dev'
 __dev__ = True
 
 import mann.layers

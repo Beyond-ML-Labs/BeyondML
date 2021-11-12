@@ -11,4 +11,4 @@ Thank you very much for your interest in contributing to the MANN package! We wa
 We use github to host code, to track issues and feature requests, as well as accept pull requests.
 
 ## Please Reach Out
-Because this project is still in its infancy, we request that you reach out to <jacob.renn@squared.ai> for further information about how to contribute to the project.
+Because this project is still in its infancy, we request that you reach out to <mann@squared.ai> for further information about how to contribute to the project.

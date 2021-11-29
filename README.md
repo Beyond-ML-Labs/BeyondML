@@ -4,7 +4,19 @@ MANN, which stands for Multitask Artificial Neural Networks, is a Python package
 
 ## Installation
 
-This package is not (yet) available through [PyPi](https://pypi.org), though it is on our roadmap. For the time being, installation requires downloading and installing the source code directly. This can be done using the following commands:
+This package is available through [PyPi](https://pypi.org) and can be installed via the following command:
+
+```bash
+pip install mann
+```
+
+To install the current version directly from [GitHub](https://github.com) without cloning, run the following command:
+
+```bash
+pip install git+https://github.com/AISquaredInc/mann.git
+```
+
+Alternatively, you can install the package by cloning the repository from [GitHub](https://github.com) using the following commands:
 
 ```bash
 # clone the repository and cd into it
@@ -20,7 +32,7 @@ pip install .
 
 ### Mac M1 Users
 
-For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, run the above commands *without* installing the dependencies file.
+For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, run the above commands *without* installing the dependencies file.  We are currently working to have a separate version of this package available to install specifically for M1 Mac users.
 
 ## Capabilities
 

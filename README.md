@@ -29,7 +29,7 @@ pip install .
 
 ### Mac M1 Users
 
-For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, we have a separate distribution of this package available to use called mann-m1mac. It is available on PyPi [here](https://pypi.org/mann-m1mac/).
+For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, we have a separate distribution of this package available to use called `mann-m1mac` and has feature parity with this package. It is available on PyPi [here](https://pypi.org/mann-m1mac/).
 
 ## Capabilities
 

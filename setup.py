@@ -1,6 +1,9 @@
 from setuptools import setup
 from mann import __version__
 
+with open('requirements.txt', 'r') as f:
+    install_requires = [line for line in f.read().splitlines() if len(line) > 0]
+
 setup(
     name = 'mann',
     version = __version__,
@@ -11,7 +14,5 @@ setup(
     description = 'Package containing utilities for implementing RSN2/MANN',
     long_description = open('README.md').read(),
     license = 'Apache 2.0',
-    install_requires = [
-        'numpy'
-    ]
+    install_requires = install_requires
 )

@@ -29,7 +29,7 @@ pip install .
 
 ### Mac M1 Users
 
-For those with a Mac with an M1 processor, the installation steps above will likely not work, as an experimental version of TensorFlow is needed to run on that chipset. Please follow the steps provided at [this link](https://developer.apple.com/metal/tensorflow-plugin/) to install the TensorFlow metal plugin and version of TensorFlow supported on the M1 SOC. After those steps are complete, we have a separate distribution of this package available to use called `mann-m1mac` and has feature parity with this package. It is available on PyPi [here](https://pypi.org/mann-m1mac/).
+For those with a Mac with the M1 processor, this package can be installed, but the standard version of TensorFlow is not compatible with the M1 SOC. In order to install a compatible version of TensorFlow, please install the [Miniforge](https://github.com/conda-forge/miniforge) conda environment, which utilizes the conda-forge channel only. Once you are using Miniforge, using conda to install TensorFlow in that environment should install the correct version. After installing TensorFlow, the command `pip install mann` will install the MANN package.
 
 ## Capabilities
 

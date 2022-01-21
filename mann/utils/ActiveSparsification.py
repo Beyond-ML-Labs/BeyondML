@@ -4,6 +4,10 @@ from tensorflow.keras.callbacks import Callback
 from .utils import mask_model
 
 class ActiveSparsification(Callback):
+    """
+    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models 
+    train.    
+    """
     def __init__(
         self,
         performance_cutoff,
@@ -17,6 +21,37 @@ class ActiveSparsification(Callback):
         restore_best_weights = True,
         verbose = 1
     ):
+        """
+        Parameters
+        ----------
+        performance_cutoff : float
+            The cutoff value that the performance measure must "beat" in order to iteratively sparsify
+        performance_measure : str (default 'auto')
+            The performance measure that is used in conjunction with `performance_cutoff`
+        starting_sparsification : int or None (default None)
+            The starting sparsification that the model has already been sparsified to. If `None`, then defaults to 0
+        max_sparsification : int (default 99)
+            The maximum sparsification allowed
+        sparsification_rate : int (default 1)
+            The increase in sparsification that occurs when model performance beats the performance cutoff
+        sparsification_patience : int (default 10)
+            The number of epochs the model is allowed to train for without beating the performance measure before stopping sparsification
+        stopping_delta : float (default 0.01)
+            The performance improvement that must be seen when pruning has stopped and early stopping is being considered
+        stopping_patience : int (default 5)
+            The number of epochs the model is allowed to train for without `stopping_delta` improvement before stopping training
+        restore_best_weights : bool (default True)
+            Whether to restore model best weights after training
+        verbose : int or bool (default 1)
+            Verbosity level for logging. 
+
+        Notes
+        -----
+        - If `performance_measure` is 'auto', defaults to the following measures, in order: 'val_accuracy', 'val_loss', 'accuracy', 'loss'
+        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be 
+          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must 
+          be beaten
+        """
         super(Callback, self).__init__()
         self.performance_cutoff = performance_cutoff
         self.performance_measure = performance_measure
@@ -60,7 +95,7 @@ class ActiveSparsification(Callback):
                 if performance >= self.performance_cutoff:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
-                    self.sparsify_model(self.sparsification + self.sparsification_rate)
+                    self._sparsify_model(self.sparsification + self.sparsification_rate)
                     self.sparsification = self.sparsification + self.sparsification_rate
                     self.prune_wait = 0
                     if self.verbose:
@@ -97,7 +132,7 @@ class ActiveSparsification(Callback):
                 if performance <= self.performance_cutoff:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
-                    self.sparsify_model(self.sparsification + self.sparsification_rate)
+                    self._sparsify_model(self.sparsification + self.sparsification_rate)
                     self.sparsification = self.sparsification + self.sparsification_rate
                     self.prune_wait = 0
                     if self.verbose:
@@ -129,7 +164,8 @@ class ActiveSparsification(Callback):
                             print('Model performance has not met early stopping criteria. Stopping training')
                         self.model.stop_training = True
 
-    def sparsify_model(self, percentage):
+    def _sparsify_model(self, percentage):
+        """Function to sparsify the model"""
         new_model = tf.keras.models.clone_model(self.model)
         new_model.set_weights(self.model.get_weights())
         self.model.set_weights(

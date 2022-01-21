@@ -48,7 +48,7 @@ class ActiveSparsification(Callback):
                 self.performance_measure = 'accuracy'
             else:
                 self.performance_measure = 'loss'
-            if self.verbose > 1:
+            if self.verbose:
                 print(f'Performance measure set to {self.performance_measure}')
         
         performance = logs[self.performance_measure]
@@ -61,10 +61,10 @@ class ActiveSparsification(Callback):
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     self.sparsify_model(self.sparsification + self.sparsification_rate)
-                    self.sparsification += self.sparsification_rate
+                    self.sparsification = self.sparsification + self.sparsification_rate
                     self.prune_wait = 0
                     if self.verbose:
-                        print(f'Model performance reached {performance}, sparsifying to {self.sparsification_rate}')
+                        print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:
@@ -98,10 +98,10 @@ class ActiveSparsification(Callback):
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     self.sparsify_model(self.sparsification + self.sparsification_rate)
-                    self.sparsification += self.sparsification_rate
+                    self.sparsification = self.sparsification + self.sparsification_rate
                     self.prune_wait = 0
                     if self.verbose:
-                        print(f'Model performance reached {performance}, sparsifying to {self.sparsification_rate}')
+                        print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:

@@ -108,7 +108,7 @@ class ActiveSparsification(Callback):
                         self.pruning = False
                         self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, beginning early stopping')
+                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
             else:
                 if performance >= self.best + self.stopping_delta:
                     self.best_weights = self.model.get_weights()
@@ -145,7 +145,7 @@ class ActiveSparsification(Callback):
                         self.pruning = False
                         self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, beginning early stopping')
+                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
             else:
                 if performance <= self.best - self.stopping_delta:
                     self.best_weights = self.model.get_weights()

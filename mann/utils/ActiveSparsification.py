@@ -95,11 +95,15 @@ class ActiveSparsification(Callback):
                 if performance >= self.performance_cutoff:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
-                    self._sparsify_model(self.sparsification + self.sparsification_rate)
-                    self.sparsification = self.sparsification + self.sparsification_rate
-                    self.prune_wait = 0
-                    if self.verbose:
-                        print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
+                    if self.sparsification + self.sparsification_rate > self.max_sparsification:
+                        print('Model cannot be sparsified further due to max sparsification parameter')
+                        pass
+                    else:
+                        self._sparsify_model(self.sparsification + self.sparsification_rate)
+                        self.sparsification = self.sparsification + self.sparsification_rate
+                        self.prune_wait = 0
+                        if self.verbose:
+                            print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:
@@ -132,11 +136,14 @@ class ActiveSparsification(Callback):
                 if performance <= self.performance_cutoff:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
-                    self._sparsify_model(self.sparsification + self.sparsification_rate)
-                    self.sparsification = self.sparsification + self.sparsification_rate
-                    self.prune_wait = 0
-                    if self.verbose:
-                        print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
+                    if self.sparsification + self.sparsification_rate > self.max_sparsification:
+                        print('Model cannot be sparsified further due to max sparsification parameter')
+                    else:
+                        self._sparsify_model(self.sparsification + self.sparsification_rate)
+                        self.sparsification = self.sparsification + self.sparsification_rate
+                        self.prune_wait = 0
+                        if self.verbose:
+                            print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:

@@ -97,7 +97,7 @@ class ActiveSparsification(Callback):
                     self.best = performance
                     if self.sparsification + self.sparsification_rate > self.max_sparsification:
                         print('Model cannot be sparsified further due to max sparsification parameter')
-                        pass
+                        self.pruning = False
                     else:
                         self._sparsify_model(self.sparsification + self.sparsification_rate)
                         self.sparsification = self.sparsification + self.sparsification_rate
@@ -138,6 +138,7 @@ class ActiveSparsification(Callback):
                     self.best = performance
                     if self.sparsification + self.sparsification_rate > self.max_sparsification:
                         print('Model cannot be sparsified further due to max sparsification parameter')
+                        self.pruning = False
                     else:
                         self._sparsify_model(self.sparsification + self.sparsification_rate)
                         self.sparsification = self.sparsification + self.sparsification_rate

@@ -79,7 +79,7 @@ Additional documentation and training materials will be added to the [AI Squared
 ## Feature Roadmap
 
 - Transformers
-  - We are in the process of adding the [Transformer Layer](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) into this package. Creating these layers will enable the training of multitask compressed models specifically for Natural Language Processing (NLP). Stay tuned!
+  - We are in the process of adding the [Transformer Architecture](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) into this package. Creating these layers will enable the training of multitask compressed models specifically for Natural Language Processing (NLP). Stay tuned!
 
 - Active Sparsification
   - Currently, sparsification occurs in a one-shot manner each time the user requests. While this is useful, we do not expect it to be the most efficient method for sparsification. In a future version, we intend to create a custom training function which intelligently applies sparsification to the model to improve overall performance.

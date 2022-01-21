@@ -39,6 +39,8 @@ The MANN package includes two subpackages, the `mann.utils` package and the `man
 
 The `mann.utils` subpackage has three main functions: the `mask_model` function, the `get_custom_objects` function, and the `convert_model` function.
 
+In addition to the functions just mentioned, there is also an `ActiveSparsification` callback object which enables active sparsification during training rather than solely one-shot sparsification.
+
 1. `mask_model`
     - The `mask_model` function is central to the RSN2 training procedure and enables masking/pruning a model so a large percentage of the weights are inactive.
     - Inputs to the `mask_model` function are a TensorFlow model, a percentile in integer form, a method - either one of 'gradients' or 'magnitude', input data, and target data.
@@ -80,6 +82,3 @@ Additional documentation and training materials will be added to the [AI Squared
 
 - Transformers
   - We are in the process of adding the [Transformer Architecture](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) into this package. Creating these layers will enable the training of multitask compressed models specifically for Natural Language Processing (NLP). Stay tuned!
-
-- Active Sparsification
-  - Currently, sparsification occurs in a one-shot manner each time the user requests. While this is useful, we do not expect it to be the most efficient method for sparsification. In a future version, we intend to create a custom training function which intelligently applies sparsification to the model to improve overall performance.

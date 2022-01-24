@@ -39,7 +39,8 @@ The MANN package includes two subpackages, the `mann.utils` package and the `man
 
 The `mann.utils` subpackage has three main functions: the `mask_model` function, the `get_custom_objects` function, and the `convert_model` function.
 
-In addition to the functions just mentioned, there is also an `ActiveSparsification` callback object which enables active sparsification during training rather than solely one-shot sparsification.
+In addition to the functions just mentioned, there is also an `ActiveSparsification` callback object which enables active sparsification during training rather than solely one-shot sparsification. Note that this callback currently only supports simultaneous training. We are 
+working to support iterative training with this callback as well.
 
 1. `mask_model`
     - The `mask_model` function is central to the RSN2 training procedure and enables masking/pruning a model so a large percentage of the weights are inactive.

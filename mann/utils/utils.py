@@ -210,10 +210,16 @@ def remove_layer_masks(model):
                 config['layers'][i]['class_name']
             ]
             del config['layers'][i]['config']['mask_initializer']
-    new_model = tf.keras.models.Model().from_config(
-        config,
-        custom_objects = get_custom_objects()
-    )
+    try:
+        new_model = tf.keras.models.Model().from_config(
+            config,
+            custom_objects = get_custom_objects()
+        )
+    except:
+        new_model = tf.keras.models.Sequential().from_config(
+            config,
+            custom_objects = get_custom_objects()
+        )
     for i in range(len(model.layers)):
         if not isinstance(model.layers[i], MASKING_LAYERS):
             new_model.layers[i].set_weights(model.layers[i].get_weights())

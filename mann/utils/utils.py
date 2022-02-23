@@ -177,6 +177,13 @@ def mask_model(
                                 exclusive_weight = weights[weight_idx][task_idx] * (1 - new_masks[weight_idx][:task_idx].sum(axis = 0))
                                 new_masks[weight_idx][task_idx] = (exclusive_weight >= np.percentile(weights[weight_idx][task_idx], percentile)).astype(int)
                     layer.set_masks(new_masks)
+            elif isinstance(layer, tf.keras.models.Model):
+                mask_model(
+                    layer,
+                    percentile,
+                    method,
+                    exclusive
+                )
 
     # Compile the model again so the effects take place
     model.compile()

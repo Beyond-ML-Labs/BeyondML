@@ -1,6 +1,7 @@
 from mann.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
 import tensorflow as tf
 import numpy as np
+import warnings
 
 MASKING_LAYERS = (MaskedDense, MaskedConv2D, MultiMaskedDense, MultiMaskedConv2D)
 MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D)
@@ -115,6 +116,8 @@ def mask_model(
         if exclusive:
             gradient_idx = 0
             for layer in model.layers:
+                if isinstance(layer, tf.keras.models.Model):
+                    warnings.warn('mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
                 if isinstance(layer, MASKING_LAYERS):
                     if not isinstance(layer, MULTI_MASKING_LAYERS):
                         layer_grads = [np.abs(grad) for grad in grads[gradient_idx]]
@@ -137,6 +140,8 @@ def mask_model(
         else:
             gradient_idx = 0
             for layer in model.layers:
+                if isinstance(layer, tf.keras.models.Model):
+                    warnings.warn('mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
                 if isinstance(layer, MASKING_LAYERS):
                     if not isinstance(layer, MULTI_MASKING_LAYERS):
                         layer_grads = [np.abs(grad.numpy()) for grad in grads[gradient_idx]]

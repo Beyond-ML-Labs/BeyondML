@@ -194,6 +194,52 @@ def mask_model(
     model.compile()
     return model
 
+def _replace_config(config):
+    """
+    Replace the model config to remove masking layers
+    """
+
+    layer_mapping = {
+        'MaskedConv2D' : 'Conv2D',
+        'MaskedDense' : 'Dense',
+        'MultiMaskedConv2D' : 'MultiConv2D',
+        'MultiMaskedDense' : 'MultiDense'
+    }
+    model_classes = ('Functional', 'Sequential')
+
+    for i in range(len(config['layers'])):
+        if config['layers'][i]['class_name'] in layer_mapping.keys():
+            config['layers'][i]['class_name'] = layer_mapping[
+                config['layers'][i]['class_name']
+            ]
+            del config['layers'][i]['config']['mask_initializer']
+        elif config['layers'][i]['class_name'] in model_classes:
+            config['layers'][i]['config'] = _replace_config(config['layers'][i]['config'])
+    return config
+
+def _replace_weights(new_model, old_model):
+    """
+    Replace the weights of a newly created model with the weights (sans masks) of an old model
+    """
+
+    for i in range(len(new_model.layers)):
+        # Recursion in case the model contains other models
+        if isinstance(new_model.layers[i], tf.keras.models.Model):
+            _replace_weights(new_model.layers[i], old_model.layers[i])
+
+        # If not masking layers, simply replace weights
+        elif not isinstance(old_model.layers[i], MASKING_LAYERS):
+            new_model.layers[i].set_weights(old_model.layers[i].get_weights())
+        
+        # If masking layers, replace only the required weights
+        else:
+            n_weights = len(new_model.layers[i].get_weights())
+            new_model.layers[i].set_weights(old_model.layers[i].get_weights()[:n_weights])
+    
+    # Compile and return the model
+    new_model.compile()
+    return new_model
+
 def remove_layer_masks(model):
     """
     Convert a trained model from using Masking layers to using non-masking layers
@@ -208,37 +254,27 @@ def remove_layer_masks(model):
     new_model : TensorFlow Keras model
         The converted model
     """
-    layer_mapping = {
-        'MaskedConv2D' : 'Conv2D',
-        'MaskedDense' : 'Dense',
-        'MultiMaskedConv2D' : 'MultiConv2D',
-        'MultiMaskedDense' : 'MultiDense'
-    }
     
+    # Replace the config of the model
     config = model.get_config()
-    for i in range(len(config['layers'])):
-        if config['layers'][i]['class_name'] in layer_mapping.keys():
-            config['layers'][i]['class_name'] = layer_mapping[
-                config['layers'][i]['class_name']
-            ]
-            del config['layers'][i]['config']['mask_initializer']
+    new_config = _replace_config(config)
+
+    # Create the new model
     try:
         new_model = tf.keras.models.Model().from_config(
-            config,
+            new_config,
             custom_objects = get_custom_objects()
         )
     except:
         new_model = tf.keras.models.Sequential().from_config(
-            config,
+            new_config,
             custom_objects = get_custom_objects()
         )
-    for i in range(len(model.layers)):
-        if not isinstance(model.layers[i], MASKING_LAYERS):
-            new_model.layers[i].set_weights(model.layers[i].get_weights())
-        else:
-            n_weights = len(new_model.layers[i].get_weights())
-            new_model.layers[i].set_weights(model.layers[i].get_weights()[:n_weights])
+
+    # Replace the weights of the new model to be equivalent to the old model
+    new_model = _replace_weights(new_model, model)
     
+    # Make the new model not trainable and compile the model for good measure
     new_model.trainable = False
     new_model.compile()
     return new_model

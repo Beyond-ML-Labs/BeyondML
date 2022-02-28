@@ -22,6 +22,7 @@ class MaskedConv2D(Layer):
             kernel_initializer = 'random_normal',
             bias_initializer = 'zeros',
             mask_initializer = 'ones',
+            data_format = 'channels_last',
             **kwargs
     ):
         """
@@ -45,6 +46,8 @@ class MaskedConv2D(Layer):
             The bias initialization function to use
         mask_initializer : str or keras initialization function (default 'ones')
             The mask initialization function to use
+        data_format : str (default 'channels_last')
+            Either 'channels_first' or 'channels_last' - the format of the images
         
     """
         super(MaskedConv2D, self).__init__(**kwargs)
@@ -57,6 +60,7 @@ class MaskedConv2D(Layer):
         self.kernel_initializer = tf.keras.initializers.get(kernel_initializer)
         self.bias_initializer = tf.keras.initializers.get(bias_initializer)
         self.mask_initializer = tf.keras.initializers.get(mask_initializer)
+        self.data_format = data_format
 
     @property
     def kernel_size(self):
@@ -67,6 +71,15 @@ class MaskedConv2D(Layer):
             self._kernel_size = (value, value)
         else:
             self._kernel_size = value
+
+    @property
+    def data_format(self):
+        return self._data_format
+    @data_format.setter
+    def data_format(self, value):
+        if value not in ['channels_first', 'channels_last']:
+            raise ValueError('data_format must be one of "channels_first", "channels_last"')
+        self._data_format = value
 
     def build(self, input_shape):
         self.w = self.add_weight(
@@ -97,13 +110,22 @@ class MaskedConv2D(Layer):
             )
 
     def call(self, inputs):
-        conv_output = tf.nn.convolution(
-            inputs,
-            self.w * self.w_mask,
-            padding = self.padding.upper(),
-            strides = self.strides,
-            data_format = 'NHWC'
-        )
+        if self.data_format == 'channels_last':
+            conv_output = tf.nn.convolution(
+                inputs,
+                self.w * self.w_mask,
+                padding = self.padding.upper(),
+                strides = self.strides,
+                data_format = 'NHWC'
+            )
+        elif self.data_format == 'channels_first':
+            conv_output = tf.nn.convolution(
+                inputs,
+                self.w * self.w_mask,
+                padding = self.padding.upper(),
+                strides = self.strides,
+                data_format = 'NCHW'
+            )
         if self.use_bias:
             conv_output = conv_output + (self.b * self.b_mask)
         return self.activation(conv_output)
@@ -120,7 +142,8 @@ class MaskedConv2D(Layer):
                 'use_bias' : self.use_bias,
                 'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
                 'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer),
-                'mask_initializer' : tf.keras.initializers.serialize(self.mask_initializer)
+                'mask_initializer' : tf.keras.initializers.serialize(self.mask_initializer),
+                'data_format' : self.data_format
             }
         )
         return config

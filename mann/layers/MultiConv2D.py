@@ -22,6 +22,7 @@ class MultiConv2D(Layer):
         activation = None,
         kernel_initializer = 'random_normal',
         bias_initializer = 'zeros',
+        data_format = 'channels_last',
         **kwargs
     ):
         """
@@ -43,6 +44,8 @@ class MultiConv2D(Layer):
             The weight initialization function to use
         bias_initializer : str or keras initialization function (default 'zeros')
             The bias initialization function to use
+        data_format : str (default 'channels_last')
+            Either 'channels_first' or 'channels_last' - the format of the images
 
         """
         super(MultiConv2D, self).__init__(**kwargs)
@@ -54,6 +57,7 @@ class MultiConv2D(Layer):
         self.use_bias = use_bias
         self.kernel_initializer = tf.keras.initializers.get(kernel_initializer)
         self.bias_initializer = tf.keras.initializers.get(bias_initializer)
+        self.data_format = data_format
 
     @property
     def kernel_size(self):
@@ -64,6 +68,15 @@ class MultiConv2D(Layer):
             self._kernel_size = (value, value)
         else:
             self._kernel_size = value
+
+    @property
+    def data_format(self):
+        return self._data_format
+    @data_format.setter
+    def data_format(self, value):
+        if value not in ['channels_first', 'channels_last']:
+            raise ValueError('data_format must be one of "channels_first", "channels_last"')
+        self._data_format = value
 
     def build(self, input_shape):
         input_shape = [
@@ -90,15 +103,26 @@ class MultiConv2D(Layer):
             )
 
     def call(self, inputs):
-        conv_outputs = [
-            tf.nn.convolution(
-                inputs[i],
-                self.w[i],
-                padding = self.padding.upper(),
-                strides = self.strides,
-                data_format = 'NHWC'
-            ) for i in range(len(inputs))
-        ]
+        if self.data_format == 'channels_last':
+            conv_outputs = [
+                tf.nn.convolution(
+                    inputs[i],
+                    self.w[i],
+                    padding = self.padding.upper(),
+                    strides = self.strides,
+                    data_format = 'NHWC'
+                ) for i in range(len(inputs))
+            ]
+        elif self.data_format == 'channels_first':
+            conv_outputs = [
+                tf.nn.convolution(
+                    inputs[i],
+                    self.w[i],
+                    padding = self.padding.upper(),
+                    strides = self.strides,
+                    data_format = 'NCHW'
+                ) for i in range(len(inputs))
+            ]
         if self.use_bias:
             conv_outputs = [
                 conv_outputs[i] + self.b[i] for i in range(len(conv_outputs))
@@ -116,7 +140,8 @@ class MultiConv2D(Layer):
                 'activation' : tf.keras.activations.serialize(self.activation),
                 'use_bias' : self.use_bias,
                 'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
-                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer)
+                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer),
+                'data_format' : self.data_format
             }
         )
         return config

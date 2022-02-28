@@ -277,7 +277,7 @@ def _replace_masking_weights(new_model, old_model):
             _replace_masking_weights(new_model.layers[i], old_model.layers[i])
         
         # If not masking layers, simply replace weights
-        elif not isinstance(old_model.layers[i], MASKING_LAYERS):
+        elif not isinstance(new_model.layers[i], MASKING_LAYERS):
             new_model.layers[i].set_weights(old_model.layers[i].get_weights())
 
         # If masking layers, replace the weights and have all ones as the masks
@@ -365,7 +365,6 @@ def add_layer_masks(model):
     # Replace the weights of the new model
     new_model = _replace_masking_weights(new_model, model)
 
-    # Make the new model trainable and compile for good measure
-    new_model.trainable = True
+    # Compile and return the model
     new_model.compile()
     return new_model

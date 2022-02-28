@@ -1,3 +1,4 @@
+from matplotlib.pyplot import get
 from mann.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
 import tensorflow as tf
 import numpy as np
@@ -217,6 +218,31 @@ def _replace_config(config):
             config['layers'][i]['config'] = _replace_config(config['layers'][i]['config'])
     return config
 
+def _create_masking_config(config):
+    """
+    Replace the model config to add masking layers
+    """
+
+    layer_mapping = {
+        'Conv2D' : 'MaskedConv2D',
+        'Dense' : 'MaskedDense',
+        'MultiConv2D' : 'MultiMaskedConv2D',
+        'MultiDense' : 'MultiMaskedDense'
+    }
+    model_classes = ('Functional', 'Sequential')
+
+    for i in range(len(config['layers'])):
+        if config['layers'][i]['class_name'] in layer_mapping.keys():
+            config['layers'][i]['class_name'] = layer_mapping[
+                config['layers'][i]['class_name']
+            ]
+            config['layers'][i]['config']['mask_initializer'] = tf.keras.initializers.serialize(
+                tf.keras.initializers.get('ones')
+            )
+        elif config['layers'][i]['class_name'] in model_classes:
+            config['layers'][i]['config'] = _create_masking_config(config['layers'][i]['config'])
+    return config
+
 def _replace_weights(new_model, old_model):
     """
     Replace the weights of a newly created model with the weights (sans masks) of an old model
@@ -236,6 +262,31 @@ def _replace_weights(new_model, old_model):
             n_weights = len(new_model.layers[i].get_weights())
             new_model.layers[i].set_weights(old_model.layers[i].get_weights()[:n_weights])
     
+    # Compile and return the model
+    new_model.compile()
+    return new_model
+
+def _replace_masking_weights(new_model, old_model):
+    """
+    Replace the weights of a newly created model with the weights (adding masks) of an old model
+    """
+
+    for i in range(len(new_model.layers)):
+        # Recursion in case the model contains other models
+        if isinstance(new_model.layers[i], tf.keras.models.Model):
+            _replace_masking_weights(new_model.layers[i], old_model.layers[i])
+        
+        # If not masking layers, simply replace weights
+        elif not isinstance(old_model.layers[i], MASKING_LAYERS):
+            new_model.layers[i].set_weights(old_model.layers[i].get_weights())
+
+        # If masking layers, replace the weights and have all ones as the masks
+        else:
+            n_weights = len(old_model.layers[i].get_weights())
+            weights = old_model.layers[i].get_weights()
+            weights.extend(new_model.layers[i].get_weights()[n_weights:])
+            new_model.layers[i].set_weights(weights)
+
     # Compile and return the model
     new_model.compile()
     return new_model
@@ -276,5 +327,45 @@ def remove_layer_masks(model):
     
     # Make the new model not trainable and compile the model for good measure
     new_model.trainable = False
+    new_model.compile()
+    return new_model
+
+def add_layer_masks(model):
+    """
+    Convert a trained model from one that does not have masking weights to one that does have 
+    masking weights
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to be converted
+    
+    Returns
+    -------
+    new_model : TensorFlow Keras model
+        The converted model
+    """
+
+    # Replace the config of the model
+    config = model.get_config()
+    new_config = _create_masking_config(config)
+
+    # Create the new model
+    try:
+        new_model = tf.keras.models.Model().from_config(
+            new_config,
+            custom_objects = get_custom_objects()
+        )
+    except:
+        new_model = tf.keras.models.Sequential().from_config(
+            new_config,
+            custom_objects = get_custom_objects()
+        )
+
+    # Replace the weights of the new model
+    new_model = _replace_masking_weights(new_model, model)
+
+    # Make the new model trainable and compile for good measure
+    new_model.trainable = True
     new_model.compile()
     return new_model

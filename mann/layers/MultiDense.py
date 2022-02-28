@@ -88,3 +88,13 @@ class MultiDense(Layer):
             }
         )
         return config
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            units = config['units'],
+            use_bias = config['use_bias'],
+            activation = config['activation'],
+            kernel_initializer = config['kernel_initializer'],
+            bias_initializer = config['bias_initializer']
+        )

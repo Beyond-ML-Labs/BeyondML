@@ -291,7 +291,7 @@ def _replace_masking_weights(new_model, old_model):
     new_model.compile()
     return new_model
 
-def remove_layer_masks(model):
+def remove_layer_masks(model, additional_custom_objects = None):
     """
     Convert a trained model from using Masking layers to using non-masking layers
 
@@ -299,6 +299,8 @@ def remove_layer_masks(model):
     ----------
     model : TensorFlow Keras model
         The model to be converted
+    additional_custom_objects : dict or None (default None)
+        Additional custom layers to use
     
     Returns
     -------
@@ -306,6 +308,10 @@ def remove_layer_masks(model):
         The converted model
     """
     
+    custom_objects = get_custom_objects()
+    if additional_custom_objects is not None:
+        custom_objects.update(additional_custom_objects)
+
     # Replace the config of the model
     config = model.get_config()
     new_config = _replace_config(config)
@@ -314,12 +320,12 @@ def remove_layer_masks(model):
     try:
         new_model = tf.keras.models.Model().from_config(
             new_config,
-            custom_objects = get_custom_objects()
+            custom_objects = custom_objects
         )
     except:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
-            custom_objects = get_custom_objects()
+            custom_objects = custom_objects
         )
 
     # Replace the weights of the new model to be equivalent to the old model
@@ -330,7 +336,7 @@ def remove_layer_masks(model):
     new_model.compile()
     return new_model
 
-def add_layer_masks(model):
+def add_layer_masks(model, additional_custom_objects = None):
     """
     Convert a trained model from one that does not have masking weights to one that does have 
     masking weights
@@ -339,12 +345,18 @@ def add_layer_masks(model):
     ----------
     model : TensorFlow Keras model
         The model to be converted
+    additional_custom_objects : dict or None (default None)
+        Additional custom layers to use
     
     Returns
     -------
     new_model : TensorFlow Keras model
         The converted model
     """
+
+    custom_objects = get_custom_objects()
+    if additional_custom_objects is not None:
+        custom_objects.update(additional_custom_objects)
 
     # Replace the config of the model
     config = model.get_config()
@@ -354,12 +366,12 @@ def add_layer_masks(model):
     try:
         new_model = tf.keras.models.Model().from_config(
             new_config,
-            custom_objects = get_custom_objects()
+            custom_objects = custom_objects
         )
     except:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
-            custom_objects = get_custom_objects()
+            custom_objects = custom_objects
         )
 
     # Replace the weights of the new model

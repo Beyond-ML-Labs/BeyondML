@@ -49,6 +49,8 @@ working to support iterative training with this callback as well.
     - The `get_custom_objects` function takes no parameters and returns a dictionary of all custom objects required to load a model trained using this package.
 3. `remove_layer_masks`
     - The `remove_layer_masks` function takes a trained model with masked layers and converts it to a model without masking layers.
+4. `add_layer_masks`
+    - The `add_layer_masks` function takes an existing model that has non-MANN layers and converts it so that all layers which have an analog in the MANN package. This enables pretrained models to be converted and sparsified.
 
 ### Layers
 

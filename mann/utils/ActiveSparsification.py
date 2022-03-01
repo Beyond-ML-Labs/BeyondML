@@ -1,7 +1,8 @@
 from difflib import restore
+from sklearn import get_config
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback
-from .utils import mask_model
+from .utils import get_custom_objects, mask_model
 
 class ActiveSparsification(Callback):
     """
@@ -119,7 +120,7 @@ class ActiveSparsification(Callback):
                     self.best = performance
                     self.stop_wait = 0
                     if self.verbose:
-                        print(f'Model performance improved to {self.best}')
+                        print(f'Model performance improved to {round(self.best, 2)}')
                 else:
                     self.stop_wait += 1
                     if self.verbose:
@@ -160,7 +161,7 @@ class ActiveSparsification(Callback):
                     self.best = performance
                     self.stop_wait = 0
                     if self.verbose:
-                        print(f'Model performance improved to {self.best}')
+                        print(f'Model performance improved to {round(self.best, 2)}')
                 else:
                     self.stop_wait += 1
                     if self.verbose:
@@ -174,7 +175,10 @@ class ActiveSparsification(Callback):
 
     def _sparsify_model(self, percentage):
         """Function to sparsify the model"""
-        new_model = tf.keras.models.clone_model(self.model)
+        try:
+            new_model = tf.keras.models.Model.from_config(self.model.get_config(), custom_objects = get_custom_objects())
+        except:
+            new_model = tf.keras.models.Sequential.from_config(self.model.get_config(), custom_objects = get_custom_objects())
         new_model.set_weights(self.model.get_weights())
         self.model.set_weights(
             mask_model(

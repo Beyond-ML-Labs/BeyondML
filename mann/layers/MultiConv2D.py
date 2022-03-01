@@ -120,3 +120,16 @@ class MultiConv2D(Layer):
             }
         )
         return config
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            filters = config['filters'],
+            kernel_size = config['kernel_size'],
+            padding = config['padding'],
+            strides = config['strides'],
+            activation = config['activation'],
+            use_bias = config['use_bias'],
+            kernel_initializer = config['kernel_initializer'],
+            bias_initializer = config['bias_initializer']
+        )

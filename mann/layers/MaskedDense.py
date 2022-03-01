@@ -111,3 +111,14 @@ class MaskedDense(Layer):
             self.set_weights(
                 [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
             )
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            units = config['units'],
+            use_bias = config['use_bias'],
+            activation = config['activation'],
+            kernel_initializer = config['kernel_initializer'],
+            mask_initializer = config['mask_initializer'],
+            bias_initializer = config['bias_initializer']
+        )

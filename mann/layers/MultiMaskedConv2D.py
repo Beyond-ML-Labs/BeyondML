@@ -145,3 +145,16 @@ class MultiMaskedConv2D(Layer):
             self.set_weights(
                 [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
             )
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            filters = config['filters'],
+            kernel_size = config['kernel_size'],
+            padding = config['padding'],
+            strides = config['strides'],
+            activation = config['activation'],
+            use_bias = config['use_bias'],
+            kernel_initializer = config['kernel_initializer'],
+            bias_initializer = config['bias_initializer']
+        )

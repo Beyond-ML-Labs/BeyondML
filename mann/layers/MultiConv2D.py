@@ -34,7 +34,7 @@ class MultiConv2D(Layer):
         padding : str (default 'same')
             Either 'same' or 'valid', the padding to use during convolution
         strides : int or tuple of ints
-            Stride lenghts to use during convolution
+            Stride lengths to use during convolution
         use_bias : bool (default True)
             Whether to use a bias calculation on the outputs
         activation : None, str, or function (default None)

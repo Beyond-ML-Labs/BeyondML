@@ -243,6 +243,20 @@ def _create_masking_config(config):
             config['layers'][i]['config'] = _create_masking_config(config['layers'][i]['config'])
     return config
 
+def _create_quantized_config(config, dtype = 'float16'):
+    """
+    Replace the dtype of the model config to quantize it
+    """
+    
+    model_classes = ('Functional', 'Sequential')
+
+    for i in range(len(config['layers'])):
+        if config['layers'][i]['class_name'] in model_classes:
+            config['layers'][i]['config'] = _create_quantized_config(config['layers'][i]['config'])
+        else:
+            config['layers'][i]['dtype'] = dtype
+    return config
+
 def _replace_weights(new_model, old_model):
     """
     Replace the weights of a newly created model with the weights (sans masks) of an old model
@@ -379,4 +393,19 @@ def add_layer_masks(model, additional_custom_objects = None):
 
     # Compile and return the model
     new_model.compile()
+    return new_model
+
+def quantize_model(model, dtype = 'float16'):
+    model_config = model.get_config()
+    new_config = _create_quantized_config(model_config, dtype)
+    new_weights = model.get_weights()
+    new_weights = [
+        np.array(w, dtype = dtype) for w in new_weights
+    ]
+
+    try:
+        new_model = tf.keras.models.Model.from_config(new_config)
+    except:
+        new_mdoel = tf.keras.models.Sequential.from_config(new_config)
+    new_model.set_weights(new_weights)
     return new_model

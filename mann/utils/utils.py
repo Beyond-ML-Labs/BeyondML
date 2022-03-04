@@ -397,6 +397,21 @@ def add_layer_masks(model, additional_custom_objects = None):
     return new_model
 
 def quantize_model(model, dtype = 'float16'):
+    """
+    Apply model quantization
+
+    Parameters
+    ----------
+    model : TensorFlow Keras Model
+        The model to quantize
+    dtype : str or TensorFlow datatype (default 'float16')
+        The datatype to quantize to
+
+    Returns
+    -------
+    new_model : TensorFlow Keras Model
+        The quantized model
+    """
     model_config = model.get_config()
     weights = model.get_weights()
     new_weights = [

@@ -412,17 +412,27 @@ def quantize_model(model, dtype = 'float16'):
     new_model : TensorFlow Keras Model
         The quantized model
     """
+
+    # Grab the configuration from the original model
     model_config = model.get_config()
+
+    # Grab the weights from the original model as well
     weights = model.get_weights()
+
+    # Change the weights to have the new datatype
     new_weights = [
         np.array(w, dtype = dtype) for w in weights
     ]
+
+    # Change the config to get the quantized configuration
     new_config = _quantize_model_config(model_config, dtype)
 
+    # Instantiate the new model from the new config
     try:
         new_model = tf.keras.models.Model.from_config(new_config)
     except:
         new_model = tf.keras.models.Sequential.from_config(new_config)
-    
+
+    # Set the weights of the new model
     new_model.set_weights(new_weights)
     return new_model

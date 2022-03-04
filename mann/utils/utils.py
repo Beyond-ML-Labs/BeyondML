@@ -253,9 +253,9 @@ def _quantize_model_config(config, dtype = 'float16'):
     new_config = config.copy()
     for i in range(len(new_config['layers'])):
         if new_config['layers'][i]['class_name'] in model_classes:
-            new_config['layers'][i] = _quantize_model_config(new_config['layers'][i], dtype)
+            new_config['layers'][i] = _quantize_model_config(new_config['layers'][i]['config'], dtype)
         else:
-            new_config['layers'][i]['dtype'] = dtype
+            new_config['layers'][i]['config']['dtype'] = dtype
     return new_config
 
 def _replace_weights(new_model, old_model):

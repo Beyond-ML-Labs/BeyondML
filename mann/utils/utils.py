@@ -243,17 +243,20 @@ def _create_masking_config(config):
             config['layers'][i]['config'] = _create_masking_config(config['layers'][i]['config'])
     return config
 
-def _change_model_dtype(model, dtype = 'float16'):
+def _quantize_model_config(config, dtype = 'float16'):
     """
     Change the dtype of the model
     """
-    
-    model._dtype = dtype
-    for layer in model.layers:
-        if isinstance(layer, tf.keras.models.Model):
-            _change_model_dtype(layer, dtype)
+
+    model_classes = ('Functional', 'Sequential')
+
+    new_config = config.copy()
+    for i in range(len(new_config['layers'])):
+        if new_config['layers'][i]['class_name'] in model_classes:
+            new_config['layers'][i] = _quantize_model_config(new_config['layers'][i], dtype)
         else:
-            layer._dtype = dtype
+            new_config['layers'][i]['dtype'] = dtype
+    return new_config
 
 def _replace_weights(new_model, old_model):
     """
@@ -395,16 +398,16 @@ def add_layer_masks(model, additional_custom_objects = None):
 
 def quantize_model(model, dtype = 'float16'):
     model_config = model.get_config()
-    new_weights = model.get_weights()
+    weights = model.get_weights()
     new_weights = [
-        np.array(w, dtype = dtype) for w in new_weights
+        np.array(w, dtype = dtype) for w in weights
     ]
+    new_config = _quantize_model_config(model_config, dtype)
 
     try:
-        new_model = tf.keras.models.Model.from_config(model_config)
+        new_model = tf.keras.models.Model.from_config(new_config)
     except:
-        new_model = tf.keras.models.Sequential.from_config(model_config)
+        new_model = tf.keras.models.Sequential.from_config(new_config)
     
-    _change_model_dtype(new_model, dtype)
     new_model.set_weights(new_weights)
     return new_model

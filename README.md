@@ -79,7 +79,7 @@ The `mann.layers` subpackage contains custom Keras-compatible layers which can b
 
 ## Additional Documentation and Training Materials
 
-Additional documentation and training materials will be added to the [AI Squared Website](https://squared.ai) as we continue to develop this project and its capabilities.
+Additional documentation and training materials will be added to the [BeyondML Documentation Website](https://docs.squared.ai/projects/beyondml-labs) as we continue to develop this project and its capabilities.
 
 ## Feature Roadmap
 

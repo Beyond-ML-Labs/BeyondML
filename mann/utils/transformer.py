@@ -1,5 +1,5 @@
 import tensorflow as tf
-from mann.layers import MaskedDense, MultiMaskedDense
+from mann.layers import MultiDense
 
 def build_transformer_block(
         input_shape,
@@ -34,10 +34,10 @@ def build_transformer_block(
         a layer in another model
     """
     input_layer = tf.keras.layers.Input(input_shape)
-    query = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
-    key = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
+    query = MultiDense(embed_dim)([input_layer] * num_heads)
+    key = MultiDense(embed_dim)([input_layer] * num_heads)
     if value_dim:
-        value = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
+        value = MultiDense(embed_dim)([input_layer] * num_heads)
     else:
         value = [input_layer] * num_heads
 
@@ -53,7 +53,7 @@ def build_transformer_block(
     attention_layers = [
         tf.keras.layers.Attention()([query_selectors[i], key_selectors[i], value_selectors[i]]) for i in range(num_heads)
     ]
-    x = mann.layers.MultiDense(embed_dim)(attention_layers)
+    x = MultiDense(embed_dim)(attention_layers)
     concat = tf.keras.layers.Concatenate()(x)
     merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
     x = tf.keras.layers.Dropout(dropout_rate)(merge)

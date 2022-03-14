@@ -1,5 +1,5 @@
 import tensorflow as tf
-from mann.layers import MultiDense
+from mann.layers import MultiDense, SelectorLayer
 
 def build_transformer_block(
         input_shape,
@@ -42,13 +42,13 @@ def build_transformer_block(
         value = [input_layer] * num_heads
 
     query_selectors = [
-        mann.layers.SelectorLayer(i)(query) for i in range(num_heads)
+        SelectorLayer(i)(query) for i in range(num_heads)
     ]
     key_selectors = [
-        mann.layers.SelectorLayer(i)(key) for i in range(num_heads)
+        SelectorLayer(i)(key) for i in range(num_heads)
     ]
     value_selectors = [
-        mann.layers.SelectorLayer(i)(value) for i in range(num_heads)
+        SelectorLayer(i)(value) for i in range(num_heads)
     ]
     attention_layers = [
         tf.keras.layers.Attention()([query_selectors[i], key_selectors[i], value_selectors[i]]) for i in range(num_heads)

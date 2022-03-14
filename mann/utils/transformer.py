@@ -56,7 +56,9 @@ def build_transformer_block(
     x = MultiDense(embed_dim)(attention_layers)
     concat = tf.keras.layers.Concatenate()(x)
     merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
+
     x = tf.keras.layers.Dropout(dropout_rate)(merge)
+    x = tf.keras.layers.Dense(embed_dim)(x)
     out1 = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
     x = tf.keras.layers.Dense(neurons, activation = 'relu')(out1)
     x = tf.keras.layers.Dense(embed_dim)(x)

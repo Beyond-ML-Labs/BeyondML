@@ -2,11 +2,12 @@ import tensorflow as tf
 from mann.layers import MaskedDense, MultiMaskedDense
 
 def build_transformer_block(
-    input_shape,
-    embed_dim,
-    num_heads,
-    neurons,
-    dropout_rate = 0.1
+        input_shape,
+        embed_dim,
+        num_heads,
+        neurons,
+        dropout_rate = 0.1,
+        value_dim = None
 ):
     """
     Build a Transformer Block
@@ -23,6 +24,8 @@ def build_transformer_block(
         The number of hidden neurons to use in the hidden layer
     dropout_rate : float (default 0.1)
         Rate at which dropout is applied
+    value_dim : int or None (default None)
+        The dimension to use for the `value` matrix, if provided
 
     Returns
     -------
@@ -31,11 +34,29 @@ def build_transformer_block(
         a layer in another model
     """
     input_layer = tf.keras.layers.Input(input_shape)
-    x = tf.keras.layers.MultiHeadAttention(
-        num_heads = num_heads,
-        key_dim = embed_dim
-    )(input_layer, input_layer)
-    x = tf.keras.layers.Dropout(dropout_rate)(x)
+    query = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
+    key = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
+    if value_dim:
+        value = mann.layers.MultiDense(embed_dim)([input_layer] * num_heads)
+    else:
+        value = [input_layer] * num_heads
+
+    query_selectors = [
+        mann.layers.SelectorLayer(i)(query) for i in range(num_heads)
+    ]
+    key_selectors = [
+        mann.layers.SelectorLayer(i)(key) for i in range(num_heads)
+    ]
+    value_selectors = [
+        mann.layers.SelectorLayer(i)(value) for i in range(num_heads)
+    ]
+    attention_layers = [
+        tf.keras.layers.Attention()([query_selectors[i], key_selectors[i], value_selectors[i]]) for i in range(num_heads)
+    ]
+    x = mann.layers.MultiDense(embed_dim)(attention_layers)
+    concat = tf.keras.layers.Concatenate()(x)
+    merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
+    x = tf.keras.layers.Dropout(dropout_rate)(merge)
     out1 = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
     x = tf.keras.layers.Dense(neurons, activation = 'relu')(out1)
     x = tf.keras.layers.Dense(embed_dim)(x)

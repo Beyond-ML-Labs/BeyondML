@@ -51,7 +51,7 @@ def build_transformer_block(
     ]
     concat = tf.keras.layers.Concatenate()(attention_layers)
     merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
-    
+
     x = tf.keras.layers.Dropout(dropout_rate)(merge)
     out1 = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
     x = tf.keras.layers.Dense(neurons, activation = 'relu')(out1)
@@ -93,4 +93,3 @@ def build_token_position_embedding_block(
     output_layer = tf.keras.layers.Add()([tok_embed, pos_embed])
     
     return tf.keras.models.Model([tok_input, pos_input], output_layer)
-

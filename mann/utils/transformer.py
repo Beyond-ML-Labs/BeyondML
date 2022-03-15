@@ -7,7 +7,6 @@ def build_transformer_block(
         num_heads,
         neurons,
         dropout_rate = 0.1,
-        value_dim = None
 ):
     """
     Build a Transformer Block
@@ -36,11 +35,8 @@ def build_transformer_block(
     input_layer = tf.keras.layers.Input(input_shape)
     query = MultiDense(embed_dim)([input_layer] * num_heads)
     key = MultiDense(embed_dim)([input_layer] * num_heads)
-    if value_dim:
-        value = MultiDense(embed_dim)([input_layer] * num_heads)
-    else:
-        value = [input_layer] * num_heads
-
+    value = MultiDense(embed_dim)([input_layer]*num_heads)
+    
     query_selectors = [
         SelectorLayer(i)(query) for i in range(num_heads)
     ]
@@ -53,12 +49,10 @@ def build_transformer_block(
     attention_layers = [
         tf.keras.layers.Attention()([query_selectors[i], key_selectors[i], value_selectors[i]]) for i in range(num_heads)
     ]
-    x = MultiDense(embed_dim)(attention_layers)
-    concat = tf.keras.layers.Concatenate()(x)
+    concat = tf.keras.layers.Concatenate()(attention_layers)
     merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
-
+    
     x = tf.keras.layers.Dropout(dropout_rate)(merge)
-    x = tf.keras.layers.Dense(embed_dim)(x)
     out1 = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
     x = tf.keras.layers.Dense(neurons, activation = 'relu')(out1)
     x = tf.keras.layers.Dense(embed_dim)(x)

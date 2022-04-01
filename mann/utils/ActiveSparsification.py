@@ -1,4 +1,3 @@
-from difflib import restore
 from sklearn import get_config
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback

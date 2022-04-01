@@ -37,10 +37,9 @@ The MANN package includes two subpackages, the `mann.utils` package and the `man
 
 ### Utils
 
-The `mann.utils` subpackage has three main functions: the `mask_model` function, the `get_custom_objects` function, and the `convert_model` function.
+The `mann.utils` subpackage contains helper functions for performing training and conversion of models using masking layers.
 
-In addition to the functions just mentioned, there is also an `ActiveSparsification` callback object which enables active sparsification during training rather than solely one-shot sparsification. Note that this callback currently only supports simultaneous training. We are 
-working to support iterative training with this callback as well.
+In addition to the functions just mentioned, there is also an `ActiveSparsification` callback object which enables active sparsification during training rather than solely one-shot sparsification. Note that this callback currently only supports simultaneous training. We are working to support iterative training with this callback as well.
 
 1. `mask_model`
     - The `mask_model` function is central to the RSN2 training procedure and enables masking/pruning a model so a large percentage of the weights are inactive.
@@ -51,6 +50,12 @@ working to support iterative training with this callback as well.
     - The `remove_layer_masks` function takes a trained model with masked layers and converts it to a model without masking layers.
 4. `add_layer_masks`
     - The `add_layer_masks` function takes an existing model that has non-MANN layers and converts it so that all layers which have an analog in the MANN package. This enables pretrained models to be converted and sparsified.
+5. `quantize_model`
+    - The `quantize_model` function takes in a model and a datatype to quantize the model to.
+6. `build_transformer_block`
+    - The `build_transformer_block` function can be used to build a block in a transformer architecture.
+7. `build_token_position_embedding`
+    - The `build_token_position_embedding` function can be used to build a token and position embedding block for use in a transformer architecture model.
 
 ### Layers
 
@@ -84,4 +89,5 @@ Additional documentation and training materials will be added to the [BeyondML D
 ## Feature Roadmap
 
 - Transformers
-  - We are in the process of adding the [Transformer Architecture](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf) into this package. Creating these layers will enable the training of multitask compressed models specifically for Natural Language Processing (NLP). Stay tuned!
+    - We currently support basic functionality for the Transformer architecture with this package. We are working to expand our capabilities with this architecture to further support greater use cases with it, including pruning.
+    

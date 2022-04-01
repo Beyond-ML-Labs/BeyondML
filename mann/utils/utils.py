@@ -243,6 +243,21 @@ def _create_masking_config(config):
             config['layers'][i]['config'] = _create_masking_config(config['layers'][i]['config'])
     return config
 
+def _quantize_model_config(config, dtype = 'float16'):
+    """
+    Change the dtype of the model
+    """
+
+    model_classes = ('Functional', 'Sequential')
+
+    new_config = config.copy()
+    for i in range(len(new_config['layers'])):
+        if new_config['layers'][i]['class_name'] in model_classes:
+            new_config['layers'][i] = _quantize_model_config(new_config['layers'][i]['config'], dtype)
+        else:
+            new_config['layers'][i]['config']['dtype'] = dtype
+    return new_config
+
 def _replace_weights(new_model, old_model):
     """
     Replace the weights of a newly created model with the weights (sans masks) of an old model
@@ -379,4 +394,45 @@ def add_layer_masks(model, additional_custom_objects = None):
 
     # Compile and return the model
     new_model.compile()
+    return new_model
+
+def quantize_model(model, dtype = 'float16'):
+    """
+    Apply model quantization
+
+    Parameters
+    ----------
+    model : TensorFlow Keras Model
+        The model to quantize
+    dtype : str or TensorFlow datatype (default 'float16')
+        The datatype to quantize to
+
+    Returns
+    -------
+    new_model : TensorFlow Keras Model
+        The quantized model
+    """
+
+    # Grab the configuration from the original model
+    model_config = model.get_config()
+
+    # Grab the weights from the original model as well
+    weights = model.get_weights()
+
+    # Change the weights to have the new datatype
+    new_weights = [
+        np.array(w, dtype = dtype) for w in weights
+    ]
+
+    # Change the config to get the quantized configuration
+    new_config = _quantize_model_config(model_config, dtype)
+
+    # Instantiate the new model from the new config
+    try:
+        new_model = tf.keras.models.Model.from_config(new_config)
+    except:
+        new_model = tf.keras.models.Sequential.from_config(new_config)
+
+    # Set the weights of the new model
+    new_model.set_weights(new_weights)
     return new_model

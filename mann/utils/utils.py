@@ -1,4 +1,3 @@
-from matplotlib.pyplot import get
 from mann.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
 import tensorflow as tf
 import numpy as np

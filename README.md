@@ -99,4 +99,4 @@ Below are a list of additional features, bug fixes, and other changes made for e
 - Small documentation changes
 - Added `quantize_model` function
 - Added `build_transformer_block` and `build_token_position_embedding_block` functions for transformer functionality
-- Removed unnecessary imports breaking imports in minimal environments
+- Removed unnecessary imports breaking import in minimal environments

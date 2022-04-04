@@ -1,4 +1,3 @@
-from sklearn import get_config
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback
 from .utils import get_custom_objects, mask_model

@@ -435,3 +435,165 @@ def quantize_model(model, dtype = 'float16'):
     # Set the weights of the new model
     new_model.set_weights(new_weights)
     return new_model
+
+def _get_masking_weights(model):
+    return [
+        layer.weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
+    ]
+
+def _get_task_masking_gradients(
+    model,
+    task_num
+):
+    # Figure out the number of tasks
+    output_shapes = model.output_shape
+    if isinstance(output_shapes, list):
+        num_tasks = len(output_shapes)
+    else:
+        num_tasks = 1
+    
+    # Get the loss weights
+    if num_tasks > 1:
+        loss_weights = [0]*num_tasks
+        loss_weights[task_num] = 1
+    
+    # Get the masking weights
+    masking_weights = _get_masking_weights(model)
+
+    # Configure inputs
+    inputs = []
+    input_shapes = model.input_shape
+    if isinstance(input_shapes, list):
+        for shape in input_shapes:
+            new_shape = list(shape)
+            for i in range(len(new_shape)):
+                if new_shape[i] is None:
+                    new_shape[i] = 1
+            inputs.append(np.random.random(new_shape))
+    else:
+        new_shape = list(input_shapes)
+        for i in range(len(new_shape)):
+            if new_shape[i] is None:
+                new_shape[i] = 1
+        inputs.append(np.random.random(new_shape))
+    
+    # Configure outputs
+    outputs = []
+    output_shapes = model.output_shape
+    if isinstance(output_shapes, list):
+        for shape in output_shapes:
+            new_shape = list(shape)
+            for i in range(len(new_shape)):
+                if new_shape[i] is None:
+                    new_shape[i] = 1
+            outputs.append(np.random.random(new_shape))
+    else:
+        new_shape = list(output_shapes)
+        for i in range(len(new_shape)):
+            if new_shape[i] is None:
+                new_shape[i] = 1
+        outputs.append(np.random.random(new_shape))
+
+    # Configure the losses
+    losses = model.loss
+    if not isinstance(losses, list):
+        losses = [losses] * num_tasks
+    losses = [
+        tf.keras.losses.get(loss) for loss in losses
+    ]
+
+    # Get the gradients of the weights wrt the task
+    with tf.GradientTape() as tape:
+        raw_preds = model(inputs)
+        loss_values = [losses[i](outputs[i], raw_preds[i])*loss_weights[i] for i in range(len(losses))]
+        gradients = tape.gradient(loss_values, masking_weights)
+    
+    return gradients
+
+def mask_task_weights(
+    model,
+    task_num,
+    percentile,
+    respect_previous_tasks = True
+):
+    
+    # Get the actual weights to be able to set them
+    masking_weights = [
+        layer.get_weights() for layer in model.layers if isinstance(layer, MASKING_LAYERS)
+    ]
+
+    # Get the task masking gradients
+    task_masking_gradients = _get_task_masking_gradients(model, task_num)
+
+    # Iterate through each of the layers of the model, keeping track of the index of which masking layer has been achieved
+    masking_idx = 0
+    for layer in model.layers:
+        if isinstance(layer, MASKING_LAYERS):
+
+            # Set the new masks to be masked
+            new_masks = []
+
+            # Different procedures if multi masking layer vs single masking layer
+            if isinstance(layer, MULTI_MASKING_LAYERS):
+                
+                # Check for all of the weights in the list of weights (corresponding to gradients)
+                for weight_num in range(len(task_masking_gradients[masking_idx])):
+
+                    # Set the weight and gradient values so it's easier to follow
+                    weight = masking_weights[masking_idx][weight_num]
+                    gradient = task_masking_gradients[masking_idx][weight_num]
+
+                    # If gradient is None, then the value is a mask
+                    task_idx_num = None
+                    if gradient is not None:
+
+                        # Figure out which task index is the right one
+                        for task_idx in range(gradient.shape[0]):
+                            if not (gradient[task_idx].numpy() == 0).all():
+                                task_idx_num = task_idx
+                        
+                        if task_idx_num is not None:
+                            # Get the new weight for that task only
+                            task_weight = np.abs(weight[task_idx_num])
+
+                            # Enforce respecting previous-task weights
+                            if respect_previous_tasks and task_idx_num > 0:
+                                task_weight[(weight[:task_idx_num] != 0).astype(int).sum(axis = 0).astype(bool)] = 0
+
+                            # Get the new mask
+                            weight_mask = (task_weight >= np.percentile(task_weight, percentile))
+                        
+                            # Find the existing mask and set the value of only the task-specific part
+                            layer_mask = masking_weights[masking_idx][weight_num + int(len(masking_weights[masking_idx])/2)]
+                            layer_mask[task_idx_num] = weight_mask
+
+                            # Append the new mask
+                            new_masks.append(layer_mask)
+            
+            # If the layer is a single masking layer
+            else:
+                for weight_num in range(len(task_masking_gradients[masking_idx])):
+
+                    # Assign the weight and the gradient for this specific layer, for sanity
+                    weight = masking_weights[masking_idx][weight_num]
+                    gradient = task_masking_gradients[masking_idx][weight_num]
+
+                    # If gradient is None, then the weight is a mask
+                    if gradient is not None:
+                        
+                        # Only proceed if the gradient exists
+                        if not (gradient.numpy() == 0).all():
+                            weight = np.abs(weight)
+                            weight_mask = (weight >= np.percentile(weight, percentile))
+                            new_masks.append(weight_mask)
+            
+            # If new masks have been identified (it's possible that this did not occur), set the new masks for that layer
+            if new_masks != []:
+                layer.set_masks(new_masks)
+            
+            # Lastly, increase the masking index by 1
+            masking_idx += 1
+
+    # Compile the model again and return it
+    model.compile()
+    return model

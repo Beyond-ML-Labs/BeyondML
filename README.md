@@ -90,6 +90,8 @@ Additional documentation and training materials will be added to the [BeyondML D
 
 - Transformers
     - We currently support basic functionality for the Transformer architecture with this package. We are working to expand our capabilities with this architecture to further support greater use cases with it, including pruning.
+- Per-task pruning
+    - Currently, pruning occurs for all tasks instead of on a per-task basis. Enabling per-task pruning is very high on our priority list
     
 ## Changes
 
@@ -100,3 +102,6 @@ Below are a list of additional features, bug fixes, and other changes made for e
 - Added `quantize_model` function
 - Added `build_transformer_block` and `build_token_position_embedding_block` functions for transformer functionality
 - Removed unnecessary imports breaking imports in minimal environments
+
+### Version 0.2.3 (in development)
+- Per-task pruning

@@ -105,3 +105,5 @@ Below are a list of additional features, bug fixes, and other changes made for e
 
 ### Version 0.2.3 (in development)
 - Per-task pruning
+  - Functionality for this feature is implemented, but usage is expected to be incomplete. Note that task gradients have to be passed retrieved and passed to the function directly (helper function available), and that the model has to initially be compiled using a compatible loss function (recommended 'mse') to identify gradients.
+  - Note also that this functionality does not support cases where layers of an individual model are other TensorFlow models, but supporting this functionality is on the roadmap.

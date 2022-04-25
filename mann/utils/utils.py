@@ -441,7 +441,7 @@ def _get_masking_weights(model):
         layer.weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
     ]
 
-def _get_task_masking_gradients(
+def get_task_masking_gradients(
     model,
     task_num
 ):
@@ -512,7 +512,7 @@ def _get_task_masking_gradients(
 
 def mask_task_weights(
     model,
-    task_num,
+    task_masking_gradients,
     percentile,
     respect_previous_tasks = True
 ):
@@ -521,9 +521,6 @@ def mask_task_weights(
     masking_weights = [
         layer.get_weights() for layer in model.layers if isinstance(layer, MASKING_LAYERS)
     ]
-
-    # Get the task masking gradients
-    task_masking_gradients = _get_task_masking_gradients(model, task_num)
 
     # Iterate through each of the layers of the model, keeping track of the index of which masking layer has been achieved
     masking_idx = 0

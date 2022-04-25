@@ -105,3 +105,4 @@ Below are a list of additional features, bug fixes, and other changes made for e
 
 ### Version 0.2.3 (in development)
 - Per-task pruning
+    - Currently only works for fully connected layers

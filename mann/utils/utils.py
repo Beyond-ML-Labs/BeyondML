@@ -655,7 +655,8 @@ def mask_task_weights(
 
 def train_model_iteratively(
     model,
-    training_data,
+    train_x,
+    train_y,
     validation_split,
     delta,
     batch_size,
@@ -676,9 +677,12 @@ def train_model_iteratively(
     ----------
     model : TensorFlow Keras model
         The model to be trained
-    training_data : list of numpy arrays, TensorFlow Datasets, or other
-                    data types models can train with
-        The data to use to train on
+    train_x : list of numpy arrays, TensorFlow Datasets, or other
+              data types models can train with
+        The input data to use to train on
+    train_y : list of numpy arrays, TensorFlow Datasets, or other
+              data types model can train with
+        The output data to use to train on
     validation_split : float, or list of float
         The proportion of data to use for validation
     delta : float
@@ -752,7 +756,8 @@ def train_model_iteratively(
             restore_best_weights = True
         )
         history = model.fit(
-            training_data[task_num],
+            train_x[task_num],
+            train_y[task_num],
             batch_size = batch_size,
             epochs = current_epochs,
             validation_split = current_validation_split,
@@ -794,7 +799,8 @@ def train_model_iteratively(
                     
                     # Fit the model for a single epoch
                     history = model.fit(
-                        training_data[task_num],
+                        train_x[task_num],
+                        train_y[task_num],
                         batch_size = batch_size,
                         validation_split = current_validation_split
                     )
@@ -829,7 +835,8 @@ def train_model_iteratively(
 
         # Fit using the new best weights
         model.fit(
-            training_data[task_num],
+            train_x[task_num],
+            train_y[task_num],
             batch_size = batch_size,
             epochs = current_epochs,
             validation_split = current_validation_split,

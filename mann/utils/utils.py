@@ -711,6 +711,9 @@ def train_model_iteratively(
         get_task_masking_gradients(model, task_num) for task_num in range(num_tasks)
     ]
 
+    # Keep track of the amount of the model currently used
+    amount_used = 100
+
     # Start the training iterations
     for task_num in range(num_tasks):
         
@@ -771,9 +774,12 @@ def train_model_iteratively(
 
         # Training loop for the task at hand
         current_wait = 0
-        current_prune = task_start_pruning
+        if task_num == 0:
+            current_prune = task_start_pruning
+        else:
+            current_prune = max(task_start_pruning, amount_used) - current_pruning_rate
         keep_training = True
-        
+
         # keep_training indicates that training is to occur
         while keep_training:
 
@@ -822,7 +828,16 @@ def train_model_iteratively(
                 # If pruning was not successful, restore best pruning rate
                 if current_wait == patience or current_prune + current_pruning_rate >= 100:
                     keep_training = False
+            
+            else:
+                keep_training = False
                 
+        # Record how much of the model has been used
+        if task_num == 0:
+            amount_used -= current_prune
+        else:
+            amount_used += 100 - current_prune
+
         # Now that current wait has been reached, restore best weights
         model.set_weights(best_weights)
 

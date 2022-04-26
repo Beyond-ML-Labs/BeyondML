@@ -661,6 +661,7 @@ def train_model_iteratively(
     batch_size,
     losses,
     optimizer = 'adam',
+    metrics = None,
     starting_pruning = 0,
     pruning_rate = 10,
     patience = 5,
@@ -745,7 +746,8 @@ def train_model_iteratively(
         model.compile(
             loss = losses,
             optimizer = optimizer,
-            loss_weights = loss_weights
+            loss_weights = loss_weights,
+            metrics = metrics
         )
 
         # Train the model initially
@@ -790,7 +792,8 @@ def train_model_iteratively(
                 model.compile(
                     loss = losses,
                     optimizer = optimizer,
-                    loss_weights = loss_weights
+                    loss_weights = loss_weights,
+                    metrics = metrics
                 )
 
                 # Train the model with the new pruning rate
@@ -808,15 +811,13 @@ def train_model_iteratively(
                     loss = history.history['val_loss'][-1]
 
                     # If loss is within acceptable range, grab the best weights and 
-                    # reassign the best loss.  Otherwise, increase current wait
+                    # reassign the best loss. Otherwise, increase current wait
                     if loss < best_loss + delta:
                         best_weights = model.get_weights()
                         best_loss = loss
-                        print(f'reached. best loss {best_loss}')
                         break
                     else:
                         current_wait += 1
-                        print(f'not reached. current wait {current_wait}')
 
                 # If pruning was not successful, restore best pruning rate
                 if current_wait == patience or current_prune + current_pruning_rate >= 100:

@@ -845,7 +845,8 @@ def train_model_iteratively(
         model.compile(
             loss = losses,
             optimizer = optimizer,
-            loss_weights = loss_weights
+            loss_weights = loss_weights,
+            metrics = metrics
         )
 
         # Fit using the new best weights

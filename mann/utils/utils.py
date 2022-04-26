@@ -437,6 +437,19 @@ def quantize_model(model, dtype = 'float16'):
     return new_model
 
 def _get_masking_weights(model):
+    """
+    Get the masking weights of a model
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to get the masking weights of
+    
+    Returns
+    -------
+    weights : list of TensorFlow tensors
+        The requested weights
+    """
     return [
         layer.weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
     ]
@@ -445,6 +458,31 @@ def get_task_masking_gradients(
     model,
     task_num
 ):
+    """
+    Get the gradients of masking weights within a model
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to retrieve the gradients of
+    
+    Notes
+    -----
+    - This function should only be run *before* the model has been trained 
+        or used to predict.  There is an unknown bug related to TensorFlow which
+        is leading to incorrect results after initial training
+    - When running this function, randomized input and output data is sent 
+        through the model to retrieve gradients respective to each task. If 
+        the model is compiled using `sparse_categorical_crossentropy' loss, 
+        this will break this function's functionality. As a result, please 
+        use `categorical_crossentropy` (or even better, `mse`) before running this function. After 
+        retrieving gradients, the model can be recompiled with whatever parameters are desired.
+
+    Returns
+    -------
+    gradients : list of TensorFlow tensors
+        The gradients of the masking weights of the model
+    """
     # Figure out the number of tasks
     output_shapes = model.output_shape
     if isinstance(output_shapes, list):
@@ -516,6 +554,25 @@ def mask_task_weights(
     percentile,
     respect_previous_tasks = True
 ):
+
+    """
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to be masked
+    task_masking_gradients : list of TensorFlow tensors
+        The gradients for the specific task requested
+    percentile : int
+        The percentile to mask/prune
+    respect_previous_tasks : bool (default True)
+        Whether to respect the weights used for previous tasks and not use them 
+        for subsequent tasks
+
+    Returns
+    -------
+    masked_model : TensorFlow Keras model
+        The masked model
+    """
     
     # Get the actual weights to be able to set them
     masking_weights = [

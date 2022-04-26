@@ -1,3 +1,4 @@
+from asyncio import current_task
 from mann.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
 import tensorflow as tf
 import numpy as np
@@ -650,4 +651,189 @@ def mask_task_weights(
 
     # Compile the model again and return it
     model.compile()
+    return model
+
+def train_model_iteratively(
+    model,
+    training_data,
+    validation_split,
+    delta,
+    batch_size,
+    losses,
+    optimizer = 'adam',
+    starting_pruning = 0,
+    pruning_rate = 10,
+    patience = 5,
+    max_epochs = 100
+):
+    """
+    Train a model iteratively on each task, first obtaining 
+    baseline performance on each task and then iteratively 
+    training and pruning each task as far back as possible while 
+    maintaining acceptable performance on each task
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to be trained
+    training_data : list of numpy arrays, TensorFlow Datasets, or other
+                    data types models can train with
+        The data to use to train on
+    validation_split : float, or list of float
+        The proportion of data to use for validation
+    delta : float
+        The tolerance between validation losses to be considered "acceptable" 
+        performance to continue
+    batch_size : int
+        The batch size to train with
+    losses : str, list, or Keras loss function
+        The loss or losses to use when training
+    optimizer : str, list, or Keras optimizer
+        The optimizer to use when training (default 'adam')
+    starting_pruning : int or list of int (default 0)
+        The starting pruning rate to use for each task
+    pruning_rate : int or list of int (default [10, 5, 2, 1])
+        The pruning rate to use
+    patience : int (default 5)
+        The patience for number of epochs to wait for performance to improve sufficiently
+    max_epochs : int or list of int (default 100)
+        The maximum number of epochs to use for training each task
+    """
+
+    # Get some information about the training procedure, including the number of tasks
+    # and the gradients for each task
+    num_tasks = len(training_data)
+    gradients = [
+        get_task_masking_gradients(model, task_num) for task_num in range(num_tasks)
+    ]
+
+    # Start the training iterations
+    for task_num in range(num_tasks):
+        
+        # Get the starting task pruning rate for the current task
+        if isinstance(starting_pruning, int):
+            task_start_pruning = starting_pruning
+        else:
+            task_start_pruning = starting_pruning[task_num]
+
+        # Get the current pruning rate
+        if isinstance(pruning_rate, int):
+            current_pruning_rate = pruning_rate
+        else:
+            current_pruning_rate = pruning_rate[task_num]
+
+        # Configure the current validation split
+        if isinstance(validation_split, float):
+            current_validation_split = validation_split
+        else:
+            current_validation_split = validation_split[task_num]
+        
+        # Configure the loss weights
+        loss_weights = [0]*num_tasks
+        loss_weights[task_num] = 1
+
+        # Configure the epochs
+        if isinstance(max_epochs, int):
+            current_epochs = max_epochs
+        else:
+            current_epochs = max_epochs[task_num]
+
+        # Compile the model 
+        model.compile(
+            loss = losses,
+            optimizer = optimizer,
+            loss_weights = loss_weights
+        )
+
+        # Train the model initially
+        callback = tf.keras.callbacks.EarlyStopping(
+            min_delta = delta,
+            patience = patience,
+            restore_best_weights = True
+        )
+        history = model.fit(
+            training_data[task_num],
+            batch_size = batch_size,
+            epochs = current_epochs,
+            validation_split = current_validation_split,
+            callbacks = [callback]
+        )
+
+        # Retrieve the validation loss and current best weights
+        best_loss = min(history.history['val_loss'])
+        best_weights = model.get_weights()
+
+        # Training loop for the task at hand
+        current_wait = 0
+        current_prune = task_start_pruning
+        keep_training = True
+        
+        # keep_training indicates that training is to occur
+        while keep_training:
+
+            # First prune the model to the next pruning rate
+            if current_prune + current_pruning_rate < 100:
+
+                # Increase the pruning rate
+                current_prune += current_pruning_rate
+                model = mask_task_weights(
+                    model,
+                    gradients[current_task],
+                    current_prune
+                )
+
+                # Recompile the model
+                model.compile(
+                    loss = losses,
+                    optimizer = optimizer,
+                    loss_weights = loss_weights
+                )
+
+                # Train the model with the new pruning rate
+                while current_wait < patience:
+                    
+                    # Fit the model for a single epoch
+                    history = model.fit(
+                        training_data[task_num],
+                        batch_size = batch_size,
+                        validation_split = current_validation_split
+                    )
+
+                    # Get the new loss
+                    loss = history.history['val_loss'][-1]
+
+                    # If loss is within acceptable range, grab the best weights and 
+                    # reassign the best loss.  Otherwise, increase current wait
+                    if loss < best_loss + delta:
+                        best_weights = model.get_weights()
+                        best_loss = loss
+                        print(f'reached. best loss {best_loss}')
+                        break
+                    else:
+                        current_wait += 1
+                        print(f'not reached. current wait {current_wait}')
+
+                # If pruning was not successful, restore best pruning rate
+                if current_wait == patience or current_prune + current_pruning_rate >= 100:
+                    keep_training = False
+                
+        # Now that current wait has been reached, restore best weights
+        model.set_weights(best_weights)
+
+        # Recompile the model
+        model.compile(
+            loss = losses,
+            optimizer = optimizer,
+            loss_weights = loss_weights
+        )
+
+        # Fit using the new best weights
+        model.fit(
+            training_data[task_num],
+            batch_size = batch_size,
+            epochs = current_epochs,
+            validation_split = current_validation_split,
+            callbacks = [callback]
+        )
+
     return model

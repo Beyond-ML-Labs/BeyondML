@@ -1,4 +1,3 @@
-from asyncio import current_task
 from mann.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
 import tensorflow as tf
 import numpy as np
@@ -783,7 +782,7 @@ def train_model_iteratively(
                 current_prune += current_pruning_rate
                 model = mask_task_weights(
                     model,
-                    gradients[current_task],
+                    gradients[task_num],
                     current_prune
                 )
 

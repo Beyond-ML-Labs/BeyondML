@@ -706,7 +706,7 @@ def train_model_iteratively(
 
     # Get some information about the training procedure, including the number of tasks
     # and the gradients for each task
-    num_tasks = len(training_data)
+    num_tasks = len(train_x)
     gradients = [
         get_task_masking_gradients(model, task_num) for task_num in range(num_tasks)
     ]

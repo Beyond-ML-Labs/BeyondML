@@ -654,6 +654,7 @@ def mask_task_weights(
 
 def train_model_iteratively(
     model,
+    task_gradients,
     train_x,
     train_y,
     validation_split,
@@ -677,6 +678,8 @@ def train_model_iteratively(
     ----------
     model : TensorFlow Keras model
         The model to be trained
+    task_gradients : list of TensorFlow tensors
+        Gradients for each task, output from the `get_task_masking_gradients` function
     train_x : list of numpy arrays, TensorFlow Datasets, or other
               data types models can train with
         The input data to use to train on
@@ -706,10 +709,7 @@ def train_model_iteratively(
 
     # Get some information about the training procedure, including the number of tasks
     # and the gradients for each task
-    num_tasks = len(train_x)
-    gradients = [
-        get_task_masking_gradients(model, task_num) for task_num in range(num_tasks)
-    ]
+    num_tasks = len(task_gradients)
 
     # Keep track of the amount of the model currently used
     amount_used = 100
@@ -717,6 +717,8 @@ def train_model_iteratively(
     # Start the training iterations
     for task_num in range(num_tasks):
         
+        print(f'Training task {task_num}')
+
         # Get the starting task pruning rate for the current task
         if isinstance(starting_pruning, int):
             task_start_pruning = starting_pruning
@@ -765,7 +767,8 @@ def train_model_iteratively(
             batch_size = batch_size,
             epochs = current_epochs,
             validation_split = current_validation_split,
-            callbacks = [callback]
+            callbacks = [callback],
+            verbose = 2
         )
 
         # Retrieve the validation loss and current best weights
@@ -777,8 +780,21 @@ def train_model_iteratively(
         if task_num == 0:
             current_prune = task_start_pruning
         else:
-            current_prune = max(task_start_pruning, amount_used) - current_pruning_rate
+            current_prune = max(task_start_pruning, amount_used)
         keep_training = True
+        just_started = True
+
+        # If pruning needs to occur, do it
+        if current_prune != 0:
+
+            print(f'Pruning task to {current_prune}')
+
+            model = mask_task_weights(
+                model,
+                task_gradients[task_num],
+                current_prune
+            )
+
 
         # keep_training indicates that training is to occur
         while keep_training:
@@ -786,13 +802,20 @@ def train_model_iteratively(
             # First prune the model to the next pruning rate
             if current_prune + current_pruning_rate < 100:
 
-                # Increase the pruning rate
-                current_prune += current_pruning_rate
-                model = mask_task_weights(
-                    model,
-                    gradients[task_num],
-                    current_prune
-                )
+                # Check if the training just started
+                if not just_started:
+                    # Increase the pruning rate
+                    current_prune += current_pruning_rate
+                    model = mask_task_weights(
+                        model,
+                        task_gradients[task_num],
+                        current_prune
+                    )
+                
+                    print(f'Pruning task to {current_prune}')
+
+                else:
+                    just_started = False
 
                 # Recompile the model
                 model.compile(
@@ -810,7 +833,8 @@ def train_model_iteratively(
                         train_x[task_num],
                         train_y[task_num],
                         batch_size = batch_size,
-                        validation_split = current_validation_split
+                        validation_split = current_validation_split,
+                        verbose = 2
                     )
 
                     # Get the new loss
@@ -856,7 +880,8 @@ def train_model_iteratively(
             batch_size = batch_size,
             epochs = current_epochs,
             validation_split = current_validation_split,
-            callbacks = [callback]
+            callbacks = [callback],
+            verbose = 2
         )
 
     return model

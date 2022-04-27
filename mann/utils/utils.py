@@ -709,7 +709,7 @@ def train_model_iteratively(
 
     # Get some information about the training procedure, including the number of tasks
     # and the gradients for each task
-    num_tasks = len(task_gradients)
+    num_tasks = len(train_x)
 
     # Keep track of the amount of the model currently used
     amount_used = 100

@@ -90,6 +90,8 @@ Additional documentation and training materials will be added to the [BeyondML D
 
 - Transformers
     - We currently support basic functionality for the Transformer architecture with this package. We are working to expand our capabilities with this architecture to further support greater use cases with it, including pruning.
+- Per-task pruning
+    - Currently, pruning occurs for all tasks instead of on a per-task basis. Enabling per-task pruning is very high on our priority list
     
 ## Changes
 
@@ -99,4 +101,16 @@ Below are a list of additional features, bug fixes, and other changes made for e
 - Small documentation changes
 - Added `quantize_model` function
 - Added `build_transformer_block` and `build_token_position_embedding_block` functions for transformer functionality
-- Removed unnecessary imports breaking import in minimal environments
+- Removed unnecessary imports breaking imports in minimal environments
+
+### Version 0.2.3
+- Per-task pruning
+  - Functionality for this feature is implemented, but usage is expected to be incomplete. Note that task gradients have to be passed retrieved and passed to the function directly (helper function available), and that the model has to initially be compiled using a compatible loss function (recommended 'mse') to identify gradients.
+  - It has been found that this functionality is currently only supported for models with the following layers:
+    - MaskedConv2D
+    - MaskedDense
+    - MultiMaskedDense
+
+  - Note also that this functionality does not support cases where layers of an individual model are other TensorFlow models, but supporting this functionality is on the roadmap.
+- Iterative training using per-task pruning
+  - Functionality for this feature is implemented and is currently being tested. Bugs and inconsistent results are expected

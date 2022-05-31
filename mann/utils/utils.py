@@ -435,3 +435,453 @@ def quantize_model(model, dtype = 'float16'):
     # Set the weights of the new model
     new_model.set_weights(new_weights)
     return new_model
+
+def _get_masking_weights(model):
+    """
+    Get the masking weights of a model
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to get the masking weights of
+    
+    Returns
+    -------
+    weights : list of TensorFlow tensors
+        The requested weights
+    """
+    return [
+        layer.weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
+    ]
+
+def get_task_masking_gradients(
+    model,
+    task_num
+):
+    """
+    Get the gradients of masking weights within a model
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to retrieve the gradients of
+    
+    Notes
+    -----
+    - This function should only be run *before* the model has been trained 
+        or used to predict.  There is an unknown bug related to TensorFlow which
+        is leading to incorrect results after initial training
+    - When running this function, randomized input and output data is sent 
+        through the model to retrieve gradients respective to each task. If 
+        the model is compiled using `sparse_categorical_crossentropy' loss, 
+        this will break this function's functionality. As a result, please 
+        use `categorical_crossentropy` (or even better, `mse`) before running this function. After 
+        retrieving gradients, the model can be recompiled with whatever parameters are desired.
+
+    Returns
+    -------
+    gradients : list of TensorFlow tensors
+        The gradients of the masking weights of the model
+    """
+    # Figure out the number of tasks
+    output_shapes = model.output_shape
+    if isinstance(output_shapes, list):
+        num_tasks = len(output_shapes)
+    else:
+        num_tasks = 1
+    
+    # Get the loss weights
+    if num_tasks > 1:
+        loss_weights = [0]*num_tasks
+        loss_weights[task_num] = 1
+    
+    # Get the masking weights
+    masking_weights = _get_masking_weights(model)
+
+    # Configure inputs
+    inputs = []
+    input_shapes = model.input_shape
+    if isinstance(input_shapes, list):
+        for shape in input_shapes:
+            new_shape = list(shape)
+            for i in range(len(new_shape)):
+                if new_shape[i] is None:
+                    new_shape[i] = 1
+            inputs.append(np.random.random(new_shape))
+    else:
+        new_shape = list(input_shapes)
+        for i in range(len(new_shape)):
+            if new_shape[i] is None:
+                new_shape[i] = 1
+        inputs.append(np.random.random(new_shape))
+    
+    # Configure outputs
+    outputs = []
+    output_shapes = model.output_shape
+    if isinstance(output_shapes, list):
+        for shape in output_shapes:
+            new_shape = list(shape)
+            for i in range(len(new_shape)):
+                if new_shape[i] is None:
+                    new_shape[i] = 1
+            outputs.append(np.random.random(new_shape))
+    else:
+        new_shape = list(output_shapes)
+        for i in range(len(new_shape)):
+            if new_shape[i] is None:
+                new_shape[i] = 1
+        outputs.append(np.random.random(new_shape))
+
+    # Configure the losses
+    losses = model.loss
+    if not isinstance(losses, list):
+        losses = [losses] * num_tasks
+    losses = [
+        tf.keras.losses.get(loss) for loss in losses
+    ]
+
+    # Get the gradients of the weights wrt the task
+    with tf.GradientTape() as tape:
+        raw_preds = model(inputs)
+        loss_values = [losses[i](outputs[i], raw_preds[i])*loss_weights[i] for i in range(len(losses))]
+        gradients = tape.gradient(loss_values, masking_weights)
+    
+    return gradients
+
+def mask_task_weights(
+    model,
+    task_masking_gradients,
+    percentile,
+    respect_previous_tasks = True
+):
+
+    """
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to be masked
+    task_masking_gradients : list of TensorFlow tensors
+        The gradients for the specific task requested
+    percentile : int
+        The percentile to mask/prune
+    respect_previous_tasks : bool (default True)
+        Whether to respect the weights used for previous tasks and not use them 
+        for subsequent tasks
+
+    Returns
+    -------
+    masked_model : TensorFlow Keras model
+        The masked model
+    """
+    
+    # Get the actual weights to be able to set them
+    masking_weights = [
+        layer.get_weights() for layer in model.layers if isinstance(layer, MASKING_LAYERS)
+    ]
+
+    # Iterate through each of the layers of the model, keeping track of the index of which masking layer has been achieved
+    masking_idx = 0
+    for layer in model.layers:
+        if isinstance(layer, MASKING_LAYERS):
+
+            # Set the new masks to be masked
+            new_masks = []
+
+            # Different procedures if multi masking layer vs single masking layer
+            if isinstance(layer, MULTI_MASKING_LAYERS):
+                
+                # Check for all of the weights in the list of weights (corresponding to gradients)
+                for weight_num in range(len(task_masking_gradients[masking_idx])):
+
+                    # Set the weight and gradient values so it's easier to follow
+                    weight = masking_weights[masking_idx][weight_num]
+                    gradient = task_masking_gradients[masking_idx][weight_num]
+
+                    # If gradient is None, then the value is a mask
+                    task_idx_num = None
+                    if gradient is not None:
+
+                        # Figure out which task index is the right one
+                        for task_idx in range(gradient.shape[0]):
+                            if not (gradient[task_idx].numpy() == 0).all():
+                                task_idx_num = task_idx
+                        
+                        if task_idx_num is not None:
+                            # Get the new weight for that task only
+                            task_weight = np.abs(weight[task_idx_num])
+
+                            # Enforce respecting previous-task weights
+                            if respect_previous_tasks and task_idx_num > 0:
+                                task_weight[(weight[:task_idx_num] != 0).astype(int).sum(axis = 0).astype(bool)] = 0
+
+                            # Get the new mask
+                            weight_mask = (task_weight >= np.percentile(task_weight, percentile))
+                        
+                            # Find the existing mask and set the value of only the task-specific part
+                            layer_mask = masking_weights[masking_idx][weight_num + int(len(masking_weights[masking_idx])/2)]
+                            layer_mask[task_idx_num] = weight_mask
+
+                            # Append the new mask
+                            new_masks.append(layer_mask)
+            
+            # If the layer is a single masking layer
+            else:
+                for weight_num in range(len(task_masking_gradients[masking_idx])):
+
+                    # Assign the weight and the gradient for this specific layer, for sanity
+                    weight = masking_weights[masking_idx][weight_num]
+                    gradient = task_masking_gradients[masking_idx][weight_num]
+
+                    # If gradient is None, then the weight is a mask
+                    if gradient is not None:
+                        
+                        # Only proceed if the gradient exists
+                        if not (gradient.numpy() == 0).all():
+                            weight = np.abs(weight)
+                            weight_mask = (weight >= np.percentile(weight, percentile))
+                            new_masks.append(weight_mask)
+            
+            # If new masks have been identified (it's possible that this did not occur), set the new masks for that layer
+            if new_masks != []:
+                layer.set_masks(new_masks)
+            
+            # Lastly, increase the masking index by 1
+            masking_idx += 1
+
+    # Compile the model again and return it
+    model.compile()
+    return model
+
+def train_model_iteratively(
+    model,
+    task_gradients,
+    train_x,
+    train_y,
+    validation_split,
+    delta,
+    batch_size,
+    losses,
+    optimizer = 'adam',
+    metrics = None,
+    starting_pruning = 0,
+    pruning_rate = 10,
+    patience = 5,
+    max_epochs = 100
+):
+    """
+    Train a model iteratively on each task, first obtaining 
+    baseline performance on each task and then iteratively 
+    training and pruning each task as far back as possible while 
+    maintaining acceptable performance on each task
+
+    Parameters
+    ----------
+    model : TensorFlow Keras model
+        The model to be trained
+    task_gradients : list of TensorFlow tensors
+        Gradients for each task, output from the `get_task_masking_gradients` function
+    train_x : list of numpy arrays, TensorFlow Datasets, or other
+              data types models can train with
+        The input data to use to train on
+    train_y : list of numpy arrays, TensorFlow Datasets, or other
+              data types model can train with
+        The output data to use to train on
+    validation_split : float, or list of float
+        The proportion of data to use for validation
+    delta : float
+        The tolerance between validation losses to be considered "acceptable" 
+        performance to continue
+    batch_size : int
+        The batch size to train with
+    losses : str, list, or Keras loss function
+        The loss or losses to use when training
+    optimizer : str, list, or Keras optimizer
+        The optimizer to use when training (default 'adam')
+    starting_pruning : int or list of int (default 0)
+        The starting pruning rate to use for each task
+    pruning_rate : int or list of int (default [10, 5, 2, 1])
+        The pruning rate to use
+    patience : int (default 5)
+        The patience for number of epochs to wait for performance to improve sufficiently
+    max_epochs : int or list of int (default 100)
+        The maximum number of epochs to use for training each task
+    """
+
+    # Get some information about the training procedure, including the number of tasks
+    # and the gradients for each task
+    num_tasks = len(train_x)
+
+    # Keep track of the amount of the model currently used
+    amount_used = 100
+
+    # Start the training iterations
+    for task_num in range(num_tasks):
+        
+        print(f'Training task {task_num}')
+
+        # Get the starting task pruning rate for the current task
+        if isinstance(starting_pruning, int):
+            task_start_pruning = starting_pruning
+        else:
+            task_start_pruning = starting_pruning[task_num]
+
+        # Get the current pruning rate
+        if isinstance(pruning_rate, int):
+            current_pruning_rate = pruning_rate
+        else:
+            current_pruning_rate = pruning_rate[task_num]
+
+        # Configure the current validation split
+        if isinstance(validation_split, float):
+            current_validation_split = validation_split
+        else:
+            current_validation_split = validation_split[task_num]
+        
+        # Configure the loss weights
+        loss_weights = [0]*num_tasks
+        loss_weights[task_num] = 1
+
+        # Configure the epochs
+        if isinstance(max_epochs, int):
+            current_epochs = max_epochs
+        else:
+            current_epochs = max_epochs[task_num]
+
+        # Compile the model 
+        model.compile(
+            loss = losses,
+            optimizer = optimizer,
+            loss_weights = loss_weights,
+            metrics = metrics
+        )
+
+        # Train the model initially
+        callback = tf.keras.callbacks.EarlyStopping(
+            min_delta = delta,
+            patience = patience,
+            restore_best_weights = True
+        )
+        history = model.fit(
+            train_x[task_num],
+            train_y[task_num],
+            batch_size = batch_size,
+            epochs = current_epochs,
+            validation_split = current_validation_split,
+            callbacks = [callback],
+            verbose = 2
+        )
+
+        # Retrieve the validation loss and current best weights
+        best_loss = min(history.history['val_loss'])
+        best_weights = model.get_weights()
+
+        # Training loop for the task at hand
+        current_wait = 0
+        if task_num == 0:
+            current_prune = task_start_pruning
+        else:
+            current_prune = max(task_start_pruning, amount_used)
+        keep_training = True
+        just_started = True
+
+        # If pruning needs to occur, do it
+        if current_prune != 0:
+
+            print(f'Pruning task to {current_prune}')
+
+            model = mask_task_weights(
+                model,
+                task_gradients[task_num],
+                current_prune
+            )
+
+
+        # keep_training indicates that training is to occur
+        while keep_training:
+
+            # First prune the model to the next pruning rate
+            if current_prune + current_pruning_rate < 100:
+
+                # Check if the training just started
+                if not just_started:
+                    # Increase the pruning rate
+                    current_prune += current_pruning_rate
+                    model = mask_task_weights(
+                        model,
+                        task_gradients[task_num],
+                        current_prune
+                    )
+                
+                    print(f'Pruning task to {current_prune}')
+
+                else:
+                    just_started = False
+
+                # Recompile the model
+                model.compile(
+                    loss = losses,
+                    optimizer = optimizer,
+                    loss_weights = loss_weights,
+                    metrics = metrics
+                )
+
+                # Train the model with the new pruning rate
+                while current_wait < patience:
+                    
+                    # Fit the model for a single epoch
+                    history = model.fit(
+                        train_x[task_num],
+                        train_y[task_num],
+                        batch_size = batch_size,
+                        validation_split = current_validation_split,
+                        verbose = 2
+                    )
+
+                    # Get the new loss
+                    loss = history.history['val_loss'][-1]
+
+                    # If loss is within acceptable range, grab the best weights and 
+                    # reassign the best loss. Otherwise, increase current wait
+                    if loss < best_loss + delta:
+                        best_weights = model.get_weights()
+                        best_loss = loss
+                        break
+                    else:
+                        current_wait += 1
+
+                # If pruning was not successful, restore best pruning rate
+                if current_wait == patience or current_prune + current_pruning_rate >= 100:
+                    keep_training = False
+            
+            else:
+                keep_training = False
+                
+        # Record how much of the model has been used
+        if task_num == 0:
+            amount_used -= current_prune
+        else:
+            amount_used += 100 - current_prune
+
+        # Now that current wait has been reached, restore best weights
+        model.set_weights(best_weights)
+
+        # Recompile the model
+        model.compile(
+            loss = losses,
+            optimizer = optimizer,
+            loss_weights = loss_weights,
+            metrics = metrics
+        )
+
+        # Fit using the new best weights
+        model.fit(
+            train_x[task_num],
+            train_y[task_num],
+            batch_size = batch_size,
+            epochs = current_epochs,
+            validation_split = current_validation_split,
+            callbacks = [callback],
+            verbose = 2
+        )
+
+    return model

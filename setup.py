@@ -5,7 +5,7 @@ setup(
     name = 'mann',
     version = __version__,
     url = 'https://github.com/AISquaredInc/mann',
-    packages = ['mann', 'mann.layers', 'mann.utils'],
+    packages = ['mann', 'mann.layers', 'mann.utils', 'mann.burning'],
     author = 'The AI Squared Team',
     author_email = 'mann@squared.ai',
     description = 'Package containing utilities for implementing RSN2/MANN',

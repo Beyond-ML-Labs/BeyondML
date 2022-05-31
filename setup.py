@@ -13,6 +13,7 @@ setup(
     long_description_content_type = 'text/markdown',
     license = 'Apache 2.0',
     install_requires = [
-        'tensorflow>=2.4'
+        'tensorflow>=2.4',
+        'torch'
     ]
 )

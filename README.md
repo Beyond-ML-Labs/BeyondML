@@ -56,6 +56,9 @@ In addition to the functions just mentioned, there is also an `ActiveSparsificat
     - The `build_transformer_block` function can be used to build a block in a transformer architecture.
 7. `build_token_position_embedding`
     - The `build_token_position_embedding` function can be used to build a token and position embedding block for use in a transformer architecture model.
+8. The `get_task_masking_gradients` function retrieves the gradients of masking weights within a model.
+9. The `mask_task_weights` function masks specific task weights within a model.
+10. The `train_model_iteratively` function iteratively trains a model utilizing early stopping and active sparsification on a per-task basis. **NOTE** that this function only works on models *without* `MultiMaskedConv2D` layers.
 
 ### Layers
 
@@ -88,10 +91,10 @@ Additional documentation and training materials will be added to the [BeyondML D
 
 ## Feature Roadmap
 
-- Transformers
-    - We currently support basic functionality for the Transformer architecture with this package. We are working to expand our capabilities with this architecture to further support greater use cases with it, including pruning.
-- Per-task pruning
-    - Currently, pruning occurs for all tasks instead of on a per-task basis. Enabling per-task pruning is very high on our priority list
+- PyTorch Support
+    - We are currently working on building support for PyTorch models and layers into this package
+- Fixing issues with iterative training and `MultiMaskedConv2D` layers
+    - As mentioned above, there are issues with finding pert-task gradients with models utilizing `MultiMaskedConv2D` layers.  Future iterations of the technology will address bugs with these kinds of models
     
 ## Changes
 
@@ -110,7 +113,6 @@ Below are a list of additional features, bug fixes, and other changes made for e
     - MaskedConv2D
     - MaskedDense
     - MultiMaskedDense
-
   - Note also that this functionality does not support cases where layers of an individual model are other TensorFlow models, but supporting this functionality is on the roadmap.
 - Iterative training using per-task pruning
-  - Functionality for this feature is implemented and is currently being tested. Bugs and inconsistent results are expected
+  - Functionality for this feature is implemented, but there are known bugs when trying to apply this methodology to models with the `MultiMaskedConv2D` layer present

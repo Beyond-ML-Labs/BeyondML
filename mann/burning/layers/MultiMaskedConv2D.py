@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-class MaskedConv2D(torch.nn.Module):
+class MultiMaskedConv2D(torch.nn.Module):
 
     def __init__(
         self,

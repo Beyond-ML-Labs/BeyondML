@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 
-class MaskedDense(torch.nn.Module):
+class MultiMaskedDense(torch.nn.Module):
 
     def __init__(
         self,

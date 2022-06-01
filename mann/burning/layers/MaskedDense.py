@@ -8,6 +8,7 @@ class MaskedDense(torch.nn.Module):
         out_features,
         use_bias = True
     ):
+        super().__init__()
         self.in_features = in_features
         self.out_features = out_features,
         self.use_bias = use_bias

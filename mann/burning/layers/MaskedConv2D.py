@@ -68,13 +68,18 @@ class MaskedConv2D(torch.nn.Module):
         self._kernel_size = value
     
     def forward(self, inputs):
-        conv = torch.nn.functional.conv2d(
-            inputs,
-            self.w * self.w_mask,
-            stride = self.strides,
-            padding = self.padding
-        )
-        if self.use_bias:
-            conv = torch.add(conv, self.b * self.b_mask)
-        
-        return conv
+        if not self.use_bias:
+            return torch.nn.functional.conv2d(
+                inputs,
+                self.w * self.w_mask,
+                self.b * self.b_mask,
+                stride = self.strides,
+                padding = self.padding
+            )
+        else:
+            return torch.nn.functional.conv2d(
+                inputs,
+                self.w * self.w_mask,
+                stride = self.strides,
+                padding = self.padding
+            )

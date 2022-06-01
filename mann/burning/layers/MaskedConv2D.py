@@ -27,11 +27,11 @@ class MaskedConv2D(torch.nn.Module):
         )
         filters = torch.nn.init.normal_(filters)
         self.w = torch.nn.Parameter(filters)
-        self.w_mask = torch.ones_like(self.weight)
+        self.w_mask = torch.ones_like(self.w)
 
         if self.use_bias:
             bias = torch.zeros(filters)
-            bias = torch.nn.Parameter(bias)
+            self.b = torch.nn.Parameter(bias)
             self.b_mask = torch.ones_like(self.b)
         
 

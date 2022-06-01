@@ -11,7 +11,7 @@ class MaskedDense(torch.nn.Module):
     ):
         super().__init__()
         self.in_features = in_features
-        self.out_features = out_features,
+        self.out_features = out_features
         self.use_bias = use_bias
 
         weight = torch.Tensor(

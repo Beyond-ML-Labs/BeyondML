@@ -30,7 +30,7 @@ class MaskedConv2D(torch.nn.Module):
         self.w_mask = torch.ones_like(self.w)
 
         if self.use_bias:
-            bias = torch.zeros(filters)
+            bias = torch.zeros(out_channels)
             self.b = torch.nn.Parameter(bias)
             self.b_mask = torch.ones_like(self.b)
         

@@ -22,8 +22,7 @@ class MaskedDense(torch.nn.Module):
         self.w_mask = torch.ones_like(self.w)
 
         if self.use_bias:
-            bias = torch.Tensor(self.out_features)
-            bias = torch.nn.init.zeros_(bias)
+            bias = torch.zeros(out_features)
             self.b = torch.nn.Parameter(bias)
             self.b_mask = torch.ones_like(bias)
 

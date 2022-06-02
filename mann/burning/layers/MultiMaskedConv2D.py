@@ -10,8 +10,7 @@ class MultiMaskedConv2D(torch.nn.Module):
         num_tasks,
         kernel_size = 3,
         padding = 'same',
-        strides = 1,
-        use_bias = True
+        strides = 1
     ):
         super().__init__()
         self.in_channels = in_channels
@@ -20,7 +19,6 @@ class MultiMaskedConv2D(torch.nn.Module):
         self.kernel_size = kernel_size
         self.padding = padding
         self.strides = strides
-        self.use_bias = use_bias
 
         filters = torch.Tensor(
             self.num_tasks,
@@ -33,11 +31,9 @@ class MultiMaskedConv2D(torch.nn.Module):
         self.w = torch.nn.Parameter(filters)
         self.w_mask = torch.ones_like(self.w)
 
-        if self.use_bias:
-            bias = torch.zeros(self.num_tasks, out_channels)
-            self.b = torch.nn.Parameter(bias)
-            self.b_mask = torch.ones_like(self.b)
-        
+        bias = torch.zeros(self.num_tasks, out_channels)
+        self.b = torch.nn.Parameter(bias)
+        self.b_mask = torch.ones_like(self.b)        
 
     @property
     def in_channels(self):
@@ -74,37 +70,37 @@ class MultiMaskedConv2D(torch.nn.Module):
     def forward(self, inputs):
         outputs = []
         for i in range(len(inputs)):
-            if not self.use_bias:
-                outputs.append(
-                    torch.nn.functional.conv2d(
-                        inputs[i],
-                        self.w[i] * self.w_mask[i],
-                        self.b[i] * self.b_mask[i],
-                        stride = self.strides,
-                        padding = self.padding
-                    )
+            outputs.append(
+                torch.nn.functional.conv2d(
+                    inputs[i],
+                    self.w[i] * self.w_mask[i],
+                    self.b[i] * self.b_mask[i],
+                    stride = self.strides,
+                    padding = self.padding
                 )
-            else:
-                outputs.append(
-                    torch.nn.functional.conv2d(
-                        inputs[i],
-                        self.w[i] * self.w_mask[i],
-                        stride = self.strides,
-                        padding = self.padding
-                    )
-                )
+            )
 
     def prune(self, percentile):
-        raise NotImplementedError
+        
         w_copy = np.abs(self.w.detach().numpy())
         b_copy = np.abs(self.b.detach().numpy())
-        w_percentile = np.percentile(w_copy, percentile)
-        b_percentile = np.percentile(b_copy, percentile)
-        
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
-        self.w_mask = new_w_mask
-        self.b_mask = new_b_mask
+        new_w_mask = np.zeros_like(w_copy)
+        new_b_mask = np.zeros_like(b_copy)
+
+        for task_num in range(self.num_tasks):
+            if task_num != 0:
+                for prev_idx in range(task_num - 1):
+                    w_copy[task_num][new_w_mask[prev_idx] == 1] = 0
+                    b_copy[task_num][new_b_mask[prev_idx] == 1] = 0
+            
+            w_percentile = np.percentile(w_copy[task_num], percentile)
+            b_percentile = np.percentile(b_copy[task_num], percentile)
+
+            new_w_mask[task_num] = (w_copy[task_num] >= w_percentile).astype(int)
+            new_b_mask[task_num] = (b_copy[task_num] >= b_percentile).astype(int)
+
+        self.w_mask = torch.Tensor(new_w_mask)
+        self.b_mask = torch.Tensor(new_b_mask)
 
         self.w = torch.nn.Parameter(
             self.w * self.w_mask

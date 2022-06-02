@@ -9,8 +9,7 @@ class MaskedConv2D(torch.nn.Module):
         out_channels,
         kernel_size = 3,
         padding = 'same',
-        strides = 1,
-        use_bias = True
+        strides = 1
     ):
         super().__init__()
         self.in_channels = in_channels
@@ -18,7 +17,6 @@ class MaskedConv2D(torch.nn.Module):
         self.kernel_size = kernel_size
         self.padding = padding
         self.strides = strides
-        self.use_bias = use_bias
 
         filters = torch.Tensor(
             self.out_channels,
@@ -30,10 +28,9 @@ class MaskedConv2D(torch.nn.Module):
         self.w = torch.nn.Parameter(filters)
         self.w_mask = torch.ones_like(self.w)
 
-        if self.use_bias:
-            bias = torch.zeros(out_channels)
-            self.b = torch.nn.Parameter(bias)
-            self.b_mask = torch.ones_like(self.b)
+        bias = torch.zeros(out_channels)
+        self.b = torch.nn.Parameter(bias)
+        self.b_mask = torch.ones_like(self.b)
         
 
     @property
@@ -69,18 +66,10 @@ class MaskedConv2D(torch.nn.Module):
         self._kernel_size = value
     
     def forward(self, inputs):
-        if not self.use_bias:
-            return torch.nn.functional.conv2d(
+        return torch.nn.functional.conv2d(
                 inputs,
                 self.w * self.w_mask,
                 self.b * self.b_mask,
-                stride = self.strides,
-                padding = self.padding
-            )
-        else:
-            return torch.nn.functional.conv2d(
-                inputs,
-                self.w * self.w_mask,
                 stride = self.strides,
                 padding = self.padding
             )

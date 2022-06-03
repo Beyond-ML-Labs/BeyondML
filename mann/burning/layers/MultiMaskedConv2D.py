@@ -90,7 +90,7 @@ class MultiMaskedConv2D(torch.nn.Module):
 
         for task_num in range(self.num_tasks):
             if task_num != 0:
-                for prev_idx in range(task_num - 1):
+                for prev_idx in range(task_num):
                     w_copy[task_num][new_w_mask[prev_idx] == 1] = 0
                     b_copy[task_num][new_b_mask[prev_idx] == 1] = 0
             

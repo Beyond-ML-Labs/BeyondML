@@ -1,4 +1,4 @@
-mport numpy as np
+import numpy as np
 import torch
 
 class MultiMaskedConv2D(torch.nn.Module):

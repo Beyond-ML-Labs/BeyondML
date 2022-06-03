@@ -1,4 +1,4 @@
-import numpy as np
+mport numpy as np
 import torch
 
 class MultiMaskedConv2D(torch.nn.Module):
@@ -79,6 +79,7 @@ class MultiMaskedConv2D(torch.nn.Module):
                     padding = self.padding
                 )
             )
+        return outputs
 
     def prune(self, percentile):
         

@@ -27,7 +27,7 @@ class MultiMaskedConv2D(torch.nn.Module):
             self.kernel_size[0],
             self.kernel_size[1]
         )
-        filters = torch.nn.init.normal_(filters)
+        filters = torch.nn.init.kaiming_normal_(filters, a = np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
         self.w_mask = torch.ones_like(self.w)
 

@@ -19,7 +19,7 @@ class MultiMaskedDense(torch.nn.Module):
             in_features,
             out_features
         )
-        weight = torch.nn.init.normal_(weight)
+        weight = torch.nn.init.kaiming_normal_(weight, a = np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
         self.w_mask = torch.ones_like(self.w)
 

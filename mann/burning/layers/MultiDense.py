@@ -9,7 +9,7 @@ class MultiDense(torch.nn.Module):
     ):
         super().__init__()
         self.w = torch.Tensor(weight).to_sparse()
-        self.b = torch.Tensor(bias)
+        self.b = torch.Tensor(bias).to_sparse()
 
     def forward(self, inputs):
         outputs = []

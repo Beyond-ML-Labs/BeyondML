@@ -1,4 +1,3 @@
-import numpy as np
 import torch
 
 class MultiConv2D(torch.nn.Module):

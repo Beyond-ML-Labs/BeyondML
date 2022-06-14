@@ -16,17 +16,20 @@ class MaskedDense(torch.nn.Module):
             in_features,
             out_features
         )
-        weight = torch.nn.init.normal_(weight)
+        weight = torch.nn.init.kaiming_normal_(weight, a = np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
         self.w_mask = torch.ones_like(self.w)
+        
 
         bias = torch.zeros(out_features)
         self.b = torch.nn.Parameter(bias)
         self.b_mask = torch.ones_like(bias)
 
     def forward(self, inputs):
-        out = torch.mm(inputs, self.w * self.w_mask)
-        out = torch.add(out, self.b * self.b_mask)
+        weight = self.w * self.w_mask
+        bias = self.b * self.b_mask
+        out = torch.mm(inputs, weight)
+        out = torch.add(out, bias)
         return out
 
     def prune(self, percentile):

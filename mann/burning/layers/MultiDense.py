@@ -14,7 +14,7 @@ class MultiDense(torch.nn.Module):
     def forward(self, inputs):
         outputs = []
         for i in range(len(inputs)):
-            out = torch.sparse.mm(self.w[i].t(), inputs[i])
+            out = torch.sparse.mm(self.w[i].t(), inputs[i].t()).t()
             out = torch.add(out, self.b[i])
             outputs.append(out)
         return outputs

@@ -12,6 +12,7 @@ class SparseConv2D(torch.nn.Module):
         super().__init__()
         self.w = torch.Tensor(kernel).to_sparse()
         self.b = torch.Tensor(bias).to_sparse()
+
         self.padding = padding
         self.strides = strides
 
@@ -21,6 +22,7 @@ class SparseConv2D(torch.nn.Module):
     ):
         kernel = self.w.to_dense()
         bias = self.b.to_dense()
+
         return torch.nn.functional.conv2d(
             inputs,
             kernel,

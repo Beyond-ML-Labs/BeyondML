@@ -1,6 +1,6 @@
 import torch
 
-class MultiConv2D(torch.nn.Module):
+class SparseMultiConv2D(torch.nn.Module):
 
     def __init__(
             self,
@@ -22,6 +22,7 @@ class MultiConv2D(torch.nn.Module):
         outputs = []
         kernel = self.w.to_dense()
         bias = self.b.to_dense()
+
         for i in range(len(inputs)):
             outputs.append(
                 torch.nn.functional.conv2d(

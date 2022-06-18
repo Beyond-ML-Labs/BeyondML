@@ -13,5 +13,5 @@ class SparseDense(torch.nn.Module):
 
     def forward(self, inputs):
         out = torch.sparse.mm(self.w.t(), inputs.t()).t()
-        out = torch.add(out, self.b.to_dense())
+        out = torch.add(out, self.b)
         return out

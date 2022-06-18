@@ -1,6 +1,6 @@
 import torch
 
-class MultiDense(torch.nn.Module):
+class SparseMultiDense(torch.nn.Module):
 
     def __init__(
             self,

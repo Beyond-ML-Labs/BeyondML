@@ -8,8 +8,8 @@ class MultiDense(torch.nn.Module):
             bias
     ):
         super().__init__()
-        self.w = torch.Tensor(weight)
-        self.b = torch.Tensor(bias)
+        self.w = torch.nn.Parameter(torch.Tensor(weight))
+        self.b = torch.nn.Parameter(torch.Tensor(bias))
 
     def forward(self, inputs):
         outputs = []

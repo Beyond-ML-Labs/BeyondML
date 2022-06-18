@@ -10,8 +10,8 @@ class MultiConv2D(torch.nn.Module):
             strides = 1
     ):
         super().__init__()
-        self.w = torch.Tensor(kernel)
-        self.b = torch.Tensor(bias)
+        self.w = torch.nn.Parameter(torch.Tensor(kernel))
+        self.b = torch.nn.Parameter(torch.Tensor(bias))
         self.padding = padding
         self.strides = strides
 

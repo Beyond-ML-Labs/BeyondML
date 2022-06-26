@@ -1,5 +1,7 @@
 # MANN
 
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6190/badge)](https://bestpractices.coreinfrastructure.org/projects/6190)
+
 MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating sparse multitask models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 
 ## Installation

@@ -1,6 +1,7 @@
 # MANN
 
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6190/badge)](https://bestpractices.coreinfrastructure.org/projects/6190)
+[![PyPI version](https://badge.fury.io/py/mann.svg)](https://badge.fury.io/py/mann)
 
 MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating sparse multitask models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 
@@ -32,6 +33,14 @@ pip install .
 ### Mac M1 Users
 
 For those with a Mac with the M1 processor, this package can be installed, but the standard version of TensorFlow is not compatible with the M1 SOC. In order to install a compatible version of TensorFlow, please install the [Miniforge](https://github.com/conda-forge/miniforge) conda environment, which utilizes the conda-forge channel only. Once you are using Miniforge, using conda to install TensorFlow in that environment should install the correct version. After installing TensorFlow, the command `pip install mann` will install the MANN package.
+
+## Contributing
+
+For those who are interested in contributing to this project, we first thank you for your interest! Please refer to the CONTRIBUTING.md file in this repository for information about best practices for how to contribute.
+
+### Vulnerability reporting
+
+In the event you notice a vulnerability within this project, please open a [GitHub Issue](https://github.com/Beyond-ML-Labs/mann/issues) detailing the vulnerability to report it. In the event you would like to keep the report private, please email <mann@squared.ai>.
 
 ## Capabilities
 

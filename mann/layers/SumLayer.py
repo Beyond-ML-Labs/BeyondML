@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class SumLayer(Layer):
     """
     Layer which adds all inputs together. All inputs must have compatible shapes
@@ -17,8 +18,9 @@ class SumLayer(Layer):
     >>> data = np.arange(10).reshape((1, 10))
     >>> model.predict([data, data])
     array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16., 18.]], dtype=float32)
-    
+
     """
+
     def __init__(self, **kwargs):
         super(SumLayer, self).__init__(**kwargs)
 

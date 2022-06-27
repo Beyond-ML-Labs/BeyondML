@@ -2,21 +2,23 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class MultiMaskedDense(Layer):
     """
     Masked multitask fully connected layer. This layer implements multiple stacks
     of the fully-connected architecture and implements masking with the MANN API
     to support developing sparse multitask models.
-    
+
     """
+
     def __init__(
         self,
         units,
-        use_bias = True,
-        activation = None,
-        kernel_initializer = 'random_normal',
-        mask_initializer = 'ones',
-        bias_initializer = 'zeros',
+        use_bias=True,
+        activation=None,
+        kernel_initializer='random_normal',
+        mask_initializer='ones',
+        bias_initializer='zeros',
         **kwargs
     ):
         """
@@ -34,7 +36,7 @@ class MultiMaskedDense(Layer):
             The mask initialization function to use
         bias_initializer : str or keras initialization function (default 'zeros')
             The bias initialization function to use
-    
+
     """
         super(MultiMaskedDense, self).__init__(**kwargs)
         self.units = int(units) if not isinstance(units, int) else units
@@ -49,35 +51,36 @@ class MultiMaskedDense(Layer):
             tuple(shape.as_list()) for shape in input_shape
         ]
         if len(set(input_shape)) != 1:
-            raise ValueError(f'All input shapes must be equal, got {input_shape}')
+            raise ValueError(
+                f'All input shapes must be equal, got {input_shape}')
 
         simplified_shape = input_shape[0]
 
         self.w = self.add_weight(
-            shape = (len(input_shape), simplified_shape[-1], self.units),
-            initializer = self.kernel_initializer,
-            trainable = True,
-            name = 'weights'
+            shape=(len(input_shape), simplified_shape[-1], self.units),
+            initializer=self.kernel_initializer,
+            trainable=True,
+            name='weights'
         )
         self.w_mask = self.add_weight(
-            shape = self.w.shape,
-            initializer = self.mask_initializer,
-            trainable = False,
-            name = 'weights_mask'
+            shape=self.w.shape,
+            initializer=self.mask_initializer,
+            trainable=False,
+            name='weights_mask'
         )
 
         if self.use_bias:
             self.b = self.add_weight(
-                shape = (len(input_shape), self.units),
-                initializer = self.bias_initializer,
-                trainable = True,
-                name = 'bias'
+                shape=(len(input_shape), self.units),
+                initializer=self.bias_initializer,
+                trainable=True,
+                name='bias'
             )
             self.b_mask = self.add_weight(
-                shape = self.b.shape,
-                initializer = self.mask_initializer,
-                trainable = False,
-                name = 'bias_mask'
+                shape=self.b.shape,
+                initializer=self.mask_initializer,
+                trainable=False,
+                name='bias_mask'
             )
 
     def call(self, inputs):
@@ -94,12 +97,12 @@ class MultiMaskedDense(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'units' : self.units,
-                'use_bias' : self.use_bias,
-                'activation' : tf.keras.activations.serialize(self.activation),
-                'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
-                'mask_initializer' : tf.keras.initializers.serialize(self.mask_initializer),
-                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer)
+                'units': self.units,
+                'use_bias': self.use_bias,
+                'activation': tf.keras.activations.serialize(self.activation),
+                'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
+                'mask_initializer': tf.keras.initializers.serialize(self.mask_initializer),
+                'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer)
             }
         )
         return config
@@ -115,20 +118,22 @@ class MultiMaskedDense(Layer):
         """
         if not self.use_bias:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float), new_masks[0].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float),
+                 new_masks[0].astype(np.float)]
             )
         else:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(
+                    np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
             )
 
     @classmethod
     def from_config(cls, config):
         return cls(
-            units = config['units'],
-            use_bias = config['use_bias'],
-            activation = config['activation'],
-            kernel_initializer = config['kernel_initializer'],
-            mask_initializer = config['mask_initializer'],
-            bias_initializer = config['bias_initializer']
+            units=config['units'],
+            use_bias=config['use_bias'],
+            activation=config['activation'],
+            kernel_initializer=config['kernel_initializer'],
+            mask_initializer=config['mask_initializer'],
+            bias_initializer=config['bias_initializer']
         )

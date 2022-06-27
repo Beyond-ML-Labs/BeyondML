@@ -2,6 +2,7 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class MultiDense(Layer):
     """
     Multitask fully connected layer
@@ -11,13 +12,14 @@ class MultiDense(Layer):
     that MultiMaskedDense layers be used during training and then those layers be converted to this layer type.
 
     """
+
     def __init__(
         self,
         units,
-        use_bias = True,
-        activation = None,
-        kernel_initializer = 'random_normal',
-        bias_initializer = 'zeros',
+        use_bias=True,
+        activation=None,
+        kernel_initializer='random_normal',
+        bias_initializer='zeros',
         **kwargs
     ):
         """
@@ -47,23 +49,24 @@ class MultiDense(Layer):
             tuple(shape.as_list()) for shape in input_shape
         ]
         if len(set(input_shape)) != 1:
-            raise ValueError(f'All input shapes must be equal, got {input_shape}')
+            raise ValueError(
+                f'All input shapes must be equal, got {input_shape}')
 
         simplified_shape = input_shape[0]
 
         self.w = self.add_weight(
-            shape = (len(input_shape), simplified_shape[-1], self.units),
-            initializer = self.kernel_initializer,
-            trainable = True,
-            name = 'weights'
+            shape=(len(input_shape), simplified_shape[-1], self.units),
+            initializer=self.kernel_initializer,
+            trainable=True,
+            name='weights'
         )
 
         if self.use_bias:
             self.b = self.add_weight(
-                shape = (len(input_shape), self.units),
-                initializer = self.bias_initializer,
-                trainable = True,
-                name = 'bias'
+                shape=(len(input_shape), self.units),
+                initializer=self.bias_initializer,
+                trainable=True,
+                name='bias'
             )
 
     def call(self, inputs):
@@ -80,11 +83,11 @@ class MultiDense(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'units' : self.units,
-                'use_bias' : self.use_bias,
-                'activation' : tf.keras.activations.serialize(self.activation),
-                'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
-                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer)
+                'units': self.units,
+                'use_bias': self.use_bias,
+                'activation': tf.keras.activations.serialize(self.activation),
+                'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
+                'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer)
             }
         )
         return config
@@ -92,9 +95,9 @@ class MultiDense(Layer):
     @classmethod
     def from_config(cls, config):
         return cls(
-            units = config['units'],
-            use_bias = config['use_bias'],
-            activation = config['activation'],
-            kernel_initializer = config['kernel_initializer'],
-            bias_initializer = config['bias_initializer']
+            units=config['units'],
+            use_bias=config['use_bias'],
+            activation=config['activation'],
+            kernel_initializer=config['kernel_initializer'],
+            bias_initializer=config['bias_initializer']
         )

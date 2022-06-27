@@ -2,23 +2,25 @@ import tensorflow as tf
 from tensorflow.keras.callbacks import Callback
 from .utils import get_custom_objects, mask_model
 
+
 class ActiveSparsification(Callback):
     """
     Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models 
     train.    
     """
+
     def __init__(
         self,
         performance_cutoff,
-        performance_measure = 'auto',
-        starting_sparsification = None,
-        max_sparsification = 99,
-        sparsification_rate = 1,
-        sparsification_patience = 10,
-        stopping_delta = 0.01,
-        stopping_patience = 5,
-        restore_best_weights = True,
-        verbose = 1
+        performance_measure='auto',
+        starting_sparsification=None,
+        max_sparsification=99,
+        sparsification_rate=1,
+        sparsification_patience=10,
+        stopping_delta=0.01,
+        stopping_patience=5,
+        restore_best_weights=True,
+        verbose=1
     ):
         """
         Parameters
@@ -63,7 +65,7 @@ class ActiveSparsification(Callback):
         self.restore_best_weights = restore_best_weights
         self.verbose = int(verbose)
 
-    def on_train_begin(self, logs = None):
+    def on_train_begin(self, logs=None):
         self.prune_wait = 0
         self.stop_wait = 0
 
@@ -71,8 +73,8 @@ class ActiveSparsification(Callback):
         self.best = None
         self.pruning = True
         self.sparsification = self.starting_sparsification if self.starting_sparsification is not None else 0
-    
-    def on_epoch_end(self, epoch, logs = None):
+
+    def on_epoch_end(self, epoch, logs=None):
         if self.performance_measure == 'auto':
             if 'val_accuracy' in logs.keys():
                 self.performance_measure = 'val_accuracy'
@@ -84,7 +86,7 @@ class ActiveSparsification(Callback):
                 self.performance_measure = 'loss'
             if self.verbose:
                 print(f'Performance measure set to {self.performance_measure}')
-        
+
         performance = logs[self.performance_measure]
         if self.best is None:
             self.best = performance
@@ -95,93 +97,111 @@ class ActiveSparsification(Callback):
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     if self.sparsification + self.sparsification_rate > self.max_sparsification:
-                        print('Model cannot be sparsified further due to max sparsification parameter')
+                        print(
+                            'Model cannot be sparsified further due to max sparsification parameter')
                         self.pruning = False
                     else:
-                        self._sparsify_model(self.sparsification + self.sparsification_rate)
+                        self._sparsify_model(
+                            self.sparsification + self.sparsification_rate)
                         self.sparsification = self.sparsification + self.sparsification_rate
                         self.prune_wait = 0
                         if self.verbose:
-                            print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
+                            print(
+                                f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:
-                        print(f'Model performance has not reached pruning threshold for {self.prune_wait} epoch(s)')
+                        print(
+                            f'Model performance has not reached pruning threshold for {self.prune_wait} epoch(s)')
                     if self.prune_wait >= self.sparsification_patience:
                         self.pruning = False
                         self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
+                            print(
+                                f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
             else:
                 if performance >= self.best + self.stopping_delta:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     self.stop_wait = 0
                     if self.verbose:
-                        print(f'Model performance improved to {round(self.best, 2)}')
+                        print(
+                            f'Model performance improved to {round(self.best, 2)}')
                 else:
                     self.stop_wait += 1
                     if self.verbose:
-                        print(f'Early stopping performance has not met threshold for {self.stop_wait} epochs')
+                        print(
+                            f'Early stopping performance has not met threshold for {self.stop_wait} epochs')
                     if self.stop_wait >= self.stopping_patience:
                         if self.restore_best_weights:
                             self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print('Model performance has not met early stopping criteria. Stopping training')
+                            print(
+                                'Model performance has not met early stopping criteria. Stopping training')
                         self.model.stop_training = True
-        
+
         else:
             if self.pruning:
                 if performance <= self.performance_cutoff:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     if self.sparsification + self.sparsification_rate > self.max_sparsification:
-                        print('Model cannot be sparsified further due to max sparsification parameter')
+                        print(
+                            'Model cannot be sparsified further due to max sparsification parameter')
                         self.pruning = False
                     else:
-                        self._sparsify_model(self.sparsification + self.sparsification_rate)
+                        self._sparsify_model(
+                            self.sparsification + self.sparsification_rate)
                         self.sparsification = self.sparsification + self.sparsification_rate
                         self.prune_wait = 0
                         if self.verbose:
-                            print(f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
+                            print(
+                                f'Model performance reached {round(performance, 2)}, sparsifying to {self.sparsification}')
                 else:
                     self.prune_wait += 1
                     if self.verbose:
-                        print(f'Model performance has not reached pruning threshold for {self.prune_wait} epoch(s)')
+                        print(
+                            f'Model performance has not reached pruning threshold for {self.prune_wait} epoch(s)')
                     if self.prune_wait >= self.sparsification_patience:
                         self.pruning = False
                         self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print(f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
+                            print(
+                                f'Model performance has not reached pruning threshold for {self.prune_wait} epochs, reverting to {self.sparsification - self.sparsification_rate} sparsification and beginning early stopping')
             else:
                 if performance <= self.best - self.stopping_delta:
                     self.best_weights = self.model.get_weights()
                     self.best = performance
                     self.stop_wait = 0
                     if self.verbose:
-                        print(f'Model performance improved to {round(self.best, 2)}')
+                        print(
+                            f'Model performance improved to {round(self.best, 2)}')
                 else:
                     self.stop_wait += 1
                     if self.verbose:
-                        print(f'Early stopping performance has not met threshold for {self.stop_wait} epochs')
+                        print(
+                            f'Early stopping performance has not met threshold for {self.stop_wait} epochs')
                     if self.stop_wait >= self.stopping_patience:
                         if self.restore_best_weights:
                             self.model.set_weights(self.best_weights)
                         if self.verbose:
-                            print('Model performance has not met early stopping criteria. Stopping training')
+                            print(
+                                'Model performance has not met early stopping criteria. Stopping training')
                         self.model.stop_training = True
 
     def _sparsify_model(self, percentage):
         """Function to sparsify the model"""
         try:
-            new_model = tf.keras.models.Model.from_config(self.model.get_config(), custom_objects = get_custom_objects())
+            new_model = tf.keras.models.Model.from_config(
+                self.model.get_config(), custom_objects=get_custom_objects())
         except:
-            new_model = tf.keras.models.Sequential.from_config(self.model.get_config(), custom_objects = get_custom_objects())
+            new_model = tf.keras.models.Sequential.from_config(
+                self.model.get_config(), custom_objects=get_custom_objects())
         new_model.set_weights(self.model.get_weights())
         self.model.set_weights(
             mask_model(
                 new_model,
                 percentage,
-                method = 'magnitude'
+                method='magnitude'
             ).get_weights()
         )

@@ -1,5 +1,6 @@
 import torch
 
+
 class MultiDense(torch.nn.Module):
 
     def __init__(

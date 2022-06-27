@@ -1,5 +1,6 @@
 import torch
 
+
 class Dense(torch.nn.Module):
 
     def __init__(

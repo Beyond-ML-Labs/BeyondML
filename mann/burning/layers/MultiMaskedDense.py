@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 
+
 class MultiMaskedDense(torch.nn.Module):
 
     def __init__(
@@ -19,7 +20,7 @@ class MultiMaskedDense(torch.nn.Module):
             in_features,
             out_features
         )
-        weight = torch.nn.init.kaiming_normal_(weight, a = np.sqrt(5))
+        weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
         self.w_mask = torch.ones_like(self.w)
 
@@ -47,12 +48,14 @@ class MultiMaskedDense(torch.nn.Module):
                 for prev_idx in range(task_num):
                     w_copy[task_num][new_w_mask[prev_idx] == 1] = 0
                     b_copy[task_num][new_b_mask[prev_idx] == 1] = 0
-            
+
             w_percentile = np.percentile(w_copy[task_num], percentile)
             b_percentile = np.percentile(b_copy[task_num], percentile)
 
-            new_w_mask[task_num] = (w_copy[task_num] >= w_percentile).astype(int)
-            new_b_mask[task_num] = (b_copy[task_num] >= b_percentile).astype(int)
+            new_w_mask[task_num] = (
+                w_copy[task_num] >= w_percentile).astype(int)
+            new_b_mask[task_num] = (
+                b_copy[task_num] >= b_percentile).astype(int)
 
         self.w_mask = torch.Tensor(new_w_mask)
         self.b_mask = torch.Tensor(new_b_mask)

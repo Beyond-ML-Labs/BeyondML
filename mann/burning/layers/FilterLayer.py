@@ -1,10 +1,11 @@
 import torch
 
+
 class FilterLayer(torch.nn.Module):
 
     def __init__(
         self,
-        is_on = True
+        is_on=True
     ):
 
         super().__init__()
@@ -13,6 +14,7 @@ class FilterLayer(torch.nn.Module):
     @property
     def is_on(self):
         return self._is_on
+
     @is_on.setter
     def is_on(self, value):
         if not isinstance(value, bool):
@@ -24,9 +26,9 @@ class FilterLayer(torch.nn.Module):
             return inputs
         else:
             return torch.zeros_like(inputs)
-    
+
     def turn_on(self):
         self.is_on = True
-    
+
     def turn_off(self):
         self.is_on = False

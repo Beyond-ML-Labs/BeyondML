@@ -1,5 +1,6 @@
 import torch
 
+
 class SparseMultiDense(torch.nn.Module):
 
     def __init__(

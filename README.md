@@ -3,6 +3,7 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6190/badge)](https://bestpractices.coreinfrastructure.org/projects/6190)
 [![PyPI version](https://badge.fury.io/py/mann.svg)](https://badge.fury.io/py/mann)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
+[![Documentation Status](https://readthedocs.org/projects/pycodestyle/badge/?version=latest)](https://pycodestyle.pycqa.org/en/latest/?badge=latest)
 
 MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating sparse multitask models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 

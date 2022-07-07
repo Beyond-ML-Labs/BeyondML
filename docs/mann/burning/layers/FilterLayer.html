@@ -76,36 +76,63 @@
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="k">class</span> <span class="nc">FilterLayer</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="p">):</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="nd">@property</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="nd">@is_on</span><span class="o">.</span><span class="n">setter</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;is_on must be Boolean&#39;</span><span class="p">)</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span> <span class="o">=</span> <span class="n">value</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">    Layer which filters input data, either returning values or all zeros depending on state</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="p">):</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">        Parameters</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">        ----------</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        is_on : bool (default False)</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">            Whether the layer is on or off</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="nd">@property</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="nd">@is_on</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;is_on must be Boolean&#39;</span><span class="p">)</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        Parameters</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        ----------</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        Returns</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        -------</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>            <span class="k">return</span> <span class="n">inputs</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        Turn on the layer</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        Turn off the layer</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
 </span></pre></div>
 
 
@@ -122,73 +149,67 @@
     </div>
     <a class="headerlink" href="#FilterLayer"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer-5"><a href="#FilterLayer-5"><span class="linenos"> 5</span></a><span class="k">class</span> <span class="nc">FilterLayer</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="FilterLayer-6"><a href="#FilterLayer-6"><span class="linenos"> 6</span></a>
-</span><span id="FilterLayer-7"><a href="#FilterLayer-7"><span class="linenos"> 7</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="FilterLayer-8"><a href="#FilterLayer-8"><span class="linenos"> 8</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="FilterLayer-9"><a href="#FilterLayer-9"><span class="linenos"> 9</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
-</span><span id="FilterLayer-10"><a href="#FilterLayer-10"><span class="linenos">10</span></a>    <span class="p">):</span>
-</span><span id="FilterLayer-11"><a href="#FilterLayer-11"><span class="linenos">11</span></a>
-</span><span id="FilterLayer-12"><a href="#FilterLayer-12"><span class="linenos">12</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="FilterLayer-13"><a href="#FilterLayer-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
-</span><span id="FilterLayer-14"><a href="#FilterLayer-14"><span class="linenos">14</span></a>
-</span><span id="FilterLayer-15"><a href="#FilterLayer-15"><span class="linenos">15</span></a>    <span class="nd">@property</span>
-</span><span id="FilterLayer-16"><a href="#FilterLayer-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-17"><a href="#FilterLayer-17"><span class="linenos">17</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span>
-</span><span id="FilterLayer-18"><a href="#FilterLayer-18"><span class="linenos">18</span></a>
-</span><span id="FilterLayer-19"><a href="#FilterLayer-19"><span class="linenos">19</span></a>    <span class="nd">@is_on</span><span class="o">.</span><span class="n">setter</span>
-</span><span id="FilterLayer-20"><a href="#FilterLayer-20"><span class="linenos">20</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-</span><span id="FilterLayer-21"><a href="#FilterLayer-21"><span class="linenos">21</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-</span><span id="FilterLayer-22"><a href="#FilterLayer-22"><span class="linenos">22</span></a>            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;is_on must be Boolean&#39;</span><span class="p">)</span>
-</span><span id="FilterLayer-23"><a href="#FilterLayer-23"><span class="linenos">23</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span> <span class="o">=</span> <span class="n">value</span>
-</span><span id="FilterLayer-24"><a href="#FilterLayer-24"><span class="linenos">24</span></a>
-</span><span id="FilterLayer-25"><a href="#FilterLayer-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="FilterLayer-26"><a href="#FilterLayer-26"><span class="linenos">26</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="FilterLayer-27"><a href="#FilterLayer-27"><span class="linenos">27</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="FilterLayer-28"><a href="#FilterLayer-28"><span class="linenos">28</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="FilterLayer-29"><a href="#FilterLayer-29"><span class="linenos">29</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="FilterLayer-30"><a href="#FilterLayer-30"><span class="linenos">30</span></a>
-</span><span id="FilterLayer-31"><a href="#FilterLayer-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-32"><a href="#FilterLayer-32"><span class="linenos">32</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="FilterLayer-33"><a href="#FilterLayer-33"><span class="linenos">33</span></a>
-</span><span id="FilterLayer-34"><a href="#FilterLayer-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-35"><a href="#FilterLayer-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="FilterLayer-6"><a href="#FilterLayer-6"><span class="linenos"> 6</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer-7"><a href="#FilterLayer-7"><span class="linenos"> 7</span></a><span class="sd">    Layer which filters input data, either returning values or all zeros depending on state</span>
+</span><span id="FilterLayer-8"><a href="#FilterLayer-8"><span class="linenos"> 8</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="FilterLayer-9"><a href="#FilterLayer-9"><span class="linenos"> 9</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="FilterLayer-10"><a href="#FilterLayer-10"><span class="linenos">10</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FilterLayer-11"><a href="#FilterLayer-11"><span class="linenos">11</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="FilterLayer-12"><a href="#FilterLayer-12"><span class="linenos">12</span></a>    <span class="p">):</span>
+</span><span id="FilterLayer-13"><a href="#FilterLayer-13"><span class="linenos">13</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer-14"><a href="#FilterLayer-14"><span class="linenos">14</span></a><span class="sd">        Parameters</span>
+</span><span id="FilterLayer-15"><a href="#FilterLayer-15"><span class="linenos">15</span></a><span class="sd">        ----------</span>
+</span><span id="FilterLayer-16"><a href="#FilterLayer-16"><span class="linenos">16</span></a><span class="sd">        is_on : bool (default False)</span>
+</span><span id="FilterLayer-17"><a href="#FilterLayer-17"><span class="linenos">17</span></a><span class="sd">            Whether the layer is on or off</span>
+</span><span id="FilterLayer-18"><a href="#FilterLayer-18"><span class="linenos">18</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer-19"><a href="#FilterLayer-19"><span class="linenos">19</span></a>
+</span><span id="FilterLayer-20"><a href="#FilterLayer-20"><span class="linenos">20</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="FilterLayer-21"><a href="#FilterLayer-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
+</span><span id="FilterLayer-22"><a href="#FilterLayer-22"><span class="linenos">22</span></a>
+</span><span id="FilterLayer-23"><a href="#FilterLayer-23"><span class="linenos">23</span></a>    <span class="nd">@property</span>
+</span><span id="FilterLayer-24"><a href="#FilterLayer-24"><span class="linenos">24</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FilterLayer-25"><a href="#FilterLayer-25"><span class="linenos">25</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span>
+</span><span id="FilterLayer-26"><a href="#FilterLayer-26"><span class="linenos">26</span></a>
+</span><span id="FilterLayer-27"><a href="#FilterLayer-27"><span class="linenos">27</span></a>    <span class="nd">@is_on</span><span class="o">.</span><span class="n">setter</span>
+</span><span id="FilterLayer-28"><a href="#FilterLayer-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">is_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+</span><span id="FilterLayer-29"><a href="#FilterLayer-29"><span class="linenos">29</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+</span><span id="FilterLayer-30"><a href="#FilterLayer-30"><span class="linenos">30</span></a>            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;is_on must be Boolean&#39;</span><span class="p">)</span>
+</span><span id="FilterLayer-31"><a href="#FilterLayer-31"><span class="linenos">31</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_is_on</span> <span class="o">=</span> <span class="n">value</span>
+</span><span id="FilterLayer-32"><a href="#FilterLayer-32"><span class="linenos">32</span></a>
+</span><span id="FilterLayer-33"><a href="#FilterLayer-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="FilterLayer-34"><a href="#FilterLayer-34"><span class="linenos">34</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer-35"><a href="#FilterLayer-35"><span class="linenos">35</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="FilterLayer-36"><a href="#FilterLayer-36"><span class="linenos">36</span></a>
+</span><span id="FilterLayer-37"><a href="#FilterLayer-37"><span class="linenos">37</span></a><span class="sd">        Parameters</span>
+</span><span id="FilterLayer-38"><a href="#FilterLayer-38"><span class="linenos">38</span></a><span class="sd">        ----------</span>
+</span><span id="FilterLayer-39"><a href="#FilterLayer-39"><span class="linenos">39</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="FilterLayer-40"><a href="#FilterLayer-40"><span class="linenos">40</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="FilterLayer-41"><a href="#FilterLayer-41"><span class="linenos">41</span></a>
+</span><span id="FilterLayer-42"><a href="#FilterLayer-42"><span class="linenos">42</span></a><span class="sd">        Returns</span>
+</span><span id="FilterLayer-43"><a href="#FilterLayer-43"><span class="linenos">43</span></a><span class="sd">        -------</span>
+</span><span id="FilterLayer-44"><a href="#FilterLayer-44"><span class="linenos">44</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="FilterLayer-45"><a href="#FilterLayer-45"><span class="linenos">45</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="FilterLayer-46"><a href="#FilterLayer-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer-47"><a href="#FilterLayer-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
+</span><span id="FilterLayer-48"><a href="#FilterLayer-48"><span class="linenos">48</span></a>            <span class="k">return</span> <span class="n">inputs</span>
+</span><span id="FilterLayer-49"><a href="#FilterLayer-49"><span class="linenos">49</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="FilterLayer-50"><a href="#FilterLayer-50"><span class="linenos">50</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</span><span id="FilterLayer-51"><a href="#FilterLayer-51"><span class="linenos">51</span></a>
+</span><span id="FilterLayer-52"><a href="#FilterLayer-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FilterLayer-53"><a href="#FilterLayer-53"><span class="linenos">53</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer-54"><a href="#FilterLayer-54"><span class="linenos">54</span></a><span class="sd">        Turn on the layer</span>
+</span><span id="FilterLayer-55"><a href="#FilterLayer-55"><span class="linenos">55</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer-56"><a href="#FilterLayer-56"><span class="linenos">56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="FilterLayer-57"><a href="#FilterLayer-57"><span class="linenos">57</span></a>
+</span><span id="FilterLayer-58"><a href="#FilterLayer-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FilterLayer-59"><a href="#FilterLayer-59"><span class="linenos">59</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer-60"><a href="#FilterLayer-60"><span class="linenos">60</span></a><span class="sd">        Turn off the layer</span>
+</span><span id="FilterLayer-61"><a href="#FilterLayer-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer-62"><a href="#FilterLayer-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Base class for all neural network modules.</p>
-
-<p>Your models should also subclass this class.</p>
-
-<p>Modules can also contain other Modules, allowing to nest them in
-a tree structure. You can assign the submodules as regular attributes::</p>
-
-<pre><code>import torch.nn as nn
-import torch.nn.functional as F
-
-class Model(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.conv1 = nn.Conv2d(1, 20, 5)
-        self.conv2 = nn.Conv2d(20, 20, 5)
-
-    def forward(self, x):
-        x = F.relu(self.conv1(x))
-        return F.relu(self.conv2(x))
-</code></pre>
-
-<p>Submodules assigned in this way will be registered, and will have their
-parameters converted too when you call <code><a href="#FilterLayer.to">to</a></code>, etc.</p>
-
-<div class="pdoc-alert pdoc-alert-note">
-
-<p>As per the example above, an <code><a href="#FilterLayer.__init__">__init__()</a></code> call to the parent class
-must be made before assignment on the child.</p>
-
-</div>
-
-<p>:ivar training: Boolean represents whether this module is in training or
-                evaluation mode.
-:vartype training: bool</p>
+            <div class="docstring"><p>Layer which filters input data, either returning values or all zeros depending on state</p>
 </div>
 
 
@@ -202,17 +223,28 @@ must be made before assignment on the child.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.__init__-7"><a href="#FilterLayer.__init__-7"><span class="linenos"> 7</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="FilterLayer.__init__-8"><a href="#FilterLayer.__init__-8"><span class="linenos"> 8</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="FilterLayer.__init__-9"><a href="#FilterLayer.__init__-9"><span class="linenos"> 9</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
-</span><span id="FilterLayer.__init__-10"><a href="#FilterLayer.__init__-10"><span class="linenos">10</span></a>    <span class="p">):</span>
-</span><span id="FilterLayer.__init__-11"><a href="#FilterLayer.__init__-11"><span class="linenos">11</span></a>
-</span><span id="FilterLayer.__init__-12"><a href="#FilterLayer.__init__-12"><span class="linenos">12</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="FilterLayer.__init__-13"><a href="#FilterLayer.__init__-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.__init__-9"><a href="#FilterLayer.__init__-9"><span class="linenos"> 9</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="FilterLayer.__init__-10"><a href="#FilterLayer.__init__-10"><span class="linenos">10</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="FilterLayer.__init__-11"><a href="#FilterLayer.__init__-11"><span class="linenos">11</span></a>        <span class="n">is_on</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="FilterLayer.__init__-12"><a href="#FilterLayer.__init__-12"><span class="linenos">12</span></a>    <span class="p">):</span>
+</span><span id="FilterLayer.__init__-13"><a href="#FilterLayer.__init__-13"><span class="linenos">13</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer.__init__-14"><a href="#FilterLayer.__init__-14"><span class="linenos">14</span></a><span class="sd">        Parameters</span>
+</span><span id="FilterLayer.__init__-15"><a href="#FilterLayer.__init__-15"><span class="linenos">15</span></a><span class="sd">        ----------</span>
+</span><span id="FilterLayer.__init__-16"><a href="#FilterLayer.__init__-16"><span class="linenos">16</span></a><span class="sd">        is_on : bool (default False)</span>
+</span><span id="FilterLayer.__init__-17"><a href="#FilterLayer.__init__-17"><span class="linenos">17</span></a><span class="sd">            Whether the layer is on or off</span>
+</span><span id="FilterLayer.__init__-18"><a href="#FilterLayer.__init__-18"><span class="linenos">18</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer.__init__-19"><a href="#FilterLayer.__init__-19"><span class="linenos">19</span></a>
+</span><span id="FilterLayer.__init__-20"><a href="#FilterLayer.__init__-20"><span class="linenos">20</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="FilterLayer.__init__-21"><a href="#FilterLayer.__init__-21"><span class="linenos">21</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+            <div class="docstring"><h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><strong>is_on</strong> (bool (default False)):
+Whether the layer is on or off</li>
+</ul>
 </div>
 
 
@@ -239,26 +271,42 @@ must be made before assignment on the child.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.forward"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.forward-25"><a href="#FilterLayer.forward-25"><span class="linenos">25</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="FilterLayer.forward-26"><a href="#FilterLayer.forward-26"><span class="linenos">26</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="FilterLayer.forward-27"><a href="#FilterLayer.forward-27"><span class="linenos">27</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="FilterLayer.forward-28"><a href="#FilterLayer.forward-28"><span class="linenos">28</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="FilterLayer.forward-29"><a href="#FilterLayer.forward-29"><span class="linenos">29</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.forward-33"><a href="#FilterLayer.forward-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="FilterLayer.forward-34"><a href="#FilterLayer.forward-34"><span class="linenos">34</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer.forward-35"><a href="#FilterLayer.forward-35"><span class="linenos">35</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="FilterLayer.forward-36"><a href="#FilterLayer.forward-36"><span class="linenos">36</span></a>
+</span><span id="FilterLayer.forward-37"><a href="#FilterLayer.forward-37"><span class="linenos">37</span></a><span class="sd">        Parameters</span>
+</span><span id="FilterLayer.forward-38"><a href="#FilterLayer.forward-38"><span class="linenos">38</span></a><span class="sd">        ----------</span>
+</span><span id="FilterLayer.forward-39"><a href="#FilterLayer.forward-39"><span class="linenos">39</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="FilterLayer.forward-40"><a href="#FilterLayer.forward-40"><span class="linenos">40</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="FilterLayer.forward-41"><a href="#FilterLayer.forward-41"><span class="linenos">41</span></a>
+</span><span id="FilterLayer.forward-42"><a href="#FilterLayer.forward-42"><span class="linenos">42</span></a><span class="sd">        Returns</span>
+</span><span id="FilterLayer.forward-43"><a href="#FilterLayer.forward-43"><span class="linenos">43</span></a><span class="sd">        -------</span>
+</span><span id="FilterLayer.forward-44"><a href="#FilterLayer.forward-44"><span class="linenos">44</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="FilterLayer.forward-45"><a href="#FilterLayer.forward-45"><span class="linenos">45</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="FilterLayer.forward-46"><a href="#FilterLayer.forward-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer.forward-47"><a href="#FilterLayer.forward-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
+</span><span id="FilterLayer.forward-48"><a href="#FilterLayer.forward-48"><span class="linenos">48</span></a>            <span class="k">return</span> <span class="n">inputs</span>
+</span><span id="FilterLayer.forward-49"><a href="#FilterLayer.forward-49"><span class="linenos">49</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="FilterLayer.forward-50"><a href="#FilterLayer.forward-50"><span class="linenos">50</span></a>            <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Defines the computation performed at every call.</p>
+            <div class="docstring"><p>Call the layer on input data</p>
 
-<p>Should be overridden by all subclasses.</p>
+<h6 id="parameters">Parameters</h6>
 
-<div class="pdoc-alert pdoc-alert-note">
+<ul>
+<li><strong>inputs</strong> (torch.Tensor):
+Inputs to call the layer's logic on</li>
+</ul>
 
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code>Module</code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
+<h6 id="returns">Returns</h6>
 
-</div>
+<ul>
+<li><strong>results</strong> (torch.Tensor):
+The results of the layer's logic</li>
+</ul>
 </div>
 
 
@@ -274,12 +322,17 @@ registered hooks while the latter silently ignores them.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.turn_on"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_on-31"><a href="#FilterLayer.turn_on-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer.turn_on-32"><a href="#FilterLayer.turn_on-32"><span class="linenos">32</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_on-52"><a href="#FilterLayer.turn_on-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FilterLayer.turn_on-53"><a href="#FilterLayer.turn_on-53"><span class="linenos">53</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer.turn_on-54"><a href="#FilterLayer.turn_on-54"><span class="linenos">54</span></a><span class="sd">        Turn on the layer</span>
+</span><span id="FilterLayer.turn_on-55"><a href="#FilterLayer.turn_on-55"><span class="linenos">55</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer.turn_on-56"><a href="#FilterLayer.turn_on-56"><span class="linenos">56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Turn on the layer</p>
+</div>
+
 
                             </div>
                             <div id="FilterLayer.turn_off" class="classattr">
@@ -293,12 +346,17 @@ registered hooks while the latter silently ignores them.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.turn_off"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_off-34"><a href="#FilterLayer.turn_off-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer.turn_off-35"><a href="#FilterLayer.turn_off-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_off-58"><a href="#FilterLayer.turn_off-58"><span class="linenos">58</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="FilterLayer.turn_off-59"><a href="#FilterLayer.turn_off-59"><span class="linenos">59</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="FilterLayer.turn_off-60"><a href="#FilterLayer.turn_off-60"><span class="linenos">60</span></a><span class="sd">        Turn off the layer</span>
+</span><span id="FilterLayer.turn_off-61"><a href="#FilterLayer.turn_off-61"><span class="linenos">61</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="FilterLayer.turn_off-62"><a href="#FilterLayer.turn_off-62"><span class="linenos">62</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
 </span></pre></div>
 
 
-    
+            <div class="docstring"><p>Turn off the layer</p>
+</div>
+
 
                             </div>
                             <div class="inherited">

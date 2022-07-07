@@ -434,7 +434,7 @@ def add_layer_masks(model, additional_custom_objects=None):
     return new_model
 
 
-def quantize_model(model, dtype='float16'):
+def quantize_model(model, dtype='float16', additional_custom_objects=None):
     """
     Apply model quantization
 
@@ -444,6 +444,8 @@ def quantize_model(model, dtype='float16'):
         The model to quantize
     dtype : str or TensorFlow datatype (default 'float16')
         The datatype to quantize to
+    additional_custom_objects : None or dict (default None)
+        Additional custom  objects to use to instantiate the model
 
     Returns
     -------
@@ -466,10 +468,15 @@ def quantize_model(model, dtype='float16'):
     new_config = _quantize_model_config(model_config, dtype)
 
     # Instantiate the new model from the new config
+    custom_objects = get_custom_objects()
+    if additional_custom_objects is not None:
+        custom_objects.update(additional_custom_objects)
     try:
-        new_model = tf.keras.models.Model.from_config(new_config)
+        new_model = tf.keras.models.Model.from_config(
+            new_config, custom_objects=custom_objects)
     except Exception:
-        new_model = tf.keras.models.Sequential.from_config(new_config)
+        new_model = tf.keras.models.Sequential.from_config(
+            new_config, custom_objects=custom_objects)
 
     # Set the weights of the new model
     new_model.set_weights(new_weights)

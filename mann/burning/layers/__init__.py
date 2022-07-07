@@ -1,3 +1,5 @@
+"""Layers compatible with PyTorch models."""
+
 from .FilterLayer import FilterLayer
 from .SelectorLayer import SelectorLayer
 from .Dense import Dense

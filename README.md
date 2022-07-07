@@ -8,7 +8,7 @@ MANN, which stands for Multitask Artificial Neural Networks, is a Python package
 
 ## Changing to BeyondML
 
-<span style="color:red">Please be advised that the MANN package is going to be deprecated after version 0.3.0 and will be moved to the `beyondml` package in PyPi. For future releases, please alter your code to utilize the `beyondml` package.</span>
+**Please be advised that the MANN package is going to be deprecated after version 0.3.0 and will be moved to the `beyondml` package in PyPi. For future releases, please alter your code to utilize the `beyondml` package.**
 
 ## Installation
 

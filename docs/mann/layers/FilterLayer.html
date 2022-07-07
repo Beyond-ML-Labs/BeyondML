@@ -76,55 +76,7 @@
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Layer</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="k">class</span> <span class="nc">FilterLayer</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">    Layer which filters inputs based on status of `on` or `off`</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="sd">    </span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">    Example:</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">    &gt;&gt;&gt; # Create a model with just a FilterLayer</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">    &gt;&gt;&gt; input_layer = tf.keras.layers.Input(10)</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">    &gt;&gt;&gt; filter_layer = mann.layers.FilterLayer()(input_layer)</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">    &gt;&gt;&gt; model = tf.keras.models.Model(input_layer, filter_layer)</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">    &gt;&gt;&gt; model.compile()</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">    &gt;&gt;&gt; # Call the model with the layer turned on</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">    &gt;&gt;&gt; data = np.arange(10).reshape((1, 10))</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    &gt;&gt;&gt; model.predict(data)</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    array([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]], dtype=float32)</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    &gt;&gt;&gt; # Turn off the FilterLayer and call it again</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">    &gt;&gt;&gt; model.layers[-1].turn_off()</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">    &gt;&gt;&gt; # Model must be recompiled after turning the layer on or off</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">    &gt;&gt;&gt; model.compile()</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">    &gt;&gt;&gt; model.predict(data)</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>            <span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>            <span class="o">**</span><span class="n">kwargs</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="p">):</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">FilterLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>            <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;is_on&#39;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">})</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="n">config</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `on` so inputs are returned unchanged as outputs&quot;&quot;&quot;</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `off` so inputs are destroyed and all-zero tensors are output&quot;&quot;&quot;</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+
 </span></pre></div>
 
 
@@ -140,55 +92,7 @@
 
     </div>
     <a class="headerlink" href="#FilterLayer"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer-6"><a href="#FilterLayer-6"><span class="linenos"> 6</span></a><span class="k">class</span> <span class="nc">FilterLayer</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
-</span><span id="FilterLayer-7"><a href="#FilterLayer-7"><span class="linenos"> 7</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="FilterLayer-8"><a href="#FilterLayer-8"><span class="linenos"> 8</span></a><span class="sd">    Layer which filters inputs based on status of `on` or `off`</span>
-</span><span id="FilterLayer-9"><a href="#FilterLayer-9"><span class="linenos"> 9</span></a><span class="sd">    </span>
-</span><span id="FilterLayer-10"><a href="#FilterLayer-10"><span class="linenos">10</span></a><span class="sd">    Example:</span>
-</span><span id="FilterLayer-11"><a href="#FilterLayer-11"><span class="linenos">11</span></a>
-</span><span id="FilterLayer-12"><a href="#FilterLayer-12"><span class="linenos">12</span></a><span class="sd">    &gt;&gt;&gt; # Create a model with just a FilterLayer</span>
-</span><span id="FilterLayer-13"><a href="#FilterLayer-13"><span class="linenos">13</span></a><span class="sd">    &gt;&gt;&gt; input_layer = tf.keras.layers.Input(10)</span>
-</span><span id="FilterLayer-14"><a href="#FilterLayer-14"><span class="linenos">14</span></a><span class="sd">    &gt;&gt;&gt; filter_layer = mann.layers.FilterLayer()(input_layer)</span>
-</span><span id="FilterLayer-15"><a href="#FilterLayer-15"><span class="linenos">15</span></a><span class="sd">    &gt;&gt;&gt; model = tf.keras.models.Model(input_layer, filter_layer)</span>
-</span><span id="FilterLayer-16"><a href="#FilterLayer-16"><span class="linenos">16</span></a><span class="sd">    &gt;&gt;&gt; model.compile()</span>
-</span><span id="FilterLayer-17"><a href="#FilterLayer-17"><span class="linenos">17</span></a><span class="sd">    &gt;&gt;&gt; # Call the model with the layer turned on</span>
-</span><span id="FilterLayer-18"><a href="#FilterLayer-18"><span class="linenos">18</span></a><span class="sd">    &gt;&gt;&gt; data = np.arange(10).reshape((1, 10))</span>
-</span><span id="FilterLayer-19"><a href="#FilterLayer-19"><span class="linenos">19</span></a><span class="sd">    &gt;&gt;&gt; model.predict(data)</span>
-</span><span id="FilterLayer-20"><a href="#FilterLayer-20"><span class="linenos">20</span></a><span class="sd">    array([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]], dtype=float32)</span>
-</span><span id="FilterLayer-21"><a href="#FilterLayer-21"><span class="linenos">21</span></a><span class="sd">    &gt;&gt;&gt; # Turn off the FilterLayer and call it again</span>
-</span><span id="FilterLayer-22"><a href="#FilterLayer-22"><span class="linenos">22</span></a><span class="sd">    &gt;&gt;&gt; model.layers[-1].turn_off()</span>
-</span><span id="FilterLayer-23"><a href="#FilterLayer-23"><span class="linenos">23</span></a><span class="sd">    &gt;&gt;&gt; # Model must be recompiled after turning the layer on or off</span>
-</span><span id="FilterLayer-24"><a href="#FilterLayer-24"><span class="linenos">24</span></a><span class="sd">    &gt;&gt;&gt; model.compile()</span>
-</span><span id="FilterLayer-25"><a href="#FilterLayer-25"><span class="linenos">25</span></a><span class="sd">    &gt;&gt;&gt; model.predict(data)</span>
-</span><span id="FilterLayer-26"><a href="#FilterLayer-26"><span class="linenos">26</span></a><span class="sd">    array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)</span>
-</span><span id="FilterLayer-27"><a href="#FilterLayer-27"><span class="linenos">27</span></a>
-</span><span id="FilterLayer-28"><a href="#FilterLayer-28"><span class="linenos">28</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="FilterLayer-29"><a href="#FilterLayer-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="FilterLayer-30"><a href="#FilterLayer-30"><span class="linenos">30</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="FilterLayer-31"><a href="#FilterLayer-31"><span class="linenos">31</span></a>            <span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="FilterLayer-32"><a href="#FilterLayer-32"><span class="linenos">32</span></a>            <span class="o">**</span><span class="n">kwargs</span>
-</span><span id="FilterLayer-33"><a href="#FilterLayer-33"><span class="linenos">33</span></a>    <span class="p">):</span>
-</span><span id="FilterLayer-34"><a href="#FilterLayer-34"><span class="linenos">34</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">FilterLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="FilterLayer-35"><a href="#FilterLayer-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
-</span><span id="FilterLayer-36"><a href="#FilterLayer-36"><span class="linenos">36</span></a>
-</span><span id="FilterLayer-37"><a href="#FilterLayer-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="FilterLayer-38"><a href="#FilterLayer-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="FilterLayer-39"><a href="#FilterLayer-39"><span class="linenos">39</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="FilterLayer-40"><a href="#FilterLayer-40"><span class="linenos">40</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="FilterLayer-41"><a href="#FilterLayer-41"><span class="linenos">41</span></a>            <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="FilterLayer-42"><a href="#FilterLayer-42"><span class="linenos">42</span></a>
-</span><span id="FilterLayer-43"><a href="#FilterLayer-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-44"><a href="#FilterLayer-44"><span class="linenos">44</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="FilterLayer-45"><a href="#FilterLayer-45"><span class="linenos">45</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;is_on&#39;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">})</span>
-</span><span id="FilterLayer-46"><a href="#FilterLayer-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">config</span>
-</span><span id="FilterLayer-47"><a href="#FilterLayer-47"><span class="linenos">47</span></a>
-</span><span id="FilterLayer-48"><a href="#FilterLayer-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-49"><a href="#FilterLayer-49"><span class="linenos">49</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `on` so inputs are returned unchanged as outputs&quot;&quot;&quot;</span>
-</span><span id="FilterLayer-50"><a href="#FilterLayer-50"><span class="linenos">50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="FilterLayer-51"><a href="#FilterLayer-51"><span class="linenos">51</span></a>    
-</span><span id="FilterLayer-52"><a href="#FilterLayer-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer-53"><a href="#FilterLayer-53"><span class="linenos">53</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `off` so inputs are destroyed and all-zero tensors are output&quot;&quot;&quot;</span>
-</span><span id="FilterLayer-54"><a href="#FilterLayer-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+
 </span></pre></div>
 
 
@@ -225,13 +129,7 @@
 
     </div>
     <a class="headerlink" href="#FilterLayer.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.__init__-29"><a href="#FilterLayer.__init__-29"><span class="linenos">29</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="FilterLayer.__init__-30"><a href="#FilterLayer.__init__-30"><span class="linenos">30</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="FilterLayer.__init__-31"><a href="#FilterLayer.__init__-31"><span class="linenos">31</span></a>            <span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="FilterLayer.__init__-32"><a href="#FilterLayer.__init__-32"><span class="linenos">32</span></a>            <span class="o">**</span><span class="n">kwargs</span>
-</span><span id="FilterLayer.__init__-33"><a href="#FilterLayer.__init__-33"><span class="linenos">33</span></a>    <span class="p">):</span>
-</span><span id="FilterLayer.__init__-34"><a href="#FilterLayer.__init__-34"><span class="linenos">34</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">FilterLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="FilterLayer.__init__-35"><a href="#FilterLayer.__init__-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="n">is_on</span>
+
 </span></pre></div>
 
 
@@ -249,11 +147,7 @@
 
     </div>
     <a class="headerlink" href="#FilterLayer.call"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.call-37"><a href="#FilterLayer.call-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="FilterLayer.call-38"><a href="#FilterLayer.call-38"><span class="linenos">38</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">:</span>
-</span><span id="FilterLayer.call-39"><a href="#FilterLayer.call-39"><span class="linenos">39</span></a>            <span class="k">return</span> <span class="n">inputs</span>
-</span><span id="FilterLayer.call-40"><a href="#FilterLayer.call-40"><span class="linenos">40</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="FilterLayer.call-41"><a href="#FilterLayer.call-41"><span class="linenos">41</span></a>            <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
 </span></pre></div>
 
 
@@ -312,10 +206,7 @@ method to support masking.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.get_config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.get_config-43"><a href="#FilterLayer.get_config-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer.get_config-44"><a href="#FilterLayer.get_config-44"><span class="linenos">44</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="FilterLayer.get_config-45"><a href="#FilterLayer.get_config-45"><span class="linenos">45</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;is_on&#39;</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span><span class="p">})</span>
-</span><span id="FilterLayer.get_config-46"><a href="#FilterLayer.get_config-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">config</span>
+
 </span></pre></div>
 
 
@@ -351,9 +242,7 @@ if they want to modify it.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.turn_on"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_on-48"><a href="#FilterLayer.turn_on-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer.turn_on-49"><a href="#FilterLayer.turn_on-49"><span class="linenos">49</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `on` so inputs are returned unchanged as outputs&quot;&quot;&quot;</span>
-</span><span id="FilterLayer.turn_on-50"><a href="#FilterLayer.turn_on-50"><span class="linenos">50</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">True</span>
+
 </span></pre></div>
 
 
@@ -373,9 +262,7 @@ if they want to modify it.</p>
 
     </div>
     <a class="headerlink" href="#FilterLayer.turn_off"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="FilterLayer.turn_off-52"><a href="#FilterLayer.turn_off-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="FilterLayer.turn_off-53"><a href="#FilterLayer.turn_off-53"><span class="linenos">53</span></a>        <span class="sd">&quot;&quot;&quot;Turn the layer `off` so inputs are destroyed and all-zero tensors are output&quot;&quot;&quot;</span>
-</span><span id="FilterLayer.turn_off-54"><a href="#FilterLayer.turn_off-54"><span class="linenos">54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">is_on</span> <span class="o">=</span> <span class="kc">False</span>
+
 </span></pre></div>
 
 

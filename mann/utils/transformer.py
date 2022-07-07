@@ -1,12 +1,13 @@
 import tensorflow as tf
 from mann.layers import MultiDense, SelectorLayer
 
+
 def build_transformer_block(
         input_shape,
         embed_dim,
         num_heads,
         neurons,
-        dropout_rate = 0.1,
+        dropout_rate=0.1,
 ):
     """
     Build a Transformer Block
@@ -36,7 +37,7 @@ def build_transformer_block(
     query = MultiDense(embed_dim)([input_layer] * num_heads)
     key = MultiDense(embed_dim)([input_layer] * num_heads)
     value = MultiDense(embed_dim)([input_layer]*num_heads)
-    
+
     query_selectors = [
         SelectorLayer(i)(query) for i in range(num_heads)
     ]
@@ -53,14 +54,15 @@ def build_transformer_block(
     merge = tf.keras.layers.Reshape((input_shape[0], -1))(concat)
 
     x = tf.keras.layers.Dropout(dropout_rate)(merge)
-    out1 = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
-    x = tf.keras.layers.Dense(neurons, activation = 'relu')(out1)
+    out1 = tf.keras.layers.LayerNormalization(epsilon=1e-6)(x)
+    x = tf.keras.layers.Dense(neurons, activation='relu')(out1)
     x = tf.keras.layers.Dense(embed_dim)(x)
     x = tf.keras.layers.Dropout(dropout_rate)(x)
     x = tf.keras.layers.Add()([out1, x])
-    output_layer = tf.keras.layers.LayerNormalization(epsilon = 1e-6)(x)
-    
+    output_layer = tf.keras.layers.LayerNormalization(epsilon=1e-6)(x)
+
     return tf.keras.models.Model(input_layer, output_layer)
+
 
 def build_token_position_embedding_block(
     sequence_length,
@@ -88,8 +90,10 @@ def build_token_position_embedding_block(
     tok_input = tf.keras.layers.Input(sequence_length)
     pos_input = tf.keras.layers.Input(sequence_length)
 
-    tok_embed = tf.keras.layers.Embedding(vocab_size, output_dim = embed_dim)(tok_input)
-    pos_embed = tf.keras.layers.Embedding(sequence_length, output_dim = embed_dim)(pos_input)
+    tok_embed = tf.keras.layers.Embedding(
+        vocab_size, output_dim=embed_dim)(tok_input)
+    pos_embed = tf.keras.layers.Embedding(
+        sequence_length, output_dim=embed_dim)(pos_input)
     output_layer = tf.keras.layers.Add()([tok_embed, pos_embed])
-    
+
     return tf.keras.models.Model([tok_input, pos_input], output_layer)

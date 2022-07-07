@@ -3,10 +3,13 @@ import tensorflow as tf
 import numpy as np
 import warnings
 
-MASKING_LAYERS = (MaskedDense, MaskedConv2D, MultiMaskedDense, MultiMaskedConv2D)
+MASKING_LAYERS = (MaskedDense, MaskedConv2D,
+                  MultiMaskedDense, MultiMaskedConv2D)
 MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D)
 NON_MASKING_LAYERS = (MultiDense, MultiConv2D)
-CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
+CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + \
+    (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
+
 
 def _get_masking_gradients(
         model,
@@ -34,10 +37,12 @@ def _get_masking_gradients(
     # Check outputs
     if isinstance(y, list):
         if not all([len(val.shape) > 1 for val in y]):
-            raise ValueError('Error in output shapes. If any tasks have a single output, please reshape the value using the `.reshape(-1, 1)` method')
+            raise ValueError(
+                'Error in output shapes. If any tasks have a single output, please reshape the value using the `.reshape(-1, 1)` method')
     elif not len(y.shape) > 1:
-        raise ValueError('Error in output shapes. If your task has a single output, please reshape the value using the `.reshape(-1, 1)` method')
-            
+        raise ValueError(
+            'Error in output shapes. If your task has a single output, please reshape the value using the `.reshape(-1, 1)` method')
+
     # Grab the weights for the masking layers
     masking_weights = [
         layer.trainable_weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
@@ -50,7 +55,8 @@ def _get_masking_gradients(
             losses = [losses] * len(x)
         losses = [tf.keras.losses.get(losses)] * len(x)
     else:
-        losses = [tf.keras.losses.get(loss) if not callable(loss) else loss for loss in losses]
+        losses = [tf.keras.losses.get(loss) if not callable(
+            loss) else loss for loss in losses]
 
     # Grab the gradients for the specified weights
     with tf.GradientTape() as tape:
@@ -59,22 +65,25 @@ def _get_masking_gradients(
         gradients = tape.gradient(losses, masking_weights)
     return gradients
 
+
 def get_custom_objects():
     """Return a dictionary of custom objects (layers) to use when loading models trained using this package"""
     return dict(
         zip(
-            ['MaskedDense', 'MaskedConv2D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiDense', 'MultiConv2D', 'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
+            ['MaskedDense', 'MaskedConv2D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiDense',
+                'MultiConv2D', 'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
             CUSTOM_LAYERS
         )
     )
 
+
 def mask_model(
         model,
         percentile,
-        method = 'gradients',
-        exclusive = True,
-        x = None,
-        y = None
+        method='gradients',
+        exclusive=True,
+        x=None,
+        y=None
 ):
     """
     Mask the multitask model for training respective using the gradients for the tasks at hand
@@ -102,7 +111,8 @@ def mask_model(
     # Check method
     method = method.lower()
     if method not in ['gradients', 'magnitude']:
-        raise ValueError(f"method must be one of 'gradients', 'magnitude', got {method}")
+        raise ValueError(
+            f"method must be one of 'gradients', 'magnitude', got {method}")
 
     # Get the gradients
     if method == 'gradients':
@@ -111,27 +121,32 @@ def mask_model(
             x,
             y
         )
-        
+
         # Work to identify the right weights if exclusive
         if exclusive:
             gradient_idx = 0
             for layer in model.layers:
                 if isinstance(layer, tf.keras.models.Model):
-                    warnings.warn('mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
+                    warnings.warn(
+                        'mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
                 if isinstance(layer, MASKING_LAYERS):
                     if not isinstance(layer, MULTI_MASKING_LAYERS):
-                        layer_grads = [np.abs(grad) for grad in grads[gradient_idx]]
-                        new_masks = [(grad >= np.percentile(grad, percentile)).astype(int) for grad in layer_grads]
+                        layer_grads = [np.abs(grad)
+                                       for grad in grads[gradient_idx]]
+                        new_masks = [(grad >= np.percentile(grad, percentile)).astype(
+                            int) for grad in layer_grads]
                         layer.set_masks(new_masks)
                     else:
-                        layer_grads = [np.abs(grad.numpy()) for grad in grads[gradient_idx]]
+                        layer_grads = [np.abs(grad.numpy())
+                                       for grad in grads[gradient_idx]]
                         new_masks = []
                         for grad in layer_grads:
                             new_mask = np.zeros(grad.shape)
                             used_weights = np.zeros(grad.shape[1:])
                             for task_idx in range(grad.shape[0]):
                                 grad[task_idx][used_weights == 1] = 0
-                                new_mask[task_idx] = (grad[task_idx] >= np.percentile(grad[task_idx], percentile)).astype(int)
+                                new_mask[task_idx] = (grad[task_idx] >= np.percentile(
+                                    grad[task_idx], percentile)).astype(int)
                                 used_weights += new_mask[task_idx]
                             new_masks.append(new_mask)
                         layer.set_masks(new_masks)
@@ -141,19 +156,24 @@ def mask_model(
             gradient_idx = 0
             for layer in model.layers:
                 if isinstance(layer, tf.keras.models.Model):
-                    warnings.warn('mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
+                    warnings.warn(
+                        'mask_model does not effectively support models with models as layers if method is "gradients". Please set method to "magnitude"', RuntimeWarning)
                 if isinstance(layer, MASKING_LAYERS):
                     if not isinstance(layer, MULTI_MASKING_LAYERS):
-                        layer_grads = [np.abs(grad.numpy()) for grad in grads[gradient_idx]]
-                        new_masks = [(grad >= np.percentile(grad, percentile)).astype(int) for grad in layer_grads]
+                        layer_grads = [np.abs(grad.numpy())
+                                       for grad in grads[gradient_idx]]
+                        new_masks = [(grad >= np.percentile(grad, percentile)).astype(
+                            int) for grad in layer_grads]
                         layer.set_masks(new_masks)
                     else:
-                        layer_grads = [np.abs(grad.numpy()) for grad in grads[gradient_idx]]
+                        layer_grads = [np.abs(grad.numpy())
+                                       for grad in grads[gradient_idx]]
                         new_masks = []
                         for grad in layer_grads:
                             new_mask = np.zeros(grad.shape)
                             for task_idx in range(grad.shape[0]):
-                                new_mask[task_idx] = (grad[task_idx] >= np.percentile(grad[task_idx], percentile)).astype(int)
+                                new_mask[task_idx] = (grad[task_idx] >= np.percentile(
+                                    grad[task_idx], percentile)).astype(int)
                             new_masks.append(new_mask)
                         layer.set_masks(new_masks)
                     gradient_idx += 1
@@ -163,24 +183,31 @@ def mask_model(
         for layer in model.layers:
             if isinstance(layer, MASKING_LAYERS):
                 if not isinstance(layer, MULTI_MASKING_LAYERS):
-                    weights = [np.abs(weight.numpy()) for weight in layer.trainable_weights]
+                    weights = [np.abs(weight.numpy())
+                               for weight in layer.trainable_weights]
                     new_masks = [
                         (weight >= np.percentile(weight, percentile)).astype(int) for weight in weights
                     ]
                     layer.set_masks(new_masks)
                 else:
-                    weights = [np.abs(weight.numpy()) for weight in layer.trainable_weights]
+                    weights = [np.abs(weight.numpy())
+                               for weight in layer.trainable_weights]
                     if not exclusive:
-                        new_masks = [np.zeros(weight.shape) for weight in weights]
+                        new_masks = [np.zeros(weight.shape)
+                                     for weight in weights]
                         for weight_idx in range(len(weights)):
                             for task_idx in range(weights[weight_idx].shape[0]):
-                                new_masks[weight_idx][task_idx] = (weights[weight_idx][task_idx] >= np.percentile(weights[weight_idx][task_idx], percentile)).astype(int)
+                                new_masks[weight_idx][task_idx] = (weights[weight_idx][task_idx] >= np.percentile(
+                                    weights[weight_idx][task_idx], percentile)).astype(int)
                     else:
-                        new_masks = [np.zeros(weight.shape) for weight in weights]
+                        new_masks = [np.zeros(weight.shape)
+                                     for weight in weights]
                         for weight_idx in range(len(weights)):
                             for task_idx in range(weights[weight_idx].shape[0]):
-                                exclusive_weight = weights[weight_idx][task_idx] * (1 - new_masks[weight_idx][:task_idx].sum(axis = 0))
-                                new_masks[weight_idx][task_idx] = (exclusive_weight >= np.percentile(weights[weight_idx][task_idx], percentile)).astype(int)
+                                exclusive_weight = weights[weight_idx][task_idx] * (
+                                    1 - new_masks[weight_idx][:task_idx].sum(axis=0))
+                                new_masks[weight_idx][task_idx] = (exclusive_weight >= np.percentile(
+                                    weights[weight_idx][task_idx], percentile)).astype(int)
                     layer.set_masks(new_masks)
             elif isinstance(layer, tf.keras.models.Model):
                 mask_model(
@@ -194,16 +221,17 @@ def mask_model(
     model.compile()
     return model
 
+
 def _replace_config(config):
     """
     Replace the model config to remove masking layers
     """
 
     layer_mapping = {
-        'MaskedConv2D' : 'Conv2D',
-        'MaskedDense' : 'Dense',
-        'MultiMaskedConv2D' : 'MultiConv2D',
-        'MultiMaskedDense' : 'MultiDense'
+        'MaskedConv2D': 'Conv2D',
+        'MaskedDense': 'Dense',
+        'MultiMaskedConv2D': 'MultiConv2D',
+        'MultiMaskedDense': 'MultiDense'
     }
     model_classes = ('Functional', 'Sequential')
 
@@ -214,8 +242,10 @@ def _replace_config(config):
             ]
             del config['layers'][i]['config']['mask_initializer']
         elif config['layers'][i]['class_name'] in model_classes:
-            config['layers'][i]['config'] = _replace_config(config['layers'][i]['config'])
+            config['layers'][i]['config'] = _replace_config(
+                config['layers'][i]['config'])
     return config
+
 
 def _create_masking_config(config):
     """
@@ -223,10 +253,10 @@ def _create_masking_config(config):
     """
 
     layer_mapping = {
-        'Conv2D' : 'MaskedConv2D',
-        'Dense' : 'MaskedDense',
-        'MultiConv2D' : 'MultiMaskedConv2D',
-        'MultiDense' : 'MultiMaskedDense'
+        'Conv2D': 'MaskedConv2D',
+        'Dense': 'MaskedDense',
+        'MultiConv2D': 'MultiMaskedConv2D',
+        'MultiDense': 'MultiMaskedDense'
     }
     model_classes = ('Functional', 'Sequential')
 
@@ -239,10 +269,12 @@ def _create_masking_config(config):
                 tf.keras.initializers.get('ones')
             )
         elif config['layers'][i]['class_name'] in model_classes:
-            config['layers'][i]['config'] = _create_masking_config(config['layers'][i]['config'])
+            config['layers'][i]['config'] = _create_masking_config(
+                config['layers'][i]['config'])
     return config
 
-def _quantize_model_config(config, dtype = 'float16'):
+
+def _quantize_model_config(config, dtype='float16'):
     """
     Change the dtype of the model
     """
@@ -252,10 +284,12 @@ def _quantize_model_config(config, dtype = 'float16'):
     new_config = config.copy()
     for i in range(len(new_config['layers'])):
         if new_config['layers'][i]['class_name'] in model_classes:
-            new_config['layers'][i] = _quantize_model_config(new_config['layers'][i]['config'], dtype)
+            new_config['layers'][i] = _quantize_model_config(
+                new_config['layers'][i]['config'], dtype)
         else:
             new_config['layers'][i]['config']['dtype'] = dtype
     return new_config
+
 
 def _replace_weights(new_model, old_model):
     """
@@ -270,15 +304,17 @@ def _replace_weights(new_model, old_model):
         # If not masking layers, simply replace weights
         elif not isinstance(old_model.layers[i], MASKING_LAYERS):
             new_model.layers[i].set_weights(old_model.layers[i].get_weights())
-        
+
         # If masking layers, replace only the required weights
         else:
             n_weights = len(new_model.layers[i].get_weights())
-            new_model.layers[i].set_weights(old_model.layers[i].get_weights()[:n_weights])
-    
+            new_model.layers[i].set_weights(
+                old_model.layers[i].get_weights()[:n_weights])
+
     # Compile and return the model
     new_model.compile()
     return new_model
+
 
 def _replace_masking_weights(new_model, old_model):
     """
@@ -289,7 +325,7 @@ def _replace_masking_weights(new_model, old_model):
         # Recursion in case the model contains other models
         if isinstance(new_model.layers[i], tf.keras.models.Model):
             _replace_masking_weights(new_model.layers[i], old_model.layers[i])
-        
+
         # If not masking layers, simply replace weights
         elif not isinstance(new_model.layers[i], MASKING_LAYERS):
             new_model.layers[i].set_weights(old_model.layers[i].get_weights())
@@ -305,7 +341,8 @@ def _replace_masking_weights(new_model, old_model):
     new_model.compile()
     return new_model
 
-def remove_layer_masks(model, additional_custom_objects = None):
+
+def remove_layer_masks(model, additional_custom_objects=None):
     """
     Convert a trained model from using Masking layers to using non-masking layers
 
@@ -315,13 +352,13 @@ def remove_layer_masks(model, additional_custom_objects = None):
         The model to be converted
     additional_custom_objects : dict or None (default None)
         Additional custom layers to use
-    
+
     Returns
     -------
     new_model : TensorFlow Keras model
         The converted model
     """
-    
+
     custom_objects = get_custom_objects()
     if additional_custom_objects is not None:
         custom_objects.update(additional_custom_objects)
@@ -334,23 +371,24 @@ def remove_layer_masks(model, additional_custom_objects = None):
     try:
         new_model = tf.keras.models.Model().from_config(
             new_config,
-            custom_objects = custom_objects
+            custom_objects=custom_objects
         )
     except:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
-            custom_objects = custom_objects
+            custom_objects=custom_objects
         )
 
     # Replace the weights of the new model to be equivalent to the old model
     new_model = _replace_weights(new_model, model)
-    
+
     # Make the new model not trainable and compile the model for good measure
     new_model.trainable = False
     new_model.compile()
     return new_model
 
-def add_layer_masks(model, additional_custom_objects = None):
+
+def add_layer_masks(model, additional_custom_objects=None):
     """
     Convert a trained model from one that does not have masking weights to one that does have 
     masking weights
@@ -361,7 +399,7 @@ def add_layer_masks(model, additional_custom_objects = None):
         The model to be converted
     additional_custom_objects : dict or None (default None)
         Additional custom layers to use
-    
+
     Returns
     -------
     new_model : TensorFlow Keras model
@@ -380,12 +418,12 @@ def add_layer_masks(model, additional_custom_objects = None):
     try:
         new_model = tf.keras.models.Model().from_config(
             new_config,
-            custom_objects = custom_objects
+            custom_objects=custom_objects
         )
     except:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
-            custom_objects = custom_objects
+            custom_objects=custom_objects
         )
 
     # Replace the weights of the new model
@@ -395,7 +433,8 @@ def add_layer_masks(model, additional_custom_objects = None):
     new_model.compile()
     return new_model
 
-def quantize_model(model, dtype = 'float16'):
+
+def quantize_model(model, dtype='float16'):
     """
     Apply model quantization
 
@@ -420,7 +459,7 @@ def quantize_model(model, dtype = 'float16'):
 
     # Change the weights to have the new datatype
     new_weights = [
-        np.array(w, dtype = dtype) for w in weights
+        np.array(w, dtype=dtype) for w in weights
     ]
 
     # Change the config to get the quantized configuration
@@ -436,6 +475,7 @@ def quantize_model(model, dtype = 'float16'):
     new_model.set_weights(new_weights)
     return new_model
 
+
 def _get_masking_weights(model):
     """
     Get the masking weights of a model
@@ -444,7 +484,7 @@ def _get_masking_weights(model):
     ----------
     model : TensorFlow Keras model
         The model to get the masking weights of
-    
+
     Returns
     -------
     weights : list of TensorFlow tensors
@@ -453,6 +493,7 @@ def _get_masking_weights(model):
     return [
         layer.weights for layer in model.layers if isinstance(layer, MASKING_LAYERS)
     ]
+
 
 def get_task_masking_gradients(
     model,
@@ -465,7 +506,7 @@ def get_task_masking_gradients(
     ----------
     model : TensorFlow Keras model
         The model to retrieve the gradients of
-    
+
     Notes
     -----
     - This function should only be run *before* the model has been trained 
@@ -489,12 +530,12 @@ def get_task_masking_gradients(
         num_tasks = len(output_shapes)
     else:
         num_tasks = 1
-    
+
     # Get the loss weights
     if num_tasks > 1:
         loss_weights = [0]*num_tasks
         loss_weights[task_num] = 1
-    
+
     # Get the masking weights
     masking_weights = _get_masking_weights(model)
 
@@ -514,7 +555,7 @@ def get_task_masking_gradients(
             if new_shape[i] is None:
                 new_shape[i] = 1
         inputs.append(np.random.random(new_shape))
-    
+
     # Configure outputs
     outputs = []
     output_shapes = model.output_shape
@@ -543,18 +584,19 @@ def get_task_masking_gradients(
     # Get the gradients of the weights wrt the task
     with tf.GradientTape() as tape:
         raw_preds = model(inputs)
-        loss_values = [losses[i](outputs[i], raw_preds[i])*loss_weights[i] for i in range(len(losses))]
+        loss_values = [losses[i](outputs[i], raw_preds[i])
+                       * loss_weights[i] for i in range(len(losses))]
         gradients = tape.gradient(loss_values, masking_weights)
-    
+
     return gradients
+
 
 def mask_task_weights(
     model,
     task_masking_gradients,
     percentile,
-    respect_previous_tasks = True
+    respect_previous_tasks=True
 ):
-
     """
     Parameters
     ----------
@@ -573,7 +615,7 @@ def mask_task_weights(
     masked_model : TensorFlow Keras model
         The masked model
     """
-    
+
     # Get the actual weights to be able to set them
     masking_weights = [
         layer.get_weights() for layer in model.layers if isinstance(layer, MASKING_LAYERS)
@@ -589,7 +631,7 @@ def mask_task_weights(
 
             # Different procedures if multi masking layer vs single masking layer
             if isinstance(layer, MULTI_MASKING_LAYERS):
-                
+
                 # Check for all of the weights in the list of weights (corresponding to gradients)
                 for weight_num in range(len(task_masking_gradients[masking_idx])):
 
@@ -605,25 +647,28 @@ def mask_task_weights(
                         for task_idx in range(gradient.shape[0]):
                             if not (gradient[task_idx].numpy() == 0).all():
                                 task_idx_num = task_idx
-                        
+
                         if task_idx_num is not None:
                             # Get the new weight for that task only
                             task_weight = np.abs(weight[task_idx_num])
 
                             # Enforce respecting previous-task weights
                             if respect_previous_tasks and task_idx_num > 0:
-                                task_weight[(weight[:task_idx_num] != 0).astype(int).sum(axis = 0).astype(bool)] = 0
+                                task_weight[(weight[:task_idx_num] != 0).astype(
+                                    int).sum(axis=0).astype(bool)] = 0
 
                             # Get the new mask
-                            weight_mask = (task_weight >= np.percentile(task_weight, percentile))
-                        
+                            weight_mask = (task_weight >= np.percentile(
+                                task_weight, percentile))
+
                             # Find the existing mask and set the value of only the task-specific part
-                            layer_mask = masking_weights[masking_idx][weight_num + int(len(masking_weights[masking_idx])/2)]
+                            layer_mask = masking_weights[masking_idx][weight_num + int(
+                                len(masking_weights[masking_idx])/2)]
                             layer_mask[task_idx_num] = weight_mask
 
                             # Append the new mask
                             new_masks.append(layer_mask)
-            
+
             # If the layer is a single masking layer
             else:
                 for weight_num in range(len(task_masking_gradients[masking_idx])):
@@ -634,23 +679,25 @@ def mask_task_weights(
 
                     # If gradient is None, then the weight is a mask
                     if gradient is not None:
-                        
+
                         # Only proceed if the gradient exists
                         if not (gradient.numpy() == 0).all():
                             weight = np.abs(weight)
-                            weight_mask = (weight >= np.percentile(weight, percentile))
+                            weight_mask = (
+                                weight >= np.percentile(weight, percentile))
                             new_masks.append(weight_mask)
-            
+
             # If new masks have been identified (it's possible that this did not occur), set the new masks for that layer
             if new_masks != []:
                 layer.set_masks(new_masks)
-            
+
             # Lastly, increase the masking index by 1
             masking_idx += 1
 
     # Compile the model again and return it
     model.compile()
     return model
+
 
 def train_model_iteratively(
     model,
@@ -661,12 +708,12 @@ def train_model_iteratively(
     delta,
     batch_size,
     losses,
-    optimizer = 'adam',
-    metrics = None,
-    starting_pruning = 0,
-    pruning_rate = 10,
-    patience = 5,
-    max_epochs = 100
+    optimizer='adam',
+    metrics=None,
+    starting_pruning=0,
+    pruning_rate=10,
+    patience=5,
+    max_epochs=100
 ):
     """
     Train a model iteratively on each task, first obtaining 
@@ -716,7 +763,7 @@ def train_model_iteratively(
 
     # Start the training iterations
     for task_num in range(num_tasks):
-        
+
         print(f'Training task {task_num}')
 
         # Get the starting task pruning rate for the current task
@@ -736,7 +783,7 @@ def train_model_iteratively(
             current_validation_split = validation_split
         else:
             current_validation_split = validation_split[task_num]
-        
+
         # Configure the loss weights
         loss_weights = [0]*num_tasks
         loss_weights[task_num] = 1
@@ -747,28 +794,28 @@ def train_model_iteratively(
         else:
             current_epochs = max_epochs[task_num]
 
-        # Compile the model 
+        # Compile the model
         model.compile(
-            loss = losses,
-            optimizer = optimizer,
-            loss_weights = loss_weights,
-            metrics = metrics
+            loss=losses,
+            optimizer=optimizer,
+            loss_weights=loss_weights,
+            metrics=metrics
         )
 
         # Train the model initially
         callback = tf.keras.callbacks.EarlyStopping(
-            min_delta = delta,
-            patience = patience,
-            restore_best_weights = True
+            min_delta=delta,
+            patience=patience,
+            restore_best_weights=True
         )
         history = model.fit(
             train_x[task_num],
             train_y[task_num],
-            batch_size = batch_size,
-            epochs = current_epochs,
-            validation_split = current_validation_split,
-            callbacks = [callback],
-            verbose = 2
+            batch_size=batch_size,
+            epochs=current_epochs,
+            validation_split=current_validation_split,
+            callbacks=[callback],
+            verbose=2
         )
 
         # Retrieve the validation loss and current best weights
@@ -795,7 +842,6 @@ def train_model_iteratively(
                 current_prune
             )
 
-
         # keep_training indicates that training is to occur
         while keep_training:
 
@@ -811,7 +857,7 @@ def train_model_iteratively(
                         task_gradients[task_num],
                         current_prune
                     )
-                
+
                     print(f'Pruning task to {current_prune}')
 
                 else:
@@ -819,28 +865,28 @@ def train_model_iteratively(
 
                 # Recompile the model
                 model.compile(
-                    loss = losses,
-                    optimizer = optimizer,
-                    loss_weights = loss_weights,
-                    metrics = metrics
+                    loss=losses,
+                    optimizer=optimizer,
+                    loss_weights=loss_weights,
+                    metrics=metrics
                 )
 
                 # Train the model with the new pruning rate
                 while current_wait < patience:
-                    
+
                     # Fit the model for a single epoch
                     history = model.fit(
                         train_x[task_num],
                         train_y[task_num],
-                        batch_size = batch_size,
-                        validation_split = current_validation_split,
-                        verbose = 2
+                        batch_size=batch_size,
+                        validation_split=current_validation_split,
+                        verbose=2
                     )
 
                     # Get the new loss
                     loss = history.history['val_loss'][-1]
 
-                    # If loss is within acceptable range, grab the best weights and 
+                    # If loss is within acceptable range, grab the best weights and
                     # reassign the best loss. Otherwise, increase current wait
                     if loss < best_loss + delta:
                         best_weights = model.get_weights()
@@ -852,10 +898,10 @@ def train_model_iteratively(
                 # If pruning was not successful, restore best pruning rate
                 if current_wait == patience or current_prune + current_pruning_rate >= 100:
                     keep_training = False
-            
+
             else:
                 keep_training = False
-                
+
         # Record how much of the model has been used
         if task_num == 0:
             amount_used -= current_prune
@@ -867,21 +913,21 @@ def train_model_iteratively(
 
         # Recompile the model
         model.compile(
-            loss = losses,
-            optimizer = optimizer,
-            loss_weights = loss_weights,
-            metrics = metrics
+            loss=losses,
+            optimizer=optimizer,
+            loss_weights=loss_weights,
+            metrics=metrics
         )
 
         # Fit using the new best weights
         model.fit(
             train_x[task_num],
             train_y[task_num],
-            batch_size = batch_size,
-            epochs = current_epochs,
-            validation_split = current_validation_split,
-            callbacks = [callback],
-            verbose = 2
+            batch_size=batch_size,
+            epochs=current_epochs,
+            validation_split=current_validation_split,
+            callbacks=[callback],
+            verbose=2
         )
 
     return model

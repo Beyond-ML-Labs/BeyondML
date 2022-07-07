@@ -2,10 +2,11 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class FilterLayer(Layer):
     """
     Layer which filters inputs based on status of `on` or `off`
-    
+
     Example:
 
     >>> # Create a model with just a FilterLayer
@@ -25,9 +26,10 @@ class FilterLayer(Layer):
     array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)
 
     """
+
     def __init__(
             self,
-            is_on = True,
+            is_on=True,
             **kwargs
     ):
         super(FilterLayer, self).__init__(**kwargs)
@@ -41,13 +43,13 @@ class FilterLayer(Layer):
 
     def get_config(self):
         config = super().get_config().copy()
-        config.update({'is_on' : self.is_on})
+        config.update({'is_on': self.is_on})
         return config
 
     def turn_on(self):
         """Turn the layer `on` so inputs are returned unchanged as outputs"""
         self.is_on = True
-    
+
     def turn_off(self):
         """Turn the layer `off` so inputs are destroyed and all-zero tensors are output"""
         self.is_on = False

@@ -2,7 +2,7 @@ from setuptools import setup
 from mann import __version__
 
 with open('requirements.txt', 'r') as f:
-    requirements = [
+    requirements=[
         line for line in f.read().splitlines() if line != ''
     ]
 

@@ -67,23 +67,48 @@
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="k">class</span> <span class="nc">SparseMultiDense</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>            <span class="n">weight</span><span class="p">,</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>            <span class="n">bias</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="p">):</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">    Sparse implementation of the Multi-Fully-Connected layer</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>            <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>            <span class="n">weight</span><span class="p">,</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>            <span class="n">bias</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="p">):</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        Parameters</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        ----------</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">        weight : torch.Tensor or Tensor-like</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">            The weight to use</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">            The bias to use</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">        Parameters</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">        ----------</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        Returns</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        -------</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 
@@ -100,60 +125,52 @@
     </div>
     <a class="headerlink" href="#SparseMultiDense"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiDense-5"><a href="#SparseMultiDense-5"><span class="linenos"> 5</span></a><span class="k">class</span> <span class="nc">SparseMultiDense</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-</span><span id="SparseMultiDense-6"><a href="#SparseMultiDense-6"><span class="linenos"> 6</span></a>
-</span><span id="SparseMultiDense-7"><a href="#SparseMultiDense-7"><span class="linenos"> 7</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="SparseMultiDense-8"><a href="#SparseMultiDense-8"><span class="linenos"> 8</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="SparseMultiDense-9"><a href="#SparseMultiDense-9"><span class="linenos"> 9</span></a>            <span class="n">weight</span><span class="p">,</span>
-</span><span id="SparseMultiDense-10"><a href="#SparseMultiDense-10"><span class="linenos">10</span></a>            <span class="n">bias</span>
-</span><span id="SparseMultiDense-11"><a href="#SparseMultiDense-11"><span class="linenos">11</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiDense-12"><a href="#SparseMultiDense-12"><span class="linenos">12</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="SparseMultiDense-13"><a href="#SparseMultiDense-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
-</span><span id="SparseMultiDense-14"><a href="#SparseMultiDense-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
-</span><span id="SparseMultiDense-15"><a href="#SparseMultiDense-15"><span class="linenos">15</span></a>
-</span><span id="SparseMultiDense-16"><a href="#SparseMultiDense-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SparseMultiDense-17"><a href="#SparseMultiDense-17"><span class="linenos">17</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SparseMultiDense-18"><a href="#SparseMultiDense-18"><span class="linenos">18</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="SparseMultiDense-19"><a href="#SparseMultiDense-19"><span class="linenos">19</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
-</span><span id="SparseMultiDense-20"><a href="#SparseMultiDense-20"><span class="linenos">20</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
-</span><span id="SparseMultiDense-21"><a href="#SparseMultiDense-21"><span class="linenos">21</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</span><span id="SparseMultiDense-22"><a href="#SparseMultiDense-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+</span><span id="SparseMultiDense-6"><a href="#SparseMultiDense-6"><span class="linenos"> 6</span></a>    <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-7"><a href="#SparseMultiDense-7"><span class="linenos"> 7</span></a><span class="sd">    Sparse implementation of the Multi-Fully-Connected layer</span>
+</span><span id="SparseMultiDense-8"><a href="#SparseMultiDense-8"><span class="linenos"> 8</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-9"><a href="#SparseMultiDense-9"><span class="linenos"> 9</span></a>
+</span><span id="SparseMultiDense-10"><a href="#SparseMultiDense-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="SparseMultiDense-11"><a href="#SparseMultiDense-11"><span class="linenos">11</span></a>            <span class="bp">self</span><span class="p">,</span>
+</span><span id="SparseMultiDense-12"><a href="#SparseMultiDense-12"><span class="linenos">12</span></a>            <span class="n">weight</span><span class="p">,</span>
+</span><span id="SparseMultiDense-13"><a href="#SparseMultiDense-13"><span class="linenos">13</span></a>            <span class="n">bias</span>
+</span><span id="SparseMultiDense-14"><a href="#SparseMultiDense-14"><span class="linenos">14</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiDense-15"><a href="#SparseMultiDense-15"><span class="linenos">15</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-16"><a href="#SparseMultiDense-16"><span class="linenos">16</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiDense-17"><a href="#SparseMultiDense-17"><span class="linenos">17</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiDense-18"><a href="#SparseMultiDense-18"><span class="linenos">18</span></a><span class="sd">        weight : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiDense-19"><a href="#SparseMultiDense-19"><span class="linenos">19</span></a><span class="sd">            The weight to use</span>
+</span><span id="SparseMultiDense-20"><a href="#SparseMultiDense-20"><span class="linenos">20</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiDense-21"><a href="#SparseMultiDense-21"><span class="linenos">21</span></a><span class="sd">            The bias to use</span>
+</span><span id="SparseMultiDense-22"><a href="#SparseMultiDense-22"><span class="linenos">22</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-23"><a href="#SparseMultiDense-23"><span class="linenos">23</span></a>
+</span><span id="SparseMultiDense-24"><a href="#SparseMultiDense-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="SparseMultiDense-25"><a href="#SparseMultiDense-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiDense-26"><a href="#SparseMultiDense-26"><span class="linenos">26</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiDense-27"><a href="#SparseMultiDense-27"><span class="linenos">27</span></a>
+</span><span id="SparseMultiDense-28"><a href="#SparseMultiDense-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="SparseMultiDense-29"><a href="#SparseMultiDense-29"><span class="linenos">29</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-30"><a href="#SparseMultiDense-30"><span class="linenos">30</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="SparseMultiDense-31"><a href="#SparseMultiDense-31"><span class="linenos">31</span></a>
+</span><span id="SparseMultiDense-32"><a href="#SparseMultiDense-32"><span class="linenos">32</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiDense-33"><a href="#SparseMultiDense-33"><span class="linenos">33</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiDense-34"><a href="#SparseMultiDense-34"><span class="linenos">34</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="SparseMultiDense-35"><a href="#SparseMultiDense-35"><span class="linenos">35</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="SparseMultiDense-36"><a href="#SparseMultiDense-36"><span class="linenos">36</span></a>
+</span><span id="SparseMultiDense-37"><a href="#SparseMultiDense-37"><span class="linenos">37</span></a><span class="sd">        Returns</span>
+</span><span id="SparseMultiDense-38"><a href="#SparseMultiDense-38"><span class="linenos">38</span></a><span class="sd">        -------</span>
+</span><span id="SparseMultiDense-39"><a href="#SparseMultiDense-39"><span class="linenos">39</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="SparseMultiDense-40"><a href="#SparseMultiDense-40"><span class="linenos">40</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="SparseMultiDense-41"><a href="#SparseMultiDense-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense-42"><a href="#SparseMultiDense-42"><span class="linenos">42</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SparseMultiDense-43"><a href="#SparseMultiDense-43"><span class="linenos">43</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="SparseMultiDense-44"><a href="#SparseMultiDense-44"><span class="linenos">44</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+</span><span id="SparseMultiDense-45"><a href="#SparseMultiDense-45"><span class="linenos">45</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
+</span><span id="SparseMultiDense-46"><a href="#SparseMultiDense-46"><span class="linenos">46</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span id="SparseMultiDense-47"><a href="#SparseMultiDense-47"><span class="linenos">47</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Base class for all neural network modules.</p>
-
-<p>Your models should also subclass this class.</p>
-
-<p>Modules can also contain other Modules, allowing to nest them in
-a tree structure. You can assign the submodules as regular attributes::</p>
-
-<pre><code>import torch.nn as nn
-import torch.nn.functional as F
-
-class Model(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.conv1 = nn.Conv2d(1, 20, 5)
-        self.conv2 = nn.Conv2d(20, 20, 5)
-
-    def forward(self, x):
-        x = F.relu(self.conv1(x))
-        return F.relu(self.conv2(x))
-</code></pre>
-
-<p>Submodules assigned in this way will be registered, and will have their
-parameters converted too when you call <code><a href="#SparseMultiDense.to">to</a></code>, etc.</p>
-
-<div class="pdoc-alert pdoc-alert-note">
-
-<p>As per the example above, an <code><a href="#SparseMultiDense.__init__">__init__()</a></code> call to the parent class
-must be made before assignment on the child.</p>
-
-</div>
-
-<p>:ivar training: Boolean represents whether this module is in training or
-                evaluation mode.
-:vartype training: bool</p>
+            <div class="docstring"><p>Sparse implementation of the Multi-Fully-Connected layer</p>
 </div>
 
 
@@ -167,18 +184,34 @@ must be made before assignment on the child.</p>
 
     </div>
     <a class="headerlink" href="#SparseMultiDense.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiDense.__init__-7"><a href="#SparseMultiDense.__init__-7"><span class="linenos"> 7</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-</span><span id="SparseMultiDense.__init__-8"><a href="#SparseMultiDense.__init__-8"><span class="linenos"> 8</span></a>            <span class="bp">self</span><span class="p">,</span>
-</span><span id="SparseMultiDense.__init__-9"><a href="#SparseMultiDense.__init__-9"><span class="linenos"> 9</span></a>            <span class="n">weight</span><span class="p">,</span>
-</span><span id="SparseMultiDense.__init__-10"><a href="#SparseMultiDense.__init__-10"><span class="linenos">10</span></a>            <span class="n">bias</span>
-</span><span id="SparseMultiDense.__init__-11"><a href="#SparseMultiDense.__init__-11"><span class="linenos">11</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiDense.__init__-12"><a href="#SparseMultiDense.__init__-12"><span class="linenos">12</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="SparseMultiDense.__init__-13"><a href="#SparseMultiDense.__init__-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
-</span><span id="SparseMultiDense.__init__-14"><a href="#SparseMultiDense.__init__-14"><span class="linenos">14</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiDense.__init__-10"><a href="#SparseMultiDense.__init__-10"><span class="linenos">10</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+</span><span id="SparseMultiDense.__init__-11"><a href="#SparseMultiDense.__init__-11"><span class="linenos">11</span></a>            <span class="bp">self</span><span class="p">,</span>
+</span><span id="SparseMultiDense.__init__-12"><a href="#SparseMultiDense.__init__-12"><span class="linenos">12</span></a>            <span class="n">weight</span><span class="p">,</span>
+</span><span id="SparseMultiDense.__init__-13"><a href="#SparseMultiDense.__init__-13"><span class="linenos">13</span></a>            <span class="n">bias</span>
+</span><span id="SparseMultiDense.__init__-14"><a href="#SparseMultiDense.__init__-14"><span class="linenos">14</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiDense.__init__-15"><a href="#SparseMultiDense.__init__-15"><span class="linenos">15</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense.__init__-16"><a href="#SparseMultiDense.__init__-16"><span class="linenos">16</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiDense.__init__-17"><a href="#SparseMultiDense.__init__-17"><span class="linenos">17</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiDense.__init__-18"><a href="#SparseMultiDense.__init__-18"><span class="linenos">18</span></a><span class="sd">        weight : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiDense.__init__-19"><a href="#SparseMultiDense.__init__-19"><span class="linenos">19</span></a><span class="sd">            The weight to use</span>
+</span><span id="SparseMultiDense.__init__-20"><a href="#SparseMultiDense.__init__-20"><span class="linenos">20</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiDense.__init__-21"><a href="#SparseMultiDense.__init__-21"><span class="linenos">21</span></a><span class="sd">            The bias to use</span>
+</span><span id="SparseMultiDense.__init__-22"><a href="#SparseMultiDense.__init__-22"><span class="linenos">22</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense.__init__-23"><a href="#SparseMultiDense.__init__-23"><span class="linenos">23</span></a>
+</span><span id="SparseMultiDense.__init__-24"><a href="#SparseMultiDense.__init__-24"><span class="linenos">24</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="SparseMultiDense.__init__-25"><a href="#SparseMultiDense.__init__-25"><span class="linenos">25</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiDense.__init__-26"><a href="#SparseMultiDense.__init__-26"><span class="linenos">26</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+            <div class="docstring"><h6 id="parameters">Parameters</h6>
+
+<ul>
+<li><strong>weight</strong> (torch.Tensor or Tensor-like):
+The weight to use</li>
+<li><strong>bias</strong> (torch.Tensor or Tensor-like):
+The bias to use</li>
+</ul>
 </div>
 
 
@@ -194,28 +227,44 @@ must be made before assignment on the child.</p>
 
     </div>
     <a class="headerlink" href="#SparseMultiDense.forward"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiDense.forward-16"><a href="#SparseMultiDense.forward-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SparseMultiDense.forward-17"><a href="#SparseMultiDense.forward-17"><span class="linenos">17</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SparseMultiDense.forward-18"><a href="#SparseMultiDense.forward-18"><span class="linenos">18</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="SparseMultiDense.forward-19"><a href="#SparseMultiDense.forward-19"><span class="linenos">19</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
-</span><span id="SparseMultiDense.forward-20"><a href="#SparseMultiDense.forward-20"><span class="linenos">20</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
-</span><span id="SparseMultiDense.forward-21"><a href="#SparseMultiDense.forward-21"><span class="linenos">21</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-</span><span id="SparseMultiDense.forward-22"><a href="#SparseMultiDense.forward-22"><span class="linenos">22</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiDense.forward-28"><a href="#SparseMultiDense.forward-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+</span><span id="SparseMultiDense.forward-29"><a href="#SparseMultiDense.forward-29"><span class="linenos">29</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense.forward-30"><a href="#SparseMultiDense.forward-30"><span class="linenos">30</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="SparseMultiDense.forward-31"><a href="#SparseMultiDense.forward-31"><span class="linenos">31</span></a>
+</span><span id="SparseMultiDense.forward-32"><a href="#SparseMultiDense.forward-32"><span class="linenos">32</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiDense.forward-33"><a href="#SparseMultiDense.forward-33"><span class="linenos">33</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiDense.forward-34"><a href="#SparseMultiDense.forward-34"><span class="linenos">34</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="SparseMultiDense.forward-35"><a href="#SparseMultiDense.forward-35"><span class="linenos">35</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
+</span><span id="SparseMultiDense.forward-36"><a href="#SparseMultiDense.forward-36"><span class="linenos">36</span></a>
+</span><span id="SparseMultiDense.forward-37"><a href="#SparseMultiDense.forward-37"><span class="linenos">37</span></a><span class="sd">        Returns</span>
+</span><span id="SparseMultiDense.forward-38"><a href="#SparseMultiDense.forward-38"><span class="linenos">38</span></a><span class="sd">        -------</span>
+</span><span id="SparseMultiDense.forward-39"><a href="#SparseMultiDense.forward-39"><span class="linenos">39</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="SparseMultiDense.forward-40"><a href="#SparseMultiDense.forward-40"><span class="linenos">40</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="SparseMultiDense.forward-41"><a href="#SparseMultiDense.forward-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiDense.forward-42"><a href="#SparseMultiDense.forward-42"><span class="linenos">42</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SparseMultiDense.forward-43"><a href="#SparseMultiDense.forward-43"><span class="linenos">43</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="SparseMultiDense.forward-44"><a href="#SparseMultiDense.forward-44"><span class="linenos">44</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">())</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>
+</span><span id="SparseMultiDense.forward-45"><a href="#SparseMultiDense.forward-45"><span class="linenos">45</span></a>            <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">())</span>
+</span><span id="SparseMultiDense.forward-46"><a href="#SparseMultiDense.forward-46"><span class="linenos">46</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span id="SparseMultiDense.forward-47"><a href="#SparseMultiDense.forward-47"><span class="linenos">47</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Defines the computation performed at every call.</p>
+            <div class="docstring"><p>Call the layer on input data</p>
 
-<p>Should be overridden by all subclasses.</p>
+<h6 id="parameters">Parameters</h6>
 
-<div class="pdoc-alert pdoc-alert-note">
+<ul>
+<li><strong>inputs</strong> (torch.Tensor):
+Inputs to call the layer's logic on</li>
+</ul>
 
-<p>Although the recipe for forward pass needs to be defined within
-this function, one should call the <code>Module</code> instance afterwards
-instead of this since the former takes care of running the
-registered hooks while the latter silently ignores them.</p>
+<h6 id="returns">Returns</h6>
 
-</div>
+<ul>
+<li><strong>results</strong> (torch.Tensor):
+The results of the layer's logic</li>
+</ul>
 </div>
 
 

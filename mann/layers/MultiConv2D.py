@@ -9,8 +9,7 @@ class MultiConv2D(Layer):
 
     This layer implements multiple stacks of convolutional weights to account for different ways individual
     neurons activate for various tasks. It is expected that to train using the RSN2 algorithm that MultiMaskedConv2D
-    layers be used during training and then those layers be converted to this layer type.    
-
+    layers be used during training and then those layers be converted to this layer type.
     """
 
     def __init__(

@@ -5,8 +5,8 @@ from .utils import get_custom_objects, mask_model
 
 class ActiveSparsification(Callback):
     """
-    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models 
-    train.    
+    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models
+    train.
     """
 
     def __init__(
@@ -44,13 +44,13 @@ class ActiveSparsification(Callback):
         restore_best_weights : bool (default True)
             Whether to restore model best weights after training
         verbose : int or bool (default 1)
-            Verbosity level for logging. 
+            Verbosity level for logging.
 
         Notes
         -----
         - If `performance_measure` is 'auto', defaults to the following measures, in order: 'val_accuracy', 'val_loss', 'accuracy', 'loss'
-        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be 
-          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must 
+        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be
+          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must
           be beaten
         """
         super(Callback, self).__init__()
@@ -194,7 +194,7 @@ class ActiveSparsification(Callback):
         try:
             new_model = tf.keras.models.Model.from_config(
                 self.model.get_config(), custom_objects=get_custom_objects())
-        except:
+        except Exception:
             new_model = tf.keras.models.Sequential.from_config(
                 self.model.get_config(), custom_objects=get_custom_objects())
         new_model.set_weights(self.model.get_weights())

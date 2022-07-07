@@ -73,8 +73,8 @@
 </span><span id="L-5"><a href="#L-5"><span class="linenos">  5</span></a>
 </span><span id="L-6"><a href="#L-6"><span class="linenos">  6</span></a><span class="k">class</span> <span class="nc">ActiveSparsification</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 </span><span id="L-7"><a href="#L-7"><span class="linenos">  7</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="sd">    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models </span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="sd">    train.    </span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">  8</span></a><span class="sd">    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">  9</span></a><span class="sd">    train.</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos"> 10</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos"> 11</span></a>
 </span><span id="L-12"><a href="#L-12"><span class="linenos"> 12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -112,13 +112,13 @@
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="sd">        restore_best_weights : bool (default True)</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="sd">            Whether to restore model best weights after training</span>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="sd">        verbose : int or bool (default 1)</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">            Verbosity level for logging. </span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">            Verbosity level for logging.</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
 </span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">        Notes</span>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a><span class="sd">        -----</span>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="sd">        - If `performance_measure` is &#39;auto&#39;, defaults to the following measures, in order: &#39;val_accuracy&#39;, &#39;val_loss&#39;, &#39;accuracy&#39;, &#39;loss&#39;</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be </span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must </span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a><span class="sd">          be beaten</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -262,7 +262,7 @@
 </span><span id="L-194"><a href="#L-194"><span class="linenos">194</span></a>        <span class="k">try</span><span class="p">:</span>
 </span><span id="L-195"><a href="#L-195"><span class="linenos">195</span></a>            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="L-196"><a href="#L-196"><span class="linenos">196</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
-</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="k">except</span><span class="p">:</span>
+</span><span id="L-197"><a href="#L-197"><span class="linenos">197</span></a>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="L-198"><a href="#L-198"><span class="linenos">198</span></a>            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="L-199"><a href="#L-199"><span class="linenos">199</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
 </span><span id="L-200"><a href="#L-200"><span class="linenos">200</span></a>        <span class="n">new_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
@@ -290,8 +290,8 @@
     <a class="headerlink" href="#ActiveSparsification"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="ActiveSparsification-7"><a href="#ActiveSparsification-7"><span class="linenos">  7</span></a><span class="k">class</span> <span class="nc">ActiveSparsification</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
 </span><span id="ActiveSparsification-8"><a href="#ActiveSparsification-8"><span class="linenos">  8</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="ActiveSparsification-9"><a href="#ActiveSparsification-9"><span class="linenos">  9</span></a><span class="sd">    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models </span>
-</span><span id="ActiveSparsification-10"><a href="#ActiveSparsification-10"><span class="linenos"> 10</span></a><span class="sd">    train.    </span>
+</span><span id="ActiveSparsification-9"><a href="#ActiveSparsification-9"><span class="linenos">  9</span></a><span class="sd">    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models</span>
+</span><span id="ActiveSparsification-10"><a href="#ActiveSparsification-10"><span class="linenos"> 10</span></a><span class="sd">    train.</span>
 </span><span id="ActiveSparsification-11"><a href="#ActiveSparsification-11"><span class="linenos"> 11</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="ActiveSparsification-12"><a href="#ActiveSparsification-12"><span class="linenos"> 12</span></a>
 </span><span id="ActiveSparsification-13"><a href="#ActiveSparsification-13"><span class="linenos"> 13</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
@@ -329,13 +329,13 @@
 </span><span id="ActiveSparsification-45"><a href="#ActiveSparsification-45"><span class="linenos"> 45</span></a><span class="sd">        restore_best_weights : bool (default True)</span>
 </span><span id="ActiveSparsification-46"><a href="#ActiveSparsification-46"><span class="linenos"> 46</span></a><span class="sd">            Whether to restore model best weights after training</span>
 </span><span id="ActiveSparsification-47"><a href="#ActiveSparsification-47"><span class="linenos"> 47</span></a><span class="sd">        verbose : int or bool (default 1)</span>
-</span><span id="ActiveSparsification-48"><a href="#ActiveSparsification-48"><span class="linenos"> 48</span></a><span class="sd">            Verbosity level for logging. </span>
+</span><span id="ActiveSparsification-48"><a href="#ActiveSparsification-48"><span class="linenos"> 48</span></a><span class="sd">            Verbosity level for logging.</span>
 </span><span id="ActiveSparsification-49"><a href="#ActiveSparsification-49"><span class="linenos"> 49</span></a>
 </span><span id="ActiveSparsification-50"><a href="#ActiveSparsification-50"><span class="linenos"> 50</span></a><span class="sd">        Notes</span>
 </span><span id="ActiveSparsification-51"><a href="#ActiveSparsification-51"><span class="linenos"> 51</span></a><span class="sd">        -----</span>
 </span><span id="ActiveSparsification-52"><a href="#ActiveSparsification-52"><span class="linenos"> 52</span></a><span class="sd">        - If `performance_measure` is &#39;auto&#39;, defaults to the following measures, in order: &#39;val_accuracy&#39;, &#39;val_loss&#39;, &#39;accuracy&#39;, &#39;loss&#39;</span>
-</span><span id="ActiveSparsification-53"><a href="#ActiveSparsification-53"><span class="linenos"> 53</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be </span>
-</span><span id="ActiveSparsification-54"><a href="#ActiveSparsification-54"><span class="linenos"> 54</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must </span>
+</span><span id="ActiveSparsification-53"><a href="#ActiveSparsification-53"><span class="linenos"> 53</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be</span>
+</span><span id="ActiveSparsification-54"><a href="#ActiveSparsification-54"><span class="linenos"> 54</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must</span>
 </span><span id="ActiveSparsification-55"><a href="#ActiveSparsification-55"><span class="linenos"> 55</span></a><span class="sd">          be beaten</span>
 </span><span id="ActiveSparsification-56"><a href="#ActiveSparsification-56"><span class="linenos"> 56</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="ActiveSparsification-57"><a href="#ActiveSparsification-57"><span class="linenos"> 57</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -479,7 +479,7 @@
 </span><span id="ActiveSparsification-195"><a href="#ActiveSparsification-195"><span class="linenos">195</span></a>        <span class="k">try</span><span class="p">:</span>
 </span><span id="ActiveSparsification-196"><a href="#ActiveSparsification-196"><span class="linenos">196</span></a>            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="ActiveSparsification-197"><a href="#ActiveSparsification-197"><span class="linenos">197</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
-</span><span id="ActiveSparsification-198"><a href="#ActiveSparsification-198"><span class="linenos">198</span></a>        <span class="k">except</span><span class="p">:</span>
+</span><span id="ActiveSparsification-198"><a href="#ActiveSparsification-198"><span class="linenos">198</span></a>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="ActiveSparsification-199"><a href="#ActiveSparsification-199"><span class="linenos">199</span></a>            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="ActiveSparsification-200"><a href="#ActiveSparsification-200"><span class="linenos">200</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
 </span><span id="ActiveSparsification-201"><a href="#ActiveSparsification-201"><span class="linenos">201</span></a>        <span class="n">new_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
@@ -493,7 +493,7 @@
 </span></pre></div>
 
 
-            <div class="docstring"><p>Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models 
+            <div class="docstring"><p>Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models
 train.</p>
 </div>
 
@@ -543,13 +543,13 @@ train.</p>
 </span><span id="ActiveSparsification.__init__-45"><a href="#ActiveSparsification.__init__-45"><span class="linenos">45</span></a><span class="sd">        restore_best_weights : bool (default True)</span>
 </span><span id="ActiveSparsification.__init__-46"><a href="#ActiveSparsification.__init__-46"><span class="linenos">46</span></a><span class="sd">            Whether to restore model best weights after training</span>
 </span><span id="ActiveSparsification.__init__-47"><a href="#ActiveSparsification.__init__-47"><span class="linenos">47</span></a><span class="sd">        verbose : int or bool (default 1)</span>
-</span><span id="ActiveSparsification.__init__-48"><a href="#ActiveSparsification.__init__-48"><span class="linenos">48</span></a><span class="sd">            Verbosity level for logging. </span>
+</span><span id="ActiveSparsification.__init__-48"><a href="#ActiveSparsification.__init__-48"><span class="linenos">48</span></a><span class="sd">            Verbosity level for logging.</span>
 </span><span id="ActiveSparsification.__init__-49"><a href="#ActiveSparsification.__init__-49"><span class="linenos">49</span></a>
 </span><span id="ActiveSparsification.__init__-50"><a href="#ActiveSparsification.__init__-50"><span class="linenos">50</span></a><span class="sd">        Notes</span>
 </span><span id="ActiveSparsification.__init__-51"><a href="#ActiveSparsification.__init__-51"><span class="linenos">51</span></a><span class="sd">        -----</span>
 </span><span id="ActiveSparsification.__init__-52"><a href="#ActiveSparsification.__init__-52"><span class="linenos">52</span></a><span class="sd">        - If `performance_measure` is &#39;auto&#39;, defaults to the following measures, in order: &#39;val_accuracy&#39;, &#39;val_loss&#39;, &#39;accuracy&#39;, &#39;loss&#39;</span>
-</span><span id="ActiveSparsification.__init__-53"><a href="#ActiveSparsification.__init__-53"><span class="linenos">53</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be </span>
-</span><span id="ActiveSparsification.__init__-54"><a href="#ActiveSparsification.__init__-54"><span class="linenos">54</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must </span>
+</span><span id="ActiveSparsification.__init__-53"><a href="#ActiveSparsification.__init__-53"><span class="linenos">53</span></a><span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be</span>
+</span><span id="ActiveSparsification.__init__-54"><a href="#ActiveSparsification.__init__-54"><span class="linenos">54</span></a><span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must</span>
 </span><span id="ActiveSparsification.__init__-55"><a href="#ActiveSparsification.__init__-55"><span class="linenos">55</span></a><span class="sd">          be beaten</span>
 </span><span id="ActiveSparsification.__init__-56"><a href="#ActiveSparsification.__init__-56"><span class="linenos">56</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="ActiveSparsification.__init__-57"><a href="#ActiveSparsification.__init__-57"><span class="linenos">57</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -595,8 +595,8 @@ Verbosity level for logging.</li>
 
 <ul>
 <li>If <code>performance_measure</code> is 'auto', defaults to the following measures, in order: 'val_accuracy', 'val_loss', 'accuracy', 'loss'</li>
-<li>If <code>performance_measure</code> defaults to any accuracy value, then <code>performance_cutoff</code> represents the minimum value that must be 
-beaten.  If <code>performance_measure</code> defaults to any loss value, then <code>performance_cutoff</code> represents the maximum value that must 
+<li>If <code>performance_measure</code> defaults to any accuracy value, then <code>performance_cutoff</code> represents the minimum value that must be
+beaten.  If <code>performance_measure</code> defaults to any loss value, then <code>performance_cutoff</code> represents the maximum value that must
 be beaten</li>
 </ul>
 </div>

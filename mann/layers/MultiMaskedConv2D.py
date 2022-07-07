@@ -7,8 +7,7 @@ class MultiMaskedConv2D(Layer):
     """
     Masked multitask 2-dimensional convolutional layer. This layer implements
     multiple stacks of the convolutional architecture and implements masking consistent
-    with the MANN API to support developing sparse multitask models.    
-
+    with the MANN API to support developing sparse multitask models.
     """
 
     def __init__(

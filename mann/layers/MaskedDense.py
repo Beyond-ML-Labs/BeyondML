@@ -5,7 +5,7 @@ from tensorflow.keras.layers import Layer
 
 class MaskedDense(Layer):
     """
-    Masked fully connected layer. For full documentation of the fully-connected architecture, see the 
+    Masked fully connected layer. For full documentation of the fully-connected architecture, see the
     TensorFlow Keras Dense layer documentation.
 
     This layer implements masking consistent with the MANN API to support developing sparse models.

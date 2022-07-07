@@ -30,13 +30,13 @@ def build_transformer_block(
     Returns
     -------
     transformer_block : TensorFlow keras Functional model
-        The transformer block, which can then be used alone or as 
+        The transformer block, which can then be used alone or as
         a layer in another model
     """
     input_layer = tf.keras.layers.Input(input_shape)
     query = MultiDense(embed_dim)([input_layer] * num_heads)
     key = MultiDense(embed_dim)([input_layer] * num_heads)
-    value = MultiDense(embed_dim)([input_layer]*num_heads)
+    value = MultiDense(embed_dim)([input_layer] * num_heads)
 
     query_selectors = [
         SelectorLayer(i)(query) for i in range(num_heads)
@@ -84,7 +84,7 @@ def build_token_position_embedding_block(
     Returns
     -------
     embedding_block : TensorFlow keras Functional model
-        The embedding block, which can be used alone or 
+        The embedding block, which can be used alone or
         as a layer in another model
     """
     tok_input = tf.keras.layers.Input(sequence_length)

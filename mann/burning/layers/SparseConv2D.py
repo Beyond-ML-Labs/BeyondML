@@ -6,6 +6,7 @@ class SparseConv2D(torch.nn.Module):
     Sparse implementation of a 2D Convolutional layer, expected to be converted from a 
     trained, pruned layer
     """
+
     def __init__(
         self,
         kernel,

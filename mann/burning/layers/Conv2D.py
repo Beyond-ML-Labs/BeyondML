@@ -5,6 +5,7 @@ class Conv2D(torch.nn.Module):
     """
     Convolutional 2D layer initialized directly with weights, rather than with hyperparameters
     """
+
     def __init__(
         self,
         kernel,

@@ -5,6 +5,7 @@ class MultiDense(torch.nn.Module):
     """
     Multi-Fully-Connected layer initialized with weights rather than hyperparameters
     """
+
     def __init__(
             self,
             weight,

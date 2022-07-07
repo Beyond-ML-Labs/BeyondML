@@ -6,6 +6,7 @@ class MultiMaskedDense(torch.nn.Module):
     """
     Multi-Fully-Connected layer which supports masking and pruning
     """
+
     def __init__(
         self,
         in_features,

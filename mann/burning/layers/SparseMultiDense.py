@@ -5,6 +5,7 @@ class SparseMultiDense(torch.nn.Module):
     """
     Sparse implementation of the Multi-Fully-Connected layer
     """
+
     def __init__(
             self,
             weight,

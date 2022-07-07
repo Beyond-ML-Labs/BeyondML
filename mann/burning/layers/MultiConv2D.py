@@ -5,6 +5,7 @@ class MultiConv2D(torch.nn.Module):
     """
     Multi- 2D Convolutional layer initialized with weights rather than hyperparameters
     """
+
     def __init__(
             self,
             kernel,

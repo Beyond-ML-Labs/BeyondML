@@ -5,6 +5,7 @@ class SelectorLayer(Module):
     """
     Layer which selects an individual input based on index and only returns that one
     """
+
     def __init__(
         self,
         sel_index

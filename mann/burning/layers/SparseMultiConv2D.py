@@ -5,6 +5,7 @@ class SparseMultiConv2D(torch.nn.Module):
     """
     Sparse implementation of a Multi 2D Convolutional layer
     """
+
     def __init__(
             self,
             kernel,

@@ -5,6 +5,7 @@ class Dense(torch.nn.Module):
     """
     Fully-connected layer initialized directly with weights, rather than hyperparameters
     """
+
     def __init__(
         self,
         weight,

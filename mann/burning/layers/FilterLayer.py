@@ -5,6 +5,7 @@ class FilterLayer(torch.nn.Module):
     """
     Layer which filters input data, either returning values or all zeros depending on state
     """
+
     def __init__(
         self,
         is_on=True

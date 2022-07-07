@@ -5,6 +5,7 @@ class SparseDense(torch.nn.Module):
     """
     Sparse implementation of a fully-connected layer
     """
+
     def __init__(
         self,
         weight,

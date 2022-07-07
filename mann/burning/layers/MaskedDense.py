@@ -6,6 +6,7 @@ class MaskedDense(torch.nn.Module):
     """
     Masked fully-connected layer
     """
+
     def __init__(
         self,
         in_features,

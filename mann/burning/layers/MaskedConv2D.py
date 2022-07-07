@@ -6,6 +6,7 @@ class MaskedConv2D(torch.nn.Module):
     """
     Masked 2D Convolutional layer
     """
+
     def __init__(
         self,
         in_channels,

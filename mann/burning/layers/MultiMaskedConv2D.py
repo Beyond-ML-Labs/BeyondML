@@ -6,6 +6,7 @@ class MultiMaskedConv2D(torch.nn.Module):
     """
     Multi 2D Convolutional layer which supports masking and pruning
     """
+
     def __init__(
         self,
         in_channels,

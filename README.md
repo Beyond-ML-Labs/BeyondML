@@ -6,6 +6,10 @@
 
 MANN, which stands for Multitask Artificial Neural Networks, is a Python package which enables creating sparse multitask models compatible with [TensorFlow](https://tensorflow.org). This package contains custom layers and utilities to facilitate the training and optimization of models using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).
 
+## Changing to BeyondML
+
+<span style="color:red">Please be advised that the MANN package is going to be deprecated after version 0.3.0 and will be moved to the `beyondml` package in PyPi. For future releases, please alter your code to utilize the `beyondml` package.</span>
+
 ## Installation
 
 This package is available through [PyPi](https://pypi.org) and can be installed via the following command:

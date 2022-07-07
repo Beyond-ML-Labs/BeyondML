@@ -151,3 +151,17 @@ def test_add_layer_masks():
     new_preds = converted_model.predict(to_pred)
     assert np.isclose(og_preds[0], new_preds[0]).all()
     assert np.isclose(og_preds[1], new_preds[1]).all()
+
+
+def test_quantize():
+    model = build_simple_model()
+    new_model = mann.utils.quantize_model(model)
+    to_pred = [np.random.random((100, 10, 10, 3))] * 2
+    og_preds = model.predict(to_pred)
+    new_preds = new_model.predict(to_pred)
+    assert all(
+        [
+            np.allclose(new_preds[i], og_preds[i], 1e-3, 1e-5)
+            for i in range(2)
+        ]
+    )

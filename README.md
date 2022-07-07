@@ -132,3 +132,9 @@ Below are a list of additional features, bug fixes, and other changes made for e
   - Note also that this functionality does not support cases where layers of an individual model are other TensorFlow models, but supporting this functionality is on the roadmap.
 - Iterative training using per-task pruning
   - Functionality for this feature is implemented, but there are known bugs when trying to apply this methodology to models with the `MultiMaskedConv2D` layer present
+
+### Version 0.3.0
+- Support for PyTorch layers
+- Support for additional custom objects in the `quantize_model` function
+- Added tests to the package functionality
+- Added auto-generated documentation

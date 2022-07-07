@@ -3,7 +3,7 @@ import torch
 
 class SparseConv2D(torch.nn.Module):
     """
-    Sparse implementation of a 2D Convolutional layer, expected to be converted from a 
+    Sparse implementation of a 2D Convolutional layer, expected to be converted from a
     trained, pruned layer
     """
 

@@ -373,7 +373,7 @@ def remove_layer_masks(model, additional_custom_objects=None):
             new_config,
             custom_objects=custom_objects
         )
-    except:
+    except Exception:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
             custom_objects=custom_objects
@@ -390,7 +390,7 @@ def remove_layer_masks(model, additional_custom_objects=None):
 
 def add_layer_masks(model, additional_custom_objects=None):
     """
-    Convert a trained model from one that does not have masking weights to one that does have 
+    Convert a trained model from one that does not have masking weights to one that does have
     masking weights
 
     Parameters
@@ -420,7 +420,7 @@ def add_layer_masks(model, additional_custom_objects=None):
             new_config,
             custom_objects=custom_objects
         )
-    except:
+    except Exception:
         new_model = tf.keras.models.Sequential().from_config(
             new_config,
             custom_objects=custom_objects
@@ -468,7 +468,7 @@ def quantize_model(model, dtype='float16'):
     # Instantiate the new model from the new config
     try:
         new_model = tf.keras.models.Model.from_config(new_config)
-    except:
+    except Exception:
         new_model = tf.keras.models.Sequential.from_config(new_config)
 
     # Set the weights of the new model
@@ -509,14 +509,14 @@ def get_task_masking_gradients(
 
     Notes
     -----
-    - This function should only be run *before* the model has been trained 
+    - This function should only be run *before* the model has been trained
         or used to predict.  There is an unknown bug related to TensorFlow which
         is leading to incorrect results after initial training
-    - When running this function, randomized input and output data is sent 
-        through the model to retrieve gradients respective to each task. If 
-        the model is compiled using `sparse_categorical_crossentropy' loss, 
-        this will break this function's functionality. As a result, please 
-        use `categorical_crossentropy` (or even better, `mse`) before running this function. After 
+    - When running this function, randomized input and output data is sent
+        through the model to retrieve gradients respective to each task. If
+        the model is compiled using `sparse_categorical_crossentropy' loss,
+        this will break this function's functionality. As a result, please
+        use `categorical_crossentropy` (or even better, `mse`) before running this function. After
         retrieving gradients, the model can be recompiled with whatever parameters are desired.
 
     Returns
@@ -533,7 +533,7 @@ def get_task_masking_gradients(
 
     # Get the loss weights
     if num_tasks > 1:
-        loss_weights = [0]*num_tasks
+        loss_weights = [0] * num_tasks
         loss_weights[task_num] = 1
 
     # Get the masking weights
@@ -584,8 +584,8 @@ def get_task_masking_gradients(
     # Get the gradients of the weights wrt the task
     with tf.GradientTape() as tape:
         raw_preds = model(inputs)
-        loss_values = [losses[i](outputs[i], raw_preds[i])
-                       * loss_weights[i] for i in range(len(losses))]
+        loss_values = [losses[i](outputs[i], raw_preds[i]) * loss_weights[i]
+                       for i in range(len(losses))]
         gradients = tape.gradient(loss_values, masking_weights)
 
     return gradients
@@ -607,7 +607,7 @@ def mask_task_weights(
     percentile : int
         The percentile to mask/prune
     respect_previous_tasks : bool (default True)
-        Whether to respect the weights used for previous tasks and not use them 
+        Whether to respect the weights used for previous tasks and not use them
         for subsequent tasks
 
     Returns
@@ -663,7 +663,7 @@ def mask_task_weights(
 
                             # Find the existing mask and set the value of only the task-specific part
                             layer_mask = masking_weights[masking_idx][weight_num + int(
-                                len(masking_weights[masking_idx])/2)]
+                                len(masking_weights[masking_idx]) / 2)]
                             layer_mask[task_idx_num] = weight_mask
 
                             # Append the new mask
@@ -716,9 +716,9 @@ def train_model_iteratively(
     max_epochs=100
 ):
     """
-    Train a model iteratively on each task, first obtaining 
-    baseline performance on each task and then iteratively 
-    training and pruning each task as far back as possible while 
+    Train a model iteratively on each task, first obtaining
+    baseline performance on each task and then iteratively
+    training and pruning each task as far back as possible while
     maintaining acceptable performance on each task
 
     Parameters
@@ -736,7 +736,7 @@ def train_model_iteratively(
     validation_split : float, or list of float
         The proportion of data to use for validation
     delta : float
-        The tolerance between validation losses to be considered "acceptable" 
+        The tolerance between validation losses to be considered "acceptable"
         performance to continue
     batch_size : int
         The batch size to train with
@@ -785,7 +785,7 @@ def train_model_iteratively(
             current_validation_split = validation_split[task_num]
 
         # Configure the loss weights
-        loss_weights = [0]*num_tasks
+        loss_weights = [0] * num_tasks
         loss_weights[task_num] = 1
 
         # Configure the epochs

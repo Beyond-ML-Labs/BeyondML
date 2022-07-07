@@ -1,6 +1,11 @@
 from setuptools import setup
 from mann import __version__
 
+with open('requirements.txt', 'r') as f:
+    requirements = [
+        line for line in f.read().splitlines() if line != ''
+    ]
+
 setup(
     name='mann',
     version=__version__,
@@ -13,8 +18,5 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     license='Apache 2.0',
-    install_requires=[
-        'tensorflow>=2.4',
-        'torch'
-    ]
+    install_requires=requirements
 )

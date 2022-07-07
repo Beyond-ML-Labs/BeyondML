@@ -450,7 +450,7 @@
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
 </span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>        <span class="p">)</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
@@ -467,7 +467,7 @@
 </span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>
 </span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a><span class="k">def</span> <span class="nf">add_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    Convert a trained model from one that does not have masking weights to one that does have </span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a><span class="sd">    Convert a trained model from one that does not have masking weights to one that does have</span>
 </span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a><span class="sd">    masking weights</span>
 </span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>
 </span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a><span class="sd">    Parameters</span>
@@ -497,7 +497,7 @@
 </span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
 </span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a>        <span class="p">)</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
@@ -545,7 +545,7 @@
 </span><span id="L-468"><a href="#L-468"><span class="linenos">468</span></a>    <span class="c1"># Instantiate the new model from the new config</span>
 </span><span id="L-469"><a href="#L-469"><span class="linenos">469</span></a>    <span class="k">try</span><span class="p">:</span>
 </span><span id="L-470"><a href="#L-470"><span class="linenos">470</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
-</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="L-471"><a href="#L-471"><span class="linenos">471</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="L-472"><a href="#L-472"><span class="linenos">472</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
 </span><span id="L-473"><a href="#L-473"><span class="linenos">473</span></a>
 </span><span id="L-474"><a href="#L-474"><span class="linenos">474</span></a>    <span class="c1"># Set the weights of the new model</span>
@@ -586,14 +586,14 @@
 </span><span id="L-509"><a href="#L-509"><span class="linenos">509</span></a>
 </span><span id="L-510"><a href="#L-510"><span class="linenos">510</span></a><span class="sd">    Notes</span>
 </span><span id="L-511"><a href="#L-511"><span class="linenos">511</span></a><span class="sd">    -----</span>
-</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="sd">    - This function should only be run *before* the model has been trained </span>
+</span><span id="L-512"><a href="#L-512"><span class="linenos">512</span></a><span class="sd">    - This function should only be run *before* the model has been trained</span>
 </span><span id="L-513"><a href="#L-513"><span class="linenos">513</span></a><span class="sd">        or used to predict.  There is an unknown bug related to TensorFlow which</span>
 </span><span id="L-514"><a href="#L-514"><span class="linenos">514</span></a><span class="sd">        is leading to incorrect results after initial training</span>
-</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a><span class="sd">    - When running this function, randomized input and output data is sent </span>
-</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a><span class="sd">        through the model to retrieve gradients respective to each task. If </span>
-</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a><span class="sd">        the model is compiled using `sparse_categorical_crossentropy&#39; loss, </span>
-</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a><span class="sd">        this will break this function&#39;s functionality. As a result, please </span>
-</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a><span class="sd">        use `categorical_crossentropy` (or even better, `mse`) before running this function. After </span>
+</span><span id="L-515"><a href="#L-515"><span class="linenos">515</span></a><span class="sd">    - When running this function, randomized input and output data is sent</span>
+</span><span id="L-516"><a href="#L-516"><span class="linenos">516</span></a><span class="sd">        through the model to retrieve gradients respective to each task. If</span>
+</span><span id="L-517"><a href="#L-517"><span class="linenos">517</span></a><span class="sd">        the model is compiled using `sparse_categorical_crossentropy&#39; loss,</span>
+</span><span id="L-518"><a href="#L-518"><span class="linenos">518</span></a><span class="sd">        this will break this function&#39;s functionality. As a result, please</span>
+</span><span id="L-519"><a href="#L-519"><span class="linenos">519</span></a><span class="sd">        use `categorical_crossentropy` (or even better, `mse`) before running this function. After</span>
 </span><span id="L-520"><a href="#L-520"><span class="linenos">520</span></a><span class="sd">        retrieving gradients, the model can be recompiled with whatever parameters are desired.</span>
 </span><span id="L-521"><a href="#L-521"><span class="linenos">521</span></a>
 </span><span id="L-522"><a href="#L-522"><span class="linenos">522</span></a><span class="sd">    Returns</span>
@@ -610,7 +610,7 @@
 </span><span id="L-533"><a href="#L-533"><span class="linenos">533</span></a>
 </span><span id="L-534"><a href="#L-534"><span class="linenos">534</span></a>    <span class="c1"># Get the loss weights</span>
 </span><span id="L-535"><a href="#L-535"><span class="linenos">535</span></a>    <span class="k">if</span> <span class="n">num_tasks</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="L-536"><a href="#L-536"><span class="linenos">536</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_tasks</span>
+</span><span id="L-536"><a href="#L-536"><span class="linenos">536</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
 </span><span id="L-537"><a href="#L-537"><span class="linenos">537</span></a>        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="L-538"><a href="#L-538"><span class="linenos">538</span></a>
 </span><span id="L-539"><a href="#L-539"><span class="linenos">539</span></a>    <span class="c1"># Get the masking weights</span>
@@ -661,8 +661,8 @@
 </span><span id="L-584"><a href="#L-584"><span class="linenos">584</span></a>    <span class="c1"># Get the gradients of the weights wrt the task</span>
 </span><span id="L-585"><a href="#L-585"><span class="linenos">585</span></a>    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
 </span><span id="L-586"><a href="#L-586"><span class="linenos">586</span></a>        <span class="n">raw_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a>        <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a>                       <span class="o">*</span> <span class="n">loss_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
+</span><span id="L-587"><a href="#L-587"><span class="linenos">587</span></a>        <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">loss_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span id="L-588"><a href="#L-588"><span class="linenos">588</span></a>                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
 </span><span id="L-589"><a href="#L-589"><span class="linenos">589</span></a>        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_values</span><span class="p">,</span> <span class="n">masking_weights</span><span class="p">)</span>
 </span><span id="L-590"><a href="#L-590"><span class="linenos">590</span></a>
 </span><span id="L-591"><a href="#L-591"><span class="linenos">591</span></a>    <span class="k">return</span> <span class="n">gradients</span>
@@ -684,7 +684,7 @@
 </span><span id="L-607"><a href="#L-607"><span class="linenos">607</span></a><span class="sd">    percentile : int</span>
 </span><span id="L-608"><a href="#L-608"><span class="linenos">608</span></a><span class="sd">        The percentile to mask/prune</span>
 </span><span id="L-609"><a href="#L-609"><span class="linenos">609</span></a><span class="sd">    respect_previous_tasks : bool (default True)</span>
-</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">        Whether to respect the weights used for previous tasks and not use them </span>
+</span><span id="L-610"><a href="#L-610"><span class="linenos">610</span></a><span class="sd">        Whether to respect the weights used for previous tasks and not use them</span>
 </span><span id="L-611"><a href="#L-611"><span class="linenos">611</span></a><span class="sd">        for subsequent tasks</span>
 </span><span id="L-612"><a href="#L-612"><span class="linenos">612</span></a>
 </span><span id="L-613"><a href="#L-613"><span class="linenos">613</span></a><span class="sd">    Returns</span>
@@ -740,7 +740,7 @@
 </span><span id="L-663"><a href="#L-663"><span class="linenos">663</span></a>
 </span><span id="L-664"><a href="#L-664"><span class="linenos">664</span></a>                            <span class="c1"># Find the existing mask and set the value of only the task-specific part</span>
 </span><span id="L-665"><a href="#L-665"><span class="linenos">665</span></a>                            <span class="n">layer_mask</span> <span class="o">=</span> <span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span>
-</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>                                <span class="nb">len</span><span class="p">(</span><span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
+</span><span id="L-666"><a href="#L-666"><span class="linenos">666</span></a>                                <span class="nb">len</span><span class="p">(</span><span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
 </span><span id="L-667"><a href="#L-667"><span class="linenos">667</span></a>                            <span class="n">layer_mask</span><span class="p">[</span><span class="n">task_idx_num</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight_mask</span>
 </span><span id="L-668"><a href="#L-668"><span class="linenos">668</span></a>
 </span><span id="L-669"><a href="#L-669"><span class="linenos">669</span></a>                            <span class="c1"># Append the new mask</span>
@@ -793,9 +793,9 @@
 </span><span id="L-716"><a href="#L-716"><span class="linenos">716</span></a>    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span>
 </span><span id="L-717"><a href="#L-717"><span class="linenos">717</span></a><span class="p">):</span>
 </span><span id="L-718"><a href="#L-718"><span class="linenos">718</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a><span class="sd">    Train a model iteratively on each task, first obtaining </span>
-</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a><span class="sd">    baseline performance on each task and then iteratively </span>
-</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a><span class="sd">    training and pruning each task as far back as possible while </span>
+</span><span id="L-719"><a href="#L-719"><span class="linenos">719</span></a><span class="sd">    Train a model iteratively on each task, first obtaining</span>
+</span><span id="L-720"><a href="#L-720"><span class="linenos">720</span></a><span class="sd">    baseline performance on each task and then iteratively</span>
+</span><span id="L-721"><a href="#L-721"><span class="linenos">721</span></a><span class="sd">    training and pruning each task as far back as possible while</span>
 </span><span id="L-722"><a href="#L-722"><span class="linenos">722</span></a><span class="sd">    maintaining acceptable performance on each task</span>
 </span><span id="L-723"><a href="#L-723"><span class="linenos">723</span></a>
 </span><span id="L-724"><a href="#L-724"><span class="linenos">724</span></a><span class="sd">    Parameters</span>
@@ -813,7 +813,7 @@
 </span><span id="L-736"><a href="#L-736"><span class="linenos">736</span></a><span class="sd">    validation_split : float, or list of float</span>
 </span><span id="L-737"><a href="#L-737"><span class="linenos">737</span></a><span class="sd">        The proportion of data to use for validation</span>
 </span><span id="L-738"><a href="#L-738"><span class="linenos">738</span></a><span class="sd">    delta : float</span>
-</span><span id="L-739"><a href="#L-739"><span class="linenos">739</span></a><span class="sd">        The tolerance between validation losses to be considered &quot;acceptable&quot; </span>
+</span><span id="L-739"><a href="#L-739"><span class="linenos">739</span></a><span class="sd">        The tolerance between validation losses to be considered &quot;acceptable&quot;</span>
 </span><span id="L-740"><a href="#L-740"><span class="linenos">740</span></a><span class="sd">        performance to continue</span>
 </span><span id="L-741"><a href="#L-741"><span class="linenos">741</span></a><span class="sd">    batch_size : int</span>
 </span><span id="L-742"><a href="#L-742"><span class="linenos">742</span></a><span class="sd">        The batch size to train with</span>
@@ -862,7 +862,7 @@
 </span><span id="L-785"><a href="#L-785"><span class="linenos">785</span></a>            <span class="n">current_validation_split</span> <span class="o">=</span> <span class="n">validation_split</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
 </span><span id="L-786"><a href="#L-786"><span class="linenos">786</span></a>
 </span><span id="L-787"><a href="#L-787"><span class="linenos">787</span></a>        <span class="c1"># Configure the loss weights</span>
-</span><span id="L-788"><a href="#L-788"><span class="linenos">788</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_tasks</span>
+</span><span id="L-788"><a href="#L-788"><span class="linenos">788</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
 </span><span id="L-789"><a href="#L-789"><span class="linenos">789</span></a>        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="L-790"><a href="#L-790"><span class="linenos">790</span></a>
 </span><span id="L-791"><a href="#L-791"><span class="linenos">791</span></a>        <span class="c1"># Configure the epochs</span>
@@ -1265,7 +1265,7 @@ The training data output values, ignored if "method" is 'magnitude'</li>
 </span><span id="remove_layer_masks-374"><a href="#remove_layer_masks-374"><span class="linenos">374</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="remove_layer_masks-375"><a href="#remove_layer_masks-375"><span class="linenos">375</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
 </span><span id="remove_layer_masks-376"><a href="#remove_layer_masks-376"><span class="linenos">376</span></a>        <span class="p">)</span>
-</span><span id="remove_layer_masks-377"><a href="#remove_layer_masks-377"><span class="linenos">377</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="remove_layer_masks-377"><a href="#remove_layer_masks-377"><span class="linenos">377</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="remove_layer_masks-378"><a href="#remove_layer_masks-378"><span class="linenos">378</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="remove_layer_masks-379"><a href="#remove_layer_masks-379"><span class="linenos">379</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="remove_layer_masks-380"><a href="#remove_layer_masks-380"><span class="linenos">380</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
@@ -1315,7 +1315,7 @@ The converted model</li>
     <a class="headerlink" href="#add_layer_masks"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="add_layer_masks-392"><a href="#add_layer_masks-392"><span class="linenos">392</span></a><span class="k">def</span> <span class="nf">add_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 </span><span id="add_layer_masks-393"><a href="#add_layer_masks-393"><span class="linenos">393</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="add_layer_masks-394"><a href="#add_layer_masks-394"><span class="linenos">394</span></a><span class="sd">    Convert a trained model from one that does not have masking weights to one that does have </span>
+</span><span id="add_layer_masks-394"><a href="#add_layer_masks-394"><span class="linenos">394</span></a><span class="sd">    Convert a trained model from one that does not have masking weights to one that does have</span>
 </span><span id="add_layer_masks-395"><a href="#add_layer_masks-395"><span class="linenos">395</span></a><span class="sd">    masking weights</span>
 </span><span id="add_layer_masks-396"><a href="#add_layer_masks-396"><span class="linenos">396</span></a>
 </span><span id="add_layer_masks-397"><a href="#add_layer_masks-397"><span class="linenos">397</span></a><span class="sd">    Parameters</span>
@@ -1345,7 +1345,7 @@ The converted model</li>
 </span><span id="add_layer_masks-421"><a href="#add_layer_masks-421"><span class="linenos">421</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="add_layer_masks-422"><a href="#add_layer_masks-422"><span class="linenos">422</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
 </span><span id="add_layer_masks-423"><a href="#add_layer_masks-423"><span class="linenos">423</span></a>        <span class="p">)</span>
-</span><span id="add_layer_masks-424"><a href="#add_layer_masks-424"><span class="linenos">424</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="add_layer_masks-424"><a href="#add_layer_masks-424"><span class="linenos">424</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="add_layer_masks-425"><a href="#add_layer_masks-425"><span class="linenos">425</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
 </span><span id="add_layer_masks-426"><a href="#add_layer_masks-426"><span class="linenos">426</span></a>            <span class="n">new_config</span><span class="p">,</span>
 </span><span id="add_layer_masks-427"><a href="#add_layer_masks-427"><span class="linenos">427</span></a>            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
@@ -1360,7 +1360,7 @@ The converted model</li>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Convert a trained model from one that does not have masking weights to one that does have 
+            <div class="docstring"><p>Convert a trained model from one that does not have masking weights to one that does have
 masking weights</p>
 
 <h6 id="parameters">Parameters</h6>
@@ -1427,7 +1427,7 @@ The converted model</li>
 </span><span id="quantize_model-469"><a href="#quantize_model-469"><span class="linenos">469</span></a>    <span class="c1"># Instantiate the new model from the new config</span>
 </span><span id="quantize_model-470"><a href="#quantize_model-470"><span class="linenos">470</span></a>    <span class="k">try</span><span class="p">:</span>
 </span><span id="quantize_model-471"><a href="#quantize_model-471"><span class="linenos">471</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
-</span><span id="quantize_model-472"><a href="#quantize_model-472"><span class="linenos">472</span></a>    <span class="k">except</span><span class="p">:</span>
+</span><span id="quantize_model-472"><a href="#quantize_model-472"><span class="linenos">472</span></a>    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
 </span><span id="quantize_model-473"><a href="#quantize_model-473"><span class="linenos">473</span></a>        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
 </span><span id="quantize_model-474"><a href="#quantize_model-474"><span class="linenos">474</span></a>
 </span><span id="quantize_model-475"><a href="#quantize_model-475"><span class="linenos">475</span></a>    <span class="c1"># Set the weights of the new model</span>
@@ -1482,14 +1482,14 @@ The quantized model</li>
 </span><span id="get_task_masking_gradients-510"><a href="#get_task_masking_gradients-510"><span class="linenos">510</span></a>
 </span><span id="get_task_masking_gradients-511"><a href="#get_task_masking_gradients-511"><span class="linenos">511</span></a><span class="sd">    Notes</span>
 </span><span id="get_task_masking_gradients-512"><a href="#get_task_masking_gradients-512"><span class="linenos">512</span></a><span class="sd">    -----</span>
-</span><span id="get_task_masking_gradients-513"><a href="#get_task_masking_gradients-513"><span class="linenos">513</span></a><span class="sd">    - This function should only be run *before* the model has been trained </span>
+</span><span id="get_task_masking_gradients-513"><a href="#get_task_masking_gradients-513"><span class="linenos">513</span></a><span class="sd">    - This function should only be run *before* the model has been trained</span>
 </span><span id="get_task_masking_gradients-514"><a href="#get_task_masking_gradients-514"><span class="linenos">514</span></a><span class="sd">        or used to predict.  There is an unknown bug related to TensorFlow which</span>
 </span><span id="get_task_masking_gradients-515"><a href="#get_task_masking_gradients-515"><span class="linenos">515</span></a><span class="sd">        is leading to incorrect results after initial training</span>
-</span><span id="get_task_masking_gradients-516"><a href="#get_task_masking_gradients-516"><span class="linenos">516</span></a><span class="sd">    - When running this function, randomized input and output data is sent </span>
-</span><span id="get_task_masking_gradients-517"><a href="#get_task_masking_gradients-517"><span class="linenos">517</span></a><span class="sd">        through the model to retrieve gradients respective to each task. If </span>
-</span><span id="get_task_masking_gradients-518"><a href="#get_task_masking_gradients-518"><span class="linenos">518</span></a><span class="sd">        the model is compiled using `sparse_categorical_crossentropy&#39; loss, </span>
-</span><span id="get_task_masking_gradients-519"><a href="#get_task_masking_gradients-519"><span class="linenos">519</span></a><span class="sd">        this will break this function&#39;s functionality. As a result, please </span>
-</span><span id="get_task_masking_gradients-520"><a href="#get_task_masking_gradients-520"><span class="linenos">520</span></a><span class="sd">        use `categorical_crossentropy` (or even better, `mse`) before running this function. After </span>
+</span><span id="get_task_masking_gradients-516"><a href="#get_task_masking_gradients-516"><span class="linenos">516</span></a><span class="sd">    - When running this function, randomized input and output data is sent</span>
+</span><span id="get_task_masking_gradients-517"><a href="#get_task_masking_gradients-517"><span class="linenos">517</span></a><span class="sd">        through the model to retrieve gradients respective to each task. If</span>
+</span><span id="get_task_masking_gradients-518"><a href="#get_task_masking_gradients-518"><span class="linenos">518</span></a><span class="sd">        the model is compiled using `sparse_categorical_crossentropy&#39; loss,</span>
+</span><span id="get_task_masking_gradients-519"><a href="#get_task_masking_gradients-519"><span class="linenos">519</span></a><span class="sd">        this will break this function&#39;s functionality. As a result, please</span>
+</span><span id="get_task_masking_gradients-520"><a href="#get_task_masking_gradients-520"><span class="linenos">520</span></a><span class="sd">        use `categorical_crossentropy` (or even better, `mse`) before running this function. After</span>
 </span><span id="get_task_masking_gradients-521"><a href="#get_task_masking_gradients-521"><span class="linenos">521</span></a><span class="sd">        retrieving gradients, the model can be recompiled with whatever parameters are desired.</span>
 </span><span id="get_task_masking_gradients-522"><a href="#get_task_masking_gradients-522"><span class="linenos">522</span></a>
 </span><span id="get_task_masking_gradients-523"><a href="#get_task_masking_gradients-523"><span class="linenos">523</span></a><span class="sd">    Returns</span>
@@ -1506,7 +1506,7 @@ The quantized model</li>
 </span><span id="get_task_masking_gradients-534"><a href="#get_task_masking_gradients-534"><span class="linenos">534</span></a>
 </span><span id="get_task_masking_gradients-535"><a href="#get_task_masking_gradients-535"><span class="linenos">535</span></a>    <span class="c1"># Get the loss weights</span>
 </span><span id="get_task_masking_gradients-536"><a href="#get_task_masking_gradients-536"><span class="linenos">536</span></a>    <span class="k">if</span> <span class="n">num_tasks</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-</span><span id="get_task_masking_gradients-537"><a href="#get_task_masking_gradients-537"><span class="linenos">537</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_tasks</span>
+</span><span id="get_task_masking_gradients-537"><a href="#get_task_masking_gradients-537"><span class="linenos">537</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
 </span><span id="get_task_masking_gradients-538"><a href="#get_task_masking_gradients-538"><span class="linenos">538</span></a>        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="get_task_masking_gradients-539"><a href="#get_task_masking_gradients-539"><span class="linenos">539</span></a>
 </span><span id="get_task_masking_gradients-540"><a href="#get_task_masking_gradients-540"><span class="linenos">540</span></a>    <span class="c1"># Get the masking weights</span>
@@ -1557,8 +1557,8 @@ The quantized model</li>
 </span><span id="get_task_masking_gradients-585"><a href="#get_task_masking_gradients-585"><span class="linenos">585</span></a>    <span class="c1"># Get the gradients of the weights wrt the task</span>
 </span><span id="get_task_masking_gradients-586"><a href="#get_task_masking_gradients-586"><span class="linenos">586</span></a>    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
 </span><span id="get_task_masking_gradients-587"><a href="#get_task_masking_gradients-587"><span class="linenos">587</span></a>        <span class="n">raw_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="get_task_masking_gradients-588"><a href="#get_task_masking_gradients-588"><span class="linenos">588</span></a>        <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</span><span id="get_task_masking_gradients-589"><a href="#get_task_masking_gradients-589"><span class="linenos">589</span></a>                       <span class="o">*</span> <span class="n">loss_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
+</span><span id="get_task_masking_gradients-588"><a href="#get_task_masking_gradients-588"><span class="linenos">588</span></a>        <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">loss_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+</span><span id="get_task_masking_gradients-589"><a href="#get_task_masking_gradients-589"><span class="linenos">589</span></a>                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
 </span><span id="get_task_masking_gradients-590"><a href="#get_task_masking_gradients-590"><span class="linenos">590</span></a>        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_values</span><span class="p">,</span> <span class="n">masking_weights</span><span class="p">)</span>
 </span><span id="get_task_masking_gradients-591"><a href="#get_task_masking_gradients-591"><span class="linenos">591</span></a>
 </span><span id="get_task_masking_gradients-592"><a href="#get_task_masking_gradients-592"><span class="linenos">592</span></a>    <span class="k">return</span> <span class="n">gradients</span>
@@ -1577,14 +1577,14 @@ The model to retrieve the gradients of</li>
 <h6 id="notes">Notes</h6>
 
 <ul>
-<li>This function should only be run <em>before</em> the model has been trained 
+<li>This function should only be run <em>before</em> the model has been trained
 or used to predict.  There is an unknown bug related to TensorFlow which
 is leading to incorrect results after initial training</li>
-<li>When running this function, randomized input and output data is sent 
-through the model to retrieve gradients respective to each task. If 
-the model is compiled using <code>sparse_categorical_crossentropy' loss, 
-this will break this function's functionality. As a result, please 
-use</code>categorical_crossentropy<code>(or even better,</code>mse`) before running this function. After 
+<li>When running this function, randomized input and output data is sent
+through the model to retrieve gradients respective to each task. If
+the model is compiled using <code>sparse_categorical_crossentropy' loss,
+this will break this function's functionality. As a result, please
+use</code>categorical_crossentropy<code>(or even better,</code>mse`) before running this function. After
 retrieving gradients, the model can be recompiled with whatever parameters are desired.</li>
 </ul>
 
@@ -1625,7 +1625,7 @@ The gradients of the masking weights of the model</li>
 </span><span id="mask_task_weights-608"><a href="#mask_task_weights-608"><span class="linenos">608</span></a><span class="sd">    percentile : int</span>
 </span><span id="mask_task_weights-609"><a href="#mask_task_weights-609"><span class="linenos">609</span></a><span class="sd">        The percentile to mask/prune</span>
 </span><span id="mask_task_weights-610"><a href="#mask_task_weights-610"><span class="linenos">610</span></a><span class="sd">    respect_previous_tasks : bool (default True)</span>
-</span><span id="mask_task_weights-611"><a href="#mask_task_weights-611"><span class="linenos">611</span></a><span class="sd">        Whether to respect the weights used for previous tasks and not use them </span>
+</span><span id="mask_task_weights-611"><a href="#mask_task_weights-611"><span class="linenos">611</span></a><span class="sd">        Whether to respect the weights used for previous tasks and not use them</span>
 </span><span id="mask_task_weights-612"><a href="#mask_task_weights-612"><span class="linenos">612</span></a><span class="sd">        for subsequent tasks</span>
 </span><span id="mask_task_weights-613"><a href="#mask_task_weights-613"><span class="linenos">613</span></a>
 </span><span id="mask_task_weights-614"><a href="#mask_task_weights-614"><span class="linenos">614</span></a><span class="sd">    Returns</span>
@@ -1681,7 +1681,7 @@ The gradients of the masking weights of the model</li>
 </span><span id="mask_task_weights-664"><a href="#mask_task_weights-664"><span class="linenos">664</span></a>
 </span><span id="mask_task_weights-665"><a href="#mask_task_weights-665"><span class="linenos">665</span></a>                            <span class="c1"># Find the existing mask and set the value of only the task-specific part</span>
 </span><span id="mask_task_weights-666"><a href="#mask_task_weights-666"><span class="linenos">666</span></a>                            <span class="n">layer_mask</span> <span class="o">=</span> <span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span>
-</span><span id="mask_task_weights-667"><a href="#mask_task_weights-667"><span class="linenos">667</span></a>                                <span class="nb">len</span><span class="p">(</span><span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
+</span><span id="mask_task_weights-667"><a href="#mask_task_weights-667"><span class="linenos">667</span></a>                                <span class="nb">len</span><span class="p">(</span><span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
 </span><span id="mask_task_weights-668"><a href="#mask_task_weights-668"><span class="linenos">668</span></a>                            <span class="n">layer_mask</span><span class="p">[</span><span class="n">task_idx_num</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight_mask</span>
 </span><span id="mask_task_weights-669"><a href="#mask_task_weights-669"><span class="linenos">669</span></a>
 </span><span id="mask_task_weights-670"><a href="#mask_task_weights-670"><span class="linenos">670</span></a>                            <span class="c1"># Append the new mask</span>
@@ -1728,7 +1728,7 @@ The gradients for the specific task requested</li>
 <li><strong>percentile</strong> (int):
 The percentile to mask/prune</li>
 <li><strong>respect_previous_tasks</strong> (bool (default True)):
-Whether to respect the weights used for previous tasks and not use them 
+Whether to respect the weights used for previous tasks and not use them
 for subsequent tasks</li>
 </ul>
 
@@ -1770,9 +1770,9 @@ The masked model</li>
 </span><span id="train_model_iteratively-717"><a href="#train_model_iteratively-717"><span class="linenos">717</span></a>    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span>
 </span><span id="train_model_iteratively-718"><a href="#train_model_iteratively-718"><span class="linenos">718</span></a><span class="p">):</span>
 </span><span id="train_model_iteratively-719"><a href="#train_model_iteratively-719"><span class="linenos">719</span></a>    <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="train_model_iteratively-720"><a href="#train_model_iteratively-720"><span class="linenos">720</span></a><span class="sd">    Train a model iteratively on each task, first obtaining </span>
-</span><span id="train_model_iteratively-721"><a href="#train_model_iteratively-721"><span class="linenos">721</span></a><span class="sd">    baseline performance on each task and then iteratively </span>
-</span><span id="train_model_iteratively-722"><a href="#train_model_iteratively-722"><span class="linenos">722</span></a><span class="sd">    training and pruning each task as far back as possible while </span>
+</span><span id="train_model_iteratively-720"><a href="#train_model_iteratively-720"><span class="linenos">720</span></a><span class="sd">    Train a model iteratively on each task, first obtaining</span>
+</span><span id="train_model_iteratively-721"><a href="#train_model_iteratively-721"><span class="linenos">721</span></a><span class="sd">    baseline performance on each task and then iteratively</span>
+</span><span id="train_model_iteratively-722"><a href="#train_model_iteratively-722"><span class="linenos">722</span></a><span class="sd">    training and pruning each task as far back as possible while</span>
 </span><span id="train_model_iteratively-723"><a href="#train_model_iteratively-723"><span class="linenos">723</span></a><span class="sd">    maintaining acceptable performance on each task</span>
 </span><span id="train_model_iteratively-724"><a href="#train_model_iteratively-724"><span class="linenos">724</span></a>
 </span><span id="train_model_iteratively-725"><a href="#train_model_iteratively-725"><span class="linenos">725</span></a><span class="sd">    Parameters</span>
@@ -1790,7 +1790,7 @@ The masked model</li>
 </span><span id="train_model_iteratively-737"><a href="#train_model_iteratively-737"><span class="linenos">737</span></a><span class="sd">    validation_split : float, or list of float</span>
 </span><span id="train_model_iteratively-738"><a href="#train_model_iteratively-738"><span class="linenos">738</span></a><span class="sd">        The proportion of data to use for validation</span>
 </span><span id="train_model_iteratively-739"><a href="#train_model_iteratively-739"><span class="linenos">739</span></a><span class="sd">    delta : float</span>
-</span><span id="train_model_iteratively-740"><a href="#train_model_iteratively-740"><span class="linenos">740</span></a><span class="sd">        The tolerance between validation losses to be considered &quot;acceptable&quot; </span>
+</span><span id="train_model_iteratively-740"><a href="#train_model_iteratively-740"><span class="linenos">740</span></a><span class="sd">        The tolerance between validation losses to be considered &quot;acceptable&quot;</span>
 </span><span id="train_model_iteratively-741"><a href="#train_model_iteratively-741"><span class="linenos">741</span></a><span class="sd">        performance to continue</span>
 </span><span id="train_model_iteratively-742"><a href="#train_model_iteratively-742"><span class="linenos">742</span></a><span class="sd">    batch_size : int</span>
 </span><span id="train_model_iteratively-743"><a href="#train_model_iteratively-743"><span class="linenos">743</span></a><span class="sd">        The batch size to train with</span>
@@ -1839,7 +1839,7 @@ The masked model</li>
 </span><span id="train_model_iteratively-786"><a href="#train_model_iteratively-786"><span class="linenos">786</span></a>            <span class="n">current_validation_split</span> <span class="o">=</span> <span class="n">validation_split</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
 </span><span id="train_model_iteratively-787"><a href="#train_model_iteratively-787"><span class="linenos">787</span></a>
 </span><span id="train_model_iteratively-788"><a href="#train_model_iteratively-788"><span class="linenos">788</span></a>        <span class="c1"># Configure the loss weights</span>
-</span><span id="train_model_iteratively-789"><a href="#train_model_iteratively-789"><span class="linenos">789</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">num_tasks</span>
+</span><span id="train_model_iteratively-789"><a href="#train_model_iteratively-789"><span class="linenos">789</span></a>        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
 </span><span id="train_model_iteratively-790"><a href="#train_model_iteratively-790"><span class="linenos">790</span></a>        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </span><span id="train_model_iteratively-791"><a href="#train_model_iteratively-791"><span class="linenos">791</span></a>
 </span><span id="train_model_iteratively-792"><a href="#train_model_iteratively-792"><span class="linenos">792</span></a>        <span class="c1"># Configure the epochs</span>
@@ -1988,9 +1988,9 @@ The masked model</li>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Train a model iteratively on each task, first obtaining 
-baseline performance on each task and then iteratively 
-training and pruning each task as far back as possible while 
+            <div class="docstring"><p>Train a model iteratively on each task, first obtaining
+baseline performance on each task and then iteratively
+training and pruning each task as far back as possible while
 maintaining acceptable performance on each task</p>
 
 <h6 id="parameters">Parameters</h6>
@@ -2009,7 +2009,7 @@ The output data to use to train on</li>
 <li><strong>validation_split</strong> (float, or list of float):
 The proportion of data to use for validation</li>
 <li><strong>delta</strong> (float):
-The tolerance between validation losses to be considered "acceptable" 
+The tolerance between validation losses to be considered "acceptable"
 performance to continue</li>
 <li><strong>batch_size</strong> (int):
 The batch size to train with</li>

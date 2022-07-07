@@ -89,13 +89,13 @@
 </span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">    Returns</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">    -------</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">    transformer_block : TensorFlow keras Functional model</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        The transformer block, which can then be used alone or as </span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        The transformer block, which can then be used alone or as</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">        a layer in another model</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="n">input_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="n">query</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    <span class="n">key</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span><span class="o">*</span><span class="n">num_heads</span><span class="p">)</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
 </span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="n">query_selectors</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="n">SelectorLayer</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="n">query</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_heads</span><span class="p">)</span>
@@ -143,7 +143,7 @@
 </span><span id="L-84"><a href="#L-84"><span class="linenos">84</span></a><span class="sd">    Returns</span>
 </span><span id="L-85"><a href="#L-85"><span class="linenos">85</span></a><span class="sd">    -------</span>
 </span><span id="L-86"><a href="#L-86"><span class="linenos">86</span></a><span class="sd">    embedding_block : TensorFlow keras Functional model</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="sd">        The embedding block, which can be used alone or </span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos">87</span></a><span class="sd">        The embedding block, which can be used alone or</span>
 </span><span id="L-88"><a href="#L-88"><span class="linenos">88</span></a><span class="sd">        as a layer in another model</span>
 </span><span id="L-89"><a href="#L-89"><span class="linenos">89</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="L-90"><a href="#L-90"><span class="linenos">90</span></a>    <span class="n">tok_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">)</span>
@@ -199,13 +199,13 @@
 </span><span id="build_transformer_block-31"><a href="#build_transformer_block-31"><span class="linenos">31</span></a><span class="sd">    Returns</span>
 </span><span id="build_transformer_block-32"><a href="#build_transformer_block-32"><span class="linenos">32</span></a><span class="sd">    -------</span>
 </span><span id="build_transformer_block-33"><a href="#build_transformer_block-33"><span class="linenos">33</span></a><span class="sd">    transformer_block : TensorFlow keras Functional model</span>
-</span><span id="build_transformer_block-34"><a href="#build_transformer_block-34"><span class="linenos">34</span></a><span class="sd">        The transformer block, which can then be used alone or as </span>
+</span><span id="build_transformer_block-34"><a href="#build_transformer_block-34"><span class="linenos">34</span></a><span class="sd">        The transformer block, which can then be used alone or as</span>
 </span><span id="build_transformer_block-35"><a href="#build_transformer_block-35"><span class="linenos">35</span></a><span class="sd">        a layer in another model</span>
 </span><span id="build_transformer_block-36"><a href="#build_transformer_block-36"><span class="linenos">36</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="build_transformer_block-37"><a href="#build_transformer_block-37"><span class="linenos">37</span></a>    <span class="n">input_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">input_shape</span><span class="p">)</span>
 </span><span id="build_transformer_block-38"><a href="#build_transformer_block-38"><span class="linenos">38</span></a>    <span class="n">query</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
 </span><span id="build_transformer_block-39"><a href="#build_transformer_block-39"><span class="linenos">39</span></a>    <span class="n">key</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
-</span><span id="build_transformer_block-40"><a href="#build_transformer_block-40"><span class="linenos">40</span></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span><span class="o">*</span><span class="n">num_heads</span><span class="p">)</span>
+</span><span id="build_transformer_block-40"><a href="#build_transformer_block-40"><span class="linenos">40</span></a>    <span class="n">value</span> <span class="o">=</span> <span class="n">MultiDense</span><span class="p">(</span><span class="n">embed_dim</span><span class="p">)([</span><span class="n">input_layer</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_heads</span><span class="p">)</span>
 </span><span id="build_transformer_block-41"><a href="#build_transformer_block-41"><span class="linenos">41</span></a>
 </span><span id="build_transformer_block-42"><a href="#build_transformer_block-42"><span class="linenos">42</span></a>    <span class="n">query_selectors</span> <span class="o">=</span> <span class="p">[</span>
 </span><span id="build_transformer_block-43"><a href="#build_transformer_block-43"><span class="linenos">43</span></a>        <span class="n">SelectorLayer</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="n">query</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_heads</span><span class="p">)</span>
@@ -257,7 +257,7 @@ The dimension to use for the <code>value</code> matrix, if provided</li>
 
 <ul>
 <li><strong>transformer_block</strong> (TensorFlow keras Functional model):
-The transformer block, which can then be used alone or as 
+The transformer block, which can then be used alone or as
 a layer in another model</li>
 </ul>
 </div>
@@ -295,7 +295,7 @@ a layer in another model</li>
 </span><span id="build_token_position_embedding_block-85"><a href="#build_token_position_embedding_block-85"><span class="linenos"> 85</span></a><span class="sd">    Returns</span>
 </span><span id="build_token_position_embedding_block-86"><a href="#build_token_position_embedding_block-86"><span class="linenos"> 86</span></a><span class="sd">    -------</span>
 </span><span id="build_token_position_embedding_block-87"><a href="#build_token_position_embedding_block-87"><span class="linenos"> 87</span></a><span class="sd">    embedding_block : TensorFlow keras Functional model</span>
-</span><span id="build_token_position_embedding_block-88"><a href="#build_token_position_embedding_block-88"><span class="linenos"> 88</span></a><span class="sd">        The embedding block, which can be used alone or </span>
+</span><span id="build_token_position_embedding_block-88"><a href="#build_token_position_embedding_block-88"><span class="linenos"> 88</span></a><span class="sd">        The embedding block, which can be used alone or</span>
 </span><span id="build_token_position_embedding_block-89"><a href="#build_token_position_embedding_block-89"><span class="linenos"> 89</span></a><span class="sd">        as a layer in another model</span>
 </span><span id="build_token_position_embedding_block-90"><a href="#build_token_position_embedding_block-90"><span class="linenos"> 90</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="build_token_position_embedding_block-91"><a href="#build_token_position_embedding_block-91"><span class="linenos"> 91</span></a>    <span class="n">tok_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">)</span>
@@ -328,7 +328,7 @@ The desired embedding dimension</li>
 
 <ul>
 <li><strong>embedding_block</strong> (TensorFlow keras Functional model):
-The embedding block, which can be used alone or 
+The embedding block, which can be used alone or
 as a layer in another model</li>
 </ul>
 </div>

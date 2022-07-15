@@ -1,11 +1,11 @@
 import pytest
-import mann.burning as mb
+import beyondml.pt as pt
 import torch
 import numpy as np
 
 
 def test_conv2d():
-    layer = mb.layers.Conv2D(
+    layer = pt.layers.Conv2D(
         np.random.random((8, 3, 3, 3)),
         np.random.random(8)
     )
@@ -14,7 +14,7 @@ def test_conv2d():
 
 
 def test_dense():
-    layer = mb.layers.Dense(
+    layer = pt.layers.Dense(
         np.random.random((10, 100)),
         np.random.random(100)
     )
@@ -23,7 +23,7 @@ def test_dense():
 
 
 def test_sparse_conv2d():
-    layer = mb.layers.SparseConv2D(
+    layer = pt.layers.SparseConv2D(
         np.random.random((8, 3, 3, 3)),
         np.random.random(8)
     )
@@ -32,7 +32,7 @@ def test_sparse_conv2d():
 
 
 def test_sparse_dense():
-    layer = mb.layers.SparseDense(
+    layer = pt.layers.SparseDense(
         np.random.random((10, 100)),
         np.random.random(100)
     )
@@ -41,7 +41,7 @@ def test_sparse_dense():
 
 
 def test_multi_conv2d():
-    layer = mb.layers.MultiConv2D(
+    layer = pt.layers.MultiConv2D(
         np.random.random((2, 8, 3, 3, 3)),
         np.random.random((2, 8))
     )
@@ -52,7 +52,7 @@ def test_multi_conv2d():
 
 
 def test_multi_dense():
-    layer = mb.layers.MultiDense(
+    layer = pt.layers.MultiDense(
         np.random.random((2, 10, 100)),
         np.random.random((2, 100))
     )
@@ -63,7 +63,7 @@ def test_multi_dense():
 
 
 def test_sparse_multi_conv2d():
-    layer = mb.layers.SparseMultiConv2D(
+    layer = pt.layers.SparseMultiConv2D(
         np.random.random((2, 8, 3, 3, 3)),
         np.random.random((2, 8))
     )
@@ -74,7 +74,7 @@ def test_sparse_multi_conv2d():
 
 
 def test_sparse_multi_dense():
-    layer = mb.layers.SparseMultiDense(
+    layer = pt.layers.SparseMultiDense(
         np.random.random((2, 10, 100)),
         np.random.random((2, 100))
     )
@@ -85,7 +85,7 @@ def test_sparse_multi_dense():
 
 
 def test_filter_layer():
-    layer = mb.layers.FilterLayer()
+    layer = pt.layers.FilterLayer()
     rand = torch.Tensor(10, 10)
     forward = layer.forward(rand)
     assert np.allclose(forward, rand, 1e-1, 1e-3)
@@ -100,7 +100,7 @@ def test_filter_layer():
 
 
 def test_masked_conv2d():
-    layer = mb.layers.MaskedConv2D(
+    layer = pt.layers.MaskedConv2D(
         3,
         8
     )
@@ -115,7 +115,7 @@ def test_masked_conv2d():
 
 
 def test_masked_dense():
-    layer = mb.layers.MaskedDense(
+    layer = pt.layers.MaskedDense(
         10,
         100
     )
@@ -130,7 +130,7 @@ def test_masked_dense():
 
 
 def test_multi_masked_conv2d():
-    layer = mb.layers.MultiMaskedConv2D(
+    layer = pt.layers.MultiMaskedConv2D(
         3,
         8,
         2
@@ -151,7 +151,7 @@ def test_multi_masked_conv2d():
 
 
 def test_multi_masked_dense():
-    layer = mb.layers.MultiMaskedDense(
+    layer = pt.layers.MultiMaskedDense(
         10,
         100,
         2

@@ -1,5 +1,5 @@
 from setuptools import setup
-from mann import __version__
+from beyondml import __version__
 
 with open('requirements.txt', 'r') as f:
     requirements = [
@@ -7,11 +7,10 @@ with open('requirements.txt', 'r') as f:
     ]
 
 setup(
-    name='mann',
+    name='beyondml',
     version=__version__,
-    url='https://github.com/AISquaredInc/mann',
-    packages=['mann', 'mann.layers', 'mann.utils',
-              'mann.burning', 'mann.burning.layers'],
+    url='https://github.com/Beyond-ML-Labs/BeyondML',
+    packages=['beyondml', 'beyondml.tflow', 'beyondml.tflow.layers', 'beyondml.tflow.utils', 'beyondml.pt', 'beyondml.pt.layers'],
     author='The AI Squared Team',
     author_email='mann@squared.ai',
     description='Package containing utilities for implementing RSN2/MANN',

@@ -1,5 +1,5 @@
 import tensorflow as tf
-from mann.layers import MultiDense, SelectorLayer
+from beyondml.tflow.layers import MultiDense, SelectorLayer
 
 
 def build_transformer_block(

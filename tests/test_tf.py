@@ -103,10 +103,10 @@ def test_pruning():
         y=[np.random.random((100, 10))] * 2
     )
     for layer in model.layers:
-        if isinstance(layer, beyondml.tflow.utils.MULTI_MASKING_LAYERS):
+        if isinstance(layer, beyondml.tflow.utils.utils.MULTI_MASKING_LAYERS):
             for weight in layer.get_weights()[2:]:
                 assert weight.sum(axis=0).max() == 1
-        elif isinstance(layer, beyondml.tflow.utils.MASKING_LAYERS):
+        elif isinstance(layer, beyondml.tflow.utils.utils.MASKING_LAYERS):
             for weight in layer.get_weights()[2:]:
                 assert weight.sum() / weight.flatten().shape[0] <= 0.5
 
@@ -122,10 +122,10 @@ def test_pruning():
         method='magnitude'
     )
     for layer in model.layers:
-        if isinstance(layer, beyondml.tflow.utils.MULTI_MASKING_LAYERS):
+        if isinstance(layer, beyondml.tflow.utils.utils.MULTI_MASKING_LAYERS):
             for weight in layer.get_weights()[2:]:
                 assert weight.sum(axis=0).max() == 1
-        elif isinstance(layer, beyondml.tflow.utils.MASKING_LAYERS):
+        elif isinstance(layer, beyondml.tflow.utils.utils.MASKING_LAYERS):
             for weight in layer.get_weights()[2:]:
                 assert weight.sum() / weight.flatten().shape[0] <= 0.5
 

@@ -6,4 +6,4 @@ def test_pass():
 
 
 def test_import():
-    import mann
+    import beyondml

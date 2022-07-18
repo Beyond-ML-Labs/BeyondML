@@ -112,7 +112,7 @@ class MaskedConv2D(Layer):
         ----------
         inputs : TensorFlow Tensor or Tensor-like
             The inputs to the layer
-        
+
         Returns
         -------
         outputs : TensorFlow Tensor

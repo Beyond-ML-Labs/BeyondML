@@ -93,10 +93,23 @@
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">SumLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">        Parameters</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">        ----------</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">        </span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        Returns</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        -------</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -135,10 +148,23 @@
 </span><span id="SumLayer-26"><a href="#SumLayer-26"><span class="linenos">26</span></a>        <span class="nb">super</span><span class="p">(</span><span class="n">SumLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="SumLayer-27"><a href="#SumLayer-27"><span class="linenos">27</span></a>
 </span><span id="SumLayer-28"><a href="#SumLayer-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SumLayer-29"><a href="#SumLayer-29"><span class="linenos">29</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-</span><span id="SumLayer-30"><a href="#SumLayer-30"><span class="linenos">30</span></a>
-</span><span id="SumLayer-31"><a href="#SumLayer-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="SumLayer-32"><a href="#SumLayer-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="SumLayer-29"><a href="#SumLayer-29"><span class="linenos">29</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SumLayer-30"><a href="#SumLayer-30"><span class="linenos">30</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="SumLayer-31"><a href="#SumLayer-31"><span class="linenos">31</span></a>
+</span><span id="SumLayer-32"><a href="#SumLayer-32"><span class="linenos">32</span></a><span class="sd">        Parameters</span>
+</span><span id="SumLayer-33"><a href="#SumLayer-33"><span class="linenos">33</span></a><span class="sd">        ----------</span>
+</span><span id="SumLayer-34"><a href="#SumLayer-34"><span class="linenos">34</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="SumLayer-35"><a href="#SumLayer-35"><span class="linenos">35</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="SumLayer-36"><a href="#SumLayer-36"><span class="linenos">36</span></a><span class="sd">        </span>
+</span><span id="SumLayer-37"><a href="#SumLayer-37"><span class="linenos">37</span></a><span class="sd">        Returns</span>
+</span><span id="SumLayer-38"><a href="#SumLayer-38"><span class="linenos">38</span></a><span class="sd">        -------</span>
+</span><span id="SumLayer-39"><a href="#SumLayer-39"><span class="linenos">39</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="SumLayer-40"><a href="#SumLayer-40"><span class="linenos">40</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="SumLayer-41"><a href="#SumLayer-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SumLayer-42"><a href="#SumLayer-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</span><span id="SumLayer-43"><a href="#SumLayer-43"><span class="linenos">43</span></a>
+</span><span id="SumLayer-44"><a href="#SumLayer-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="SumLayer-45"><a href="#SumLayer-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </span></pre></div>
 
 
@@ -190,50 +216,38 @@
     </div>
     <a class="headerlink" href="#SumLayer.call"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="SumLayer.call-28"><a href="#SumLayer.call-28"><span class="linenos">28</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SumLayer.call-29"><a href="#SumLayer.call-29"><span class="linenos">29</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</span><span id="SumLayer.call-29"><a href="#SumLayer.call-29"><span class="linenos">29</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SumLayer.call-30"><a href="#SumLayer.call-30"><span class="linenos">30</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="SumLayer.call-31"><a href="#SumLayer.call-31"><span class="linenos">31</span></a>
+</span><span id="SumLayer.call-32"><a href="#SumLayer.call-32"><span class="linenos">32</span></a><span class="sd">        Parameters</span>
+</span><span id="SumLayer.call-33"><a href="#SumLayer.call-33"><span class="linenos">33</span></a><span class="sd">        ----------</span>
+</span><span id="SumLayer.call-34"><a href="#SumLayer.call-34"><span class="linenos">34</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="SumLayer.call-35"><a href="#SumLayer.call-35"><span class="linenos">35</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="SumLayer.call-36"><a href="#SumLayer.call-36"><span class="linenos">36</span></a><span class="sd">        </span>
+</span><span id="SumLayer.call-37"><a href="#SumLayer.call-37"><span class="linenos">37</span></a><span class="sd">        Returns</span>
+</span><span id="SumLayer.call-38"><a href="#SumLayer.call-38"><span class="linenos">38</span></a><span class="sd">        -------</span>
+</span><span id="SumLayer.call-39"><a href="#SumLayer.call-39"><span class="linenos">39</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="SumLayer.call-40"><a href="#SumLayer.call-40"><span class="linenos">40</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="SumLayer.call-41"><a href="#SumLayer.call-41"><span class="linenos">41</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SumLayer.call-42"><a href="#SumLayer.call-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>This is where the layer's logic lives.</p>
+            <div class="docstring"><p>This is where the layer's logic lives and is called upon inputs</p>
 
-<p>Note here that <code><a href="#SumLayer.call">call()</a></code> method in <code>tf.keras</code> is little bit different
-from <code>keras</code> API. In <code>keras</code> API, you can pass support masking for
-layers as additional arguments. Whereas <code>tf.keras</code> has <code><a href="#SumLayer.compute_mask">compute_mask()</a></code>
-method to support masking.</p>
+<h6 id="parameters">Parameters</h6>
 
-<p>Args:
-  inputs: Input tensor, or dict/list/tuple of input tensors.
-    The first positional <code>inputs</code> argument is subject to special rules:
-    - <code>inputs</code> must be explicitly passed. A layer cannot have zero
-      arguments, and <code>inputs</code> cannot be provided via the default value
-      of a keyword argument.
-    - NumPy array or Python scalar values in <code>inputs</code> get cast as tensors.
-    - Keras mask metadata is only collected from <code>inputs</code>.
-    - Layers are built (<code>build(input_shape)</code> method)
-      using shape info from <code>inputs</code> only.
-    - <code><a href="#SumLayer.input_spec">input_spec</a></code> compatibility is only checked against <code>inputs</code>.
-    - Mixed precision input casting is only applied to <code>inputs</code>.
-      If a layer has tensor arguments in <code>*args</code> or <code>**kwargs</code>, their
-      casting behavior in mixed precision should be handled manually.
-    - The SavedModel input specification is generated using <code>inputs</code> only.
-    - Integration with various ecosystem packages like TFMOT, TFLite,
-      TF.js, etc is only supported for <code>inputs</code> and not for tensors in
-      positional and keyword arguments.
-  <em>args: Additional positional arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-  *</em>kwargs: Additional keyword arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-    The following optional keyword arguments are reserved:
-    - <code>training</code>: Boolean scalar tensor of Python boolean indicating
-      whether the <code><a href="#SumLayer.call">call</a></code> is meant for training or inference.
-    - <code>mask</code>: Boolean input mask. If the layer's <code><a href="#SumLayer.call">call()</a></code> method takes a
-      <code>mask</code> argument, its default value will be set to the mask generated
-      for <code>inputs</code> by the previous layer (if <code><a href="#SumLayer.input">input</a></code> did come from a layer
-      that generated a corresponding mask, i.e. if it came from a Keras
-      layer with masking support).</p>
+<ul>
+<li><strong>inputs</strong> (TensorFlow Tensor or Tensor-like):
+The inputs to the layer</li>
+</ul>
 
-<p>Returns:
-  A tensor or list/tuple of tensors.</p>
+<h6 id="returns">Returns</h6>
+
+<ul>
+<li><strong>outputs</strong> (TensorFlow Tensor):
+The outputs of the layer's logic</li>
+</ul>
 </div>
 
 
@@ -249,8 +263,8 @@ method to support masking.</p>
 
     </div>
     <a class="headerlink" href="#SumLayer.get_config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SumLayer.get_config-31"><a href="#SumLayer.get_config-31"><span class="linenos">31</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="SumLayer.get_config-32"><a href="#SumLayer.get_config-32"><span class="linenos">32</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SumLayer.get_config-44"><a href="#SumLayer.get_config-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="SumLayer.get_config-45"><a href="#SumLayer.get_config-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </span></pre></div>
 
 

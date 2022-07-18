@@ -118,16 +118,29 @@
 </span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_sel_index</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
 </span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>            <span class="p">{</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>            <span class="p">}</span>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="p">)</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        Parameters</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        ----------</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        </span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        Returns</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        -------</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>            <span class="p">{</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="p">}</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 
@@ -189,16 +202,29 @@
 </span><span id="SelectorLayer-48"><a href="#SelectorLayer-48"><span class="linenos">48</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_sel_index</span> <span class="o">=</span> <span class="n">value</span>
 </span><span id="SelectorLayer-49"><a href="#SelectorLayer-49"><span class="linenos">49</span></a>
 </span><span id="SelectorLayer-50"><a href="#SelectorLayer-50"><span class="linenos">50</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SelectorLayer-51"><a href="#SelectorLayer-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
-</span><span id="SelectorLayer-52"><a href="#SelectorLayer-52"><span class="linenos">52</span></a>
-</span><span id="SelectorLayer-53"><a href="#SelectorLayer-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="SelectorLayer-54"><a href="#SelectorLayer-54"><span class="linenos">54</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="SelectorLayer-55"><a href="#SelectorLayer-55"><span class="linenos">55</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="SelectorLayer-56"><a href="#SelectorLayer-56"><span class="linenos">56</span></a>            <span class="p">{</span>
-</span><span id="SelectorLayer-57"><a href="#SelectorLayer-57"><span class="linenos">57</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
-</span><span id="SelectorLayer-58"><a href="#SelectorLayer-58"><span class="linenos">58</span></a>            <span class="p">}</span>
-</span><span id="SelectorLayer-59"><a href="#SelectorLayer-59"><span class="linenos">59</span></a>        <span class="p">)</span>
-</span><span id="SelectorLayer-60"><a href="#SelectorLayer-60"><span class="linenos">60</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="SelectorLayer-51"><a href="#SelectorLayer-51"><span class="linenos">51</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SelectorLayer-52"><a href="#SelectorLayer-52"><span class="linenos">52</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="SelectorLayer-53"><a href="#SelectorLayer-53"><span class="linenos">53</span></a>
+</span><span id="SelectorLayer-54"><a href="#SelectorLayer-54"><span class="linenos">54</span></a><span class="sd">        Parameters</span>
+</span><span id="SelectorLayer-55"><a href="#SelectorLayer-55"><span class="linenos">55</span></a><span class="sd">        ----------</span>
+</span><span id="SelectorLayer-56"><a href="#SelectorLayer-56"><span class="linenos">56</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="SelectorLayer-57"><a href="#SelectorLayer-57"><span class="linenos">57</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="SelectorLayer-58"><a href="#SelectorLayer-58"><span class="linenos">58</span></a><span class="sd">        </span>
+</span><span id="SelectorLayer-59"><a href="#SelectorLayer-59"><span class="linenos">59</span></a><span class="sd">        Returns</span>
+</span><span id="SelectorLayer-60"><a href="#SelectorLayer-60"><span class="linenos">60</span></a><span class="sd">        -------</span>
+</span><span id="SelectorLayer-61"><a href="#SelectorLayer-61"><span class="linenos">61</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="SelectorLayer-62"><a href="#SelectorLayer-62"><span class="linenos">62</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="SelectorLayer-63"><a href="#SelectorLayer-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SelectorLayer-64"><a href="#SelectorLayer-64"><span class="linenos">64</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
+</span><span id="SelectorLayer-65"><a href="#SelectorLayer-65"><span class="linenos">65</span></a>
+</span><span id="SelectorLayer-66"><a href="#SelectorLayer-66"><span class="linenos">66</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="SelectorLayer-67"><a href="#SelectorLayer-67"><span class="linenos">67</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="SelectorLayer-68"><a href="#SelectorLayer-68"><span class="linenos">68</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="SelectorLayer-69"><a href="#SelectorLayer-69"><span class="linenos">69</span></a>            <span class="p">{</span>
+</span><span id="SelectorLayer-70"><a href="#SelectorLayer-70"><span class="linenos">70</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
+</span><span id="SelectorLayer-71"><a href="#SelectorLayer-71"><span class="linenos">71</span></a>            <span class="p">}</span>
+</span><span id="SelectorLayer-72"><a href="#SelectorLayer-72"><span class="linenos">72</span></a>        <span class="p">)</span>
+</span><span id="SelectorLayer-73"><a href="#SelectorLayer-73"><span class="linenos">73</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 
@@ -280,50 +306,38 @@ The index of the inputs to be selected</li>
     </div>
     <a class="headerlink" href="#SelectorLayer.call"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="SelectorLayer.call-50"><a href="#SelectorLayer.call-50"><span class="linenos">50</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="SelectorLayer.call-51"><a href="#SelectorLayer.call-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
+</span><span id="SelectorLayer.call-51"><a href="#SelectorLayer.call-51"><span class="linenos">51</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SelectorLayer.call-52"><a href="#SelectorLayer.call-52"><span class="linenos">52</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="SelectorLayer.call-53"><a href="#SelectorLayer.call-53"><span class="linenos">53</span></a>
+</span><span id="SelectorLayer.call-54"><a href="#SelectorLayer.call-54"><span class="linenos">54</span></a><span class="sd">        Parameters</span>
+</span><span id="SelectorLayer.call-55"><a href="#SelectorLayer.call-55"><span class="linenos">55</span></a><span class="sd">        ----------</span>
+</span><span id="SelectorLayer.call-56"><a href="#SelectorLayer.call-56"><span class="linenos">56</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="SelectorLayer.call-57"><a href="#SelectorLayer.call-57"><span class="linenos">57</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="SelectorLayer.call-58"><a href="#SelectorLayer.call-58"><span class="linenos">58</span></a><span class="sd">        </span>
+</span><span id="SelectorLayer.call-59"><a href="#SelectorLayer.call-59"><span class="linenos">59</span></a><span class="sd">        Returns</span>
+</span><span id="SelectorLayer.call-60"><a href="#SelectorLayer.call-60"><span class="linenos">60</span></a><span class="sd">        -------</span>
+</span><span id="SelectorLayer.call-61"><a href="#SelectorLayer.call-61"><span class="linenos">61</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="SelectorLayer.call-62"><a href="#SelectorLayer.call-62"><span class="linenos">62</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="SelectorLayer.call-63"><a href="#SelectorLayer.call-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SelectorLayer.call-64"><a href="#SelectorLayer.call-64"><span class="linenos">64</span></a>        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span><span class="p">]</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>This is where the layer's logic lives.</p>
+            <div class="docstring"><p>This is where the layer's logic lives and is called upon inputs</p>
 
-<p>Note here that <code><a href="#SelectorLayer.call">call()</a></code> method in <code>tf.keras</code> is little bit different
-from <code>keras</code> API. In <code>keras</code> API, you can pass support masking for
-layers as additional arguments. Whereas <code>tf.keras</code> has <code><a href="#SelectorLayer.compute_mask">compute_mask()</a></code>
-method to support masking.</p>
+<h6 id="parameters">Parameters</h6>
 
-<p>Args:
-  inputs: Input tensor, or dict/list/tuple of input tensors.
-    The first positional <code>inputs</code> argument is subject to special rules:
-    - <code>inputs</code> must be explicitly passed. A layer cannot have zero
-      arguments, and <code>inputs</code> cannot be provided via the default value
-      of a keyword argument.
-    - NumPy array or Python scalar values in <code>inputs</code> get cast as tensors.
-    - Keras mask metadata is only collected from <code>inputs</code>.
-    - Layers are built (<code>build(input_shape)</code> method)
-      using shape info from <code>inputs</code> only.
-    - <code><a href="#SelectorLayer.input_spec">input_spec</a></code> compatibility is only checked against <code>inputs</code>.
-    - Mixed precision input casting is only applied to <code>inputs</code>.
-      If a layer has tensor arguments in <code>*args</code> or <code>**kwargs</code>, their
-      casting behavior in mixed precision should be handled manually.
-    - The SavedModel input specification is generated using <code>inputs</code> only.
-    - Integration with various ecosystem packages like TFMOT, TFLite,
-      TF.js, etc is only supported for <code>inputs</code> and not for tensors in
-      positional and keyword arguments.
-  <em>args: Additional positional arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-  *</em>kwargs: Additional keyword arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-    The following optional keyword arguments are reserved:
-    - <code>training</code>: Boolean scalar tensor of Python boolean indicating
-      whether the <code><a href="#SelectorLayer.call">call</a></code> is meant for training or inference.
-    - <code>mask</code>: Boolean input mask. If the layer's <code><a href="#SelectorLayer.call">call()</a></code> method takes a
-      <code>mask</code> argument, its default value will be set to the mask generated
-      for <code>inputs</code> by the previous layer (if <code><a href="#SelectorLayer.input">input</a></code> did come from a layer
-      that generated a corresponding mask, i.e. if it came from a Keras
-      layer with masking support).</p>
+<ul>
+<li><strong>inputs</strong> (TensorFlow Tensor or Tensor-like):
+The inputs to the layer</li>
+</ul>
 
-<p>Returns:
-  A tensor or list/tuple of tensors.</p>
+<h6 id="returns">Returns</h6>
+
+<ul>
+<li><strong>outputs</strong> (TensorFlow Tensor):
+The outputs of the layer's logic</li>
+</ul>
 </div>
 
 
@@ -339,14 +353,14 @@ method to support masking.</p>
 
     </div>
     <a class="headerlink" href="#SelectorLayer.get_config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SelectorLayer.get_config-53"><a href="#SelectorLayer.get_config-53"><span class="linenos">53</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="SelectorLayer.get_config-54"><a href="#SelectorLayer.get_config-54"><span class="linenos">54</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="SelectorLayer.get_config-55"><a href="#SelectorLayer.get_config-55"><span class="linenos">55</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="SelectorLayer.get_config-56"><a href="#SelectorLayer.get_config-56"><span class="linenos">56</span></a>            <span class="p">{</span>
-</span><span id="SelectorLayer.get_config-57"><a href="#SelectorLayer.get_config-57"><span class="linenos">57</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
-</span><span id="SelectorLayer.get_config-58"><a href="#SelectorLayer.get_config-58"><span class="linenos">58</span></a>            <span class="p">}</span>
-</span><span id="SelectorLayer.get_config-59"><a href="#SelectorLayer.get_config-59"><span class="linenos">59</span></a>        <span class="p">)</span>
-</span><span id="SelectorLayer.get_config-60"><a href="#SelectorLayer.get_config-60"><span class="linenos">60</span></a>        <span class="k">return</span> <span class="n">config</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SelectorLayer.get_config-66"><a href="#SelectorLayer.get_config-66"><span class="linenos">66</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="SelectorLayer.get_config-67"><a href="#SelectorLayer.get_config-67"><span class="linenos">67</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="SelectorLayer.get_config-68"><a href="#SelectorLayer.get_config-68"><span class="linenos">68</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="SelectorLayer.get_config-69"><a href="#SelectorLayer.get_config-69"><span class="linenos">69</span></a>            <span class="p">{</span>
+</span><span id="SelectorLayer.get_config-70"><a href="#SelectorLayer.get_config-70"><span class="linenos">70</span></a>                <span class="s1">&#39;sel_index&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">sel_index</span>
+</span><span id="SelectorLayer.get_config-71"><a href="#SelectorLayer.get_config-71"><span class="linenos">71</span></a>            <span class="p">}</span>
+</span><span id="SelectorLayer.get_config-72"><a href="#SelectorLayer.get_config-72"><span class="linenos">72</span></a>        <span class="p">)</span>
+</span><span id="SelectorLayer.get_config-73"><a href="#SelectorLayer.get_config-73"><span class="linenos">73</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 

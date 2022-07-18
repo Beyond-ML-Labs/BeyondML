@@ -102,26 +102,39 @@
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="k">return</span> <span class="p">[</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>                <span class="s1">&#39;NHWC&#39;</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="p">]</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>            <span class="p">{</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>            <span class="p">}</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>        <span class="p">)</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">        Parameters</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        ----------</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        </span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">        Returns</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        -------</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="p">[</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>                <span class="s1">&#39;NHWC&#39;</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>        <span class="p">]</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>            <span class="p">{</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="p">}</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="p">)</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 
@@ -169,26 +182,39 @@
 </span><span id="MultiMaxPool2D-35"><a href="#MultiMaxPool2D-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
 </span><span id="MultiMaxPool2D-36"><a href="#MultiMaxPool2D-36"><span class="linenos">36</span></a>
 </span><span id="MultiMaxPool2D-37"><a href="#MultiMaxPool2D-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="MultiMaxPool2D-38"><a href="#MultiMaxPool2D-38"><span class="linenos">38</span></a>        <span class="k">return</span> <span class="p">[</span>
-</span><span id="MultiMaxPool2D-39"><a href="#MultiMaxPool2D-39"><span class="linenos">39</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
-</span><span id="MultiMaxPool2D-40"><a href="#MultiMaxPool2D-40"><span class="linenos">40</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="MultiMaxPool2D-41"><a href="#MultiMaxPool2D-41"><span class="linenos">41</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D-42"><a href="#MultiMaxPool2D-42"><span class="linenos">42</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D-43"><a href="#MultiMaxPool2D-43"><span class="linenos">43</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
-</span><span id="MultiMaxPool2D-44"><a href="#MultiMaxPool2D-44"><span class="linenos">44</span></a>                <span class="s1">&#39;NHWC&#39;</span>
-</span><span id="MultiMaxPool2D-45"><a href="#MultiMaxPool2D-45"><span class="linenos">45</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
-</span><span id="MultiMaxPool2D-46"><a href="#MultiMaxPool2D-46"><span class="linenos">46</span></a>        <span class="p">]</span>
-</span><span id="MultiMaxPool2D-47"><a href="#MultiMaxPool2D-47"><span class="linenos">47</span></a>
-</span><span id="MultiMaxPool2D-48"><a href="#MultiMaxPool2D-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="MultiMaxPool2D-49"><a href="#MultiMaxPool2D-49"><span class="linenos">49</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="MultiMaxPool2D-50"><a href="#MultiMaxPool2D-50"><span class="linenos">50</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="MultiMaxPool2D-51"><a href="#MultiMaxPool2D-51"><span class="linenos">51</span></a>            <span class="p">{</span>
-</span><span id="MultiMaxPool2D-52"><a href="#MultiMaxPool2D-52"><span class="linenos">52</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D-53"><a href="#MultiMaxPool2D-53"><span class="linenos">53</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D-54"><a href="#MultiMaxPool2D-54"><span class="linenos">54</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="MultiMaxPool2D-55"><a href="#MultiMaxPool2D-55"><span class="linenos">55</span></a>            <span class="p">}</span>
-</span><span id="MultiMaxPool2D-56"><a href="#MultiMaxPool2D-56"><span class="linenos">56</span></a>        <span class="p">)</span>
-</span><span id="MultiMaxPool2D-57"><a href="#MultiMaxPool2D-57"><span class="linenos">57</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="MultiMaxPool2D-38"><a href="#MultiMaxPool2D-38"><span class="linenos">38</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="MultiMaxPool2D-39"><a href="#MultiMaxPool2D-39"><span class="linenos">39</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="MultiMaxPool2D-40"><a href="#MultiMaxPool2D-40"><span class="linenos">40</span></a>
+</span><span id="MultiMaxPool2D-41"><a href="#MultiMaxPool2D-41"><span class="linenos">41</span></a><span class="sd">        Parameters</span>
+</span><span id="MultiMaxPool2D-42"><a href="#MultiMaxPool2D-42"><span class="linenos">42</span></a><span class="sd">        ----------</span>
+</span><span id="MultiMaxPool2D-43"><a href="#MultiMaxPool2D-43"><span class="linenos">43</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="MultiMaxPool2D-44"><a href="#MultiMaxPool2D-44"><span class="linenos">44</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="MultiMaxPool2D-45"><a href="#MultiMaxPool2D-45"><span class="linenos">45</span></a><span class="sd">        </span>
+</span><span id="MultiMaxPool2D-46"><a href="#MultiMaxPool2D-46"><span class="linenos">46</span></a><span class="sd">        Returns</span>
+</span><span id="MultiMaxPool2D-47"><a href="#MultiMaxPool2D-47"><span class="linenos">47</span></a><span class="sd">        -------</span>
+</span><span id="MultiMaxPool2D-48"><a href="#MultiMaxPool2D-48"><span class="linenos">48</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="MultiMaxPool2D-49"><a href="#MultiMaxPool2D-49"><span class="linenos">49</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="MultiMaxPool2D-50"><a href="#MultiMaxPool2D-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MultiMaxPool2D-51"><a href="#MultiMaxPool2D-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="p">[</span>
+</span><span id="MultiMaxPool2D-52"><a href="#MultiMaxPool2D-52"><span class="linenos">52</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
+</span><span id="MultiMaxPool2D-53"><a href="#MultiMaxPool2D-53"><span class="linenos">53</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="MultiMaxPool2D-54"><a href="#MultiMaxPool2D-54"><span class="linenos">54</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D-55"><a href="#MultiMaxPool2D-55"><span class="linenos">55</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D-56"><a href="#MultiMaxPool2D-56"><span class="linenos">56</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+</span><span id="MultiMaxPool2D-57"><a href="#MultiMaxPool2D-57"><span class="linenos">57</span></a>                <span class="s1">&#39;NHWC&#39;</span>
+</span><span id="MultiMaxPool2D-58"><a href="#MultiMaxPool2D-58"><span class="linenos">58</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+</span><span id="MultiMaxPool2D-59"><a href="#MultiMaxPool2D-59"><span class="linenos">59</span></a>        <span class="p">]</span>
+</span><span id="MultiMaxPool2D-60"><a href="#MultiMaxPool2D-60"><span class="linenos">60</span></a>
+</span><span id="MultiMaxPool2D-61"><a href="#MultiMaxPool2D-61"><span class="linenos">61</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="MultiMaxPool2D-62"><a href="#MultiMaxPool2D-62"><span class="linenos">62</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="MultiMaxPool2D-63"><a href="#MultiMaxPool2D-63"><span class="linenos">63</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="MultiMaxPool2D-64"><a href="#MultiMaxPool2D-64"><span class="linenos">64</span></a>            <span class="p">{</span>
+</span><span id="MultiMaxPool2D-65"><a href="#MultiMaxPool2D-65"><span class="linenos">65</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D-66"><a href="#MultiMaxPool2D-66"><span class="linenos">66</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D-67"><a href="#MultiMaxPool2D-67"><span class="linenos">67</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="MultiMaxPool2D-68"><a href="#MultiMaxPool2D-68"><span class="linenos">68</span></a>            <span class="p">}</span>
+</span><span id="MultiMaxPool2D-69"><a href="#MultiMaxPool2D-69"><span class="linenos">69</span></a>        <span class="p">)</span>
+</span><span id="MultiMaxPool2D-70"><a href="#MultiMaxPool2D-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 
@@ -260,58 +286,46 @@ padding to apply to the inputs</li>
     </div>
     <a class="headerlink" href="#MultiMaxPool2D.call"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiMaxPool2D.call-37"><a href="#MultiMaxPool2D.call-37"><span class="linenos">37</span></a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-</span><span id="MultiMaxPool2D.call-38"><a href="#MultiMaxPool2D.call-38"><span class="linenos">38</span></a>        <span class="k">return</span> <span class="p">[</span>
-</span><span id="MultiMaxPool2D.call-39"><a href="#MultiMaxPool2D.call-39"><span class="linenos">39</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
-</span><span id="MultiMaxPool2D.call-40"><a href="#MultiMaxPool2D.call-40"><span class="linenos">40</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="MultiMaxPool2D.call-41"><a href="#MultiMaxPool2D.call-41"><span class="linenos">41</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D.call-42"><a href="#MultiMaxPool2D.call-42"><span class="linenos">42</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D.call-43"><a href="#MultiMaxPool2D.call-43"><span class="linenos">43</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
-</span><span id="MultiMaxPool2D.call-44"><a href="#MultiMaxPool2D.call-44"><span class="linenos">44</span></a>                <span class="s1">&#39;NHWC&#39;</span>
-</span><span id="MultiMaxPool2D.call-45"><a href="#MultiMaxPool2D.call-45"><span class="linenos">45</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
-</span><span id="MultiMaxPool2D.call-46"><a href="#MultiMaxPool2D.call-46"><span class="linenos">46</span></a>        <span class="p">]</span>
+</span><span id="MultiMaxPool2D.call-38"><a href="#MultiMaxPool2D.call-38"><span class="linenos">38</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="MultiMaxPool2D.call-39"><a href="#MultiMaxPool2D.call-39"><span class="linenos">39</span></a><span class="sd">        This is where the layer&#39;s logic lives and is called upon inputs</span>
+</span><span id="MultiMaxPool2D.call-40"><a href="#MultiMaxPool2D.call-40"><span class="linenos">40</span></a>
+</span><span id="MultiMaxPool2D.call-41"><a href="#MultiMaxPool2D.call-41"><span class="linenos">41</span></a><span class="sd">        Parameters</span>
+</span><span id="MultiMaxPool2D.call-42"><a href="#MultiMaxPool2D.call-42"><span class="linenos">42</span></a><span class="sd">        ----------</span>
+</span><span id="MultiMaxPool2D.call-43"><a href="#MultiMaxPool2D.call-43"><span class="linenos">43</span></a><span class="sd">        inputs : TensorFlow Tensor or Tensor-like</span>
+</span><span id="MultiMaxPool2D.call-44"><a href="#MultiMaxPool2D.call-44"><span class="linenos">44</span></a><span class="sd">            The inputs to the layer</span>
+</span><span id="MultiMaxPool2D.call-45"><a href="#MultiMaxPool2D.call-45"><span class="linenos">45</span></a><span class="sd">        </span>
+</span><span id="MultiMaxPool2D.call-46"><a href="#MultiMaxPool2D.call-46"><span class="linenos">46</span></a><span class="sd">        Returns</span>
+</span><span id="MultiMaxPool2D.call-47"><a href="#MultiMaxPool2D.call-47"><span class="linenos">47</span></a><span class="sd">        -------</span>
+</span><span id="MultiMaxPool2D.call-48"><a href="#MultiMaxPool2D.call-48"><span class="linenos">48</span></a><span class="sd">        outputs : TensorFlow Tensor</span>
+</span><span id="MultiMaxPool2D.call-49"><a href="#MultiMaxPool2D.call-49"><span class="linenos">49</span></a><span class="sd">            The outputs of the layer&#39;s logic</span>
+</span><span id="MultiMaxPool2D.call-50"><a href="#MultiMaxPool2D.call-50"><span class="linenos">50</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MultiMaxPool2D.call-51"><a href="#MultiMaxPool2D.call-51"><span class="linenos">51</span></a>        <span class="k">return</span> <span class="p">[</span>
+</span><span id="MultiMaxPool2D.call-52"><a href="#MultiMaxPool2D.call-52"><span class="linenos">52</span></a>            <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">max_pool2d</span><span class="p">(</span>
+</span><span id="MultiMaxPool2D.call-53"><a href="#MultiMaxPool2D.call-53"><span class="linenos">53</span></a>                <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="MultiMaxPool2D.call-54"><a href="#MultiMaxPool2D.call-54"><span class="linenos">54</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D.call-55"><a href="#MultiMaxPool2D.call-55"><span class="linenos">55</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D.call-56"><a href="#MultiMaxPool2D.call-56"><span class="linenos">56</span></a>                <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+</span><span id="MultiMaxPool2D.call-57"><a href="#MultiMaxPool2D.call-57"><span class="linenos">57</span></a>                <span class="s1">&#39;NHWC&#39;</span>
+</span><span id="MultiMaxPool2D.call-58"><a href="#MultiMaxPool2D.call-58"><span class="linenos">58</span></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))</span>
+</span><span id="MultiMaxPool2D.call-59"><a href="#MultiMaxPool2D.call-59"><span class="linenos">59</span></a>        <span class="p">]</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>This is where the layer's logic lives.</p>
+            <div class="docstring"><p>This is where the layer's logic lives and is called upon inputs</p>
 
-<p>Note here that <code><a href="#MultiMaxPool2D.call">call()</a></code> method in <code>tf.keras</code> is little bit different
-from <code>keras</code> API. In <code>keras</code> API, you can pass support masking for
-layers as additional arguments. Whereas <code>tf.keras</code> has <code><a href="#MultiMaxPool2D.compute_mask">compute_mask()</a></code>
-method to support masking.</p>
+<h6 id="parameters">Parameters</h6>
 
-<p>Args:
-  inputs: Input tensor, or dict/list/tuple of input tensors.
-    The first positional <code>inputs</code> argument is subject to special rules:
-    - <code>inputs</code> must be explicitly passed. A layer cannot have zero
-      arguments, and <code>inputs</code> cannot be provided via the default value
-      of a keyword argument.
-    - NumPy array or Python scalar values in <code>inputs</code> get cast as tensors.
-    - Keras mask metadata is only collected from <code>inputs</code>.
-    - Layers are built (<code>build(input_shape)</code> method)
-      using shape info from <code>inputs</code> only.
-    - <code><a href="#MultiMaxPool2D.input_spec">input_spec</a></code> compatibility is only checked against <code>inputs</code>.
-    - Mixed precision input casting is only applied to <code>inputs</code>.
-      If a layer has tensor arguments in <code>*args</code> or <code>**kwargs</code>, their
-      casting behavior in mixed precision should be handled manually.
-    - The SavedModel input specification is generated using <code>inputs</code> only.
-    - Integration with various ecosystem packages like TFMOT, TFLite,
-      TF.js, etc is only supported for <code>inputs</code> and not for tensors in
-      positional and keyword arguments.
-  <em>args: Additional positional arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-  *</em>kwargs: Additional keyword arguments. May contain tensors, although
-    this is not recommended, for the reasons above.
-    The following optional keyword arguments are reserved:
-    - <code>training</code>: Boolean scalar tensor of Python boolean indicating
-      whether the <code><a href="#MultiMaxPool2D.call">call</a></code> is meant for training or inference.
-    - <code>mask</code>: Boolean input mask. If the layer's <code><a href="#MultiMaxPool2D.call">call()</a></code> method takes a
-      <code>mask</code> argument, its default value will be set to the mask generated
-      for <code>inputs</code> by the previous layer (if <code><a href="#MultiMaxPool2D.input">input</a></code> did come from a layer
-      that generated a corresponding mask, i.e. if it came from a Keras
-      layer with masking support).</p>
+<ul>
+<li><strong>inputs</strong> (TensorFlow Tensor or Tensor-like):
+The inputs to the layer</li>
+</ul>
 
-<p>Returns:
-  A tensor or list/tuple of tensors.</p>
+<h6 id="returns">Returns</h6>
+
+<ul>
+<li><strong>outputs</strong> (TensorFlow Tensor):
+The outputs of the layer's logic</li>
+</ul>
 </div>
 
 
@@ -327,16 +341,16 @@ method to support masking.</p>
 
     </div>
     <a class="headerlink" href="#MultiMaxPool2D.get_config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiMaxPool2D.get_config-48"><a href="#MultiMaxPool2D.get_config-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span id="MultiMaxPool2D.get_config-49"><a href="#MultiMaxPool2D.get_config-49"><span class="linenos">49</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-</span><span id="MultiMaxPool2D.get_config-50"><a href="#MultiMaxPool2D.get_config-50"><span class="linenos">50</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
-</span><span id="MultiMaxPool2D.get_config-51"><a href="#MultiMaxPool2D.get_config-51"><span class="linenos">51</span></a>            <span class="p">{</span>
-</span><span id="MultiMaxPool2D.get_config-52"><a href="#MultiMaxPool2D.get_config-52"><span class="linenos">52</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D.get_config-53"><a href="#MultiMaxPool2D.get_config-53"><span class="linenos">53</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="MultiMaxPool2D.get_config-54"><a href="#MultiMaxPool2D.get_config-54"><span class="linenos">54</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="MultiMaxPool2D.get_config-55"><a href="#MultiMaxPool2D.get_config-55"><span class="linenos">55</span></a>            <span class="p">}</span>
-</span><span id="MultiMaxPool2D.get_config-56"><a href="#MultiMaxPool2D.get_config-56"><span class="linenos">56</span></a>        <span class="p">)</span>
-</span><span id="MultiMaxPool2D.get_config-57"><a href="#MultiMaxPool2D.get_config-57"><span class="linenos">57</span></a>        <span class="k">return</span> <span class="n">config</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiMaxPool2D.get_config-61"><a href="#MultiMaxPool2D.get_config-61"><span class="linenos">61</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span id="MultiMaxPool2D.get_config-62"><a href="#MultiMaxPool2D.get_config-62"><span class="linenos">62</span></a>        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="MultiMaxPool2D.get_config-63"><a href="#MultiMaxPool2D.get_config-63"><span class="linenos">63</span></a>        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+</span><span id="MultiMaxPool2D.get_config-64"><a href="#MultiMaxPool2D.get_config-64"><span class="linenos">64</span></a>            <span class="p">{</span>
+</span><span id="MultiMaxPool2D.get_config-65"><a href="#MultiMaxPool2D.get_config-65"><span class="linenos">65</span></a>                <span class="s1">&#39;pool_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool_size</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D.get_config-66"><a href="#MultiMaxPool2D.get_config-66"><span class="linenos">66</span></a>                <span class="s1">&#39;strides&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="MultiMaxPool2D.get_config-67"><a href="#MultiMaxPool2D.get_config-67"><span class="linenos">67</span></a>                <span class="s1">&#39;padding&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="MultiMaxPool2D.get_config-68"><a href="#MultiMaxPool2D.get_config-68"><span class="linenos">68</span></a>            <span class="p">}</span>
+</span><span id="MultiMaxPool2D.get_config-69"><a href="#MultiMaxPool2D.get_config-69"><span class="linenos">69</span></a>        <span class="p">)</span>
+</span><span id="MultiMaxPool2D.get_config-70"><a href="#MultiMaxPool2D.get_config-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">config</span>
 </span></pre></div>
 
 

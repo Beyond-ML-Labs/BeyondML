@@ -47,6 +47,19 @@ class SelectorLayer(Layer):
         self._sel_index = value
 
     def call(self, inputs):
+        """
+        This is where the layer's logic lives and is called upon inputs
+
+        Parameters
+        ----------
+        inputs : TensorFlow Tensor or Tensor-like
+            The inputs to the layer
+        
+        Returns
+        -------
+        outputs : TensorFlow Tensor
+            The outputs of the layer's logic
+        """
         return inputs[self.sel_index]
 
     def get_config(self):

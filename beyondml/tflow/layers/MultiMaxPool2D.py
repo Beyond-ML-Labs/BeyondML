@@ -34,6 +34,19 @@ class MultiMaxPool2D(Layer):
         self.padding = padding
 
     def call(self, inputs):
+        """
+        This is where the layer's logic lives and is called upon inputs
+
+        Parameters
+        ----------
+        inputs : TensorFlow Tensor or Tensor-like
+            The inputs to the layer
+        
+        Returns
+        -------
+        outputs : TensorFlow Tensor
+            The outputs of the layer's logic
+        """
         return [
             tf.nn.max_pool2d(
                 inputs[i],

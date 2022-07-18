@@ -47,6 +47,10 @@ class MultiMaskedDense(Layer):
         self.bias_initializer = tf.keras.initializers.get(bias_initializer)
 
     def build(self, input_shape):
+        """
+        Build the layer in preparation to be trained or called. Should not be called directly,
+        but rather is called when the layer is added to a model
+        """
         input_shape = [
             tuple(shape.as_list()) for shape in input_shape
         ]
@@ -84,6 +88,19 @@ class MultiMaskedDense(Layer):
             )
 
     def call(self, inputs):
+        """
+        This is where the layer's logic lives and is called upon inputs
+
+        Parameters
+        ----------
+        inputs : TensorFlow Tensor or Tensor-like
+            The inputs to the layer
+        
+        Returns
+        -------
+        outputs : TensorFlow Tensor
+            The outputs of the layer's logic
+        """
         output_tensor = [
             tf.matmul(inputs[i], self.w[i] * self.w_mask[i]) for i in range(len(inputs))
         ]

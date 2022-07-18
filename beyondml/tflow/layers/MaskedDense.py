@@ -49,6 +49,10 @@ class MaskedDense(Layer):
         self.bias_initializer = tf.keras.initializers.get(bias_initializer)
 
     def build(self, input_shape):
+        """
+        Build the layer in preparation to be trained or called. Should not be called directly,
+        but rather is called when the layer is added to a model
+        """
         self.w = self.add_weight(
             shape=(input_shape[-1], self.units),
             initializer=self.kernel_initializer,
@@ -77,6 +81,19 @@ class MaskedDense(Layer):
             )
 
     def call(self, inputs):
+        """
+        This is where the layer's logic lives and is called upon inputs
+
+        Parameters
+        ----------
+        inputs : TensorFlow Tensor or Tensor-like
+            The inputs to the layer
+        
+        Returns
+        -------
+        outputs : TensorFlow Tensor
+            The outputs of the layer's logic
+        """
         if self.use_bias:
             return self.activation(tf.matmul(inputs, self.w * self.w_mask) + (self.b * self.b_mask))
         else:

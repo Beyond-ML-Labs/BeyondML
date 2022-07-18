@@ -72,6 +72,10 @@ class MaskedConv2D(Layer):
             self._kernel_size = value
 
     def build(self, input_shape):
+        """
+        Build the layer in preparation to be trained or called. Should not be called directly,
+        but rather is called when the layer is added to a model
+        """
         self.w = self.add_weight(
             shape=(self.kernel_size[0], self.kernel_size[1],
                    input_shape[-1], self.filters),
@@ -101,6 +105,19 @@ class MaskedConv2D(Layer):
             )
 
     def call(self, inputs):
+        """
+        This is where the layer's logic lives and is called upon inputs
+
+        Parameters
+        ----------
+        inputs : TensorFlow Tensor or Tensor-like
+            The inputs to the layer
+        
+        Returns
+        -------
+        outputs : TensorFlow Tensor
+            The outputs of the layer's logic
+        """
         conv_output = tf.nn.convolution(
             inputs,
             self.w * self.w_mask,

@@ -47,13 +47,47 @@
                     <h1 class="modulename">
 <a href="./../beyondml.html">beyondml</a><wbr>.tflow    </h1>
 
-                
+                        <div class="docstring"><p>TensorFlow compatibility for building MANN models.</p>
+
+<p>The <code><a href="">beyondml.tflow</a></code> package contains two subpackages, <code>layers</code> and <code>utils</code>, which contain 
+the functionality to create and train MANN layers within TensorFlow. For individuals who are 
+familiar with the former name of this package, <code>mann</code>, backwards compatibility can be achieved 
+(assuming only TensorFlow support is needed), by replacing the following line of code:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mann</span>
+</code></pre></div>
+
+<p>with the following line:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn"><a href="">beyondml.tflow</a></span> <span class="k">as</span> <span class="nn">mann</span>
+</code></pre></div>
+
+<p>in all existing scripts.</p>
+</div>
+
                         <input id="tflow-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
                         <label class="view-source-button" for="tflow-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.layers</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.utils</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="sd">TensorFlow compatibility for building MANN models.</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">The `beyondml.tflow` package contains two subpackages, `layers` and `utils`, which contain </span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">the functionality to create and train MANN layers within TensorFlow. For individuals who are </span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">familiar with the former name of this package, `mann`, backwards compatibility can be achieved </span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">(assuming only TensorFlow support is needed), by replacing the following line of code:</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">&gt;&gt;&gt; import mann</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">with the following line:</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">&gt;&gt;&gt; import beyondml.tflow as mann</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">in all existing scripts.</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.layers</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.utils</span>
 </span></pre></div>
 
 

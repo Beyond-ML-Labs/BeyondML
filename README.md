@@ -1,3 +1,5 @@
+![](https://github.com/Beyond-ML-Labs/artwork/blob/main/horizontal/color/BeyondML_horizontal-color.png)
+
 # BeyondML (formerly MANN)
 
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6190/badge)](https://bestpractices.coreinfrastructure.org/projects/6190)

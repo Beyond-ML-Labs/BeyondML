@@ -1,5 +1,5 @@
-# Contributing to MANN
-Thank you very much for your interest in contributing to the MANN package! We want to make contributing to this project as easy and transparent as possible, whether you wish to:
+# Contributing to BeyondML
+Thank you very much for your interest in contributing to the BeyondML project! We want to make contributing to this project as easy and transparent as possible, whether you wish to:
 
 - Report a bug
 - Discuss the current state of the code

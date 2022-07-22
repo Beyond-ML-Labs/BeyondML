@@ -28,7 +28,7 @@ Alternatively, you can install the package by cloning the repository from [GitHu
 ```bash
 # clone the repository and cd into it
 git clone https://github.com/Beyond-ML-Labs/BeyondML
-cd mann
+cd BeyondML
 
 # install the package
 pip install .

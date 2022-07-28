@@ -20,7 +20,7 @@ Within the `layers` package, there is current functionality for the the followin
 - `beyondml.pt.layers.SparseMultiConv2D`
 - `beyondml.pt.layers.SparseMultiDense`
 
-Within the `utils` package, there is currently only one function, the `prune_model` function. Because of
+Within the `beyondml.pt.utils` package, there is currently only one function, the `prune_model` function. Because of
 the openness of developing with PyTorch in comparison to TensorFlow, there is far less functionality that
 can be supplied directly via BeyondML. Instead, for converting models from training to inference, the user
 is left to devise the best way to do so by building his or her own classes.

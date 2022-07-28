@@ -5,7 +5,7 @@ This package contains custom utilities and layers to use to build Multitask Arti
 in conjunction with TensorFlow and PyTorch.
 """
 
-__version__ = '0.1.0'
+__version__ = '0.1.1.dev0'
 __dev__ = True
 
 import beyondml.tflow

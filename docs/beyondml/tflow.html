@@ -82,7 +82,15 @@ familiar with the former name of this package, <code>mann</code>, backwards comp
 <li><code><a href="tflow/layers/MultiMaxPool2D.html">beyondml.tflow.layers.MultiMaxPool2D</a></code></li>
 <li><code><a href="tflow/layers/SelectorLayer.html">beyondml.tflow.layers.SelectorLayer</a></code></li>
 <li><code><a href="tflow/layers/SumLayer.html">beyondml.tflow.layers.SumLayer</a></code></li>
+<li><code><a href="tflow/layers/SparseDense.html">beyondml.tflow.layers.SparseDense</a></code></li>
+<li><code><a href="tflow/layers/SparseConv.html">beyondml.tflow.layers.SparseConv</a></code></li>
+<li><code><a href="tflow/layers/SparseMultiDense.html">beyondml.tflow.layers.SparseMultiDense</a></code></li>
+<li><code><a href="tflow/layers/SparseMultiConv.html">beyondml.tflow.layers.SparseMultiConv</a></code></li>
 </ul>
+
+<p><strong>Note that with any of the sparse layers (such as the <code>SparseDense</code> layer), any model which
+utilizes these layers will not be loadable using the traditional <code>load_model</code> functions available
+in TensorFlow. Instead, the model should be saved using either joblib or pickle</strong></p>
 
 <p>Within the <code>utils</code> package, there are the current functions and classes:</p>
 
@@ -132,23 +140,31 @@ familiar with the former name of this package, <code>mann</code>, backwards comp
 </span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">- `beyondml.tflow.layers.MultiMaxPool2D`</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">- `beyondml.tflow.layers.SelectorLayer`</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">- `beyondml.tflow.layers.SumLayer`</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">Within the `utils` package, there are the current functions and classes:</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">- `ActiveSparsification`</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">- `build_transformer_block`</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">- `build_token_position_embedding_block`</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">- `get_custom_objects`</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">- `mask_model`</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">- `remove_layer_masks`</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">- `add_layer_masks`</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">- `quantize_model`</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">- `get_task_masking_gradients`</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">- `mask_task_weights`</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">- `train_model_iteratively`</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.layers</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.utils</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">- `beyondml.tflow.layers.SparseDense`</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">- `beyondml.tflow.layers.SparseConv`</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">- `beyondml.tflow.layers.SparseMultiDense`</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">- `beyondml.tflow.layers.SparseMultiConv`</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">**Note that with any of the sparse layers (such as the `SparseDense` layer), any model which</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="sd">utilizes these layers will not be loadable using the traditional `load_model` functions available</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="sd">in TensorFlow. Instead, the model should be saved using either joblib or pickle**</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">Within the `utils` package, there are the current functions and classes:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">- `ActiveSparsification`</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">- `build_transformer_block`</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">- `build_token_position_embedding_block`</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">- `get_custom_objects`</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">- `mask_model`</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">- `remove_layer_masks`</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">- `add_layer_masks`</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a><span class="sd">- `quantize_model`</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">- `get_task_masking_gradients`</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a><span class="sd">- `mask_task_weights`</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">- `train_model_iteratively`</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.layers</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow.utils</span>
 </span></pre></div>
 
 

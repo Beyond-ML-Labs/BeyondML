@@ -10,3 +10,7 @@ from .MultiMaskedConv2D import MultiMaskedConv2D
 from .MultiDense import MultiDense
 from .MultiConv2D import MultiConv2D
 from .MultiMaxPool2D import MultiMaxPool2D
+from .SparseDense import SparseDense
+from .SparseConv import SparseConv
+from .SparseMultiDense import SparseMultiDense
+from .SparseMultiConv import SparseMultiConv

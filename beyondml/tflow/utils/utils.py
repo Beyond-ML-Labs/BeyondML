@@ -1,4 +1,4 @@
-from beyondml.tflow.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D
+from beyondml.tflow.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D, SparseDense, SparseConv, SparseMultiDense, SparseMultiConv
 import tensorflow as tf
 import numpy as np
 import warnings
@@ -7,7 +7,8 @@ MASKING_LAYERS = (MaskedDense, MaskedConv2D,
                   MultiMaskedDense, MultiMaskedConv2D)
 MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D)
 NON_MASKING_LAYERS = (MultiDense, MultiConv2D)
-CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + \
+SPARSE_LAYERS = (SparseDense, SparseConv, SparseMultiDense, SparseMultiConv)
+CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
     (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
 
 
@@ -71,7 +72,8 @@ def get_custom_objects():
     return dict(
         zip(
             ['MaskedDense', 'MaskedConv2D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiDense',
-                'MultiConv2D', 'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
+                'MultiConv2D', 'SparseDense', 'SparseConv', 'SparseMultiDense', 'SparseMultiConv', 
+                'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
             CUSTOM_LAYERS
         )
     )

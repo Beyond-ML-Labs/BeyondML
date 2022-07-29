@@ -1,15 +1,17 @@
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
+
 class SparseDense(Layer):
     """
     Sparse implementation of the Dense layer. If used in a model, must be saved and loaded via pickle
     """
+
     def __init__(
         self,
         weight,
         bias,
-        activation = None,
+        activation=None,
         **kwargs
     ):
         """

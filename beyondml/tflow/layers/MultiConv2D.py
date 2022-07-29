@@ -115,7 +115,8 @@ class MultiConv2D(Layer):
             tf.nn.convolution(
                 inputs[i],
                 self.w[i],
-                padding=self.padding.upper() if isinstance(self.padding, str) else self.padding,
+                padding=self.padding.upper() if isinstance(
+                    self.padding, str) else self.padding,
                 strides=self.strides,
                 data_format='NHWC'
             ) for i in range(len(inputs))

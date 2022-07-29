@@ -1,15 +1,17 @@
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
+
 class SparseMultiDense(Layer):
     """
     Sparse implementation of the MultiDense layer. If used in a model, must be saved and loaded via pickle
     """
+
     def __init__(
         self,
         weight,
         bias,
-        activation = None,
+        activation=None,
         **kwargs
     ):
         """
@@ -21,7 +23,7 @@ class SparseMultiDense(Layer):
             The bias tensor
         activation : None, str or keras activation function (default None)
             The activation function to use
-        
+
         """
         super().__init__(**kwargs)
         self.w = tf.sparse.from_dense(weight)

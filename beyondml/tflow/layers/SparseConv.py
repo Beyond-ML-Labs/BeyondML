@@ -1,17 +1,19 @@
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
+
 class SparseConv(Layer):
     """
     Sparse implementation of the Convolutional layer. If used in a model, must be saved and loaded via pickle
     """
+
     def __init__(
         self,
         filters,
         bias,
-        padding = 'same',
-        strides = 1,
-        activation = None,
+        padding='same',
+        strides=1,
+        activation=None,
         **kwargs
     ):
         """
@@ -59,9 +61,10 @@ class SparseConv(Layer):
         conv_output = tf.nn.convolution(
             inputs,
             tf.sparse.to_dense(self.w),
-            padding = self.padding.upper() if isinstance(self.padding, str) else self.padding,
-            strides = self.strides,
-            data_format = 'NHWC'
+            padding=self.padding.upper() if isinstance(
+                self.padding, str) else self.padding,
+            strides=self.strides,
+            data_format='NHWC'
         )
         conv_output = conv_output + tf.sparse.from_dense(self.b)
         return self.activation(conv_output)
@@ -70,9 +73,9 @@ class SparseConv(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'padding' : self.padding,
-                'strides' : self.strides,
-                'activation' : tf.keras.activations.serialize(self.activation)
+                'padding': self.padding,
+                'strides': self.strides,
+                'activation': tf.keras.activations.serialize(self.activation)
             }
         )
         return config

@@ -72,7 +72,7 @@ def get_custom_objects():
     return dict(
         zip(
             ['MaskedDense', 'MaskedConv2D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiDense',
-                'MultiConv2D', 'SparseDense', 'SparseConv', 'SparseMultiDense', 'SparseMultiConv', 
+                'MultiConv2D', 'SparseDense', 'SparseConv', 'SparseMultiDense', 'SparseMultiConv',
                 'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
             CUSTOM_LAYERS
         )

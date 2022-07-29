@@ -1,17 +1,19 @@
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
+
 class SparseMultiConv(Layer):
     """
     Sparse implementation of the MultiConv layer. If used in a model, must be saved and loaded via pickle
     """
+
     def __init__(
         self,
         filters,
         bias,
-        padding = 'same',
-        strides = 1,
-        activation = None,
+        padding='same',
+        strides=1,
+        activation=None,
         **kwargs
     ):
         """
@@ -63,9 +65,10 @@ class SparseMultiConv(Layer):
             tf.nn.convolution(
                 inputs[i],
                 weight[i],
-                padding = self.padding.upper() if isinstance(self.padding, str) else self.padding,
-                strides = self.strides,
-                data_format = 'NHWC'
+                padding=self.padding.upper() if isinstance(
+                    self.padding, str) else self.padding,
+                strides=self.strides,
+                data_format='NHWC'
             ) for i in range(len(inputs))
         ]
         conv_outputs = [
@@ -79,9 +82,9 @@ class SparseMultiConv(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'padding' : self.padding,
-                'strides' : self.strides,
-                'activation' : tf.keras.activations.serialize(self.activation)
+                'padding': self.padding,
+                'strides': self.strides,
+                'activation': tf.keras.activations.serialize(self.activation)
             }
         )
         return config

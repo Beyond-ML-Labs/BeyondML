@@ -25,6 +25,14 @@ Within the `layers` package, there is current functionality for the the followin
 - `beyondml.tflow.layers.MultiMaxPool2D`
 - `beyondml.tflow.layers.SelectorLayer`
 - `beyondml.tflow.layers.SumLayer`
+- `beyondml.tflow.layers.SparseDense`
+- `beyondml.tflow.layers.SparseConv`
+- `beyondml.tflow.layers.SparseMultiDense`
+- `beyondml.tflow.layers.SparseMultiConv`
+
+**Note that with any of the sparse layers (such as the `SparseDense` layer), any model which
+utilizes these layers will not be loadable using the traditional `load_model` functions available
+in TensorFlow. Instead, the model should be saved using either joblib or pickle**
 
 Within the `utils` package, there are the current functions and classes:
 - `ActiveSparsification`

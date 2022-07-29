@@ -72,7 +72,7 @@ class SparseMultiConv(Layer):
             ) for i in range(len(inputs))
         ]
         conv_outputs = [
-            conv_outputs[i] + self.b[i] for i in range(len(conv_outputs))
+            conv_outputs[i] + bias[i] for i in range(len(conv_outputs))
         ]
         return [
             self.activation(output) for output in conv_outputs

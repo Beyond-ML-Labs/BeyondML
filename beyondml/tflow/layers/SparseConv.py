@@ -66,7 +66,7 @@ class SparseConv(Layer):
             strides=self.strides,
             data_format='NHWC'
         )
-        conv_output = conv_output + tf.sparse.from_dense(self.b)
+        conv_output = conv_output + tf.sparse.to_dense(self.b)
         return self.activation(conv_output)
 
     def get_config(self):

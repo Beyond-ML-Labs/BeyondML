@@ -90,3 +90,8 @@ The below version numbers and changes refer to the BeyondML package
 
 #### Version 0.1.0
 - Refactored existing MANN repository to rename to BeyondML
+
+#### Version 0.1.1
+- Added the `SparseDense`, `SparseConv`, `SparseMultiDense`, and `SparseMultiConv` layers to 
+  `beyondml.tflow.layers`, giving users the functionality to utilize sparse tensors during 
+  inference

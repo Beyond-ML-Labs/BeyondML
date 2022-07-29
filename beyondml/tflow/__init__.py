@@ -1,5 +1,5 @@
 """
-TensorFlow compatibility for building MANN models.
+## TensorFlow compatibility for building MANN models.
 
 The `beyondml.tflow` package contains two subpackages, `beyondml.tflow.layers` and `beyondml.tflow.utils`, which contain
 the functionality to create and train MANN layers within TensorFlow. For individuals who are

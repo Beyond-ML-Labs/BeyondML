@@ -1,4 +1,4 @@
-"""Layers compatible with PyTorch models."""
+"""Layers compatible with PyTorch models"""
 
 from .FilterLayer import FilterLayer
 from .SelectorLayer import SelectorLayer

@@ -109,5 +109,5 @@ class TransformerEncoderLayer(torch.nn.Module):
     # feed forward block
     def _ff_block(self, x: Tensor) -> Tensor:
         x = self.linear2(self.dropout(self.activation(self.linear1(x))))
- #       x = prune_model(x, percentile)
+        x = prune_model(x, percentile)
         return self.dropout2(x)

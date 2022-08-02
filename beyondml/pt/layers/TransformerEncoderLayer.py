@@ -82,7 +82,7 @@ class TransformerEncoderLayer(torch.nn.Module):
         x = src
 
         x = self._sa_block(x)
-        x = self._ff_block(x).prune(percentile)
+        x = self._ff_block(x)
 
         return x
         

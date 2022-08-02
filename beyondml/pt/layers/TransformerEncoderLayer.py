@@ -69,10 +69,7 @@ class TransformerEncoderLayer(torch.nn.Module):
         if not hasattr(self, 'activation'):
             self.activation = F.relu
 
-    def forward(self,
-                src: Tensor, 
-                percentile: int = 0
-                ):
+    def forward(self, src: Tensor):
        
         """Pass the input through the encoder layer.
         Args:

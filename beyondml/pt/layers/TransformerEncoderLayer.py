@@ -3,7 +3,7 @@ from typing import Optional, Any, Union, Callable
 import torch
 from torch import Tensor
 from torch.nn import Dropout, LayerNorm
-from beyondml.pt.layers import  MultiMaskedDense
+from beyondml.pt.layers import  MaskedDense
 from beyondml.pt.utils import prune_model
 
 class TransformerEncoderLayer(torch.nn.Module):
@@ -20,9 +20,6 @@ class TransformerEncoderLayer(torch.nn.Module):
             as (batch, seq, feature). Default: ``False`` (seq, batch, feature).
         norm_first: if ``True``, layer norm is done prior to attention and feedforward
             operations, respectivaly. Otherwise it's done after. Default: ``False`` (after).
-        num_tasks: number of tasks to initialize for. Default: 1.
-        percentile: the int between 0 and 99 representing the proportion of weights in the
-            feedforward block to be inactive
     """
     __constants__ = ['batch_first', 'norm_first']
 
@@ -35,7 +32,6 @@ class TransformerEncoderLayer(torch.nn.Module):
                  layer_norm_eps: float = 1e-5,
                  batch_first: bool = False,
                  norm_first: bool = False,
-                 num_tasks: int = 1,
                  percentile: int = 0,
                  device=None, 
                  dtype=None) -> None:
@@ -47,9 +43,9 @@ class TransformerEncoderLayer(torch.nn.Module):
                                                     batch_first=batch_first,
                                                     **factory_kwargs)
         # Implementation of Feedforward model
-        self.linear1 = MultiMaskedDense(d_model, dim_feedforward, num_tasks)
+        self.linear1 = MaskedDense(d_model, dim_feedforward)
         self.dropout = Dropout(dropout)
-        self.linear2 = MultiMaskedDense(d_model, dim_feedforward, num_tasks)
+        self.linear2 = MaskedDense(d_model, dim_feedforward)
 
         self.norm_first = norm_first
         self.norm1 = LayerNorm(d_model, eps=layer_norm_eps, **factory_kwargs)
@@ -73,30 +69,23 @@ class TransformerEncoderLayer(torch.nn.Module):
         if not hasattr(self, 'activation'):
             self.activation = F.relu
 
-    def forward(self, src: Tensor, 
-                percentile: int = 0, 
-                src_mask: Optional[Tensor] = None,
-                src_key_padding_mask: Optional[Tensor] = None) -> Tensor:
+    def forward(self,
+                src: Tensor, 
+                percentile: int = 0
+                ):
        
         """Pass the input through the encoder layer.
         Args:
             src: the sequence to the encoder layer (required).
-            src_mask: the mask for the src sequence (optional).
-            src_key_padding_mask: the mask for the src keys per batch (optional).
-        Shape:
-            see the docs in Transformer class.
         """
-
+        
         x = src
-        if self.norm_first:
-            x = x + self._sa_block(self.norm1(x), src_mask, src_key_padding_mask)
-            x = x + self._ff_block(self.norm2(x))
-        else:
-            x = self.norm1(x + self._sa_block(x, src_mask, src_key_padding_mask))
-            x = self.norm2(x + self._ff_block(x))
+
+        self._sa_block(x)
+        self._ff_block(x).prune
 
         return x
-
+        
     # self-attention block
     def _sa_block(self, x: Tensor,
                   attn_mask: Optional[Tensor], key_padding_mask: Optional[Tensor]) -> Tensor:
@@ -109,5 +98,8 @@ class TransformerEncoderLayer(torch.nn.Module):
     # feed forward block
     def _ff_block(self, x: Tensor) -> Tensor:
         x = self.linear2(self.dropout(self.activation(self.linear1(x))))
-        x = prune_model(x, percentile)
         return self.dropout2(x)
+
+    def prune(self, percentile):
+        self.linear1(percentile)
+        self.linear2(percentile)

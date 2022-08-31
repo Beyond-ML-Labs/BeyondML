@@ -1,3 +1,4 @@
+from cmath import isclose
 import pytest
 import beyondml.pt as pt
 import torch
@@ -169,3 +170,33 @@ def test_multi_masked_dense():
     assert 1 - layer.w_mask[1].sum().numpy() / \
         layer.w_mask[1].flatten().shape[0] <= 0.6
     assert layer.w_mask.sum(axis=0).max() < 2
+
+
+def test_prune():
+    class SimpleModel(torch.nn.Module):
+        def __init__(self):
+            super().__init__()
+            self.layer1 = pt.layers.MaskedDense(10, 10)
+            self.layer2 = pt.layers.MaskedDense(10, 10)
+
+        @property
+        def layers(self):
+            return [self.layer1, self.layer2]
+
+        def forward(self, inputs):
+            return self.layer2.forward(
+                self.layer1.forward(
+                    inputs
+                )
+            )
+
+    model = SimpleModel()
+    model = pt.utils.prune_model(model, 90)
+    assert np.isclose(
+        model.layer1.w_mask.sum() / model.layer1.w_mask.flatten().shape[0],
+        0.1
+    )
+    assert np.isclose(
+        model.layer2.w_mask.sum() / model.layer2.w_mask.flatten().shape[0],
+        0.1
+    )

@@ -1,15 +1,4 @@
 """
-<img src="../logo/BeyondML_horizontal-color.png"
-    alt="BeyondML Logo"
-    style="float: left; margin-right: 10px;"
-    width="400"
-    height="100" />
-
-<br>
-<br>
-<br>
-<br>
-
 BeyondML (formerly MANN) is a Python package which enables creating sparse multitask artificial neural networks (MANNs)
 compatible with [TensorFlow](https://tensorflow.org) and [PyTorch](https://pytorch.org). This package
 contains custom layers and utilities to facilitate the training and optimization of models using the

@@ -56,7 +56,7 @@ def build_transformer_block(
     x = tf.keras.layers.Dropout(dropout_rate)(merge)
     out1 = tf.keras.layers.LayerNormalization(epsilon=1e-6)(x)
     x = tf.keras.layers.Dense(neurons, activation='relu')(out1)
-    x = tf.keras.layers.Dense(embed_dim)(x)
+    x = tf.keras.layers.Dense(embed_dim * num_heads)(x)
     x = tf.keras.layers.Dropout(dropout_rate)(x)
     x = tf.keras.layers.Add()([out1, x])
     output_layer = tf.keras.layers.LayerNormalization(epsilon=1e-6)(x)

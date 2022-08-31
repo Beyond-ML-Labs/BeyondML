@@ -42,10 +42,23 @@
                     <h1 class="modulename">
 beyondml    </h1>
 
-                        <div class="docstring"><p>BeyondML (formerly MANN)</p>
+                        <div class="docstring"><p>BeyondML (formerly MANN) is a Python package which enables creating sparse multitask artificial neural networks (MANNs)
+compatible with <a href="https://tensorflow.org">TensorFlow</a> and <a href="https://pytorch.org">PyTorch</a>. This package
+contains custom layers and utilities to facilitate the training and optimization of models using the
+Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by <a href="https://squared.ai">AI Squared, Inc</a>.</p>
 
-<p>This package contains custom utilities and layers to use to build Multitask Artificial Neural Network (MANN) models
-in conjunction with TensorFlow and PyTorch.</p>
+<h3 id="installation">Installation</h3>
+
+<p>This package is available through <a href="https://pypi.org">PyPi</a> and can be installed via the following command:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code>pip install beyondml
+</code></pre></div>
+
+<h3 id="capabilities">Capabilities</h3>
+
+<p>There are two major subpackages within the BeyondML package, the <code><a href="beyondml/tflow.html">beyondml.tflow</a></code> and the <code><a href="beyondml/pt.html">beyondml.pt</a></code> packages.
+The <code><a href="beyondml/tflow.html">beyondml.tflow</a></code> package contains functionality for building multitask models using TensorFlow, and the
+<code><a href="beyondml/pt.html">beyondml.pt</a></code> package contains functionality for building multitask models using PyTorch.</p>
 </div>
 
                         <input id="beyondml-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
@@ -53,17 +66,31 @@ in conjunction with TensorFlow and PyTorch.</p>
                         <label class="view-source-button" for="beyondml-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="sd">BeyondML (formerly MANN)</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">This package contains custom utilities and layers to use to build Multitask Artificial Neural Network (MANN) models</span>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">in conjunction with TensorFlow and PyTorch.</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.1.0&#39;</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="n">__dev__</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="sd">BeyondML (formerly MANN) is a Python package which enables creating sparse multitask artificial neural networks (MANNs)</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">compatible with [TensorFlow](https://tensorflow.org) and [PyTorch](https://pytorch.org). This package</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">contains custom layers and utilities to facilitate the training and optimization of models using the</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="sd">Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by [AI Squared, Inc](https://squared.ai).</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">### Installation</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">This package is available through [PyPi](https://pypi.org) and can be installed via the following command:</span>
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="kn">import</span> <span class="nn">beyondml.pt</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">```bash</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">pip install beyondml</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">```</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">### Capabilities</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">There are two major subpackages within the BeyondML package, the `beyondml.tflow` and the `beyondml.pt` packages.</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">The `beyondml.tflow` package contains functionality for building multitask models using TensorFlow, and the</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">`beyondml.pt` package contains functionality for building multitask models using PyTorch.</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.1.1&#39;</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="n">__dev__</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="kn">import</span> <span class="nn">beyondml.tflow</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="kn">import</span> <span class="nn">beyondml.pt</span>
 </span></pre></div>
 
 

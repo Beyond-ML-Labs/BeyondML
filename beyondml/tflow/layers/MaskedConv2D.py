@@ -121,7 +121,8 @@ class MaskedConv2D(Layer):
         conv_output = tf.nn.convolution(
             inputs,
             self.w * self.w_mask,
-            padding=self.padding.upper(),
+            padding=self.padding.upper() if isinstance(
+                self.padding, str) else self.padding,
             strides=self.strides,
             data_format='NHWC'
         )

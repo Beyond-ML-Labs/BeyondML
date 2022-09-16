@@ -103,10 +103,6 @@ class TransformerDecoderLayer(torch.nn.Module):
         return self.dropout3(x)
 
 
-def _get_clones(module, N):
-    return ModuleList([copy.deepcopy(module) for i in range(N)])
-
-
 def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
     if activation == "relu":
         return F.relu
@@ -116,5 +112,5 @@ def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
     raise RuntimeError("activation should be relu/gelu, not {}".format(activation))
 
 def prune(self, percentile):
-    self.linear1(percentile)
-    self.linear2(percentile)
+    self.linear1.prune(percentile)
+    self.linear2.prune(percentile)

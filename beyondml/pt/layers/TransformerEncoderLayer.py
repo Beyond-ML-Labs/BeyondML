@@ -4,6 +4,7 @@ import torch
 from torch import Tensor
 from torch.nn import Dropout, LayerNorm
 from beyondml.pt.layers import  MaskedDense
+from torch.nn import functional as F
 
 class TransformerEncoderLayer(torch.nn.Module):
     """TransformerEncoderLayer is made up of self-attn and feedforward network.

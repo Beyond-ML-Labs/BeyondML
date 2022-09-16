@@ -1,10 +1,11 @@
-import torch 
+import torch
 from typing import Optional, Any, Union, Callable
 from torch.nn import functional as F
 from torch.nn import MultiheadAttention
 from torch import Tensor
 from torch.nn import Dropout, LayerNorm
-from beyondml.pt.layers import  MaskedDense
+from beyondml.pt.layers import MaskedDense
+
 
 class TransformerDecoderLayer(torch.nn.Module):
     r"""TransformerDecoderLayer is made up of self-attn, multi-head-attn and feedforward network.
@@ -25,16 +26,16 @@ class TransformerDecoderLayer(torch.nn.Module):
     """
     __constants__ = ['batch_first', 'norm_first']
 
-    def __init__(self, 
-                d_model: int,
-                nhead: int, 
-                dim_feedforward: int = 2048,
-                dropout: float = 0.1,
-                activation: Union[str, Callable[[Tensor], Tensor]] = F.relu,
-                layer_norm_eps: float = 1e-5, batch_first: bool = False,
-                norm_first: bool = False,
-                device=None,
-                dtype=None) -> None:
+    def __init__(self,
+                 d_model: int,
+                 nhead: int,
+                 dim_feedforward: int = 2048,
+                 dropout: float = 0.1,
+                 activation: Union[str, Callable[[Tensor], Tensor]] = F.relu,
+                 layer_norm_eps: float = 1e-5, batch_first: bool = False,
+                 norm_first: bool = False,
+                 device=None,
+                 dtype=None) -> None:
 
         factory_kwargs = {'device': device, 'dtype': dtype}
 
@@ -72,14 +73,14 @@ class TransformerDecoderLayer(torch.nn.Module):
         Shape:
             see the docs in Pytorch Transformer class.
         """
-        
+
         x = tgt
         x = self._sa_block(x, memory)
         x = self._mha_block(x, memory)
         x = self._ff_block(x, memory)
-        
 
     # self-attention block
+
     def _sa_block(self, x: Tensor,
                   attn_mask: Optional[Tensor], key_padding_mask: Optional[Tensor]) -> Tensor:
         x = self.self_attn(x, x, x,
@@ -109,7 +110,9 @@ def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
     elif activation == "gelu":
         return F.gelu
 
-    raise RuntimeError("activation should be relu/gelu, not {}".format(activation))
+    raise RuntimeError(
+        "activation should be relu/gelu, not {}".format(activation))
+
 
 def prune(self, percentile):
     self.linear1.prune(percentile)

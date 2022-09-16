@@ -4,7 +4,6 @@ import torch
 from torch import Tensor
 from torch.nn import Dropout, LayerNorm
 from beyondml.pt.layers import  MaskedDense
-from beyondml.pt.utils import prune_model
 
 class TransformerEncoderLayer(torch.nn.Module):
     """TransformerEncoderLayer is made up of self-attn and feedforward network.
@@ -32,7 +31,6 @@ class TransformerEncoderLayer(torch.nn.Module):
                  layer_norm_eps: float = 1e-5,
                  batch_first: bool = False,
                  norm_first: bool = False,
-                 percentile: int = 0,
                  device=None, 
                  dtype=None) -> None:
         factory_kwargs = {'device': device, 'dtype': dtype}
@@ -52,17 +50,6 @@ class TransformerEncoderLayer(torch.nn.Module):
         self.norm2 = LayerNorm(d_model, eps=layer_norm_eps, **factory_kwargs)
         self.dropout1 = Dropout(dropout)
         self.dropout2 = Dropout(dropout)
-
-        # Legacy string support for activation function.
-        if isinstance(activation, str):
-            activation = _get_activation_fn(activation)
-        if activation is torch.nn.functional.relu or isinstance(activation, torch.nn.ReLU):
-            self.activation_relu_or_gelu = 1
-        elif activation is torch.nn.functional.gelu or isinstance(activation, torch.nn.GELU):
-            self.activation_relu_or_gelu = 2
-        else:
-            self.activation_relu_or_gelu = 0
-        self.activation = activation
 
     def __setstate__(self, state):
         super(TransformerEncoderLayer, self).__setstate__(state)

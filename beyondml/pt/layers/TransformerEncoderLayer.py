@@ -87,5 +87,5 @@ class TransformerEncoderLayer(torch.nn.Module):
         return self.dropout2(x)
 
     def prune(self, percentile):
-        self.linear1(percentile)
-        self.linear2(percentile)
+        self.linear1.prune(percentile)
+        self.linear2.prune(percentile)

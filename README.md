@@ -53,6 +53,8 @@ To view current capabilities within the BeyondML package, we welcome you to chec
 ## Feature Roadmap
 Lists of features slated for this project will be added here.
 
+- Working on implementing Multi-Headed Attention layers in `beyondml.pt.layers`
+
 ## Changes
 
 Below are a list of additional features, bug fixes, and other changes made for each version.
@@ -97,3 +99,4 @@ The below version numbers and changes refer to the BeyondML package
   inference
 
 #### Version 0.1.2
+- Added the `TransformerEncoderLayer` and `TransformerDecoderLayer` layers to `beyondml.pt.layers` which currently support pruning for the linear layers in the transformer architecture

@@ -212,4 +212,4 @@ def test_transformer():
         2048,
         8
     )
-    encoder.prune(80)
+    decoder.prune(80)

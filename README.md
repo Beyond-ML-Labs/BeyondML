@@ -95,3 +95,5 @@ The below version numbers and changes refer to the BeyondML package
 - Added the `SparseDense`, `SparseConv`, `SparseMultiDense`, and `SparseMultiConv` layers to 
   `beyondml.tflow.layers`, giving users the functionality to utilize sparse tensors during 
   inference
+
+#### Version 0.1.2

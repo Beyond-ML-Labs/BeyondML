@@ -19,7 +19,7 @@ The `beyondml.tflow` package contains functionality for building multitask model
 `beyondml.pt` package contains functionality for building multitask models using PyTorch.
 """
 
-__version__ = '0.1.1.dev0'
+__version__ = '0.1.2.dev0'
 __dev__ = True
 
 import beyondml.tflow

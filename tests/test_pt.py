@@ -200,3 +200,14 @@ def test_prune():
         model.layer2.w_mask.sum() / model.layer2.w_mask.flatten().shape[0],
         0.1
     )
+
+
+def test_transformer():
+    encoder = pt.layers.TransformerEncoderLayer(
+        512,
+        8
+    )
+    decoder = pt.layers.TransformerDecoderLayer(
+        2048,
+        8
+    )

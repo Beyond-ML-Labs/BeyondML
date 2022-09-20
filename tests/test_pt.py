@@ -207,7 +207,9 @@ def test_transformer():
         512,
         8
     )
+    encoder.prune(80)
     decoder = pt.layers.TransformerDecoderLayer(
         2048,
         8
     )
+    encoder.prune(80)

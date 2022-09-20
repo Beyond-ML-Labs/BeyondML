@@ -104,16 +104,16 @@ class TransformerDecoderLayer(torch.nn.Module):
         return self.dropout3(x)
 
 
-def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
-    if activation == "relu":
-        return F.relu
-    elif activation == "gelu":
-        return F.gelu
+    def _get_activation_fn(activation: str) -> Callable[[Tensor], Tensor]:
+        if activation == "relu":
+            return F.relu
+        elif activation == "gelu":
+            return F.gelu
 
-    raise RuntimeError(
-        "activation should be relu/gelu, not {}".format(activation))
+        raise RuntimeError(
+            "activation should be relu/gelu, not {}".format(activation))
 
 
-def prune(self, percentile):
-    self.linear1.prune(percentile)
-    self.linear2.prune(percentile)
+    def prune(self, percentile):
+        self.linear1.prune(percentile)
+        self.linear2.prune(percentile)

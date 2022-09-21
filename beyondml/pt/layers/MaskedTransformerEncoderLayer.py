@@ -38,7 +38,7 @@ class MaskedTransformerEncoderLayer(torch.nn.Module):
                  device=None,
                  dtype=None) -> None:
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super(TransformerEncoderLayer, self).__init__()
+        super(MaskedTransformerEncoderLayer, self).__init__()
         self.self_attn = MaskedMultiHeadAttention(
             d_model,
             nhead,

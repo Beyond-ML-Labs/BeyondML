@@ -39,7 +39,7 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
 
         factory_kwargs = {'device': device, 'dtype': dtype}
 
-        super(TransformerDecoderLayer, self).__init__()
+        super(MaskedTransformerDecoderLayer, self).__init__()
 
         self.self_attn = MaskedMultiHeadAttention(
             d_model,

@@ -99,4 +99,4 @@ The below version numbers and changes refer to the BeyondML package
   inference
 
 #### Version 0.1.2
-- Added the `TransformerEncoderLayer` and `TransformerDecoderLayer` layers to `beyondml.pt.layers` which currently support pruning for the linear layers in the transformer architecture
+- Added the `MaskedMultiHeadAttention`, `MaskedTransformerEncoderLayer`, and `MaskedTransformerDecoderLayer` layers to `beyondml.pt.layers` which currently support pruning for the linear layers in the transformer architecture

@@ -58,7 +58,7 @@ class MaskedTransformerEncoderLayer(torch.nn.Module):
         self.dropout2 = Dropout(dropout)
 
     def __setstate__(self, state):
-        super(TransformerEncoderLayer, self).__setstate__(state)
+        super(MaskedTransformerEncoderLayer, self).__setstate__(state)
         if not hasattr(self, 'activation'):
             self.activation = F.relu
 

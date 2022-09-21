@@ -70,7 +70,7 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
     def __setstate__(self, state):
         if 'activation' not in state:
             state['activation'] = F.relu
-        super(TransformerDecoderLayer, self).__setstate__(state)
+        super(MaskedTransformerDecoderLayer, self).__setstate__(state)
 
     def forward(self, tgt: Tensor, memory: Tensor):
         r"""Pass the inputs (and mask) through the decoder layer.

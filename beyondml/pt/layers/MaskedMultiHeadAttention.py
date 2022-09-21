@@ -27,7 +27,7 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         if self.head_dim * self.num_heads != embed_dim:
             raise ValueError('num_heads must evenly divide embed_dim')
 
-        in_proj_weight = torch.Tensor((3 * embed_dim, embed_dim))
+        in_proj_weight = torch.Tensor(3 * embed_dim, embed_dim)
         in_proj_weight = torch.nn.init.xavier_uniform_(in_proj_weight)
         self.in_proj_weight = torch.nn.Parameter(in_proj_weight)
         self.in_proj_mask = torch.ones_like(self.in_proj_weight)

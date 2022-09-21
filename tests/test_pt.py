@@ -203,12 +203,12 @@ def test_prune():
 
 
 def test_transformer():
-    encoder = pt.layers.TransformerEncoderLayer(
+    encoder = pt.layers.MaskedTransformerEncoderLayer(
         512,
         8
     )
     encoder.prune(80)
-    decoder = pt.layers.TransformerDecoderLayer(
+    decoder = pt.layers.MaskedTransformerDecoderLayer(
         2048,
         8
     )

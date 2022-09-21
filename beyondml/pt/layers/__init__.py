@@ -14,5 +14,6 @@ from .SparseMultiDense import SparseMultiDense
 from .SparseMultiConv2D import SparseMultiConv2D
 from .SparseDense import SparseDense
 from .SparseConv2D import SparseConv2D
-from .TransformerEncoderLayer import TransformerEncoderLayer
-from .TransformerDecoderLayer import TransformerDecoderLayer
+from .MaskedTransformerEncoderLayer import MaskedTransformerEncoderLayer
+from .MaskedTransformerDecoderLayer import MaskedTransformerDecoderLayer
+from .MaskedMultiHeadAttention import MaskedMultiHeadAttention

@@ -5,9 +5,10 @@ from torch import Tensor
 from torch.nn import Dropout, LayerNorm
 from beyondml.pt.layers import MaskedDense
 from torch.nn import functional as F
+from .MaskedMultiHeadAttention import MaskedMultiHeadAttention
 
 
-class TransformerEncoderLayer(torch.nn.Module):
+class MaskedTransformerEncoderLayer(torch.nn.Module):
     """TransformerEncoderLayer is made up of self-attn and feedforward network.
     Args:
         d_model: the number of expected features in the input (required).
@@ -38,11 +39,13 @@ class TransformerEncoderLayer(torch.nn.Module):
                  dtype=None) -> None:
         factory_kwargs = {'device': device, 'dtype': dtype}
         super(TransformerEncoderLayer, self).__init__()
-        self.self_attn = torch.nn.MultiheadAttention(d_model,
-                                                     nhead,
-                                                     dropout=dropout,
-                                                     batch_first=batch_first,
-                                                     **factory_kwargs)
+        self.self_attn = MaskedMultiHeadAttention(
+            d_model,
+            nhead,
+            dropout=dropout,
+            batch_first=batch_first
+        )
+
         # Implementation of Feedforward model
         self.linear1 = MaskedDense(d_model, dim_feedforward)
         self.dropout = Dropout(dropout)
@@ -87,5 +90,6 @@ class TransformerEncoderLayer(torch.nn.Module):
         return self.dropout2(x)
 
     def prune(self, percentile):
+        self.self_attn.prune(percentile)
         self.linear1.prune(percentile)
         self.linear2.prune(percentile)

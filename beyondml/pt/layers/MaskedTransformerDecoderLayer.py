@@ -1,13 +1,13 @@
 import torch
 from typing import Optional, Any, Union, Callable
 from torch.nn import functional as F
-from torch.nn import MultiheadAttention
 from torch import Tensor
 from torch.nn import Dropout, LayerNorm
 from beyondml.pt.layers import MaskedDense
+from .MaskedMultiHeadAttention import MaskedMultiHeadAttention
 
 
-class TransformerDecoderLayer(torch.nn.Module):
+class MaskedTransformerDecoderLayer(torch.nn.Module):
     r"""TransformerDecoderLayer is made up of self-attn, multi-head-attn and feedforward network.
     This standard decoder layer is based on the paper "Attention Is All You Need".
     Args:
@@ -41,11 +41,18 @@ class TransformerDecoderLayer(torch.nn.Module):
 
         super(TransformerDecoderLayer, self).__init__()
 
-        self.self_attn = MultiheadAttention(d_model, nhead, dropout=dropout, batch_first=batch_first,
-                                            **factory_kwargs)
-
-        self.multihead_attn = MultiheadAttention(d_model, nhead, dropout=dropout, batch_first=batch_first,
-                                                 **factory_kwargs)
+        self.self_attn = MaskedMultiHeadAttention(
+            d_model,
+            nhead,
+            dropout=dropout,
+            batch_first=batch_first
+        )
+        self.multihead_attn = MaskedMultiHeadAttention(
+            d_model,
+            nhead,
+            dropout=dropout,
+            batch_first=batch_first
+        )
 
         # Implementation of Feedforward model
         self.linear1 = MaskedDense(d_model, dim_feedforward)
@@ -113,5 +120,7 @@ class TransformerDecoderLayer(torch.nn.Module):
             "activation should be relu/gelu, not {}".format(activation))
 
     def prune(self, percentile):
+        self.self_attn.prune(percentile)
+        self.multihead_attn.prune(percentile)
         self.linear1.prune(percentile)
         self.linear2.prune(percentile)

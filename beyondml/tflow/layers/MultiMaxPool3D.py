@@ -10,7 +10,7 @@ class MultiMaxPool3D(Layer):
 
     def __init__(
         self,
-        pool_size=(3, 3, 3),
+        pool_size=3,
         strides=(1, 1, 1),
         padding='same',
         **kwargs

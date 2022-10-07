@@ -28,7 +28,7 @@ class MultiMaxPool3D(Layer):
 
         """
         super().__init__(**kwargs)
-        self.pool_size = pool_size,
+        self.pool_size = pool_size
         self.strides = strides
         self.padding = padding
 

@@ -2,6 +2,7 @@ from multiprocessing.sharedctypes import Value
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class MultiConv3D(Layer):
     """
     Multitask 3-dimensional convolutional layer
@@ -10,16 +11,17 @@ class MultiConv3D(Layer):
     neurons activate for various tasks. It is expected that to train using the RSN2 algorithm that MultiMaskedConv3D
     layers be used during training and then those layers be converted to this layer type.
     """
+
     def __init__(
         self,
         filters,
-        kernel_size = 3,
-        padding = 'same',
-        strides = 1,
-        use_bias = True,
-        activation = None,
-        kernel_initializer = 'random_normal',
-        bias_initializer = 'zeros',
+        kernel_size=3,
+        padding='same',
+        strides=1,
+        use_bias=True,
+        activation=None,
+        kernel_initializer='random_normal',
+        bias_initializer='zeros',
         **kwargs
     ):
         """
@@ -44,7 +46,8 @@ class MultiConv3D(Layer):
 
         """
         super().__init__(**kwargs)
-        self.filters = int(filters) if not isinstance(filters, int) else filters
+        self.filters = int(filters) if not isinstance(
+            filters, int) else filters
         self.kernel_size = kernel_size
         self.padding = padding
         self.strides = tuple(strides) if isinstance(strides, list) else strides
@@ -76,22 +79,23 @@ class MultiConv3D(Layer):
             raise ValueError(
                 f'All input shapes must be equal, got {input_shape}'
             )
-        
+
         simplified_shape = input_shape[0]
 
         self.w = self.add_weight(
-            shape = (len(input_shape), self.kernel_size[0], self.kernel_size[1], self.kernel_size[2], simplified_shape[-1], self.filters),
-            initializer = self.kernel_initializer,
-            trainable = True,
-            name = 'weights'
+            shape=(len(input_shape), self.kernel_size[0], self.kernel_size[1],
+                   self.kernel_size[2], simplified_shape[-1], self.filters),
+            initializer=self.kernel_initializer,
+            trainable=True,
+            name='weights'
         )
 
         if self.use_bias:
             self.b = self.add_weight(
-                shape = (len(input_shape), self.filters),
-                initializer = self.bias_initializer,
-                trainable = True,
-                name = 'bias'
+                shape=(len(input_shape), self.filters),
+                initializer=self.bias_initializer,
+                trainable=True,
+                name='bias'
             )
 
     def call(self, inputs):
@@ -112,9 +116,10 @@ class MultiConv3D(Layer):
             tf.nn.convolution(
                 inputs[i],
                 self.w[i],
-                padding = self.padding.upper() if isinstance(self.padding, str) else self.padding,
-                strides = self.strides,
-                data_format = 'NDHWC'
+                padding=self.padding.upper() if isinstance(
+                    self.padding, str) else self.padding,
+                strides=self.strides,
+                data_format='NDHWC'
             ) for i in range(len(inputs))
         ]
         if self.use_bias:
@@ -127,13 +132,13 @@ class MultiConv3D(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'filters' : self.filters,
-                'kernel_size' : self.kernel_size,
-                'padding' : self.padding,
-                'strides' : self.strides,
-                'activation' : tf.keras.activations.serialize(self.activation),
-                'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
-                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer)
+                'filters': self.filters,
+                'kernel_size': self.kernel_size,
+                'padding': self.padding,
+                'strides': self.strides,
+                'activation': tf.keras.activations.serialize(self.activation),
+                'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
+                'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer)
             }
         )
         return config
@@ -141,12 +146,12 @@ class MultiConv3D(Layer):
     @classmethod
     def from_config(cls, config):
         return cls(
-            filters = config['filters'],
-            kernel_size = config['kernel_size'],
-            padding = config['padding'],
-            strides = config['strides'],
-            activation = config['activation'],
-            use_bias = config['use_bias'],
-            kernel_initializer = config['kernel_initializer'],
-            bias_initializer = config['bias_initializer']
+            filters=config['filters'],
+            kernel_size=config['kernel_size'],
+            padding=config['padding'],
+            strides=config['strides'],
+            activation=config['activation'],
+            use_bias=config['use_bias'],
+            kernel_initializer=config['kernel_initializer'],
+            bias_initializer=config['bias_initializer']
         )

@@ -7,7 +7,8 @@ MASKING_LAYERS = (MaskedDense, MaskedConv2D, MaskedConv3D,
                   MultiMaskedDense, MultiMaskedConv2D)
 MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D)
 NON_MASKING_LAYERS = (MultiDense, MultiConv2D, MultiConv3D)
-SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
+SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D,
+                 SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
     (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
 
@@ -231,10 +232,10 @@ def _replace_config(config):
 
     layer_mapping = {
         'MaskedConv2D': 'Conv2D',
-        'MaskedConv3D' : 'Conv3D',
+        'MaskedConv3D': 'Conv3D',
         'MaskedDense': 'Dense',
         'MultiMaskedConv2D': 'MultiConv2D',
-        'MultiMaskedConv3D' : 'MultiConv3D',
+        'MultiMaskedConv3D': 'MultiConv3D',
         'MultiMaskedDense': 'MultiDense'
     }
     model_classes = ('Functional', 'Sequential')
@@ -258,10 +259,10 @@ def _create_masking_config(config):
 
     layer_mapping = {
         'Conv2D': 'MaskedConv2D',
-        'Conv3D' : 'MaskedConv3D',
+        'Conv3D': 'MaskedConv3D',
         'Dense': 'MaskedDense',
         'MultiConv2D': 'MultiMaskedConv2D',
-        'MultiConv3D' : 'MultiMaskedConv3D',
+        'MultiConv3D': 'MultiMaskedConv3D',
         'MultiDense': 'MultiMaskedDense'
     }
     model_classes = ('Functional', 'Sequential')

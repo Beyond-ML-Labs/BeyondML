@@ -1,15 +1,16 @@
 from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
+
 class SparseConv3D(Layer):
 
     def __init__(
         self,
         filters,
         bias,
-        padding = 'same',
-        strides = 1,
-        activation = None,
+        padding='same',
+        strides=1,
+        activation=None,
         **kwargs
     ):
         """
@@ -57,9 +58,10 @@ class SparseConv3D(Layer):
         conv_output = tf.nn.convolution(
             inputs,
             tf.sparse.to_dense(self.w),
-            padding = self.padding.upper() if isinstance(self.padding, str) else self.padding,
-            strides = self.strides,
-            data_format = 'NDHWC'
+            padding=self.padding.upper() if isinstance(
+                self.padding, str) else self.padding,
+            strides=self.strides,
+            data_format='NDHWC'
         )
         conv_output = conv_output + tf.sparse.to_dense(self.b)
         return self.activation(conv_output)
@@ -68,9 +70,9 @@ class SparseConv3D(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'padding' : self.padding,
-                'strides' : self.strides,
-                'activation' : tf.keras.activations.serialize(self.activation)
+                'padding': self.padding,
+                'strides': self.strides,
+                'activation': tf.keras.activations.serialize(self.activation)
             }
         )
         return config

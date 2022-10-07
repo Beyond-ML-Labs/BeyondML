@@ -1,16 +1,18 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class MultiMaxPool3D(Layer):
     """
     Multitask 3D Max Pooling Layer. This layer implements the Max Pooling
     algorithm across multiple inputs for developing multitask models
     """
+
     def __init__(
         self,
-        pool_size = (3, 3, 3),
-        strides = (1, 1, 1),
-        padding = 'same',
+        pool_size=(3, 3, 3),
+        strides=(1, 1, 1),
+        padding='same',
         **kwargs
     ):
         """
@@ -58,9 +60,9 @@ class MultiMaxPool3D(Layer):
         config = super().get_config().copy()
         config.update(
             {
-                'pool_size' : self.pool_size,
-                'strides' : self.strides,
-                'padding' : self.padding
+                'pool_size': self.pool_size,
+                'strides': self.strides,
+                'padding': self.padding
             }
         )
         return config

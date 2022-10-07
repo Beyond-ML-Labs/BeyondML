@@ -63,7 +63,7 @@ class MultiConv3D(Layer):
     @kernel_size.setter
     def kernel_size(self, value):
         if isinstance(value, int):
-            self._kernel_size = (value, value)
+            self._kernel_size = (value, value, value)
         else:
             self._kernel_size = value
 

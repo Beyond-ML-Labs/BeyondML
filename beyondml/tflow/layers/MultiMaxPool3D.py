@@ -49,9 +49,8 @@ class MultiMaxPool3D(Layer):
         return [
             tf.nn.max_pool3d(
                 inputs[i],
-                self.pool_size,
-                self.strides,
-                self.padding.upper(),
+                list(self.pool_size) if isinstance(self.pool_size, tuple) else self.pool_size,
+                list(self.strides) if isinstance(self.strides, tuple) else self.strides,self.pool_size,
                 'NDHWC'
             ) for i in range(len(inputs))
         ]

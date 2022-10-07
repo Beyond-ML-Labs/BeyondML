@@ -2,27 +2,29 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
+
 class MaskedConv3D(Layer):
     """
-    Masked 3-dimensional convolutional layer. For full documentation of the convolutional architecture, see the TensorFlow Keras Convolutional3D layer documentation.
+    Masked 3-dimensional convolutional layer. For full documentation of the
+    convolutional architecture, see the TensorFlow Keras Convolutional3D layer documentation.
 
-    This layer implements masking consistent with the BeyondML API to support developing sparse models
+    This layer implements masking consistent with the BeyondML API to support
+    developing sparse models
     """
 
     def __init__(
         self,
         filters,
-        kernel_size = 3,
-        padding = 'same',
-        strides = 1,
-        activation = None,
-        use_bias = True,
-        kernel_initializer = 'random_normal',
-        bias_initializer = 'zeros',
-        mask_initializer = 'ones',
+        kernel_size=3,
+        padding='same',
+        strides=1,
+        activation=None,
+        use_bias=True,
+        kernel_initializer='random_normal',
+        bias_initializer='zeros',
+        mask_initializer='ones',
         **kwargs
     ):
-
         """
         Parameters
         ----------
@@ -47,7 +49,8 @@ class MaskedConv3D(Layer):
         """
 
         super().__init__(**kwargs)
-        self.filters = int(filters) if not isinstance(filters, int) else filters
+        self.filters = int(filters) if not isinstance(
+            filters, int) else filters
         self.kernel_size = kernel_size
         self.padding = padding
         self.strides = tuple(strides) if isinstance(strides, list) else strides
@@ -74,30 +77,31 @@ class MaskedConv3D(Layer):
         but rather is called when the layer is added to a model
         """
         self.w = self.add_weight(
-            shape = (self.kernel_size[0], self.kernel_size[1], self.kernel_size[2], input_shape[-1], self.filters),
-            initializer = self.kernel_initializer,
-            trainable = True,
-            name = 'weights'
+            shape=(self.kernel_size[0], self.kernel_size[1],
+                   self.kernel_size[2], input_shape[-1], self.filters),
+            initializer=self.kernel_initializer,
+            trainable=True,
+            name='weights'
         )
         self.w_mask = self.add_weight(
-            shape = self.w.shape,
-            initializer = self.mask_initializer,
-            trainable = False,
-            name = 'weights_mask'
+            shape=self.w.shape,
+            initializer=self.mask_initializer,
+            trainable=False,
+            name='weights_mask'
         )
 
         if self.use_bias:
             self.b = self.add_weight(
-                shape = (self.filters,),
-                initializer = self.bias_initializer,
-                trainable = True,
-                name = 'bias'
+                shape=(self.filters,),
+                initializer=self.bias_initializer,
+                trainable=True,
+                name='bias'
             )
             self.b_mask = self.add_weight(
-                shape = self.b.shape,
-                initializer = self.mask_initializer,
-                trainable = False,
-                name = 'bias_mask'
+                shape=self.b.shape,
+                initializer=self.mask_initializer,
+                trainable=False,
+                name='bias_mask'
             )
 
     def call(self, inputs):
@@ -117,9 +121,10 @@ class MaskedConv3D(Layer):
         conv_output = tf.nn.convolution(
             inputs,
             self.w * self.w_mask,
-            padding = self.padding.upper() if isinstance(self.padding, str) else self.padding,
-            strides = self.strides,
-            data_format = 'NDHWC'
+            padding=self.padding.upper() if isinstance(
+                self.padding, str) else self.padding,
+            strides=self.strides,
+            data_format='NDHWC'
         )
         if self.use_bias:
             conv_output = conv_output + (self.b * self.b_mask)
@@ -130,18 +135,18 @@ class MaskedConv3D(Layer):
         config.update(
             {
                 'filters': self.filters,
-                'kernel_size' : list(self.kernel_size),
-                'padding' : self.padding,
-                'strides' : self.strides,
-                'activation' : tf.keras.activation.serialize(self.activation),
-                'use_bias' : self.use_bias,
-                'kernel_initializer' : tf.keras.initializers.serialize(self.kernel_initializer),
-                'bias_initializer' : tf.keras.initializers.serialize(self.bias_initializer),
-                'mask_initializer' : tf.keras.initializers.serialize(self.mask_initializer)
+                'kernel_size': list(self.kernel_size),
+                'padding': self.padding,
+                'strides': self.strides,
+                'activation': tf.keras.activation.serialize(self.activation),
+                'use_bias': self.use_bias,
+                'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
+                'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer),
+                'mask_initializer': tf.keras.initializers.serialize(self.mask_initializer)
             }
         )
         return config
-    
+
     def set_masks(self, new_masks):
         """
         Set the masks for the layer
@@ -154,22 +159,24 @@ class MaskedConv3D(Layer):
 
         if not self.use_bias:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float32), new_masks[0].astype(np.float32)]
+                [self.w.numpy() * new_masks[0].astype(np.float32),
+                 new_masks[0].astype(np.float32)]
             )
         else:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float32), self.b.numpy() * new_masks[1].astype(np.float32), new_masks[0].astype(np.float32), new_masks[1].astype(np.float32)]
+                [self.w.numpy() * new_masks[0].astype(np.float32), self.b.numpy() * new_masks[1].astype(
+                    np.float32), new_masks[0].astype(np.float32), new_masks[1].astype(np.float32)]
             )
 
     @classmethod
     def from_config(cls, config):
         return cls(
-            filters = config['filters'],
-            kernel_size = config['kernel_size'],
-            padding = config['padding'],
-            strides = config['strides'],
-            activation = config['activation'],
-            use_bias = config['use_bias'],
-            kernel_initializer = config['kernel_initializer'],
-            bias_initializer = config['bias_initializer']
+            filters=config['filters'],
+            kernel_size=config['kernel_size'],
+            padding=config['padding'],
+            strides=config['strides'],
+            activation=config['activation'],
+            use_bias=config['use_bias'],
+            kernel_initializer=config['kernel_initializer'],
+            bias_initializer=config['bias_initializer']
         )

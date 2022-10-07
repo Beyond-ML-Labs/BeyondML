@@ -3,11 +3,11 @@ import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
 
-class MultiMaskedConv2D(Layer):
+class MultiMaskedConv3D(Layer):
     """
-    Masked multitask 2-dimensional convolutional layer. This layer implements
-    multiple stacks of the convolutional architecture and implements masking consistent
-    with the BeyondML API to support developing sparse multitask models.
+    Masked multitask 3-dimensional convoluational layer. This layer implements
+    multiple stacks of the convolutional architecture and implements masking
+    consistent with the BeyondML API to support developing sparse multitask models.
     """
 
     def __init__(
@@ -46,7 +46,7 @@ class MultiMaskedConv2D(Layer):
             The mask initialization function to use
 
         """
-        super(MultiMaskedConv2D, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.filters = int(filters) if not isinstance(
             filters, int) else filters
         self.kernel_size = kernel_size
@@ -65,7 +65,7 @@ class MultiMaskedConv2D(Layer):
     @kernel_size.setter
     def kernel_size(self, value):
         if isinstance(value, int):
-            self._kernel_size = (value, value)
+            self._kernel_size = (value, value, value)
         else:
             self._kernel_size = value
 
@@ -79,13 +79,14 @@ class MultiMaskedConv2D(Layer):
         ]
         if len(set(input_shape)) != 1:
             raise ValueError(
-                f'All input shapes must be equal, got {input_shape}')
+                f'All input shapes must be equal, got {input_shape}'
+            )
 
         simplified_shape = input_shape[0]
 
         self.w = self.add_weight(
-            shape=(len(input_shape),
-                   self.kernel_size[0], self.kernel_size[1], simplified_shape[-1], self.filters),
+            shape=(len(input_shape), self.kernel_size[0], self.kernel_size[1],
+                   self.kernel_size[2], simplified_shape[-1], self.filters),
             initializer=self.kernel_initializer,
             trainable=True,
             name='weights'
@@ -131,7 +132,7 @@ class MultiMaskedConv2D(Layer):
                 self.w[i] * self.w_mask[i],
                 padding=self.padding.upper(),
                 strides=self.strides,
-                data_format='NHWC'
+                data_format='NDHWC'
             ) for i in range(len(inputs))
         ]
         if self.use_bias:
@@ -179,5 +180,6 @@ class MultiMaskedConv2D(Layer):
             activation=config['activation'],
             use_bias=config['use_bias'],
             kernel_initializer=config['kernel_initializer'],
-            bias_initializer=config['bias_initializer']
+            bias_initializer=config['bias_initializer'],
+            mask_initializer=config['mask_initializer']
         )

@@ -18,9 +18,9 @@ class MultiMaxPool3D(Layer):
         """
         Parameters
         ----------
-        pool_size : integer or tuple of 2 integers (default (2, 2))
+        pool_size : integer or tuple of 3 integers (default 3)
             Window size over which to take the maximum
-        strides : integer or tuple of 2 integers (default (1, 1))
+        strides : integer or tuple of 3 integers (default (1, 1, 1))
             Stride values to move the pooling window after each step
         padding : str (default 'same')
             One of either 'same' or 'valid', case-insensitive. The

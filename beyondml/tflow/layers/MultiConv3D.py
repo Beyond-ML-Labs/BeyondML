@@ -136,7 +136,7 @@ class MultiConv3D(Layer):
                 'kernel_size': self.kernel_size,
                 'padding': self.padding,
                 'strides': self.strides,
-                'use_bias' : self.use_bias,
+                'use_bias': self.use_bias,
                 'activation': tf.keras.activations.serialize(self.activation),
                 'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
                 'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer)

@@ -48,11 +48,11 @@ class MultiMaxPool3D(Layer):
         """
         return [
             tf.nn.max_pool3d(
-                input = inputs[i],
-                ksize = self.pool_size,
-                strides = self.strides,
-                padding = self.padding.upper(),
-                data_format = 'NDHWC'
+                input=inputs[i],
+                ksize=self.pool_size,
+                strides=self.strides,
+                padding=self.padding.upper(),
+                data_format='NDHWC'
             ) for i in range(len(inputs))
         ]
 

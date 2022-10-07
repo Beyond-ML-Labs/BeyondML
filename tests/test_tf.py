@@ -73,6 +73,7 @@ def build_simple_model():
     )
     return model
 
+
 def build_3d_model():
     input1 = tf.keras.layers.Input((10, 10, 10, 3))
     input2 = tf.keras.layers.Input((10, 10, 10, 3))
@@ -107,6 +108,7 @@ def build_3d_model():
         [out1, out2, out3]
     )
     return model
+
 
 def build_simple_3d_model():
     input1 = tf.keras.layers.Input((10, 10, 10, 3))

@@ -51,6 +51,7 @@ class MultiMaxPool3D(Layer):
                 inputs[i],
                 list(self.pool_size) if isinstance(self.pool_size, tuple) else self.pool_size,
                 list(self.strides) if isinstance(self.strides, tuple) else self.strides,self.pool_size,
+                self.padding.upper(),
                 'NDHWC'
             ) for i in range(len(inputs))
         ]

@@ -4,13 +4,13 @@ import numpy as np
 import warnings
 
 MASKING_LAYERS = (MaskedDense, MaskedConv2D, MaskedConv3D,
-                  MultiMaskedDense, MultiMaskedConv2D)
+                  MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D)
 MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D)
 NON_MASKING_LAYERS = (MultiDense, MultiConv2D, MultiConv3D)
 SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D,
                  SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
-    (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
+    (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D, MultiMaxPool3D)
 
 
 def _get_masking_gradients(

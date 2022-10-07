@@ -173,14 +173,14 @@ def test_sparse():
 
     input1 = tf.keras.layers.Input((10, 10, 3))
     input2 = tf.keras.layers.Input((10, 10, 3))
-    x = beyondml.tflow.layers.SparseMultiConv.from_layer(
+    x = beyondml.tflow.layers.SparseMultiConv2D.from_layer(
         model.layers[2])([input1, input2])
-    x = beyondml.tflow.layers.SparseMultiConv.from_layer(model.layers[3])(x)
+    x = beyondml.tflow.layers.SparseMultiConv2D.from_layer(model.layers[3])(x)
     x = beyondml.tflow.layers.MultiMaxPool2D()(x)
     x1 = beyondml.tflow.layers.SelectorLayer(0)(x)
     x2 = beyondml.tflow.layers.SelectorLayer(1)(x)
-    x1 = beyondml.tflow.layers.SparseConv.from_layer(model.layers[7])(x1)
-    x2 = beyondml.tflow.layers.SparseConv.from_layer(model.layers[8])(x2)
+    x1 = beyondml.tflow.layers.SparseConv2D.from_layer(model.layers[7])(x1)
+    x2 = beyondml.tflow.layers.SparseConv2D.from_layer(model.layers[8])(x2)
     x1 = tf.keras.layers.Flatten()(x1)
     x2 = tf.keras.layers.Flatten()(x2)
     x1 = beyondml.tflow.layers.SparseDense.from_layer(model.layers[11])(x1)

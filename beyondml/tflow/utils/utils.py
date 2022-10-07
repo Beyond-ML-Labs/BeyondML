@@ -1,13 +1,13 @@
-from beyondml.tflow.layers import MaskedDense, MaskedConv2D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiDense, MultiConv2D, MultiMaxPool2D, SparseDense, SparseConv, SparseMultiDense, SparseMultiConv
+from beyondml.tflow.layers import MaskedDense, MaskedConv2D, MaskedConv3D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiDense, MultiConv2D, MultiConv3D, MultiMaxPool2D, MultiMaxPool3D, SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D
 import tensorflow as tf
 import numpy as np
 import warnings
 
-MASKING_LAYERS = (MaskedDense, MaskedConv2D,
+MASKING_LAYERS = (MaskedDense, MaskedConv2D, MaskedConv3D,
                   MultiMaskedDense, MultiMaskedConv2D)
-MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D)
-NON_MASKING_LAYERS = (MultiDense, MultiConv2D)
-SPARSE_LAYERS = (SparseDense, SparseConv, SparseMultiDense, SparseMultiConv)
+MULTI_MASKING_LAYERS = (MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D)
+NON_MASKING_LAYERS = (MultiDense, MultiConv2D, MultiConv3D)
+SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
     (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D)
 
@@ -71,9 +71,9 @@ def get_custom_objects():
     """Return a dictionary of custom objects (layers) to use when loading models trained using this package"""
     return dict(
         zip(
-            ['MaskedDense', 'MaskedConv2D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiDense',
-                'MultiConv2D', 'SparseDense', 'SparseConv', 'SparseMultiDense', 'SparseMultiConv',
-                'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D'],
+            ['MaskedDense', 'MaskedConv2D', 'MaskedConv3D', 'MultiMaskedDense', 'MultiMaskedConv2D', 'MultiMaskedConv3D', 'MultiDense',
+                'MultiConv2D', 'MultiConv3D', 'SparseDense', 'SparseConv2D', 'SparseConv3D', 'SparseMultiDense', 'SparseMultiConv2D', 'SparseMultiConv3D',
+                'FilterLayer', 'SumLayer', 'SelectorLayer', 'MultiMaxPool2D', 'MultiMaxPool3D'],
             CUSTOM_LAYERS
         )
     )
@@ -231,8 +231,10 @@ def _replace_config(config):
 
     layer_mapping = {
         'MaskedConv2D': 'Conv2D',
+        'MaskedConv3D' : 'Conv3D',
         'MaskedDense': 'Dense',
         'MultiMaskedConv2D': 'MultiConv2D',
+        'MultiMaskedConv3D' : 'MultiConv3D',
         'MultiMaskedDense': 'MultiDense'
     }
     model_classes = ('Functional', 'Sequential')
@@ -256,8 +258,10 @@ def _create_masking_config(config):
 
     layer_mapping = {
         'Conv2D': 'MaskedConv2D',
+        'Conv3D' : 'MaskedConv3D',
         'Dense': 'MaskedDense',
         'MultiConv2D': 'MultiMaskedConv2D',
+        'MultiConv3D' : 'MultiMaskedConv3D',
         'MultiDense': 'MultiMaskedDense'
     }
     model_classes = ('Functional', 'Sequential')

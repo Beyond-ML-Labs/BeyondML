@@ -138,7 +138,7 @@ class MaskedConv3D(Layer):
                 'kernel_size': list(self.kernel_size),
                 'padding': self.padding,
                 'strides': self.strides,
-                'activation': tf.keras.activation.serialize(self.activation),
+                'activation': tf.keras.activations.serialize(self.activation),
                 'use_bias': self.use_bias,
                 'kernel_initializer': tf.keras.initializers.serialize(self.kernel_initializer),
                 'bias_initializer': tf.keras.initializers.serialize(self.bias_initializer),

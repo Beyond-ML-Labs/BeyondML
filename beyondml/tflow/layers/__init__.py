@@ -11,6 +11,6 @@ from .MultiDense import MultiDense
 from .MultiConv2D import MultiConv2D
 from .MultiMaxPool2D import MultiMaxPool2D
 from .SparseDense import SparseDense
-from .SparseConv import SparseConv
+from .SparseConv2D import SparseConv2D
 from .SparseMultiDense import SparseMultiDense
-from .SparseMultiConv import SparseMultiConv
+from .SparseMultiConv2D import SparseMultiConv2D

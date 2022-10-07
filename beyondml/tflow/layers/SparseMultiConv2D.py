@@ -2,10 +2,9 @@ from tensorflow.keras.layers import Layer
 import tensorflow as tf
 
 
-class SparseConv(Layer):
+class SparseMultiConv2D(Layer):
     """
-    Sparse implementation of the Convolutional layer. If used in a model,
-    must be saved and loaded via pickle
+    Sparse implementation of the MultiConv layer. If used in a model, must be saved and loaded via pickle
     """
 
     def __init__(
@@ -38,7 +37,7 @@ class SparseConv(Layer):
         self.strides = strides
         self.activation = tf.keras.activations.get(activation)
 
-    def build(self, input_shape):
+    def build(self, input_shapes):
         """
         Build the layer in preparation to be trained or called. Should not be called directly,
         but rather is called when the layer is added to a model
@@ -59,16 +58,25 @@ class SparseConv(Layer):
         outputs : TensorFlow Tensor
             The outputs of the layer's logic
         """
-        conv_output = tf.nn.convolution(
-            inputs,
-            tf.sparse.to_dense(self.w),
-            padding=self.padding.upper() if isinstance(
-                self.padding, str) else self.padding,
-            strides=self.strides,
-            data_format='NHWC'
-        )
-        conv_output = conv_output + tf.sparse.to_dense(self.b)
-        return self.activation(conv_output)
+        weight = tf.sparse.to_dense(self.w)
+        bias = tf.sparse.to_dense(self.b)
+
+        conv_outputs = [
+            tf.nn.convolution(
+                inputs[i],
+                weight[i],
+                padding=self.padding.upper() if isinstance(
+                    self.padding, str) else self.padding,
+                strides=self.strides,
+                data_format='NHWC'
+            ) for i in range(len(inputs))
+        ]
+        conv_outputs = [
+            conv_outputs[i] + bias[i] for i in range(len(conv_outputs))
+        ]
+        return [
+            self.activation(output) for output in conv_outputs
+        ]
 
     def get_config(self):
         config = super().get_config().copy()

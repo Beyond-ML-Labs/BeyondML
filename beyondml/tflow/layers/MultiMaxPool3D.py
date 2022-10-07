@@ -10,7 +10,7 @@ class MultiMaxPool3D(Layer):
 
     def __init__(
         self,
-        pool_size=3,
+        pool_size=(3, 3, 3),
         strides=(1, 1, 1),
         padding='same',
         **kwargs
@@ -18,7 +18,7 @@ class MultiMaxPool3D(Layer):
         """
         Parameters
         ----------
-        pool_size : integer or tuple of 3 integers (default 3)
+        pool_size : integer or tuple of 3 integers (default (3, 3, 3))
             Window size over which to take the maximum
         strides : integer or tuple of 3 integers (default (1, 1, 1))
             Stride values to move the pooling window after each step

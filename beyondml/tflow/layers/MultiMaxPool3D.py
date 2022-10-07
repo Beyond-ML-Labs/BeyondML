@@ -47,7 +47,7 @@ class MultiMaxPool3D(Layer):
             The outputs of the layer's logic
         """
         return [
-            tf.nn.maxpool3d(
+            tf.nn.max_pool3d(
                 inputs[i],
                 self.pool_size,
                 self.strides,

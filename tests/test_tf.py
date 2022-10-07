@@ -287,18 +287,6 @@ def test_quantize():
         ]
     )
 
-    model = build_simple_3d_model()
-    new_model = beyondml.tflow.utils.quantize_model(model)
-    to_pred = [np.random.random((100, 10, 10, 10, 3))] * 2
-    og_preds = model.predict(to_pred)
-    new_preds = new_model.predict(to_pred)
-    assert all(
-        [
-            np.allclose(new_preds[i], og_preds[i], 1e-3, 1e-5)
-            for i in range(2)
-        ]
-    )
-
 
 def test_sparse():
     model = build_model()
@@ -314,6 +302,38 @@ def test_sparse():
     x2 = beyondml.tflow.layers.SelectorLayer(1)(x)
     x1 = beyondml.tflow.layers.SparseConv2D.from_layer(model.layers[7])(x1)
     x2 = beyondml.tflow.layers.SparseConv2D.from_layer(model.layers[8])(x2)
+    x1 = tf.keras.layers.Flatten()(x1)
+    x2 = tf.keras.layers.Flatten()(x2)
+    x1 = beyondml.tflow.layers.SparseDense.from_layer(model.layers[11])(x1)
+    x2 = beyondml.tflow.layers.SparseDense.from_layer(model.layers[12])(x2)
+    x = beyondml.tflow.layers.SparseMultiDense.from_layer(
+        model.layers[13])([x1, x2])
+    x = beyondml.tflow.layers.SparseMultiDense.from_layer(model.layers[14])(x)
+    x1 = beyondml.tflow.layers.SelectorLayer(0)(x)
+    x2 = beyondml.tflow.layers.SelectorLayer(1)(x)
+    x1 = beyondml.tflow.layers.FilterLayer()(x1)
+    x2 = beyondml.tflow.layers.FilterLayer(False)(x2)
+    out1 = x1
+    out2 = x2
+    out3 = beyondml.tflow.layers.SumLayer()([x1, x2])
+    sparse_model = tf.keras.models.Model(
+        [input1, input2],
+        [out1, out2, out3]
+    )
+
+    model = build_3d_model()
+    model.compile(loss='mse', optimizer='adam')
+
+    input1 = tf.keras.layers.Input((10, 10, 10, 3))
+    input2 = tf.keras.layers.Input((10, 10, 10, 3))
+    x = beyondml.tflow.layers.SparseMultiConv3D.from_layer(
+        model.layers[2])([input1, input2])
+    x = beyondml.tflow.layers.SparseMultiConv3D.from_layer(model.layers[3])(x)
+    x = beyondml.tflow.layers.MultiMaxPool3D()(x)
+    x1 = beyondml.tflow.layers.SelectorLayer(0)(x)
+    x2 = beyondml.tflow.layers.SelectorLayer(1)(x)
+    x1 = beyondml.tflow.layers.SparseConv3D.from_layer(model.layers[7])(x1)
+    x2 = beyondml.tflow.layers.SparseConv3D.from_layer(model.layers[8])(x2)
     x1 = tf.keras.layers.Flatten()(x1)
     x2 = tf.keras.layers.Flatten()(x2)
     x1 = beyondml.tflow.layers.SparseDense.from_layer(model.layers[11])(x1)

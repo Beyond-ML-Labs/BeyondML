@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Layer
 class MultiMaskedDense(Layer):
     """
     Masked multitask fully connected layer. This layer implements multiple stacks
-    of the fully-connected architecture and implements masking with the MANN API
+    of the fully-connected architecture and implements masking with the BeyondML API
     to support developing sparse multitask models.
 
     """

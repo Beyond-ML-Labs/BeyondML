@@ -3,6 +3,10 @@ import tensorflow as tf
 
 
 class SparseConv3D(Layer):
+    """
+    Sparse implementation of the Convolutional layer. If used in a model,
+    must be saved and loaded via pickle
+    """
 
     def __init__(
         self,

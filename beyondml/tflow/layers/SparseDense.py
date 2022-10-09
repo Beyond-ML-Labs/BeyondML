@@ -76,3 +76,7 @@ class SparseDense(Layer):
             b,
             activation
         )
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)

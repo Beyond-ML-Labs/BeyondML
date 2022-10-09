@@ -70,3 +70,9 @@ class SelectorLayer(Layer):
             }
         )
         return config
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            sel_index=config['sel_index']
+        )

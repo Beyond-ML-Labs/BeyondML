@@ -67,3 +67,11 @@ class MultiMaxPool2D(Layer):
             }
         )
         return config
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(
+            pool_size=config['pool_size'],
+            strides=config['strides'],
+            padding=config['padding']
+        )

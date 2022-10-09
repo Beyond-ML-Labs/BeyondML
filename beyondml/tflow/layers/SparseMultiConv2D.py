@@ -107,3 +107,7 @@ class SparseMultiConv2D(Layer):
             strides,
             activation
         )
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)

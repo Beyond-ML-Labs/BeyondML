@@ -6,6 +6,7 @@ class SparseMultiConv3D(Layer):
     """
     Sparse implementation of the MultiConv layer. If used in a model, must be saved and loaded via pickle
     """
+
     def __init__(
         self,
         filters,

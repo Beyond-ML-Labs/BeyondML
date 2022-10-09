@@ -177,5 +177,6 @@ class MaskedConv2D(Layer):
             activation=config['activation'],
             use_bias=config['use_bias'],
             kernel_initializer=config['kernel_initializer'],
-            bias_initializer=config['bias_initializer']
+            bias_initializer=config['bias_initializer'],
+            mask_initializer=config['mask_initializer']
         )

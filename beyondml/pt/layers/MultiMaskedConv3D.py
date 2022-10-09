@@ -2,6 +2,7 @@ from matplotlib.mlab import stride_windows
 import numpy as np
 import torch
 
+
 class MultiMaskedConv3D(torch.nn.Module):
 
     def __init__(
@@ -9,9 +10,9 @@ class MultiMaskedConv3D(torch.nn.Module):
         in_channels,
         out_channels,
         num_tasks,
-        kernel_size = 3,
-        padding = 'same',
-        strides = 1
+        kernel_size=3,
+        padding='same',
+        strides=1
     ):
         super().__init__()
         self.in_channels = in_channels
@@ -29,7 +30,7 @@ class MultiMaskedConv3D(torch.nn.Module):
             self.kernel_size[1],
             self.kernel_size[2]
         )
-        filters = torch.nn.init.kaiming_normal_(filters, a = np.sqrt(5))
+        filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
         self.w_mask = torch.ones_like(self.w)
 
@@ -40,6 +41,7 @@ class MultiMaskedConv3D(torch.nn.Module):
     @property
     def in_channels(self):
         return self._in_channels
+
     @in_channels.setter
     def in_channels(self, value):
         if not isinstance(value, int):
@@ -49,6 +51,7 @@ class MultiMaskedConv3D(torch.nn.Module):
     @property
     def out_channels(self):
         return self._out_channels
+
     @out_channels.setter
     def out_channels(self, value):
         if not isinstance(value, int):
@@ -58,13 +61,15 @@ class MultiMaskedConv3D(torch.nn.Module):
     @property
     def kernel_size(self):
         return self._kernel_size
+
     @kernel_size.setter
     def kernel_size(self, value):
         if isinstance(value, int):
             value = (value, value, value)
         elif isinstance(value, tuple):
             if not all([isinstance(val, int) for val in value]) and len(value) == 3:
-                raise ValueError('If tuple, kernel_size must be three integers')
+                raise ValueError(
+                    'If tuple, kernel_size must be three integers')
         else:
             raise TypeError('kernel_size must be int or tuple')
         self._kernel_size = value
@@ -77,14 +82,14 @@ class MultiMaskedConv3D(torch.nn.Module):
                     inputs[i],
                     self.w[i] * self.w_mask[i],
                     self.b[i] * self.b_mask[i],
-                    stride = self.strides,
-                    padding = self.padding
+                    stride=self.strides,
+                    padding=self.padding
                 )
             )
         return outputs
 
     def prune(self, percentile):
-        
+
         w_copy = np.abs(self.w.detach().numpy())
         b_copy = np.abs(self.b.detach().numpy())
         new_w_mask = np.zeros_like(w_copy)
@@ -98,9 +103,11 @@ class MultiMaskedConv3D(torch.nn.Module):
 
             w_percentile = np.percentile(w_copy[task_num], percentile)
             b_percentile = np.percentile(b_copy[task_num], percentile)
-            
-            new_w_mask[task_num] = (w_copy[task_num] >= w_percentile).astype(int)
-            new_b_mask[task_num] = (b_copy[task_num] >= b_percentile).astype(int)
+
+            new_w_mask[task_num] = (
+                w_copy[task_num] >= w_percentile).astype(int)
+            new_b_mask[task_num] = (
+                b_copy[task_num] >= b_percentile).astype(int)
 
             self.w_mask = new_w_mask
             self.b_mask = new_b_mask

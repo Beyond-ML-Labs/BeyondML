@@ -1,13 +1,14 @@
 import torch
 
+
 class SparseConv3D(torch.nn.Module):
 
     def __init__(
         self,
         kernel,
         bias,
-        padding = 'same',
-        strides = 1
+        padding='same',
+        strides=1
     ):
 
         super().__init__()
@@ -28,6 +29,6 @@ class SparseConv3D(torch.nn.Module):
             inputs,
             kernel,
             bias,
-            stride = self.strides,
-            padding = self.padding
+            stride=self.strides,
+            padding=self.padding
         )

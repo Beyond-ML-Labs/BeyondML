@@ -1,15 +1,16 @@
 import numpy as np
 import torch
 
+
 class MaskedConv3D(torch.nn.Module):
 
     def __init__(
         self,
         in_channels,
         out_channels,
-        kernel_size = 3,
-        padding = 'same',
-        strides = 1
+        kernel_size=3,
+        padding='same',
+        strides=1
     ):
 
         super().__init__()
@@ -26,7 +27,7 @@ class MaskedConv3D(torch.nn.Module):
             self.kernel_size[1],
             self.kernel_size[2]
         )
-        filters = torch.nn.init.kaiming_normal_(filters, a = np.sqrt(5))
+        filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
         self.w_mask = torch.ones_like(self.w)
 
@@ -64,7 +65,8 @@ class MaskedConv3D(torch.nn.Module):
             value = (value, value, value)
         elif isinstance(value, tuple):
             if not all([isinstance(val, int) for val in value]) and len(value) == 3:
-                raise ValueError('If tuple, kernel_size must be three integers')
+                raise ValueError(
+                    'If tuple, kernel_size must be three integers')
         else:
             raise TypeError('kernel_size must be int or tuple')
         self._kernel_size = value
@@ -74,8 +76,8 @@ class MaskedConv3D(torch.nn.Module):
             inputs,
             self.w * self.w_mask,
             self.b * self.b_mask,
-            stride = self.strides,
-            padding = self.padding
+            stride=self.strides,
+            padding=self.padding
         )
 
     def prune(self, percentile):

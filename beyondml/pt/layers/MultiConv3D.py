@@ -1,13 +1,14 @@
 import torch
 
+
 class MultiConv3D(torch.nn.Module):
 
     def __init__(
         self,
         kernel,
         bias,
-        padding = 'same',
-        strides = 1
+        padding='same',
+        strides=1
     ):
 
         self.w = torch.nn.Parameter(
@@ -32,8 +33,8 @@ class MultiConv3D(torch.nn.Module):
                     inputs[i],
                     self.w[i],
                     self.b[i],
-                    stride = self.strides,
-                    padding = self.padding
+                    stride=self.strides,
+                    padding=self.padding
                 )
             )
         return outputs

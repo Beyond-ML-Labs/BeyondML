@@ -30,21 +30,29 @@
         <h2>Submodules</h2>
         <ul>
                 <li><a href="layers/Conv2D.html">Conv2D</a></li>
+                <li><a href="layers/Conv3D.html">Conv3D</a></li>
                 <li><a href="layers/Dense.html">Dense</a></li>
                 <li><a href="layers/FilterLayer.html">FilterLayer</a></li>
                 <li><a href="layers/MaskedConv2D.html">MaskedConv2D</a></li>
+                <li><a href="layers/MaskedConv3D.html">MaskedConv3D</a></li>
                 <li><a href="layers/MaskedDense.html">MaskedDense</a></li>
                 <li><a href="layers/MaskedMultiHeadAttention.html">MaskedMultiHeadAttention</a></li>
                 <li><a href="layers/MaskedTransformerDecoderLayer.html">MaskedTransformerDecoderLayer</a></li>
                 <li><a href="layers/MaskedTransformerEncoderLayer.html">MaskedTransformerEncoderLayer</a></li>
                 <li><a href="layers/MultiConv2D.html">MultiConv2D</a></li>
+                <li><a href="layers/MultiConv3D.html">MultiConv3D</a></li>
                 <li><a href="layers/MultiDense.html">MultiDense</a></li>
                 <li><a href="layers/MultiMaskedConv2D.html">MultiMaskedConv2D</a></li>
+                <li><a href="layers/MultiMaskedConv3D.html">MultiMaskedConv3D</a></li>
                 <li><a href="layers/MultiMaskedDense.html">MultiMaskedDense</a></li>
+                <li><a href="layers/MultiMaxPool2D.html">MultiMaxPool2D</a></li>
+                <li><a href="layers/MultiMaxPool3D.html">MultiMaxPool3D</a></li>
                 <li><a href="layers/SelectorLayer.html">SelectorLayer</a></li>
                 <li><a href="layers/SparseConv2D.html">SparseConv2D</a></li>
+                <li><a href="layers/SparseConv3D.html">SparseConv3D</a></li>
                 <li><a href="layers/SparseDense.html">SparseDense</a></li>
                 <li><a href="layers/SparseMultiConv2D.html">SparseMultiConv2D</a></li>
+                <li><a href="layers/SparseMultiConv3D.html">SparseMultiConv3D</a></li>
                 <li><a href="layers/SparseMultiDense.html">SparseMultiDense</a></li>
         </ul>
 
@@ -75,19 +83,27 @@
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">from</span> <span class="nn">.SelectorLayer</span> <span class="kn">import</span> <span class="n">SelectorLayer</span>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">.Dense</span> <span class="kn">import</span> <span class="n">Dense</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.Conv2D</span> <span class="kn">import</span> <span class="n">Conv2D</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.MultiDense</span> <span class="kn">import</span> <span class="n">MultiDense</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span> <span class="nn">.MultiConv2D</span> <span class="kn">import</span> <span class="n">MultiConv2D</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">from</span> <span class="nn">.MaskedDense</span> <span class="kn">import</span> <span class="n">MaskedDense</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="kn">from</span> <span class="nn">.MaskedConv2D</span> <span class="kn">import</span> <span class="n">MaskedConv2D</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="kn">from</span> <span class="nn">.MultiMaskedDense</span> <span class="kn">import</span> <span class="n">MultiMaskedDense</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="kn">from</span> <span class="nn">.MultiMaskedConv2D</span> <span class="kn">import</span> <span class="n">MultiMaskedConv2D</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="kn">from</span> <span class="nn">.SparseMultiDense</span> <span class="kn">import</span> <span class="n">SparseMultiDense</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="kn">from</span> <span class="nn">.SparseMultiConv2D</span> <span class="kn">import</span> <span class="n">SparseMultiConv2D</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="kn">from</span> <span class="nn">.SparseDense</span> <span class="kn">import</span> <span class="n">SparseDense</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="kn">from</span> <span class="nn">.SparseConv2D</span> <span class="kn">import</span> <span class="n">SparseConv2D</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="kn">from</span> <span class="nn">.MaskedTransformerEncoderLayer</span> <span class="kn">import</span> <span class="n">MaskedTransformerEncoderLayer</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="kn">from</span> <span class="nn">.MaskedTransformerDecoderLayer</span> <span class="kn">import</span> <span class="n">MaskedTransformerDecoderLayer</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="kn">from</span> <span class="nn">.MaskedMultiHeadAttention</span> <span class="kn">import</span> <span class="n">MaskedMultiHeadAttention</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.Conv3D</span> <span class="kn">import</span> <span class="n">Conv3D</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span> <span class="nn">.MultiDense</span> <span class="kn">import</span> <span class="n">MultiDense</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="kn">from</span> <span class="nn">.MultiConv2D</span> <span class="kn">import</span> <span class="n">MultiConv2D</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="kn">from</span> <span class="nn">.MultiConv3D</span> <span class="kn">import</span> <span class="n">MultiConv3D</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="kn">from</span> <span class="nn">.MaskedDense</span> <span class="kn">import</span> <span class="n">MaskedDense</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="kn">from</span> <span class="nn">.MaskedConv2D</span> <span class="kn">import</span> <span class="n">MaskedConv2D</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="kn">from</span> <span class="nn">.MaskedConv3D</span> <span class="kn">import</span> <span class="n">MaskedConv3D</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="kn">from</span> <span class="nn">.MultiMaskedDense</span> <span class="kn">import</span> <span class="n">MultiMaskedDense</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="kn">from</span> <span class="nn">.MultiMaskedConv2D</span> <span class="kn">import</span> <span class="n">MultiMaskedConv2D</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="kn">from</span> <span class="nn">.MultiMaskedConv3D</span> <span class="kn">import</span> <span class="n">MultiMaskedConv3D</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="kn">from</span> <span class="nn">.SparseMultiDense</span> <span class="kn">import</span> <span class="n">SparseMultiDense</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="kn">from</span> <span class="nn">.SparseMultiConv2D</span> <span class="kn">import</span> <span class="n">SparseMultiConv2D</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="kn">from</span> <span class="nn">.SparseMultiConv3D</span> <span class="kn">import</span> <span class="n">SparseMultiConv3D</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="kn">from</span> <span class="nn">.SparseDense</span> <span class="kn">import</span> <span class="n">SparseDense</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="kn">from</span> <span class="nn">.SparseConv2D</span> <span class="kn">import</span> <span class="n">SparseConv2D</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="kn">from</span> <span class="nn">.SparseConv3D</span> <span class="kn">import</span> <span class="n">SparseConv3D</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="kn">from</span> <span class="nn">.MultiMaxPool2D</span> <span class="kn">import</span> <span class="n">MultiMaxPool2D</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="kn">from</span> <span class="nn">.MultiMaxPool3D</span> <span class="kn">import</span> <span class="n">MultiMaxPool3D</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="kn">from</span> <span class="nn">.MaskedTransformerEncoderLayer</span> <span class="kn">import</span> <span class="n">MaskedTransformerEncoderLayer</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="kn">from</span> <span class="nn">.MaskedTransformerDecoderLayer</span> <span class="kn">import</span> <span class="n">MaskedTransformerDecoderLayer</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="kn">from</span> <span class="nn">.MaskedMultiHeadAttention</span> <span class="kn">import</span> <span class="n">MaskedMultiHeadAttention</span>
 </span></pre></div>
 
 

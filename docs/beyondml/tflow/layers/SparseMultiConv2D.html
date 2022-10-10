@@ -48,6 +48,9 @@
                         <li>
                                 <a class="function" href="#SparseMultiConv2D.from_layer">from_layer</a>
                         </li>
+                        <li>
+                                <a class="function" href="#SparseMultiConv2D.from_config">from_config</a>
+                        </li>
                 </ul>
 
             </li>
@@ -181,6 +184,10 @@
 </span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>            <span class="n">strides</span><span class="p">,</span>
 </span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>            <span class="n">activation</span>
 </span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>        <span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -301,6 +308,10 @@
 </span><span id="SparseMultiConv2D-108"><a href="#SparseMultiConv2D-108"><span class="linenos">108</span></a>            <span class="n">strides</span><span class="p">,</span>
 </span><span id="SparseMultiConv2D-109"><a href="#SparseMultiConv2D-109"><span class="linenos">109</span></a>            <span class="n">activation</span>
 </span><span id="SparseMultiConv2D-110"><a href="#SparseMultiConv2D-110"><span class="linenos">110</span></a>        <span class="p">)</span>
+</span><span id="SparseMultiConv2D-111"><a href="#SparseMultiConv2D-111"><span class="linenos">111</span></a>
+</span><span id="SparseMultiConv2D-112"><a href="#SparseMultiConv2D-112"><span class="linenos">112</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SparseMultiConv2D-113"><a href="#SparseMultiConv2D-113"><span class="linenos">113</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SparseMultiConv2D-114"><a href="#SparseMultiConv2D-114"><span class="linenos">114</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -543,12 +554,46 @@ if they want to modify it.</p>
 
 
                             </div>
+                            <div id="SparseMultiConv2D.from_config" class="classattr">
+                                        <input id="SparseMultiConv2D.from_config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">config</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="SparseMultiConv2D.from_config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SparseMultiConv2D.from_config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiConv2D.from_config-112"><a href="#SparseMultiConv2D.from_config-112"><span class="linenos">112</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SparseMultiConv2D.from_config-113"><a href="#SparseMultiConv2D.from_config-113"><span class="linenos">113</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SparseMultiConv2D.from_config-114"><a href="#SparseMultiConv2D.from_config-114"><span class="linenos">114</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Creates a layer from its config.</p>
+
+<p>This method is the reverse of <code><a href="#SparseMultiConv2D.get_config">get_config</a></code>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <code><a href="#SparseMultiConv2D.set_weights">set_weights</a></code>).</p>
+
+<p>Args:
+    config: A Python dictionary, typically the
+        output of get_config.</p>
+
+<p>Returns:
+    A layer instance.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>keras.engine.base_layer.Layer</dt>
                                 <dd id="SparseMultiConv2D.add_weight" class="function">add_weight</dd>
-                <dd id="SparseMultiConv2D.from_config" class="function">from_config</dd>
                 <dd id="SparseMultiConv2D.compute_output_shape" class="function">compute_output_shape</dd>
                 <dd id="SparseMultiConv2D.compute_output_signature" class="function">compute_output_signature</dd>
                 <dd id="SparseMultiConv2D.compute_mask" class="function">compute_mask</dd>

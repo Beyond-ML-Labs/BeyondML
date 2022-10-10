@@ -48,6 +48,9 @@
                         <li>
                                 <a class="function" href="#SparseDense.from_layer">from_layer</a>
                         </li>
+                        <li>
+                                <a class="function" href="#SparseDense.from_config">from_config</a>
+                        </li>
                 </ul>
 
             </li>
@@ -150,6 +153,10 @@
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>            <span class="n">b</span><span class="p">,</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="n">activation</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -239,6 +246,10 @@
 </span><span id="SparseDense-77"><a href="#SparseDense-77"><span class="linenos">77</span></a>            <span class="n">b</span><span class="p">,</span>
 </span><span id="SparseDense-78"><a href="#SparseDense-78"><span class="linenos">78</span></a>            <span class="n">activation</span>
 </span><span id="SparseDense-79"><a href="#SparseDense-79"><span class="linenos">79</span></a>        <span class="p">)</span>
+</span><span id="SparseDense-80"><a href="#SparseDense-80"><span class="linenos">80</span></a>
+</span><span id="SparseDense-81"><a href="#SparseDense-81"><span class="linenos">81</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SparseDense-82"><a href="#SparseDense-82"><span class="linenos">82</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SparseDense-83"><a href="#SparseDense-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -446,12 +457,46 @@ if they want to modify it.</p>
 
 
                             </div>
+                            <div id="SparseDense.from_config" class="classattr">
+                                        <input id="SparseDense.from_config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">config</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="SparseDense.from_config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SparseDense.from_config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseDense.from_config-81"><a href="#SparseDense.from_config-81"><span class="linenos">81</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SparseDense.from_config-82"><a href="#SparseDense.from_config-82"><span class="linenos">82</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SparseDense.from_config-83"><a href="#SparseDense.from_config-83"><span class="linenos">83</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Creates a layer from its config.</p>
+
+<p>This method is the reverse of <code><a href="#SparseDense.get_config">get_config</a></code>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <code><a href="#SparseDense.set_weights">set_weights</a></code>).</p>
+
+<p>Args:
+    config: A Python dictionary, typically the
+        output of get_config.</p>
+
+<p>Returns:
+    A layer instance.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>keras.engine.base_layer.Layer</dt>
                                 <dd id="SparseDense.add_weight" class="function">add_weight</dd>
-                <dd id="SparseDense.from_config" class="function">from_config</dd>
                 <dd id="SparseDense.compute_output_shape" class="function">compute_output_shape</dd>
                 <dd id="SparseDense.compute_output_signature" class="function">compute_output_signature</dd>
                 <dd id="SparseDense.compute_mask" class="function">compute_mask</dd>

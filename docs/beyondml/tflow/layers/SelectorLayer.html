@@ -42,6 +42,9 @@
                         <li>
                                 <a class="function" href="#SelectorLayer.get_config">get_config</a>
                         </li>
+                        <li>
+                                <a class="function" href="#SelectorLayer.from_config">from_config</a>
+                        </li>
                 </ul>
 
             </li>
@@ -138,6 +141,12 @@
 </span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>            <span class="p">}</span>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>        <span class="p">)</span>
 </span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>            <span class="n">sel_index</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;sel_index&#39;</span><span class="p">]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -222,6 +231,12 @@
 </span><span id="SelectorLayer-71"><a href="#SelectorLayer-71"><span class="linenos">71</span></a>            <span class="p">}</span>
 </span><span id="SelectorLayer-72"><a href="#SelectorLayer-72"><span class="linenos">72</span></a>        <span class="p">)</span>
 </span><span id="SelectorLayer-73"><a href="#SelectorLayer-73"><span class="linenos">73</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="SelectorLayer-74"><a href="#SelectorLayer-74"><span class="linenos">74</span></a>
+</span><span id="SelectorLayer-75"><a href="#SelectorLayer-75"><span class="linenos">75</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SelectorLayer-76"><a href="#SelectorLayer-76"><span class="linenos">76</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SelectorLayer-77"><a href="#SelectorLayer-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="SelectorLayer-78"><a href="#SelectorLayer-78"><span class="linenos">78</span></a>            <span class="n">sel_index</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;sel_index&#39;</span><span class="p">]</span>
+</span><span id="SelectorLayer-79"><a href="#SelectorLayer-79"><span class="linenos">79</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -373,13 +388,49 @@ if they want to modify it.</p>
 
 
                             </div>
+                            <div id="SelectorLayer.from_config" class="classattr">
+                                        <input id="SelectorLayer.from_config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">config</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="SelectorLayer.from_config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SelectorLayer.from_config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SelectorLayer.from_config-75"><a href="#SelectorLayer.from_config-75"><span class="linenos">75</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SelectorLayer.from_config-76"><a href="#SelectorLayer.from_config-76"><span class="linenos">76</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SelectorLayer.from_config-77"><a href="#SelectorLayer.from_config-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="SelectorLayer.from_config-78"><a href="#SelectorLayer.from_config-78"><span class="linenos">78</span></a>            <span class="n">sel_index</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;sel_index&#39;</span><span class="p">]</span>
+</span><span id="SelectorLayer.from_config-79"><a href="#SelectorLayer.from_config-79"><span class="linenos">79</span></a>        <span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Creates a layer from its config.</p>
+
+<p>This method is the reverse of <code><a href="#SelectorLayer.get_config">get_config</a></code>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <code><a href="#SelectorLayer.set_weights">set_weights</a></code>).</p>
+
+<p>Args:
+    config: A Python dictionary, typically the
+        output of get_config.</p>
+
+<p>Returns:
+    A layer instance.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>keras.engine.base_layer.Layer</dt>
                                 <dd id="SelectorLayer.build" class="function">build</dd>
                 <dd id="SelectorLayer.add_weight" class="function">add_weight</dd>
-                <dd id="SelectorLayer.from_config" class="function">from_config</dd>
                 <dd id="SelectorLayer.compute_output_shape" class="function">compute_output_shape</dd>
                 <dd id="SelectorLayer.compute_output_signature" class="function">compute_output_signature</dd>
                 <dd id="SelectorLayer.compute_mask" class="function">compute_mask</dd>

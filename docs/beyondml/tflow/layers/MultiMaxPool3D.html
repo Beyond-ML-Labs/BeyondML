@@ -42,6 +42,9 @@
                         <li>
                                 <a class="function" href="#MultiMaxPool3D.get_config">get_config</a>
                         </li>
+                        <li>
+                                <a class="function" href="#MultiMaxPool3D.from_config">from_config</a>
+                        </li>
                 </ul>
 
             </li>
@@ -78,7 +81,7 @@
 </span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="o">**</span><span class="n">kwargs</span>
@@ -86,7 +89,7 @@
 </span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>        <span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        Parameters</span>
 </span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        ----------</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default 3)</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default (3, 3, 3))</span>
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">            Window size over which to take the maximum</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">        strides : integer or tuple of 3 integers (default (1, 1, 1))</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            Stride values to move the pooling window after each step</span>
@@ -134,6 +137,14 @@
 </span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>            <span class="p">}</span>
 </span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="p">)</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>            <span class="n">pool_size</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">],</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>            <span class="n">strides</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;strides&#39;</span><span class="p">],</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="n">padding</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;padding&#39;</span><span class="p">]</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -157,7 +168,7 @@
 </span><span id="MultiMaxPool3D-11"><a href="#MultiMaxPool3D-11"><span class="linenos">11</span></a>
 </span><span id="MultiMaxPool3D-12"><a href="#MultiMaxPool3D-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 </span><span id="MultiMaxPool3D-13"><a href="#MultiMaxPool3D-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="MultiMaxPool3D-14"><a href="#MultiMaxPool3D-14"><span class="linenos">14</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="MultiMaxPool3D-14"><a href="#MultiMaxPool3D-14"><span class="linenos">14</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
 </span><span id="MultiMaxPool3D-15"><a href="#MultiMaxPool3D-15"><span class="linenos">15</span></a>        <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 </span><span id="MultiMaxPool3D-16"><a href="#MultiMaxPool3D-16"><span class="linenos">16</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
 </span><span id="MultiMaxPool3D-17"><a href="#MultiMaxPool3D-17"><span class="linenos">17</span></a>        <span class="o">**</span><span class="n">kwargs</span>
@@ -165,7 +176,7 @@
 </span><span id="MultiMaxPool3D-19"><a href="#MultiMaxPool3D-19"><span class="linenos">19</span></a>        <span class="sd">&quot;&quot;&quot;</span>
 </span><span id="MultiMaxPool3D-20"><a href="#MultiMaxPool3D-20"><span class="linenos">20</span></a><span class="sd">        Parameters</span>
 </span><span id="MultiMaxPool3D-21"><a href="#MultiMaxPool3D-21"><span class="linenos">21</span></a><span class="sd">        ----------</span>
-</span><span id="MultiMaxPool3D-22"><a href="#MultiMaxPool3D-22"><span class="linenos">22</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default 3)</span>
+</span><span id="MultiMaxPool3D-22"><a href="#MultiMaxPool3D-22"><span class="linenos">22</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default (3, 3, 3))</span>
 </span><span id="MultiMaxPool3D-23"><a href="#MultiMaxPool3D-23"><span class="linenos">23</span></a><span class="sd">            Window size over which to take the maximum</span>
 </span><span id="MultiMaxPool3D-24"><a href="#MultiMaxPool3D-24"><span class="linenos">24</span></a><span class="sd">        strides : integer or tuple of 3 integers (default (1, 1, 1))</span>
 </span><span id="MultiMaxPool3D-25"><a href="#MultiMaxPool3D-25"><span class="linenos">25</span></a><span class="sd">            Stride values to move the pooling window after each step</span>
@@ -213,6 +224,14 @@
 </span><span id="MultiMaxPool3D-67"><a href="#MultiMaxPool3D-67"><span class="linenos">67</span></a>            <span class="p">}</span>
 </span><span id="MultiMaxPool3D-68"><a href="#MultiMaxPool3D-68"><span class="linenos">68</span></a>        <span class="p">)</span>
 </span><span id="MultiMaxPool3D-69"><a href="#MultiMaxPool3D-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">config</span>
+</span><span id="MultiMaxPool3D-70"><a href="#MultiMaxPool3D-70"><span class="linenos">70</span></a>
+</span><span id="MultiMaxPool3D-71"><a href="#MultiMaxPool3D-71"><span class="linenos">71</span></a>    <span class="nd">@classmethod</span>
+</span><span id="MultiMaxPool3D-72"><a href="#MultiMaxPool3D-72"><span class="linenos">72</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="MultiMaxPool3D-73"><a href="#MultiMaxPool3D-73"><span class="linenos">73</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="MultiMaxPool3D-74"><a href="#MultiMaxPool3D-74"><span class="linenos">74</span></a>            <span class="n">pool_size</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">],</span>
+</span><span id="MultiMaxPool3D-75"><a href="#MultiMaxPool3D-75"><span class="linenos">75</span></a>            <span class="n">strides</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;strides&#39;</span><span class="p">],</span>
+</span><span id="MultiMaxPool3D-76"><a href="#MultiMaxPool3D-76"><span class="linenos">76</span></a>            <span class="n">padding</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;padding&#39;</span><span class="p">]</span>
+</span><span id="MultiMaxPool3D-77"><a href="#MultiMaxPool3D-77"><span class="linenos">77</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -225,7 +244,7 @@ algorithm across multiple inputs for developing multitask models</p>
                                         <input id="MultiMaxPool3D.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">MultiMaxPool3D</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span>, </span><span class="param"><span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>, </span><span class="param"><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
+        <span class="name">MultiMaxPool3D</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>, </span><span class="param"><span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>, </span><span class="param"><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span></span>)</span>
 
                 <label class="view-source-button" for="MultiMaxPool3D.__init__-view-source"><span>View Source</span></label>
 
@@ -233,7 +252,7 @@ algorithm across multiple inputs for developing multitask models</p>
     <a class="headerlink" href="#MultiMaxPool3D.__init__"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="MultiMaxPool3D.__init__-12"><a href="#MultiMaxPool3D.__init__-12"><span class="linenos">12</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
 </span><span id="MultiMaxPool3D.__init__-13"><a href="#MultiMaxPool3D.__init__-13"><span class="linenos">13</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="MultiMaxPool3D.__init__-14"><a href="#MultiMaxPool3D.__init__-14"><span class="linenos">14</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+</span><span id="MultiMaxPool3D.__init__-14"><a href="#MultiMaxPool3D.__init__-14"><span class="linenos">14</span></a>        <span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
 </span><span id="MultiMaxPool3D.__init__-15"><a href="#MultiMaxPool3D.__init__-15"><span class="linenos">15</span></a>        <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 </span><span id="MultiMaxPool3D.__init__-16"><a href="#MultiMaxPool3D.__init__-16"><span class="linenos">16</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
 </span><span id="MultiMaxPool3D.__init__-17"><a href="#MultiMaxPool3D.__init__-17"><span class="linenos">17</span></a>        <span class="o">**</span><span class="n">kwargs</span>
@@ -241,7 +260,7 @@ algorithm across multiple inputs for developing multitask models</p>
 </span><span id="MultiMaxPool3D.__init__-19"><a href="#MultiMaxPool3D.__init__-19"><span class="linenos">19</span></a>        <span class="sd">&quot;&quot;&quot;</span>
 </span><span id="MultiMaxPool3D.__init__-20"><a href="#MultiMaxPool3D.__init__-20"><span class="linenos">20</span></a><span class="sd">        Parameters</span>
 </span><span id="MultiMaxPool3D.__init__-21"><a href="#MultiMaxPool3D.__init__-21"><span class="linenos">21</span></a><span class="sd">        ----------</span>
-</span><span id="MultiMaxPool3D.__init__-22"><a href="#MultiMaxPool3D.__init__-22"><span class="linenos">22</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default 3)</span>
+</span><span id="MultiMaxPool3D.__init__-22"><a href="#MultiMaxPool3D.__init__-22"><span class="linenos">22</span></a><span class="sd">        pool_size : integer or tuple of 3 integers (default (3, 3, 3))</span>
 </span><span id="MultiMaxPool3D.__init__-23"><a href="#MultiMaxPool3D.__init__-23"><span class="linenos">23</span></a><span class="sd">            Window size over which to take the maximum</span>
 </span><span id="MultiMaxPool3D.__init__-24"><a href="#MultiMaxPool3D.__init__-24"><span class="linenos">24</span></a><span class="sd">        strides : integer or tuple of 3 integers (default (1, 1, 1))</span>
 </span><span id="MultiMaxPool3D.__init__-25"><a href="#MultiMaxPool3D.__init__-25"><span class="linenos">25</span></a><span class="sd">            Stride values to move the pooling window after each step</span>
@@ -260,7 +279,7 @@ algorithm across multiple inputs for developing multitask models</p>
             <div class="docstring"><h6 id="parameters">Parameters</h6>
 
 <ul>
-<li><strong>pool_size</strong> (integer or tuple of 3 integers (default 3)):
+<li><strong>pool_size</strong> (integer or tuple of 3 integers (default (3, 3, 3))):
 Window size over which to take the maximum</li>
 <li><strong>strides</strong> (integer or tuple of 3 integers (default (1, 1, 1))):
 Stride values to move the pooling window after each step</li>
@@ -373,13 +392,51 @@ if they want to modify it.</p>
 
 
                             </div>
+                            <div id="MultiMaxPool3D.from_config" class="classattr">
+                                        <input id="MultiMaxPool3D.from_config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">config</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="MultiMaxPool3D.from_config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#MultiMaxPool3D.from_config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiMaxPool3D.from_config-71"><a href="#MultiMaxPool3D.from_config-71"><span class="linenos">71</span></a>    <span class="nd">@classmethod</span>
+</span><span id="MultiMaxPool3D.from_config-72"><a href="#MultiMaxPool3D.from_config-72"><span class="linenos">72</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="MultiMaxPool3D.from_config-73"><a href="#MultiMaxPool3D.from_config-73"><span class="linenos">73</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+</span><span id="MultiMaxPool3D.from_config-74"><a href="#MultiMaxPool3D.from_config-74"><span class="linenos">74</span></a>            <span class="n">pool_size</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;pool_size&#39;</span><span class="p">],</span>
+</span><span id="MultiMaxPool3D.from_config-75"><a href="#MultiMaxPool3D.from_config-75"><span class="linenos">75</span></a>            <span class="n">strides</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;strides&#39;</span><span class="p">],</span>
+</span><span id="MultiMaxPool3D.from_config-76"><a href="#MultiMaxPool3D.from_config-76"><span class="linenos">76</span></a>            <span class="n">padding</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;padding&#39;</span><span class="p">]</span>
+</span><span id="MultiMaxPool3D.from_config-77"><a href="#MultiMaxPool3D.from_config-77"><span class="linenos">77</span></a>        <span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Creates a layer from its config.</p>
+
+<p>This method is the reverse of <code><a href="#MultiMaxPool3D.get_config">get_config</a></code>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <code><a href="#MultiMaxPool3D.set_weights">set_weights</a></code>).</p>
+
+<p>Args:
+    config: A Python dictionary, typically the
+        output of get_config.</p>
+
+<p>Returns:
+    A layer instance.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>keras.engine.base_layer.Layer</dt>
                                 <dd id="MultiMaxPool3D.build" class="function">build</dd>
                 <dd id="MultiMaxPool3D.add_weight" class="function">add_weight</dd>
-                <dd id="MultiMaxPool3D.from_config" class="function">from_config</dd>
                 <dd id="MultiMaxPool3D.compute_output_shape" class="function">compute_output_shape</dd>
                 <dd id="MultiMaxPool3D.compute_output_signature" class="function">compute_output_signature</dd>
                 <dd id="MultiMaxPool3D.compute_mask" class="function">compute_mask</dd>

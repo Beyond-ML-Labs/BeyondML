@@ -255,8 +255,9 @@
 </span><span id="L-178"><a href="#L-178"><span class="linenos">178</span></a>            <span class="n">activation</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;activation&#39;</span><span class="p">],</span>
 </span><span id="L-179"><a href="#L-179"><span class="linenos">179</span></a>            <span class="n">use_bias</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;use_bias&#39;</span><span class="p">],</span>
 </span><span id="L-180"><a href="#L-180"><span class="linenos">180</span></a>            <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;kernel_initializer&#39;</span><span class="p">],</span>
-</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">]</span>
-</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>        <span class="p">)</span>
+</span><span id="L-181"><a href="#L-181"><span class="linenos">181</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">],</span>
+</span><span id="L-182"><a href="#L-182"><span class="linenos">182</span></a>            <span class="n">mask_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span>
+</span><span id="L-183"><a href="#L-183"><span class="linenos">183</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -447,8 +448,9 @@
 </span><span id="MaskedConv3D-179"><a href="#MaskedConv3D-179"><span class="linenos">179</span></a>            <span class="n">activation</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;activation&#39;</span><span class="p">],</span>
 </span><span id="MaskedConv3D-180"><a href="#MaskedConv3D-180"><span class="linenos">180</span></a>            <span class="n">use_bias</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;use_bias&#39;</span><span class="p">],</span>
 </span><span id="MaskedConv3D-181"><a href="#MaskedConv3D-181"><span class="linenos">181</span></a>            <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;kernel_initializer&#39;</span><span class="p">],</span>
-</span><span id="MaskedConv3D-182"><a href="#MaskedConv3D-182"><span class="linenos">182</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">]</span>
-</span><span id="MaskedConv3D-183"><a href="#MaskedConv3D-183"><span class="linenos">183</span></a>        <span class="p">)</span>
+</span><span id="MaskedConv3D-182"><a href="#MaskedConv3D-182"><span class="linenos">182</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">],</span>
+</span><span id="MaskedConv3D-183"><a href="#MaskedConv3D-183"><span class="linenos">183</span></a>            <span class="n">mask_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span>
+</span><span id="MaskedConv3D-184"><a href="#MaskedConv3D-184"><span class="linenos">184</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -775,8 +777,9 @@ The new masks to set for the layer</li>
 </span><span id="MaskedConv3D.from_config-179"><a href="#MaskedConv3D.from_config-179"><span class="linenos">179</span></a>            <span class="n">activation</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;activation&#39;</span><span class="p">],</span>
 </span><span id="MaskedConv3D.from_config-180"><a href="#MaskedConv3D.from_config-180"><span class="linenos">180</span></a>            <span class="n">use_bias</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;use_bias&#39;</span><span class="p">],</span>
 </span><span id="MaskedConv3D.from_config-181"><a href="#MaskedConv3D.from_config-181"><span class="linenos">181</span></a>            <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;kernel_initializer&#39;</span><span class="p">],</span>
-</span><span id="MaskedConv3D.from_config-182"><a href="#MaskedConv3D.from_config-182"><span class="linenos">182</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">]</span>
-</span><span id="MaskedConv3D.from_config-183"><a href="#MaskedConv3D.from_config-183"><span class="linenos">183</span></a>        <span class="p">)</span>
+</span><span id="MaskedConv3D.from_config-182"><a href="#MaskedConv3D.from_config-182"><span class="linenos">182</span></a>            <span class="n">bias_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;bias_initializer&#39;</span><span class="p">],</span>
+</span><span id="MaskedConv3D.from_config-183"><a href="#MaskedConv3D.from_config-183"><span class="linenos">183</span></a>            <span class="n">mask_initializer</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span>
+</span><span id="MaskedConv3D.from_config-184"><a href="#MaskedConv3D.from_config-184"><span class="linenos">184</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 

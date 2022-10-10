@@ -42,6 +42,9 @@
                         <li>
                                 <a class="function" href="#SumLayer.get_config">get_config</a>
                         </li>
+                        <li>
+                                <a class="function" href="#SumLayer.from_config">from_config</a>
+                        </li>
                 </ul>
 
             </li>
@@ -110,6 +113,10 @@
 </span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>
 </span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>    <span class="nd">@classmethod</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -165,6 +172,10 @@
 </span><span id="SumLayer-43"><a href="#SumLayer-43"><span class="linenos">43</span></a>
 </span><span id="SumLayer-44"><a href="#SumLayer-44"><span class="linenos">44</span></a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span><span id="SumLayer-45"><a href="#SumLayer-45"><span class="linenos">45</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</span><span id="SumLayer-46"><a href="#SumLayer-46"><span class="linenos">46</span></a>
+</span><span id="SumLayer-47"><a href="#SumLayer-47"><span class="linenos">47</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SumLayer-48"><a href="#SumLayer-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SumLayer-49"><a href="#SumLayer-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -291,13 +302,47 @@ if they want to modify it.</p>
 
 
                             </div>
+                            <div id="SumLayer.from_config" class="classattr">
+                                        <input id="SumLayer.from_config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+                    <div class="decorator">@classmethod</div>
+
+        <span class="def">def</span>
+        <span class="name">from_config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">cls</span>, </span><span class="param"><span class="n">config</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="SumLayer.from_config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SumLayer.from_config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SumLayer.from_config-47"><a href="#SumLayer.from_config-47"><span class="linenos">47</span></a>    <span class="nd">@classmethod</span>
+</span><span id="SumLayer.from_config-48"><a href="#SumLayer.from_config-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+</span><span id="SumLayer.from_config-49"><a href="#SumLayer.from_config-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Creates a layer from its config.</p>
+
+<p>This method is the reverse of <code><a href="#SumLayer.get_config">get_config</a></code>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <code><a href="#SumLayer.set_weights">set_weights</a></code>).</p>
+
+<p>Args:
+    config: A Python dictionary, typically the
+        output of get_config.</p>
+
+<p>Returns:
+    A layer instance.</p>
+</div>
+
+
+                            </div>
                             <div class="inherited">
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>keras.engine.base_layer.Layer</dt>
                                 <dd id="SumLayer.build" class="function">build</dd>
                 <dd id="SumLayer.add_weight" class="function">add_weight</dd>
-                <dd id="SumLayer.from_config" class="function">from_config</dd>
                 <dd id="SumLayer.compute_output_shape" class="function">compute_output_shape</dd>
                 <dd id="SumLayer.compute_output_signature" class="function">compute_output_signature</dd>
                 <dd id="SumLayer.compute_mask" class="function">compute_mask</dd>

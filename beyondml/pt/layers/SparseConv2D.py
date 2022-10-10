@@ -23,7 +23,7 @@ class SparseConv2D(torch.nn.Module):
             The bias to use
         padding : str or int (default 'same')
             The padding to use
-        strides : int (default 1)
+        strides : int or tuple (default 1)
             The padding to use
         """
         super().__init__()

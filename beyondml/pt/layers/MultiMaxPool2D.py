@@ -1,6 +1,6 @@
 import torch
 
-class MultiMaxPool3D(torch.nn.Module):
+class MultiMaxPool2D(torch.nn.Module):
     """
     Multitask implementation of 2-dimensional Max Pooling layer
     """
@@ -23,15 +23,14 @@ class MultiMaxPool3D(torch.nn.Module):
         dilation : int (default 1)
             The dilation to use
         """
+
+        super().__init__()
         self.kernel_size = kernel_size
         self.stride = stride if stride else self.kernel_size
         self.padding = padding
         self.dilation = dilation
 
-    def forward(
-        self,
-        inputs
-    ):
+    def forward(self, inputs):
         """
         Call the layer on input data
 
@@ -48,7 +47,7 @@ class MultiMaxPool3D(torch.nn.Module):
         outputs = []
         for i in range(len(inputs)):
             outputs.append(
-                torch.nn.functional.max_pool3d(
+                torch.nn.functional.max_pool2d(
                     input = inputs[i],
                     kernel_size = self.kernel_size,
                     stride = self.stride,

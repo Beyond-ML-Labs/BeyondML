@@ -4,7 +4,9 @@ import torch
 
 
 class MultiMaskedConv3D(torch.nn.Module):
-
+    """
+    Masked Multitask 3D Convolutional layer
+    """
     def __init__(
         self,
         in_channels,
@@ -14,6 +16,21 @@ class MultiMaskedConv3D(torch.nn.Module):
         padding='same',
         strides=1
     ):
+        """
+        Parameters
+        ----------
+        in_channels : int
+            The number of channels for input data
+        out_channels : int
+            The number of filters to use
+        kernel_size : int or tuple (default 3)
+            The kernel size to use
+        padding : int or str (default 'same')
+            Padding to use
+        strides : int or tuple (default 1)
+            The number of strides to use
+        """
+
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
@@ -75,6 +92,19 @@ class MultiMaskedConv3D(torch.nn.Module):
         self._kernel_size = value
 
     def forward(self, inputs):
+        """
+        Call the layer on input data
+
+        Parameters
+        ----------
+        inputs : torch.Tensor
+            Inputs to call the layer's logic on
+
+        Returns
+        -------
+        results : torch.Tensor
+            The results of the layer's logic
+        """
         outputs = []
         for i in range(len(inputs)):
             outputs.append(
@@ -89,7 +119,19 @@ class MultiMaskedConv3D(torch.nn.Module):
         return outputs
 
     def prune(self, percentile):
+        """
+        Prune the layer by updating the layer's masks
 
+        Parameters
+        ----------
+        percentile : int
+            Integer between 0 and 99 which represents the proportion of weights to be inactive
+
+        Notes
+        -----
+        Acts on the layer in place
+        """
+        
         w_copy = np.abs(self.w.detach().numpy())
         b_copy = np.abs(self.b.detach().numpy())
         new_w_mask = np.zeros_like(w_copy)

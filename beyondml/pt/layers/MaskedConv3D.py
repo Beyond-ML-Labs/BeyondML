@@ -132,8 +132,8 @@ class MaskedConv3D(torch.nn.Module):
         new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
         new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
 
-        self.w_mask = new_w_mask
-        self.b_mask = new_b_mask
+        self.w_mask = torch.Tensor(new_w_mask)
+        self.b_mask = torch.Tensor(new_b_mask)
 
         self.w = torch.nn.Parameter(
             self.w * self.w_mask

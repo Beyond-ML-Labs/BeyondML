@@ -25,7 +25,7 @@ class MultiConv3D(torch.nn.Module):
         strides : int or tuple (default 1)
             The strides to use
         """
-
+        super().__init__()
         self.w = torch.nn.Parameter(
             torch.Tensor(kernel)
         )

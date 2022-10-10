@@ -6,6 +6,7 @@ class SparseConv3D(torch.nn.Module):
     Sparse 3D Convolutional layer, expected to be converted from a
     trained, pruned layer
     """
+
     def __init__(
         self,
         kernel,

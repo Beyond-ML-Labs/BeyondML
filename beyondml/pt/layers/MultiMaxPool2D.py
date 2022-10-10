@@ -1,15 +1,17 @@
 import torch
 
+
 class MultiMaxPool2D(torch.nn.Module):
     """
     Multitask implementation of 2-dimensional Max Pooling layer
     """
+
     def __init__(
         self,
         kernel_size,
-        stride = None,
-        padding = 0,
-        dilation = 1
+        stride=None,
+        padding=0,
+        dilation=1
     ):
         """
         Parameters
@@ -48,11 +50,11 @@ class MultiMaxPool2D(torch.nn.Module):
         for i in range(len(inputs)):
             outputs.append(
                 torch.nn.functional.max_pool2d(
-                    input = inputs[i],
-                    kernel_size = self.kernel_size,
-                    stride = self.stride,
-                    padding = self.padding,
-                    dilation = self.dilation
+                    input=inputs[i],
+                    kernel_size=self.kernel_size,
+                    stride=self.stride,
+                    padding=self.padding,
+                    dilation=self.dilation
                 )
             )
         return outputs

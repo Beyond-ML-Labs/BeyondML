@@ -5,6 +5,7 @@ class MultiConv3D(torch.nn.Module):
     """
     Multitask 3D Convolutional layer initialized with weights rather than with hyperparameters
     """
+
     def __init__(
         self,
         kernel,

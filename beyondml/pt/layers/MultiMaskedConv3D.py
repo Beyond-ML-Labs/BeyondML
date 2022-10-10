@@ -7,6 +7,7 @@ class MultiMaskedConv3D(torch.nn.Module):
     """
     Masked Multitask 3D Convolutional layer
     """
+
     def __init__(
         self,
         in_channels,
@@ -131,7 +132,7 @@ class MultiMaskedConv3D(torch.nn.Module):
         -----
         Acts on the layer in place
         """
-        
+
         w_copy = np.abs(self.w.detach().numpy())
         b_copy = np.abs(self.b.detach().numpy())
         new_w_mask = np.zeros_like(w_copy)

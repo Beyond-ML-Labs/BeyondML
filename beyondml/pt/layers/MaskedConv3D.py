@@ -6,6 +6,7 @@ class MaskedConv3D(torch.nn.Module):
     """
     Masked 3D Convolutional layer
     """
+
     def __init__(
         self,
         in_channels,

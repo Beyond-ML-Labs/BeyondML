@@ -1,4 +1,3 @@
-from matplotlib.mlab import stride_windows
 import numpy as np
 import torch
 

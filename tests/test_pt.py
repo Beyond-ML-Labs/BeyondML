@@ -1,4 +1,3 @@
-from cmath import isclose
 import pytest
 import beyondml.pt as pt
 import torch

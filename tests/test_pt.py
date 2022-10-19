@@ -1,4 +1,3 @@
-from cmath import isclose
 import pytest
 import beyondml.pt as pt
 import torch
@@ -12,6 +11,15 @@ def test_conv2d():
     )
     forward = layer.forward(torch.Tensor(10, 3, 30, 30))
     assert forward.shape == (10, 8, 30, 30)
+
+
+def test_conv3d():
+    layer = pt.layers.Conv3D(
+        np.random.random((8, 3, 3, 3, 3)),
+        np.random.random(8)
+    )
+    forward = layer.forward(torch.Tensor(10, 3, 30, 30, 30))
+    assert forward.shape == (10, 8, 30, 30, 30)
 
 
 def test_dense():
@@ -30,6 +38,15 @@ def test_sparse_conv2d():
     )
     forward = layer.forward(torch.Tensor(10, 3, 30, 30))
     assert forward.shape == (10, 8, 30, 30)
+
+
+def test_sparse_conv3d():
+    layer = pt.layers.SparseConv3D(
+        np.random.random((8, 3, 3, 3, 3)),
+        np.random.random(8)
+    )
+    forward = layer.forward(torch.Tensor(10, 3, 30, 30, 30))
+    assert forward.shape == (10, 8, 30, 30, 30)
 
 
 def test_sparse_dense():
@@ -52,6 +69,17 @@ def test_multi_conv2d():
     assert forward[1].shape == (10, 8, 30, 30)
 
 
+def test_multi_conv3d():
+    layer = pt.layers.MultiConv3D(
+        np.random.random((2, 8, 3, 3, 3, 3)),
+        np.random.random((2, 8))
+    )
+    forward = layer.forward([torch.Tensor(10, 3, 30, 30, 30)] * 2)
+    assert len(forward) == 2
+    assert forward[0].shape == (10, 8, 30, 30, 30)
+    assert forward[1].shape == (10, 8, 30, 30, 30)
+
+
 def test_multi_dense():
     layer = pt.layers.MultiDense(
         np.random.random((2, 10, 100)),
@@ -72,6 +100,17 @@ def test_sparse_multi_conv2d():
     assert len(forward) == 2
     assert forward[0].shape == (10, 8, 30, 30)
     assert forward[1].shape == (10, 8, 30, 30)
+
+
+def test_sparse_multi_conv3d():
+    layer = pt.layers.SparseMultiConv3D(
+        np.random.random((2, 8, 3, 3, 3, 3)),
+        np.random.random((2, 8))
+    )
+    forward = layer.forward([torch.Tensor(10, 3, 30, 30, 30)] * 2)
+    assert len(forward) == 2
+    assert forward[0].shape == (10, 8, 30, 30, 30)
+    assert forward[1].shape == (10, 8, 30, 30, 30)
 
 
 def test_sparse_multi_dense():
@@ -115,6 +154,21 @@ def test_masked_conv2d():
         layer.w_mask.flatten().shape[0] <= 0.6
 
 
+def test_masked_conv3d():
+    layer = pt.layers.MaskedConv3D(
+        3,
+        8
+    )
+    forward = layer.forward(
+        torch.Tensor(10, 3, 30, 30, 30)
+    )
+    assert forward.shape == (10, 8, 30, 30, 30)
+
+    layer.prune(60)
+    assert 1 - layer.w_mask.numpy().sum() / \
+        layer.w_mask.flatten().shape[0] <= 0.605
+
+
 def test_masked_dense():
     layer = pt.layers.MaskedDense(
         10,
@@ -148,6 +202,27 @@ def test_multi_masked_conv2d():
         layer.w_mask[0].flatten().shape[0] <= 0.6
     assert 1 - layer.w_mask[1].sum().numpy() / \
         layer.w_mask[1].flatten().shape[0] <= 0.6
+    assert layer.w_mask.sum(axis=0).max() < 2
+
+
+def test_multi_masked_conv3d():
+    layer = pt.layers.MultiMaskedConv3D(
+        3,
+        8,
+        2
+    )
+    forward = layer.forward(
+        [torch.Tensor(10, 3, 30, 30, 30)] * 2
+    )
+    assert len(forward) == 2
+    assert forward[0].shape == (10, 8, 30, 30, 30)
+    assert forward[1].shape == (10, 8, 30, 30, 30)
+
+    layer.prune(60)
+    assert 1 - layer.w_mask[0].sum().numpy() / \
+        layer.w_mask[0].flatten().shape[0] <= 0.65
+    assert 1 - layer.w_mask[1].sum().numpy() / \
+        layer.w_mask[1].flatten().shape[0] <= 0.65
     assert layer.w_mask.sum(axis=0).max() < 2
 
 
@@ -200,3 +275,16 @@ def test_prune():
         model.layer2.w_mask.sum() / model.layer2.w_mask.flatten().shape[0],
         0.1
     )
+
+
+def test_transformer():
+    encoder = pt.layers.MaskedTransformerEncoderLayer(
+        512,
+        8
+    )
+    encoder.prune(80)
+    decoder = pt.layers.MaskedTransformerDecoderLayer(
+        2048,
+        8
+    )
+    decoder.prune(80)

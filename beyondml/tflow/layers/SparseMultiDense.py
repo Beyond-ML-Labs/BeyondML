@@ -80,3 +80,7 @@ class SparseMultiDense(Layer):
             b,
             activation
         )
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)

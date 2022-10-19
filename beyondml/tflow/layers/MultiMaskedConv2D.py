@@ -7,7 +7,7 @@ class MultiMaskedConv2D(Layer):
     """
     Masked multitask 2-dimensional convolutional layer. This layer implements
     multiple stacks of the convolutional architecture and implements masking consistent
-    with the MANN API to support developing sparse multitask models.
+    with the BeyondML API to support developing sparse multitask models.
     """
 
     def __init__(
@@ -160,13 +160,13 @@ class MultiMaskedConv2D(Layer):
     def set_masks(self, new_masks):
         if not self.use_bias:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float),
-                 new_masks[0].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float32),
+                 new_masks[0].astype(np.float32)]
             )
         else:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(
-                    np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float32), self.b.numpy() * new_masks[1].astype(
+                    np.float32), new_masks[0].astype(np.float32), new_masks[1].astype(np.float32)]
             )
 
     @classmethod
@@ -179,5 +179,6 @@ class MultiMaskedConv2D(Layer):
             activation=config['activation'],
             use_bias=config['use_bias'],
             kernel_initializer=config['kernel_initializer'],
-            bias_initializer=config['bias_initializer']
+            bias_initializer=config['bias_initializer'],
+            mask_initializer=config['mask_initializer']
         )

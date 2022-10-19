@@ -29,7 +29,7 @@ class MultiMaskedConv2D(torch.nn.Module):
             The kernel size to use
         padding : str or int (default 'same')
             The padding to use
-        strides : int (default 1)
+        strides : int or tuple (default 1)
             The strides to use
         """
         super().__init__()

@@ -66,3 +66,7 @@ class FilterLayer(Layer):
     def turn_off(self):
         """Turn the layer `off` so inputs are destroyed and all-zero tensors are output"""
         self.is_on = False
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)

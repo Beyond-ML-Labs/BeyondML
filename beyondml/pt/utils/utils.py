@@ -1,4 +1,4 @@
-from beyondml.pt.layers import MaskedConv2D, MaskedDense, MultiMaskedConv2D, MultiMaskedDense
+from beyondml.pt.layers import MaskedConv2D, MaskedConv3D, MaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiMaskedDense
 
 
 def prune_model(model, percentile):
@@ -24,8 +24,8 @@ def prune_model(model, percentile):
     - Also acts on the model in place, but returns the model for ease of use
     """
 
-    compatible_layers = (MaskedConv2D, MaskedDense,
-                         MultiMaskedConv2D, MultiMaskedDense)
+    compatible_layers = (MaskedConv2D, MaskedConv3D, MaskedDense,
+                         MultiMaskedConv2D, MultiMaskedConv3D, MultiMaskedDense)
 
     try:
         for layer in model.layers:

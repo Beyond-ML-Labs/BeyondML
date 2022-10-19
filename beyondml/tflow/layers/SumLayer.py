@@ -42,3 +42,7 @@ class SumLayer(Layer):
 
     def get_config(self):
         return super().get_config().copy()
+
+    @classmethod
+    def from_config(cls, config):
+        return cls(**config)

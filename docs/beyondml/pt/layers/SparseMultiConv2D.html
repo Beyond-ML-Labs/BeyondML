@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 12.0.2"/>
+    <meta name="generator" content="pdoc 12.2.0"/>
     <title>beyondml.pt.layers.SparseMultiConv2D API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -59,9 +59,9 @@
 <a href="./../../../beyondml.html">beyondml</a><wbr>.<a href="./../../pt.html">pt</a><wbr>.<a href="./../layers.html">layers</a><wbr>.SparseMultiConv2D    </h1>
 
                 
-                        <input id="SparseMultiConv2D-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+                        <input id="mod-SparseMultiConv2D-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 
-                        <label class="view-source-button" for="SparseMultiConv2D-view-source"><span>View Source</span></label>
+                        <label class="view-source-button" for="mod-SparseMultiConv2D-view-source"><span>View Source</span></label>
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">import</span> <span class="nn">torch</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
@@ -87,7 +87,7 @@
 </span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">            The bias to use</span>
 </span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
 </span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            The padding to use</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        strides : int (default 1)</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        strides : int or tuple (default 1)</span>
 </span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">            The padding to use</span>
 </span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -164,7 +164,7 @@
 </span><span id="SparseMultiConv2D-23"><a href="#SparseMultiConv2D-23"><span class="linenos">23</span></a><span class="sd">            The bias to use</span>
 </span><span id="SparseMultiConv2D-24"><a href="#SparseMultiConv2D-24"><span class="linenos">24</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
 </span><span id="SparseMultiConv2D-25"><a href="#SparseMultiConv2D-25"><span class="linenos">25</span></a><span class="sd">            The padding to use</span>
-</span><span id="SparseMultiConv2D-26"><a href="#SparseMultiConv2D-26"><span class="linenos">26</span></a><span class="sd">        strides : int (default 1)</span>
+</span><span id="SparseMultiConv2D-26"><a href="#SparseMultiConv2D-26"><span class="linenos">26</span></a><span class="sd">        strides : int or tuple (default 1)</span>
 </span><span id="SparseMultiConv2D-27"><a href="#SparseMultiConv2D-27"><span class="linenos">27</span></a><span class="sd">            The padding to use</span>
 </span><span id="SparseMultiConv2D-28"><a href="#SparseMultiConv2D-28"><span class="linenos">28</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="SparseMultiConv2D-29"><a href="#SparseMultiConv2D-29"><span class="linenos">29</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -238,7 +238,7 @@
 </span><span id="SparseMultiConv2D.__init__-23"><a href="#SparseMultiConv2D.__init__-23"><span class="linenos">23</span></a><span class="sd">            The bias to use</span>
 </span><span id="SparseMultiConv2D.__init__-24"><a href="#SparseMultiConv2D.__init__-24"><span class="linenos">24</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
 </span><span id="SparseMultiConv2D.__init__-25"><a href="#SparseMultiConv2D.__init__-25"><span class="linenos">25</span></a><span class="sd">            The padding to use</span>
-</span><span id="SparseMultiConv2D.__init__-26"><a href="#SparseMultiConv2D.__init__-26"><span class="linenos">26</span></a><span class="sd">        strides : int (default 1)</span>
+</span><span id="SparseMultiConv2D.__init__-26"><a href="#SparseMultiConv2D.__init__-26"><span class="linenos">26</span></a><span class="sd">        strides : int or tuple (default 1)</span>
 </span><span id="SparseMultiConv2D.__init__-27"><a href="#SparseMultiConv2D.__init__-27"><span class="linenos">27</span></a><span class="sd">            The padding to use</span>
 </span><span id="SparseMultiConv2D.__init__-28"><a href="#SparseMultiConv2D.__init__-28"><span class="linenos">28</span></a><span class="sd">        &quot;&quot;&quot;</span>
 </span><span id="SparseMultiConv2D.__init__-29"><a href="#SparseMultiConv2D.__init__-29"><span class="linenos">29</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -258,7 +258,7 @@ The kernel to use</li>
 The bias to use</li>
 <li><strong>padding</strong> (str or int (default 'same')):
 The padding to use</li>
-<li><strong>strides</strong> (int (default 1)):
+<li><strong>strides</strong> (int or tuple (default 1)):
 The padding to use</li>
 </ul>
 </div>
@@ -270,7 +270,7 @@ The padding to use</li>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">forward</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">inputs</span></span>)</span>
+        <span class="name">forward</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">inputs</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="SparseMultiConv2D.forward-view-source"><span>View Source</span></label>
 
@@ -334,8 +334,7 @@ The results of the layer's logic</li>
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt>torch.nn.modules.module.Module</dt>
-                                <dd id="SparseMultiConv2D.dump_patches" class="variable">dump_patches</dd>
-                <dd id="SparseMultiConv2D.register_buffer" class="function">register_buffer</dd>
+                                <dd id="SparseMultiConv2D.register_buffer" class="function">register_buffer</dd>
                 <dd id="SparseMultiConv2D.register_parameter" class="function">register_parameter</dd>
                 <dd id="SparseMultiConv2D.add_module" class="function">add_module</dd>
                 <dd id="SparseMultiConv2D.register_module" class="function">register_module</dd>
@@ -360,7 +359,6 @@ The results of the layer's logic</li>
                 <dd id="SparseMultiConv2D.register_full_backward_hook" class="function">register_full_backward_hook</dd>
                 <dd id="SparseMultiConv2D.register_forward_pre_hook" class="function">register_forward_pre_hook</dd>
                 <dd id="SparseMultiConv2D.register_forward_hook" class="function">register_forward_hook</dd>
-                <dd id="SparseMultiConv2D.T_destination" class="variable">T_destination</dd>
                 <dd id="SparseMultiConv2D.state_dict" class="function">state_dict</dd>
                 <dd id="SparseMultiConv2D.register_load_state_dict_post_hook" class="function">register_load_state_dict_post_hook</dd>
                 <dd id="SparseMultiConv2D.load_state_dict" class="function">load_state_dict</dd>
@@ -486,7 +484,11 @@ The results of the layer's logic</li>
                 let heading;
                 switch (result.doc.type) {
                     case "function":
-                        heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span><span class="signature">${doc.signature}:</span>`;
+                        if (doc.fullname.endsWith(".__init__")) {
+                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
+                        } else {
+                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
+                        }
                         break;
                     case "class":
                         heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;

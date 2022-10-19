@@ -22,7 +22,7 @@ class Conv2D(torch.nn.Module):
             The bias tensor to use
         padding : int or str (default 'same')
             The padding to use
-        strides : int (default 1)
+        strides : int or tuple (default 1)
             The strides to use
         """
         super().__init__()

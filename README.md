@@ -95,3 +95,8 @@ The below version numbers and changes refer to the BeyondML package
 - Added the `SparseDense`, `SparseConv`, `SparseMultiDense`, and `SparseMultiConv` layers to 
   `beyondml.tflow.layers`, giving users the functionality to utilize sparse tensors during 
   inference
+
+#### Version 0.1.2
+- Added the `MaskedMultiHeadAttention`, `MaskedTransformerEncoderLayer`, and `MaskedTransformerDecoderLayer` layers to `beyondml.pt.layers` to add pruning to the transformer architecture
+- Added `MaskedConv3D`, `MultiMaskedConv3D`, `MultiConv3D`, `MultiMaxPool3D`, `SparseConv3D`, and `SparseMultiConv3D` layers to `beyondml.tflow.layers`
+- Added `MaskedConv3D`, `MultiMaskedConv3D`, `MultiConv3D`, `MultiMaxPool3D`, `SparseConv3D`, `SparseMultiConv3D`, and `MultiMaxPool2D` layers to `beyondml.pt.layers`

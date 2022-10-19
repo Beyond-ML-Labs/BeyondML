@@ -53,9 +53,6 @@ To view current capabilities within the BeyondML package, we welcome you to chec
 ## Feature Roadmap
 Lists of features slated for this project will be added here.
 
-- Working on implementing Multi-Headed Attention layers in `beyondml.pt.layers`
-- Working on creating 3-dimensional convolutional layers in both `beyondml.tflow` and `beyondml.pt`
-
 ## Changes
 
 Below are a list of additional features, bug fixes, and other changes made for each version.

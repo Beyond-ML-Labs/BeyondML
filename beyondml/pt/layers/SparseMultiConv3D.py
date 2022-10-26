@@ -28,8 +28,12 @@ class SparseMultiConv3D(torch.nn.Module):
         """
 
         super().__init__()
-        self.w = torch.Tensor(kernel).to_sparse()
-        self.b = torch.Tensor(bias).to_sparse()
+        self.w = {
+            i: torch.Tensor(kernel[i]).to_sparse() for i in range(kernel.shape[0])
+        }
+        self.b = {
+            i: torch.Tensor(bias[i]).to_sparse() for i in range(bias.shape[0])
+        }
 
         self.padding = padding
         self.strides = strides
@@ -52,16 +56,13 @@ class SparseMultiConv3D(torch.nn.Module):
             The results of the layer's logic
         """
 
-        kernel = self.w.to_dense()
-        bias = self.b.to_dense()
-
         outputs = []
         for i in range(len(inputs)):
             outputs.append(
                 torch.nn.functional.conv3d(
                     inputs[i],
-                    kernel[i],
-                    bias[i],
+                    self.w[i].to_dense(),
+                    self.b[i].to_dense(),
                     stride=self.strides,
                     padding=self.padding
                 )

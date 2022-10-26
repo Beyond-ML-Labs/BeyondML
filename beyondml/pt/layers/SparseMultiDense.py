@@ -21,8 +21,12 @@ class SparseMultiDense(torch.nn.Module):
         """
 
         super().__init__()
-        self.w = torch.Tensor(weight).to_sparse()
-        self.b = torch.Tensor(bias).to_sparse()
+        self.w = {
+            i: torch.Tensor(weight[i]).to_sparse() for i in range(weight.shape[0])
+        }
+        self.b = {
+            i: torch.Tensor(bias[i]).to_sparse() for i in range(bias.shape[0])
+        }
 
     def forward(self, inputs):
         """

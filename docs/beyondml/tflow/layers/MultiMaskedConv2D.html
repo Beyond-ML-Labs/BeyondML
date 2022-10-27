@@ -711,9 +711,9 @@ The same layer can be reinstantiated later
 information, nor the layer class name. These are handled
 by <code>Network</code> (one layer of abstraction above).</p>
 
-<p>Note that <code><a href="#MultiMaskedConv2D.get_config">get_config()</a></code> does not guarantee to return a fresh copy of dict
-every time it is called. The callers should make a copy of the returned dict
-if they want to modify it.</p>
+<p>Note that <code><a href="#MultiMaskedConv2D.get_config">get_config()</a></code> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
 
 <p>Returns:
     Python dictionary.</p>
@@ -820,8 +820,6 @@ dictionary. It does not handle layer connectivity
                 <dd id="MultiMaskedConv2D.set_weights" class="function">set_weights</dd>
                 <dd id="MultiMaskedConv2D.get_weights" class="function">get_weights</dd>
                 <dd id="MultiMaskedConv2D.finalize_state" class="function">finalize_state</dd>
-                <dd id="MultiMaskedConv2D.get_updates_for" class="function">get_updates_for</dd>
-                <dd id="MultiMaskedConv2D.get_losses_for" class="function">get_losses_for</dd>
                 <dd id="MultiMaskedConv2D.get_input_mask_at" class="function">get_input_mask_at</dd>
                 <dd id="MultiMaskedConv2D.get_output_mask_at" class="function">get_output_mask_at</dd>
                 <dd id="MultiMaskedConv2D.input_mask" class="variable">input_mask</dd>
@@ -835,16 +833,15 @@ dictionary. It does not handle layer connectivity
                 <dd id="MultiMaskedConv2D.input_shape" class="variable">input_shape</dd>
                 <dd id="MultiMaskedConv2D.count_params" class="function">count_params</dd>
                 <dd id="MultiMaskedConv2D.output_shape" class="variable">output_shape</dd>
-                <dd id="MultiMaskedConv2D.inbound_nodes" class="variable">inbound_nodes</dd>
-                <dd id="MultiMaskedConv2D.outbound_nodes" class="variable">outbound_nodes</dd>
-                <dd id="MultiMaskedConv2D.apply" class="function">apply</dd>
-                <dd id="MultiMaskedConv2D.add_variable" class="function">add_variable</dd>
-                <dd id="MultiMaskedConv2D.variables" class="variable">variables</dd>
-                <dd id="MultiMaskedConv2D.trainable_variables" class="variable">trainable_variables</dd>
-                <dd id="MultiMaskedConv2D.non_trainable_variables" class="variable">non_trainable_variables</dd>
                 <dd id="MultiMaskedConv2D.dtype_policy" class="variable">dtype_policy</dd>
                 <dd id="MultiMaskedConv2D.compute_dtype" class="variable">compute_dtype</dd>
                 <dd id="MultiMaskedConv2D.variable_dtype" class="variable">variable_dtype</dd>
+                <dd id="MultiMaskedConv2D.inbound_nodes" class="variable">inbound_nodes</dd>
+                <dd id="MultiMaskedConv2D.outbound_nodes" class="variable">outbound_nodes</dd>
+                <dd id="MultiMaskedConv2D.variables" class="variable">variables</dd>
+                <dd id="MultiMaskedConv2D.trainable_variables" class="variable">trainable_variables</dd>
+                <dd id="MultiMaskedConv2D.non_trainable_variables" class="variable">non_trainable_variables</dd>
+                <dd id="MultiMaskedConv2D.add_variable" class="function">add_variable</dd>
 
             </div>
             <div><dt>tensorflow.python.module.module.Module</dt>

@@ -630,8 +630,8 @@ be beaten</li>
 <p>Subclasses should override for any actions to run.</p>
 
 <p>Args:
-    logs: Dict. Currently no data is passed to this argument for this method
-      but that may change in the future.</p>
+    logs: Dict. Currently no data is passed to this argument for this
+      method but that may change in the future.</p>
 </div>
 
 
@@ -766,16 +766,16 @@ be beaten</li>
 
             <div class="docstring"><p>Called at the end of an epoch.</p>
 
-<p>Subclasses should override for any actions to run. This function should only
-be called during TRAIN mode.</p>
+<p>Subclasses should override for any actions to run. This function should
+only be called during TRAIN mode.</p>
 
 <p>Args:
     epoch: Integer, index of epoch.
     logs: Dict, metric results for this training epoch, and for the
-      validation epoch if validation is performed. Validation result keys
-      are prefixed with <code>val_</code>. For training epoch, the values of the
-     <code>Model</code>'s metrics are returned. Example : <code>{'loss': 0.2, 'accuracy':
-       0.7}</code>.</p>
+      validation epoch if validation is performed. Validation result
+      keys are prefixed with <code>val_</code>. For training epoch, the values of
+      the <code>Model</code>'s metrics are returned. Example:
+      <code>{'loss': 0.2, 'accuracy': 0.7}</code>.</p>
 </div>
 
 

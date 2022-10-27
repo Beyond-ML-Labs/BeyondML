@@ -13,7 +13,8 @@ class MaskedConv2D(torch.nn.Module):
         out_channels,
         kernel_size=3,
         padding='same',
-        strides=1
+        strides=1,
+        device = None
     ):
         """
         Parameters
@@ -29,6 +30,8 @@ class MaskedConv2D(torch.nn.Module):
         strides : int or tuple (default 1)
             The number of strides to use
         """
+        
+        factory_kwargs = {'device' : device}
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
@@ -40,15 +43,16 @@ class MaskedConv2D(torch.nn.Module):
             self.out_channels,
             self.in_channels,
             self.kernel_size[0],
-            self.kernel_size[1]
+            self.kernel_size[1],
+            **factory_kwargs
         )
         filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
-        self.w_mask = torch.ones_like(self.w)
+        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
 
-        bias = torch.zeros(out_channels)
+        bias = torch.zeros(out_channels, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(self.b)
+        self.b_mask = torch.ones_like(self.b, **factory_kwargs)
 
     @property
     def in_channels(self):

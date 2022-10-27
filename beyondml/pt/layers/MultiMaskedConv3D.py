@@ -14,7 +14,8 @@ class MultiMaskedConv3D(torch.nn.Module):
         num_tasks,
         kernel_size=3,
         padding='same',
-        strides=1
+        strides=1,
+        device = None
     ):
         """
         Parameters
@@ -31,6 +32,7 @@ class MultiMaskedConv3D(torch.nn.Module):
             The number of strides to use
         """
 
+        factory_kwargs = {'device' : device}
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels
@@ -45,15 +47,16 @@ class MultiMaskedConv3D(torch.nn.Module):
             self.in_channels,
             self.kernel_size[0],
             self.kernel_size[1],
-            self.kernel_size[2]
+            self.kernel_size[2],
+            **factory_kwargs
         )
         filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
-        self.w_mask = torch.ones_like(self.w)
+        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
 
-        bias = torch.zeros(self.num_tasks, out_channels)
+        bias = torch.zeros(self.num_tasks, out_channels, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(self.b)
+        self.b_mask = torch.ones_like(self.b, **factory_kwargs)
 
     @property
     def in_channels(self):

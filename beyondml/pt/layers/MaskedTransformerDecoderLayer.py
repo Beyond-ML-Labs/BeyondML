@@ -35,9 +35,9 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
                  layer_norm_eps: float = 1e-5, batch_first: bool = False,
                  norm_first: bool = False,
                  device=None,
-                 dtype=None) -> None:
+                ) -> None:
 
-        factory_kwargs = {'device': device, 'dtype': dtype}
+        factory_kwargs = {'device': device}
 
         super(MaskedTransformerDecoderLayer, self).__init__()
 
@@ -45,19 +45,21 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
             d_model,
             nhead,
             dropout=dropout,
-            batch_first=batch_first
+            batch_first=batch_first,
+            **factory_kwargs
         )
         self.multihead_attn = MaskedMultiHeadAttention(
             d_model,
             nhead,
             dropout=dropout,
-            batch_first=batch_first
+            batch_first=batch_first,
+            **factory_kwargs
         )
 
         # Implementation of Feedforward model
-        self.linear1 = MaskedDense(d_model, dim_feedforward)
+        self.linear1 = MaskedDense(d_model, dim_feedforward, **factory_kwargs)
         self.dropout = Dropout(dropout)
-        self.linear2 = MaskedDense(dim_feedforward, d_model)
+        self.linear2 = MaskedDense(dim_feedforward, d_model, **factory_kwargs)
 
         self.norm_first = norm_first
         self.norm1 = LayerNorm(d_model, eps=layer_norm_eps, **factory_kwargs)

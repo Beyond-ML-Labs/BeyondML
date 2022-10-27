@@ -12,7 +12,8 @@ class SparseConv2D(torch.nn.Module):
         kernel,
         bias,
         padding='same',
-        strides=1
+        strides=1,
+        device = None
     ):
         """
         Parameters
@@ -26,9 +27,11 @@ class SparseConv2D(torch.nn.Module):
         strides : int or tuple (default 1)
             The padding to use
         """
+
+        factory_kwargs = {'device' : device}
         super().__init__()
-        self.w = torch.Tensor(kernel).to_sparse()
-        self.b = torch.Tensor(bias).to_sparse()
+        self.w = torch.Tensor(kernel, **factory_kwargs).to_sparse()
+        self.b = torch.Tensor(bias, **factory_kwargs).to_sparse()
 
         self.padding = padding
         self.strides = strides

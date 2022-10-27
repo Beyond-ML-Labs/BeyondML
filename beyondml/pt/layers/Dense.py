@@ -9,7 +9,8 @@ class Dense(torch.nn.Module):
     def __init__(
         self,
         weight,
-        bias
+        bias,
+        device = None
     ):
         """
         Parameters
@@ -19,9 +20,10 @@ class Dense(torch.nn.Module):
         bias : torch.Tensor or Tensor-like
             The bias vector to use
         """
+        factory_kwargs = {'device' : device}
         super().__init__()
-        self.w = torch.nn.Parameter(torch.Tensor(weight))
-        self.b = torch.nn.Parameter(torch.Tensor(bias))
+        self.w = torch.nn.Parameter(torch.Tensor(weight, **factory_kwargs))
+        self.b = torch.nn.Parameter(torch.Tensor(bias, **factory_kwargs))
 
     def forward(self, inputs):
         """

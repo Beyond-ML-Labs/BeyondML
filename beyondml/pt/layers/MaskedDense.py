@@ -10,7 +10,8 @@ class MaskedDense(torch.nn.Module):
     def __init__(
         self,
         in_features,
-        out_features
+        out_features,
+        device = None
     ):
         """
         Parameters
@@ -21,21 +22,24 @@ class MaskedDense(torch.nn.Module):
             The number of features to be output by the layer.
             Also considered the number of artificial neurons
         """
+        
+        factory_kwargs = {'device' : device}
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features
 
         weight = torch.Tensor(
             in_features,
-            out_features
+            out_features,
+            **factory_kwargs
         )
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w)
+        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
 
-        bias = torch.zeros(out_features)
+        bias = torch.zeros(out_features, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias)
+        self.b_mask = torch.ones_like(bias, **factory_kwargs)
 
     def forward(self, inputs):
         """

@@ -11,7 +11,8 @@ class MultiMaskedDense(torch.nn.Module):
         self,
         in_features,
         out_features,
-        num_tasks
+        num_tasks,
+        device = None
     ):
         """
         Parameters
@@ -24,6 +25,8 @@ class MultiMaskedDense(torch.nn.Module):
         num_tasks : int
             The number of tasks to initialize for
         """
+
+        factory_kwargs = {'device' : device}
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features
@@ -32,15 +35,16 @@ class MultiMaskedDense(torch.nn.Module):
         weight = torch.Tensor(
             num_tasks,
             in_features,
-            out_features
+            out_features,
+            **factory_kwargs
         )
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w)
+        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
 
-        bias = torch.zeros(num_tasks, out_features)
+        bias = torch.zeros(num_tasks, out_features, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias)
+        self.b_mask = torch.ones_like(bias, **factory_kwargs)
 
     def forward(self, inputs):
         """

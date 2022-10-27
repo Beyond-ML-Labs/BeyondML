@@ -10,7 +10,7 @@ class SparseDense(torch.nn.Module):
         self,
         weight,
         bias,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -21,7 +21,7 @@ class SparseDense(torch.nn.Module):
             The bias to use
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
         self.w = torch.Tensor(weight, **factory_kwargs).to_sparse()
         self.b = torch.Tensor(bias, **factory_kwargs).to_sparse()

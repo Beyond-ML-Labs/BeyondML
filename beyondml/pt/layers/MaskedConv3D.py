@@ -14,7 +14,7 @@ class MaskedConv3D(torch.nn.Module):
         kernel_size=3,
         padding='same',
         strides=1,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -31,7 +31,7 @@ class MaskedConv3D(torch.nn.Module):
             The number of strides to use
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels

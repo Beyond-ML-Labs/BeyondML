@@ -14,7 +14,7 @@ class MaskedMultiHeadAttention(torch.nn.Module):
             num_heads,
             dropout=0,
             batch_first=False,
-            device = None
+            device=None
     ):
         """
         Parameters
@@ -29,7 +29,7 @@ class MaskedMultiHeadAttention(torch.nn.Module):
             Whether the batch dimension is first
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
 
         self.embed_dim = embed_dim
@@ -42,13 +42,17 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         if self.head_dim * self.num_heads != embed_dim:
             raise ValueError('num_heads must evenly divide embed_dim')
 
-        in_proj_weight = torch.Tensor(3 * embed_dim, embed_dim, **factory_kwargs)
+        in_proj_weight = torch.Tensor(
+            3 * embed_dim, embed_dim, **factory_kwargs)
         in_proj_weight = torch.nn.init.xavier_uniform_(in_proj_weight)
         self.in_proj_weight = torch.nn.Parameter(in_proj_weight)
-        self.in_proj_mask = torch.ones_like(self.in_proj_weight, **factory_kwargs)
+        self.in_proj_mask = torch.ones_like(
+            self.in_proj_weight, **factory_kwargs)
 
-        self.in_proj_bias = torch.nn.Parameter(torch.zeros((3 * embed_dim), **factory_kwargs))
-        self.in_proj_bias_mask = torch.ones_like(self.in_proj_bias, **factory_kwargs)
+        self.in_proj_bias = torch.nn.Parameter(
+            torch.zeros((3 * embed_dim), **factory_kwargs))
+        self.in_proj_bias_mask = torch.ones_like(
+            self.in_proj_bias, **factory_kwargs)
 
         self.out_proj = MaskedDense(embed_dim, embed_dim, **factory_kwargs)
         self.out_proj_weight = self.out_proj.w

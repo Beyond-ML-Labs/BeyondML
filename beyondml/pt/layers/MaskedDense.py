@@ -11,7 +11,7 @@ class MaskedDense(torch.nn.Module):
         self,
         in_features,
         out_features,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -22,8 +22,8 @@ class MaskedDense(torch.nn.Module):
             The number of features to be output by the layer.
             Also considered the number of artificial neurons
         """
-        
-        factory_kwargs = {'device' : device}
+
+        factory_kwargs = {'device': device}
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features

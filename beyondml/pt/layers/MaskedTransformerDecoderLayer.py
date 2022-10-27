@@ -35,7 +35,7 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
                  layer_norm_eps: float = 1e-5, batch_first: bool = False,
                  norm_first: bool = False,
                  device=None,
-                ) -> None:
+                 ) -> None:
 
         factory_kwargs = {'device': device}
 

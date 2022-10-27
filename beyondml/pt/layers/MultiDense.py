@@ -10,7 +10,7 @@ class MultiDense(torch.nn.Module):
             self,
             weight,
             bias,
-            device = None
+            device=None
     ):
         """
         Parameters
@@ -21,7 +21,7 @@ class MultiDense(torch.nn.Module):
             The bias tensor to use
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
         self.w = torch.nn.Parameter(torch.Tensor(weight, **factory_kwargs))
         self.b = torch.nn.Parameter(torch.Tensor(bias, **factory_kwargs))

@@ -12,7 +12,7 @@ class Conv3D(torch.nn.Module):
         bias,
         padding='same',
         strides=1,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -27,7 +27,7 @@ class Conv3D(torch.nn.Module):
             The strides to use
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
         self.w = torch.nn.Parameter(torch.Tensor(kernel, **factory_kwargs))
         self.b = torch.nn.Parameter(torch.Tensor(bias, **factory_kwargs))

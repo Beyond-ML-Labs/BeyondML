@@ -12,7 +12,7 @@ class MultiMaskedDense(torch.nn.Module):
         in_features,
         out_features,
         num_tasks,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -26,7 +26,7 @@ class MultiMaskedDense(torch.nn.Module):
             The number of tasks to initialize for
         """
 
-        factory_kwargs = {'device' : device}
+        factory_kwargs = {'device': device}
         super().__init__()
         self.in_features = in_features
         self.out_features = out_features

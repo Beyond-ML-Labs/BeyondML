@@ -29,8 +29,8 @@ class Conv3D(torch.nn.Module):
 
         factory_kwargs = {'device': device}
         super().__init__()
-        self.w = torch.nn.Parameter(torch.Tensor(kernel, **factory_kwargs))
-        self.b = torch.nn.Parameter(torch.Tensor(bias, **factory_kwargs))
+        self.w = torch.nn.Parameter(torch.Tensor(kernel).to(**factory_kwargs))
+        self.b = torch.nn.Parameter(torch.Tensor(bias).to(**factory_kwargs))
 
         self.padding = padding
         self.strides = strides

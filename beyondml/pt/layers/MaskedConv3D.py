@@ -31,8 +31,8 @@ class MaskedConv3D(torch.nn.Module):
             The number of strides to use
         """
 
-        factory_kwargs = {'device': device}
         super().__init__()
+        self.factory_kwargs = {'device': device}
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = kernel_size
@@ -44,16 +44,15 @@ class MaskedConv3D(torch.nn.Module):
             self.in_channels,
             self.kernel_size[0],
             self.kernel_size[1],
-            self.kernel_size[2],
-            **factory_kwargs
-        )
+            self.kernel_size[2]
+        ).to(**self.factory_kwargs)
         filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
-        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
+        self.w_mask = torch.ones_like(self.w, **self.factory_kwargs)
 
         bias = torch.zeros(out_channels)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(self.b, **factory_kwargs)
+        self.b_mask = torch.ones_like(self.b, **self.factory_kwargs)
 
     @property
     def in_channels(self):
@@ -127,16 +126,13 @@ class MaskedConv3D(torch.nn.Module):
         Acts on the layer in place
         """
 
-        w_copy = np.abs(self.w.detach().numpy())
-        b_copy = np.abs(self.b.detach().numpy())
+        w_copy = np.abs(self.w.detach().cpu().numpy())
+        b_copy = np.abs(self.b.detach().cpu().numpy())
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
-
-        self.w_mask = torch.Tensor(new_w_mask)
-        self.b_mask = torch.Tensor(new_b_mask)
+        self.w_mask = torch.Tensor((w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+        self.b_mask = torch.Tensor((b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
 
         self.w = torch.nn.Parameter(
             self.w * self.w_mask

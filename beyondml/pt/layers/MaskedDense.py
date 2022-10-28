@@ -23,23 +23,22 @@ class MaskedDense(torch.nn.Module):
             Also considered the number of artificial neurons
         """
 
-        factory_kwargs = {'device': device}
         super().__init__()
+        self.factory_kwargs = {'device': device}
         self.in_features = in_features
         self.out_features = out_features
 
         weight = torch.Tensor(
             in_features,
             out_features,
-            **factory_kwargs
-        )
+        ).to(**self.factory_kwargs)
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
+        self.w_mask = torch.ones_like(self.w, **self.factory_kwargs)
 
-        bias = torch.zeros(out_features, **factory_kwargs)
+        bias = torch.zeros(out_features, **self.factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias, **factory_kwargs)
+        self.b_mask = torch.ones_like(bias, **self.factory_kwargs)
 
     def forward(self, inputs):
         """
@@ -74,13 +73,13 @@ class MaskedDense(torch.nn.Module):
         -----
         Acts on the layer in place
         """
-        w_copy = np.abs(self.w.detach().numpy())
-        b_copy = np.abs(self.b.detach().numpy())
+        w_copy = np.abs(self.w.detach().cpu().numpy())
+        b_copy = np.abs(self.b.detach().cpu().numpy())
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
+        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
         self.w_mask = new_w_mask
         self.b_mask = new_b_mask
 

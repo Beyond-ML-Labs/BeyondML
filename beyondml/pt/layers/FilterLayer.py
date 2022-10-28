@@ -8,7 +8,8 @@ class FilterLayer(torch.nn.Module):
 
     def __init__(
         self,
-        is_on=True
+        is_on=True,
+        device = None
     ):
         """
         Parameters
@@ -19,6 +20,7 @@ class FilterLayer(torch.nn.Module):
 
         super().__init__()
         self.is_on = is_on
+        self.factory_kwargs = {'device' : device}
 
     @property
     def is_on(self):
@@ -47,7 +49,7 @@ class FilterLayer(torch.nn.Module):
         if self.is_on:
             return inputs
         else:
-            return torch.zeros_like(inputs)
+            return torch.zeros_like(inputs, **self.factory_kwargs)
 
     def turn_on(self):
         """

@@ -23,8 +23,8 @@ class SparseDense(torch.nn.Module):
 
         factory_kwargs = {'device': device}
         super().__init__()
-        self.w = torch.Tensor(weight, **factory_kwargs).to_sparse()
-        self.b = torch.Tensor(bias, **factory_kwargs).to_sparse()
+        self.w = torch.Tensor(weight).to(**factory_kwargs).to_sparse()
+        self.b = torch.Tensor(bias).to(**factory_kwargs).to_sparse()
 
     def forward(self, inputs):
         """

@@ -26,8 +26,8 @@ class MultiMaskedDense(torch.nn.Module):
             The number of tasks to initialize for
         """
 
-        factory_kwargs = {'device': device}
         super().__init__()
+        self.factory_kwargs = {'device': device}
         self.in_features = in_features
         self.out_features = out_features
         self.num_tasks = num_tasks
@@ -35,16 +35,15 @@ class MultiMaskedDense(torch.nn.Module):
         weight = torch.Tensor(
             num_tasks,
             in_features,
-            out_features,
-            **factory_kwargs
-        )
+            out_features
+        ).to(**self.factory_kwargs)
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w, **factory_kwargs)
+        self.w_mask = torch.ones_like(self.w, **self.factory_kwargs)
 
-        bias = torch.zeros(num_tasks, out_features, **factory_kwargs)
+        bias = torch.zeros(num_tasks, out_features, **self.factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias, **factory_kwargs)
+        self.b_mask = torch.ones_like(bias, **self.factory_kwargs)
 
     def forward(self, inputs):
         """
@@ -80,8 +79,8 @@ class MultiMaskedDense(torch.nn.Module):
         -----
         Acts on the layer in place
         """
-        w_copy = np.abs(self.w.detach().numpy())
-        b_copy = np.abs(self.b.detach().numpy())
+        w_copy = np.abs(self.w.detach().cpu().numpy())
+        b_copy = np.abs(self.b.detach().cpu().numpy())
         new_w_mask = np.zeros_like(w_copy)
         new_b_mask = np.zeros_like(b_copy)
 
@@ -99,8 +98,8 @@ class MultiMaskedDense(torch.nn.Module):
             new_b_mask[task_num] = (
                 b_copy[task_num] >= b_percentile).astype(int)
 
-        self.w_mask = torch.Tensor(new_w_mask)
-        self.b_mask = torch.Tensor(new_b_mask)
+        self.w_mask = torch.Tensor(new_w_mask).to(**self.factory_kwargs)
+        self.b_mask = torch.Tensor(new_b_mask).to(**self.factory_kwargs)
 
         self.w = torch.nn.Parameter(
             self.w * self.w_mask

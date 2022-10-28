@@ -78,8 +78,10 @@ class MaskedDense(torch.nn.Module):
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
+        new_w_mask = torch.Tensor(
+            (w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+        new_b_mask = torch.Tensor(
+            (b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
         self.w_mask = new_w_mask
         self.b_mask = new_b_mask
 

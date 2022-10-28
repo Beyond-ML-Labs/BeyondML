@@ -9,7 +9,7 @@ class FilterLayer(torch.nn.Module):
     def __init__(
         self,
         is_on=True,
-        device = None
+        device=None
     ):
         """
         Parameters
@@ -20,7 +20,7 @@ class FilterLayer(torch.nn.Module):
 
         super().__init__()
         self.is_on = is_on
-        self.factory_kwargs = {'device' : device}
+        self.factory_kwargs = {'device': device}
 
     @property
     def is_on(self):

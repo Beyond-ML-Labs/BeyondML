@@ -54,7 +54,8 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         self.in_proj_bias_mask = torch.ones_like(
             self.in_proj_bias, **self.factory_kwargs)
 
-        self.out_proj = MaskedDense(embed_dim, embed_dim, **self.factory_kwargs)
+        self.out_proj = MaskedDense(
+            embed_dim, embed_dim, **self.factory_kwargs)
         self.out_proj_weight = self.out_proj.w
         self.out_proj_weight_mask = self.out_proj.w_mask
         self.out_proj_bias = self.out_proj.b
@@ -142,8 +143,10 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
+        new_w_mask = torch.Tensor(
+            (w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+        new_b_mask = torch.Tensor(
+            (b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
         self.in_proj_weight_mask = new_w_mask
         self.in_proj_bias_mask = new_b_mask
 

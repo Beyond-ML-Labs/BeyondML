@@ -14,7 +14,8 @@ class MaskedConv2D(torch.nn.Module):
         kernel_size=3,
         padding='same',
         strides=1,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -32,7 +33,7 @@ class MaskedConv2D(torch.nn.Module):
         """
 
         super().__init__()
-        self.factory_kwargs = {'device': device}
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.kernel_size = kernel_size

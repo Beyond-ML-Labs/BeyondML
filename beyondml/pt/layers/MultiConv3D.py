@@ -12,7 +12,8 @@ class MultiConv3D(torch.nn.Module):
         bias,
         padding='same',
         strides=1,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -27,7 +28,7 @@ class MultiConv3D(torch.nn.Module):
             The strides to use
         """
 
-        factory_kwargs = {'device': device}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
         self.w = torch.nn.Parameter(
             torch.Tensor(kernel).to(**factory_kwargs)

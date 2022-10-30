@@ -14,7 +14,8 @@ class MaskedMultiHeadAttention(torch.nn.Module):
             num_heads,
             dropout=0,
             batch_first=False,
-            device=None
+            device=None,
+            dtype=None
     ):
         """
         Parameters
@@ -31,7 +32,7 @@ class MaskedMultiHeadAttention(torch.nn.Module):
 
         super().__init__()
 
-        self.factory_kwargs = {'device': device}
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
         self.embed_dim = embed_dim
         self.num_heads = num_heads
         self.dropout = dropout

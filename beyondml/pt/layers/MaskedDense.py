@@ -11,7 +11,8 @@ class MaskedDense(torch.nn.Module):
         self,
         in_features,
         out_features,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -24,7 +25,7 @@ class MaskedDense(torch.nn.Module):
         """
 
         super().__init__()
-        self.factory_kwargs = {'device': device}
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
         self.in_features = in_features
         self.out_features = out_features
 

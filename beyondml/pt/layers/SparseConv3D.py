@@ -13,7 +13,8 @@ class SparseConv3D(torch.nn.Module):
         bias,
         padding='same',
         strides=1,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -28,7 +29,7 @@ class SparseConv3D(torch.nn.Module):
             The strides to use
         """
 
-        factory_kwargs = {'device': device}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
         self.w = torch.Tensor(kernel).to(**factory_kwargs).to_sparse()
         self.b = torch.Tensor(bias).to(**factory_kwargs).to_sparse()

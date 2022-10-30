@@ -10,7 +10,8 @@ class Dense(torch.nn.Module):
         self,
         weight,
         bias,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -20,7 +21,7 @@ class Dense(torch.nn.Module):
         bias : torch.Tensor or Tensor-like
             The bias vector to use
         """
-        factory_kwargs = {'device': device}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
         self.w = torch.nn.Parameter(torch.Tensor(weight).to(**factory_kwargs))
         self.b = torch.nn.Parameter(torch.Tensor(bias).to(**factory_kwargs))

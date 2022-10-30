@@ -1,3 +1,4 @@
+from numpy import dtype
 import torch
 
 
@@ -13,7 +14,8 @@ class SparseConv2D(torch.nn.Module):
         bias,
         padding='same',
         strides=1,
-        device=None
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -28,7 +30,7 @@ class SparseConv2D(torch.nn.Module):
             The padding to use
         """
 
-        factory_kwargs = {'device': device}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
         self.w = torch.Tensor(kernel).to(**factory_kwargs).to_sparse()
         self.b = torch.Tensor(bias).to(**factory_kwargs).to_sparse()

@@ -36,8 +36,9 @@ class MaskedTransformerEncoderLayer(torch.nn.Module):
                  batch_first: bool = False,
                  norm_first: bool = False,
                  device=None,
+                 dtype=None
                  ) -> None:
-        factory_kwargs = {'device': device}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super(MaskedTransformerEncoderLayer, self).__init__()
         self.self_attn = MaskedMultiHeadAttention(
             d_model,

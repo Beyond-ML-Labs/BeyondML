@@ -48,11 +48,13 @@ class MaskedConv2D(torch.nn.Module):
         ).to(**factory_kwargs)
         filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
-        self.register_buffer('w_mask', torch.ones_like(self.w, **factory_kwargs))
+        self.register_buffer(
+            'w_mask', torch.ones_like(self.w, **factory_kwargs))
 
         bias = torch.zeros(out_channels, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.register_buffer('b_mask', torch.ones_like(self.b, **factory_kwargs))
+        self.register_buffer(
+            'b_mask', torch.ones_like(self.b, **factory_kwargs))
 
     @property
     def in_channels(self):

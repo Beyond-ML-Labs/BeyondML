@@ -34,7 +34,6 @@ class SparseMultiDense(torch.nn.Module):
                 torch.Tensor(bias[i]).to(**factory_kwargs).to_sparse()
             )
 
-
     def forward(self, inputs):
         """
         Call the layer on input data

@@ -40,7 +40,8 @@ class MultiMaskedDense(torch.nn.Module):
         ).to(**factory_kwargs)
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.register_buffer('w_mask', torch.ones_like(self.w, **factory_kwargs))
+        self.register_buffer(
+            'w_mask', torch.ones_like(self.w, **factory_kwargs))
 
         bias = torch.zeros(num_tasks, out_features, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)

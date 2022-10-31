@@ -31,8 +31,10 @@ class SparseConv3D(torch.nn.Module):
 
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
-        self.register_buffer('w', torch.Tensor(kernel).to(**factory_kwargs).to_sparse())
-        self.register_buffer('b', torch.Tensor(bias).to(**factory_kwargs).to_sparse())
+        self.register_buffer('w', torch.Tensor(
+            kernel).to(**factory_kwargs).to_sparse())
+        self.register_buffer('b', torch.Tensor(
+            bias).to(**factory_kwargs).to_sparse())
 
         self.padding = padding
         self.strides = strides

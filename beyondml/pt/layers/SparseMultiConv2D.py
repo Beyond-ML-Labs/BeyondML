@@ -39,7 +39,7 @@ class SparseMultiConv2D(torch.nn.Module):
                 f'b_{i}',
                 torch.Tensor(bias[i])
             )
-        
+
         self.padding = padding
         self.strides = strides
 

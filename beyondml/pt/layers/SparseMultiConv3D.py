@@ -40,7 +40,7 @@ class SparseMultiConv3D(torch.nn.Module):
                 f'b_{i}',
                 torch.Tensor(bias[i]).to(**factory_kwargs).to_sparse()
             )
-        
+
         self.padding = padding
         self.strides = strides
 

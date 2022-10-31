@@ -77,62 +77,68 @@
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="n">kernel</span><span class="p">,</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="n">bias</span><span class="p">,</span>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="p">):</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        Parameters</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        ----------</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">            The kernel to use</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            The bias to use</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">            The padding to use</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        strides : int or tuple (default 1)</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            The strides to use</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="p">}</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bias</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>        <span class="p">}</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="n">inputs</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>    <span class="p">):</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a><span class="sd">        Call the layer on input data</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a><span class="sd">        Parameters</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a><span class="sd">        ----------</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a><span class="sd">        inputs : torch.Tensor</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="sd">        Returns</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        -------</span>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        results : torch.Tensor</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">            The results of the layer&#39;s logic</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>        <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="p">):</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        Parameters</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        ----------</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            The kernel to use</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">            The bias to use</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">            The padding to use</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">        strides : int or tuple (default 1)</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">            The strides to use</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>        <span class="n">factory_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="n">dtype</span><span class="p">}</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>                <span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>            <span class="p">)</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>                <span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>            <span class="p">)</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="n">inputs</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>    <span class="p">):</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a><span class="sd">        Parameters</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="sd">        ----------</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
 </span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>                <span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>            <span class="p">)</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        Returns</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        -------</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>                <span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>            <span class="p">)</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 
@@ -159,62 +165,68 @@
 </span><span id="SparseMultiConv3D-13"><a href="#SparseMultiConv3D-13"><span class="linenos">13</span></a>        <span class="n">kernel</span><span class="p">,</span>
 </span><span id="SparseMultiConv3D-14"><a href="#SparseMultiConv3D-14"><span class="linenos">14</span></a>        <span class="n">bias</span><span class="p">,</span>
 </span><span id="SparseMultiConv3D-15"><a href="#SparseMultiConv3D-15"><span class="linenos">15</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D-16"><a href="#SparseMultiConv3D-16"><span class="linenos">16</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span>
-</span><span id="SparseMultiConv3D-17"><a href="#SparseMultiConv3D-17"><span class="linenos">17</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiConv3D-18"><a href="#SparseMultiConv3D-18"><span class="linenos">18</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D-19"><a href="#SparseMultiConv3D-19"><span class="linenos">19</span></a><span class="sd">        Parameters</span>
-</span><span id="SparseMultiConv3D-20"><a href="#SparseMultiConv3D-20"><span class="linenos">20</span></a><span class="sd">        ----------</span>
-</span><span id="SparseMultiConv3D-21"><a href="#SparseMultiConv3D-21"><span class="linenos">21</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
-</span><span id="SparseMultiConv3D-22"><a href="#SparseMultiConv3D-22"><span class="linenos">22</span></a><span class="sd">            The kernel to use</span>
-</span><span id="SparseMultiConv3D-23"><a href="#SparseMultiConv3D-23"><span class="linenos">23</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
-</span><span id="SparseMultiConv3D-24"><a href="#SparseMultiConv3D-24"><span class="linenos">24</span></a><span class="sd">            The bias to use</span>
-</span><span id="SparseMultiConv3D-25"><a href="#SparseMultiConv3D-25"><span class="linenos">25</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
-</span><span id="SparseMultiConv3D-26"><a href="#SparseMultiConv3D-26"><span class="linenos">26</span></a><span class="sd">            The padding to use</span>
-</span><span id="SparseMultiConv3D-27"><a href="#SparseMultiConv3D-27"><span class="linenos">27</span></a><span class="sd">        strides : int or tuple (default 1)</span>
-</span><span id="SparseMultiConv3D-28"><a href="#SparseMultiConv3D-28"><span class="linenos">28</span></a><span class="sd">            The strides to use</span>
-</span><span id="SparseMultiConv3D-29"><a href="#SparseMultiConv3D-29"><span class="linenos">29</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D-30"><a href="#SparseMultiConv3D-30"><span class="linenos">30</span></a>
-</span><span id="SparseMultiConv3D-31"><a href="#SparseMultiConv3D-31"><span class="linenos">31</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="SparseMultiConv3D-32"><a href="#SparseMultiConv3D-32"><span class="linenos">32</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="SparseMultiConv3D-33"><a href="#SparseMultiConv3D-33"><span class="linenos">33</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="SparseMultiConv3D-34"><a href="#SparseMultiConv3D-34"><span class="linenos">34</span></a>        <span class="p">}</span>
-</span><span id="SparseMultiConv3D-35"><a href="#SparseMultiConv3D-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="SparseMultiConv3D-36"><a href="#SparseMultiConv3D-36"><span class="linenos">36</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bias</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="SparseMultiConv3D-37"><a href="#SparseMultiConv3D-37"><span class="linenos">37</span></a>        <span class="p">}</span>
-</span><span id="SparseMultiConv3D-38"><a href="#SparseMultiConv3D-38"><span class="linenos">38</span></a>
-</span><span id="SparseMultiConv3D-39"><a href="#SparseMultiConv3D-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
-</span><span id="SparseMultiConv3D-40"><a href="#SparseMultiConv3D-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
-</span><span id="SparseMultiConv3D-41"><a href="#SparseMultiConv3D-41"><span class="linenos">41</span></a>
-</span><span id="SparseMultiConv3D-42"><a href="#SparseMultiConv3D-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D-43"><a href="#SparseMultiConv3D-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D-44"><a href="#SparseMultiConv3D-44"><span class="linenos">44</span></a>        <span class="n">inputs</span>
-</span><span id="SparseMultiConv3D-45"><a href="#SparseMultiConv3D-45"><span class="linenos">45</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiConv3D-46"><a href="#SparseMultiConv3D-46"><span class="linenos">46</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D-47"><a href="#SparseMultiConv3D-47"><span class="linenos">47</span></a><span class="sd">        Call the layer on input data</span>
-</span><span id="SparseMultiConv3D-48"><a href="#SparseMultiConv3D-48"><span class="linenos">48</span></a>
-</span><span id="SparseMultiConv3D-49"><a href="#SparseMultiConv3D-49"><span class="linenos">49</span></a><span class="sd">        Parameters</span>
-</span><span id="SparseMultiConv3D-50"><a href="#SparseMultiConv3D-50"><span class="linenos">50</span></a><span class="sd">        ----------</span>
-</span><span id="SparseMultiConv3D-51"><a href="#SparseMultiConv3D-51"><span class="linenos">51</span></a><span class="sd">        inputs : torch.Tensor</span>
-</span><span id="SparseMultiConv3D-52"><a href="#SparseMultiConv3D-52"><span class="linenos">52</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
-</span><span id="SparseMultiConv3D-53"><a href="#SparseMultiConv3D-53"><span class="linenos">53</span></a>
-</span><span id="SparseMultiConv3D-54"><a href="#SparseMultiConv3D-54"><span class="linenos">54</span></a><span class="sd">        Returns</span>
-</span><span id="SparseMultiConv3D-55"><a href="#SparseMultiConv3D-55"><span class="linenos">55</span></a><span class="sd">        -------</span>
-</span><span id="SparseMultiConv3D-56"><a href="#SparseMultiConv3D-56"><span class="linenos">56</span></a><span class="sd">        results : torch.Tensor</span>
-</span><span id="SparseMultiConv3D-57"><a href="#SparseMultiConv3D-57"><span class="linenos">57</span></a><span class="sd">            The results of the layer&#39;s logic</span>
-</span><span id="SparseMultiConv3D-58"><a href="#SparseMultiConv3D-58"><span class="linenos">58</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D-16"><a href="#SparseMultiConv3D-16"><span class="linenos">16</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-17"><a href="#SparseMultiConv3D-17"><span class="linenos">17</span></a>        <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-18"><a href="#SparseMultiConv3D-18"><span class="linenos">18</span></a>        <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span>
+</span><span id="SparseMultiConv3D-19"><a href="#SparseMultiConv3D-19"><span class="linenos">19</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiConv3D-20"><a href="#SparseMultiConv3D-20"><span class="linenos">20</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D-21"><a href="#SparseMultiConv3D-21"><span class="linenos">21</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiConv3D-22"><a href="#SparseMultiConv3D-22"><span class="linenos">22</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiConv3D-23"><a href="#SparseMultiConv3D-23"><span class="linenos">23</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiConv3D-24"><a href="#SparseMultiConv3D-24"><span class="linenos">24</span></a><span class="sd">            The kernel to use</span>
+</span><span id="SparseMultiConv3D-25"><a href="#SparseMultiConv3D-25"><span class="linenos">25</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiConv3D-26"><a href="#SparseMultiConv3D-26"><span class="linenos">26</span></a><span class="sd">            The bias to use</span>
+</span><span id="SparseMultiConv3D-27"><a href="#SparseMultiConv3D-27"><span class="linenos">27</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
+</span><span id="SparseMultiConv3D-28"><a href="#SparseMultiConv3D-28"><span class="linenos">28</span></a><span class="sd">            The padding to use</span>
+</span><span id="SparseMultiConv3D-29"><a href="#SparseMultiConv3D-29"><span class="linenos">29</span></a><span class="sd">        strides : int or tuple (default 1)</span>
+</span><span id="SparseMultiConv3D-30"><a href="#SparseMultiConv3D-30"><span class="linenos">30</span></a><span class="sd">            The strides to use</span>
+</span><span id="SparseMultiConv3D-31"><a href="#SparseMultiConv3D-31"><span class="linenos">31</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D-32"><a href="#SparseMultiConv3D-32"><span class="linenos">32</span></a>
+</span><span id="SparseMultiConv3D-33"><a href="#SparseMultiConv3D-33"><span class="linenos">33</span></a>        <span class="n">factory_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="n">dtype</span><span class="p">}</span>
+</span><span id="SparseMultiConv3D-34"><a href="#SparseMultiConv3D-34"><span class="linenos">34</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D-35"><a href="#SparseMultiConv3D-35"><span class="linenos">35</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+</span><span id="SparseMultiConv3D-36"><a href="#SparseMultiConv3D-36"><span class="linenos">36</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D-37"><a href="#SparseMultiConv3D-37"><span class="linenos">37</span></a>                <span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-38"><a href="#SparseMultiConv3D-38"><span class="linenos">38</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D-39"><a href="#SparseMultiConv3D-39"><span class="linenos">39</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D-40"><a href="#SparseMultiConv3D-40"><span class="linenos">40</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D-41"><a href="#SparseMultiConv3D-41"><span class="linenos">41</span></a>                <span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-42"><a href="#SparseMultiConv3D-42"><span class="linenos">42</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D-43"><a href="#SparseMultiConv3D-43"><span class="linenos">43</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D-44"><a href="#SparseMultiConv3D-44"><span class="linenos">44</span></a>
+</span><span id="SparseMultiConv3D-45"><a href="#SparseMultiConv3D-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
+</span><span id="SparseMultiConv3D-46"><a href="#SparseMultiConv3D-46"><span class="linenos">46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
+</span><span id="SparseMultiConv3D-47"><a href="#SparseMultiConv3D-47"><span class="linenos">47</span></a>
+</span><span id="SparseMultiConv3D-48"><a href="#SparseMultiConv3D-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D-49"><a href="#SparseMultiConv3D-49"><span class="linenos">49</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-50"><a href="#SparseMultiConv3D-50"><span class="linenos">50</span></a>        <span class="n">inputs</span>
+</span><span id="SparseMultiConv3D-51"><a href="#SparseMultiConv3D-51"><span class="linenos">51</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiConv3D-52"><a href="#SparseMultiConv3D-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D-53"><a href="#SparseMultiConv3D-53"><span class="linenos">53</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="SparseMultiConv3D-54"><a href="#SparseMultiConv3D-54"><span class="linenos">54</span></a>
+</span><span id="SparseMultiConv3D-55"><a href="#SparseMultiConv3D-55"><span class="linenos">55</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiConv3D-56"><a href="#SparseMultiConv3D-56"><span class="linenos">56</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiConv3D-57"><a href="#SparseMultiConv3D-57"><span class="linenos">57</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="SparseMultiConv3D-58"><a href="#SparseMultiConv3D-58"><span class="linenos">58</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
 </span><span id="SparseMultiConv3D-59"><a href="#SparseMultiConv3D-59"><span class="linenos">59</span></a>
-</span><span id="SparseMultiConv3D-60"><a href="#SparseMultiConv3D-60"><span class="linenos">60</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SparseMultiConv3D-61"><a href="#SparseMultiConv3D-61"><span class="linenos">61</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="SparseMultiConv3D-62"><a href="#SparseMultiConv3D-62"><span class="linenos">62</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D-63"><a href="#SparseMultiConv3D-63"><span class="linenos">63</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D-64"><a href="#SparseMultiConv3D-64"><span class="linenos">64</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="SparseMultiConv3D-65"><a href="#SparseMultiConv3D-65"><span class="linenos">65</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="SparseMultiConv3D-66"><a href="#SparseMultiConv3D-66"><span class="linenos">66</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="SparseMultiConv3D-67"><a href="#SparseMultiConv3D-67"><span class="linenos">67</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D-68"><a href="#SparseMultiConv3D-68"><span class="linenos">68</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="SparseMultiConv3D-69"><a href="#SparseMultiConv3D-69"><span class="linenos">69</span></a>                <span class="p">)</span>
-</span><span id="SparseMultiConv3D-70"><a href="#SparseMultiConv3D-70"><span class="linenos">70</span></a>            <span class="p">)</span>
-</span><span id="SparseMultiConv3D-71"><a href="#SparseMultiConv3D-71"><span class="linenos">71</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+</span><span id="SparseMultiConv3D-60"><a href="#SparseMultiConv3D-60"><span class="linenos">60</span></a><span class="sd">        Returns</span>
+</span><span id="SparseMultiConv3D-61"><a href="#SparseMultiConv3D-61"><span class="linenos">61</span></a><span class="sd">        -------</span>
+</span><span id="SparseMultiConv3D-62"><a href="#SparseMultiConv3D-62"><span class="linenos">62</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="SparseMultiConv3D-63"><a href="#SparseMultiConv3D-63"><span class="linenos">63</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="SparseMultiConv3D-64"><a href="#SparseMultiConv3D-64"><span class="linenos">64</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D-65"><a href="#SparseMultiConv3D-65"><span class="linenos">65</span></a>
+</span><span id="SparseMultiConv3D-66"><a href="#SparseMultiConv3D-66"><span class="linenos">66</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SparseMultiConv3D-67"><a href="#SparseMultiConv3D-67"><span class="linenos">67</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="SparseMultiConv3D-68"><a href="#SparseMultiConv3D-68"><span class="linenos">68</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D-69"><a href="#SparseMultiConv3D-69"><span class="linenos">69</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D-70"><a href="#SparseMultiConv3D-70"><span class="linenos">70</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="SparseMultiConv3D-71"><a href="#SparseMultiConv3D-71"><span class="linenos">71</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="SparseMultiConv3D-72"><a href="#SparseMultiConv3D-72"><span class="linenos">72</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="SparseMultiConv3D-73"><a href="#SparseMultiConv3D-73"><span class="linenos">73</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D-74"><a href="#SparseMultiConv3D-74"><span class="linenos">74</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="SparseMultiConv3D-75"><a href="#SparseMultiConv3D-75"><span class="linenos">75</span></a>                <span class="p">)</span>
+</span><span id="SparseMultiConv3D-76"><a href="#SparseMultiConv3D-76"><span class="linenos">76</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D-77"><a href="#SparseMultiConv3D-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 
@@ -227,7 +239,7 @@ trained, pruned layer</p>
                                         <input id="SparseMultiConv3D.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">SparseMultiConv3D</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">kernel</span>, </span><span class="param"><span class="n">bias</span>, </span><span class="param"><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span>, </span><span class="param"><span class="n">strides</span><span class="o">=</span><span class="mi">1</span></span>)</span>
+        <span class="name">SparseMultiConv3D</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">kernel</span>, </span><span class="param"><span class="n">bias</span>, </span><span class="param"><span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span>, </span><span class="param"><span class="n">strides</span><span class="o">=</span><span class="mi">1</span>, </span><span class="param"><span class="n">device</span><span class="o">=</span><span class="kc">None</span>, </span><span class="param"><span class="n">dtype</span><span class="o">=</span><span class="kc">None</span></span>)</span>
 
                 <label class="view-source-button" for="SparseMultiConv3D.__init__-view-source"><span>View Source</span></label>
 
@@ -238,31 +250,37 @@ trained, pruned layer</p>
 </span><span id="SparseMultiConv3D.__init__-13"><a href="#SparseMultiConv3D.__init__-13"><span class="linenos">13</span></a>        <span class="n">kernel</span><span class="p">,</span>
 </span><span id="SparseMultiConv3D.__init__-14"><a href="#SparseMultiConv3D.__init__-14"><span class="linenos">14</span></a>        <span class="n">bias</span><span class="p">,</span>
 </span><span id="SparseMultiConv3D.__init__-15"><a href="#SparseMultiConv3D.__init__-15"><span class="linenos">15</span></a>        <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D.__init__-16"><a href="#SparseMultiConv3D.__init__-16"><span class="linenos">16</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span>
-</span><span id="SparseMultiConv3D.__init__-17"><a href="#SparseMultiConv3D.__init__-17"><span class="linenos">17</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiConv3D.__init__-18"><a href="#SparseMultiConv3D.__init__-18"><span class="linenos">18</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D.__init__-19"><a href="#SparseMultiConv3D.__init__-19"><span class="linenos">19</span></a><span class="sd">        Parameters</span>
-</span><span id="SparseMultiConv3D.__init__-20"><a href="#SparseMultiConv3D.__init__-20"><span class="linenos">20</span></a><span class="sd">        ----------</span>
-</span><span id="SparseMultiConv3D.__init__-21"><a href="#SparseMultiConv3D.__init__-21"><span class="linenos">21</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
-</span><span id="SparseMultiConv3D.__init__-22"><a href="#SparseMultiConv3D.__init__-22"><span class="linenos">22</span></a><span class="sd">            The kernel to use</span>
-</span><span id="SparseMultiConv3D.__init__-23"><a href="#SparseMultiConv3D.__init__-23"><span class="linenos">23</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
-</span><span id="SparseMultiConv3D.__init__-24"><a href="#SparseMultiConv3D.__init__-24"><span class="linenos">24</span></a><span class="sd">            The bias to use</span>
-</span><span id="SparseMultiConv3D.__init__-25"><a href="#SparseMultiConv3D.__init__-25"><span class="linenos">25</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
-</span><span id="SparseMultiConv3D.__init__-26"><a href="#SparseMultiConv3D.__init__-26"><span class="linenos">26</span></a><span class="sd">            The padding to use</span>
-</span><span id="SparseMultiConv3D.__init__-27"><a href="#SparseMultiConv3D.__init__-27"><span class="linenos">27</span></a><span class="sd">        strides : int or tuple (default 1)</span>
-</span><span id="SparseMultiConv3D.__init__-28"><a href="#SparseMultiConv3D.__init__-28"><span class="linenos">28</span></a><span class="sd">            The strides to use</span>
-</span><span id="SparseMultiConv3D.__init__-29"><a href="#SparseMultiConv3D.__init__-29"><span class="linenos">29</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D.__init__-30"><a href="#SparseMultiConv3D.__init__-30"><span class="linenos">30</span></a>
-</span><span id="SparseMultiConv3D.__init__-31"><a href="#SparseMultiConv3D.__init__-31"><span class="linenos">31</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</span><span id="SparseMultiConv3D.__init__-32"><a href="#SparseMultiConv3D.__init__-32"><span class="linenos">32</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="SparseMultiConv3D.__init__-33"><a href="#SparseMultiConv3D.__init__-33"><span class="linenos">33</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="SparseMultiConv3D.__init__-34"><a href="#SparseMultiConv3D.__init__-34"><span class="linenos">34</span></a>        <span class="p">}</span>
-</span><span id="SparseMultiConv3D.__init__-35"><a href="#SparseMultiConv3D.__init__-35"><span class="linenos">35</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="SparseMultiConv3D.__init__-36"><a href="#SparseMultiConv3D.__init__-36"><span class="linenos">36</span></a>            <span class="n">i</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bias</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span><span id="SparseMultiConv3D.__init__-37"><a href="#SparseMultiConv3D.__init__-37"><span class="linenos">37</span></a>        <span class="p">}</span>
-</span><span id="SparseMultiConv3D.__init__-38"><a href="#SparseMultiConv3D.__init__-38"><span class="linenos">38</span></a>
-</span><span id="SparseMultiConv3D.__init__-39"><a href="#SparseMultiConv3D.__init__-39"><span class="linenos">39</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
-</span><span id="SparseMultiConv3D.__init__-40"><a href="#SparseMultiConv3D.__init__-40"><span class="linenos">40</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
+</span><span id="SparseMultiConv3D.__init__-16"><a href="#SparseMultiConv3D.__init__-16"><span class="linenos">16</span></a>        <span class="n">strides</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.__init__-17"><a href="#SparseMultiConv3D.__init__-17"><span class="linenos">17</span></a>        <span class="n">device</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.__init__-18"><a href="#SparseMultiConv3D.__init__-18"><span class="linenos">18</span></a>        <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span>
+</span><span id="SparseMultiConv3D.__init__-19"><a href="#SparseMultiConv3D.__init__-19"><span class="linenos">19</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiConv3D.__init__-20"><a href="#SparseMultiConv3D.__init__-20"><span class="linenos">20</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D.__init__-21"><a href="#SparseMultiConv3D.__init__-21"><span class="linenos">21</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiConv3D.__init__-22"><a href="#SparseMultiConv3D.__init__-22"><span class="linenos">22</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiConv3D.__init__-23"><a href="#SparseMultiConv3D.__init__-23"><span class="linenos">23</span></a><span class="sd">        kernel : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiConv3D.__init__-24"><a href="#SparseMultiConv3D.__init__-24"><span class="linenos">24</span></a><span class="sd">            The kernel to use</span>
+</span><span id="SparseMultiConv3D.__init__-25"><a href="#SparseMultiConv3D.__init__-25"><span class="linenos">25</span></a><span class="sd">        bias : torch.Tensor or Tensor-like</span>
+</span><span id="SparseMultiConv3D.__init__-26"><a href="#SparseMultiConv3D.__init__-26"><span class="linenos">26</span></a><span class="sd">            The bias to use</span>
+</span><span id="SparseMultiConv3D.__init__-27"><a href="#SparseMultiConv3D.__init__-27"><span class="linenos">27</span></a><span class="sd">        padding : str or int (default &#39;same&#39;)</span>
+</span><span id="SparseMultiConv3D.__init__-28"><a href="#SparseMultiConv3D.__init__-28"><span class="linenos">28</span></a><span class="sd">            The padding to use</span>
+</span><span id="SparseMultiConv3D.__init__-29"><a href="#SparseMultiConv3D.__init__-29"><span class="linenos">29</span></a><span class="sd">        strides : int or tuple (default 1)</span>
+</span><span id="SparseMultiConv3D.__init__-30"><a href="#SparseMultiConv3D.__init__-30"><span class="linenos">30</span></a><span class="sd">            The strides to use</span>
+</span><span id="SparseMultiConv3D.__init__-31"><a href="#SparseMultiConv3D.__init__-31"><span class="linenos">31</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D.__init__-32"><a href="#SparseMultiConv3D.__init__-32"><span class="linenos">32</span></a>
+</span><span id="SparseMultiConv3D.__init__-33"><a href="#SparseMultiConv3D.__init__-33"><span class="linenos">33</span></a>        <span class="n">factory_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="n">dtype</span><span class="p">}</span>
+</span><span id="SparseMultiConv3D.__init__-34"><a href="#SparseMultiConv3D.__init__-34"><span class="linenos">34</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D.__init__-35"><a href="#SparseMultiConv3D.__init__-35"><span class="linenos">35</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+</span><span id="SparseMultiConv3D.__init__-36"><a href="#SparseMultiConv3D.__init__-36"><span class="linenos">36</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D.__init__-37"><a href="#SparseMultiConv3D.__init__-37"><span class="linenos">37</span></a>                <span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.__init__-38"><a href="#SparseMultiConv3D.__init__-38"><span class="linenos">38</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">kernel</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D.__init__-39"><a href="#SparseMultiConv3D.__init__-39"><span class="linenos">39</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D.__init__-40"><a href="#SparseMultiConv3D.__init__-40"><span class="linenos">40</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D.__init__-41"><a href="#SparseMultiConv3D.__init__-41"><span class="linenos">41</span></a>                <span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.__init__-42"><a href="#SparseMultiConv3D.__init__-42"><span class="linenos">42</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="o">**</span><span class="n">factory_kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">to_sparse</span><span class="p">()</span>
+</span><span id="SparseMultiConv3D.__init__-43"><a href="#SparseMultiConv3D.__init__-43"><span class="linenos">43</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D.__init__-44"><a href="#SparseMultiConv3D.__init__-44"><span class="linenos">44</span></a>
+</span><span id="SparseMultiConv3D.__init__-45"><a href="#SparseMultiConv3D.__init__-45"><span class="linenos">45</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span> <span class="o">=</span> <span class="n">padding</span>
+</span><span id="SparseMultiConv3D.__init__-46"><a href="#SparseMultiConv3D.__init__-46"><span class="linenos">46</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span>
 </span></pre></div>
 
 
@@ -293,36 +311,36 @@ The strides to use</li>
 
     </div>
     <a class="headerlink" href="#SparseMultiConv3D.forward"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiConv3D.forward-42"><a href="#SparseMultiConv3D.forward-42"><span class="linenos">42</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D.forward-43"><a href="#SparseMultiConv3D.forward-43"><span class="linenos">43</span></a>        <span class="bp">self</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D.forward-44"><a href="#SparseMultiConv3D.forward-44"><span class="linenos">44</span></a>        <span class="n">inputs</span>
-</span><span id="SparseMultiConv3D.forward-45"><a href="#SparseMultiConv3D.forward-45"><span class="linenos">45</span></a>    <span class="p">):</span>
-</span><span id="SparseMultiConv3D.forward-46"><a href="#SparseMultiConv3D.forward-46"><span class="linenos">46</span></a>        <span class="sd">&quot;&quot;&quot;</span>
-</span><span id="SparseMultiConv3D.forward-47"><a href="#SparseMultiConv3D.forward-47"><span class="linenos">47</span></a><span class="sd">        Call the layer on input data</span>
-</span><span id="SparseMultiConv3D.forward-48"><a href="#SparseMultiConv3D.forward-48"><span class="linenos">48</span></a>
-</span><span id="SparseMultiConv3D.forward-49"><a href="#SparseMultiConv3D.forward-49"><span class="linenos">49</span></a><span class="sd">        Parameters</span>
-</span><span id="SparseMultiConv3D.forward-50"><a href="#SparseMultiConv3D.forward-50"><span class="linenos">50</span></a><span class="sd">        ----------</span>
-</span><span id="SparseMultiConv3D.forward-51"><a href="#SparseMultiConv3D.forward-51"><span class="linenos">51</span></a><span class="sd">        inputs : torch.Tensor</span>
-</span><span id="SparseMultiConv3D.forward-52"><a href="#SparseMultiConv3D.forward-52"><span class="linenos">52</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
-</span><span id="SparseMultiConv3D.forward-53"><a href="#SparseMultiConv3D.forward-53"><span class="linenos">53</span></a>
-</span><span id="SparseMultiConv3D.forward-54"><a href="#SparseMultiConv3D.forward-54"><span class="linenos">54</span></a><span class="sd">        Returns</span>
-</span><span id="SparseMultiConv3D.forward-55"><a href="#SparseMultiConv3D.forward-55"><span class="linenos">55</span></a><span class="sd">        -------</span>
-</span><span id="SparseMultiConv3D.forward-56"><a href="#SparseMultiConv3D.forward-56"><span class="linenos">56</span></a><span class="sd">        results : torch.Tensor</span>
-</span><span id="SparseMultiConv3D.forward-57"><a href="#SparseMultiConv3D.forward-57"><span class="linenos">57</span></a><span class="sd">            The results of the layer&#39;s logic</span>
-</span><span id="SparseMultiConv3D.forward-58"><a href="#SparseMultiConv3D.forward-58"><span class="linenos">58</span></a><span class="sd">        &quot;&quot;&quot;</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SparseMultiConv3D.forward-48"><a href="#SparseMultiConv3D.forward-48"><span class="linenos">48</span></a>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D.forward-49"><a href="#SparseMultiConv3D.forward-49"><span class="linenos">49</span></a>        <span class="bp">self</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.forward-50"><a href="#SparseMultiConv3D.forward-50"><span class="linenos">50</span></a>        <span class="n">inputs</span>
+</span><span id="SparseMultiConv3D.forward-51"><a href="#SparseMultiConv3D.forward-51"><span class="linenos">51</span></a>    <span class="p">):</span>
+</span><span id="SparseMultiConv3D.forward-52"><a href="#SparseMultiConv3D.forward-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D.forward-53"><a href="#SparseMultiConv3D.forward-53"><span class="linenos">53</span></a><span class="sd">        Call the layer on input data</span>
+</span><span id="SparseMultiConv3D.forward-54"><a href="#SparseMultiConv3D.forward-54"><span class="linenos">54</span></a>
+</span><span id="SparseMultiConv3D.forward-55"><a href="#SparseMultiConv3D.forward-55"><span class="linenos">55</span></a><span class="sd">        Parameters</span>
+</span><span id="SparseMultiConv3D.forward-56"><a href="#SparseMultiConv3D.forward-56"><span class="linenos">56</span></a><span class="sd">        ----------</span>
+</span><span id="SparseMultiConv3D.forward-57"><a href="#SparseMultiConv3D.forward-57"><span class="linenos">57</span></a><span class="sd">        inputs : torch.Tensor</span>
+</span><span id="SparseMultiConv3D.forward-58"><a href="#SparseMultiConv3D.forward-58"><span class="linenos">58</span></a><span class="sd">            Inputs to call the layer&#39;s logic on</span>
 </span><span id="SparseMultiConv3D.forward-59"><a href="#SparseMultiConv3D.forward-59"><span class="linenos">59</span></a>
-</span><span id="SparseMultiConv3D.forward-60"><a href="#SparseMultiConv3D.forward-60"><span class="linenos">60</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span id="SparseMultiConv3D.forward-61"><a href="#SparseMultiConv3D.forward-61"><span class="linenos">61</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
-</span><span id="SparseMultiConv3D.forward-62"><a href="#SparseMultiConv3D.forward-62"><span class="linenos">62</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D.forward-63"><a href="#SparseMultiConv3D.forward-63"><span class="linenos">63</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
-</span><span id="SparseMultiConv3D.forward-64"><a href="#SparseMultiConv3D.forward-64"><span class="linenos">64</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-</span><span id="SparseMultiConv3D.forward-65"><a href="#SparseMultiConv3D.forward-65"><span class="linenos">65</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="SparseMultiConv3D.forward-66"><a href="#SparseMultiConv3D.forward-66"><span class="linenos">66</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
-</span><span id="SparseMultiConv3D.forward-67"><a href="#SparseMultiConv3D.forward-67"><span class="linenos">67</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
-</span><span id="SparseMultiConv3D.forward-68"><a href="#SparseMultiConv3D.forward-68"><span class="linenos">68</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
-</span><span id="SparseMultiConv3D.forward-69"><a href="#SparseMultiConv3D.forward-69"><span class="linenos">69</span></a>                <span class="p">)</span>
-</span><span id="SparseMultiConv3D.forward-70"><a href="#SparseMultiConv3D.forward-70"><span class="linenos">70</span></a>            <span class="p">)</span>
-</span><span id="SparseMultiConv3D.forward-71"><a href="#SparseMultiConv3D.forward-71"><span class="linenos">71</span></a>        <span class="k">return</span> <span class="n">outputs</span>
+</span><span id="SparseMultiConv3D.forward-60"><a href="#SparseMultiConv3D.forward-60"><span class="linenos">60</span></a><span class="sd">        Returns</span>
+</span><span id="SparseMultiConv3D.forward-61"><a href="#SparseMultiConv3D.forward-61"><span class="linenos">61</span></a><span class="sd">        -------</span>
+</span><span id="SparseMultiConv3D.forward-62"><a href="#SparseMultiConv3D.forward-62"><span class="linenos">62</span></a><span class="sd">        results : torch.Tensor</span>
+</span><span id="SparseMultiConv3D.forward-63"><a href="#SparseMultiConv3D.forward-63"><span class="linenos">63</span></a><span class="sd">            The results of the layer&#39;s logic</span>
+</span><span id="SparseMultiConv3D.forward-64"><a href="#SparseMultiConv3D.forward-64"><span class="linenos">64</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SparseMultiConv3D.forward-65"><a href="#SparseMultiConv3D.forward-65"><span class="linenos">65</span></a>
+</span><span id="SparseMultiConv3D.forward-66"><a href="#SparseMultiConv3D.forward-66"><span class="linenos">66</span></a>        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="SparseMultiConv3D.forward-67"><a href="#SparseMultiConv3D.forward-67"><span class="linenos">67</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)):</span>
+</span><span id="SparseMultiConv3D.forward-68"><a href="#SparseMultiConv3D.forward-68"><span class="linenos">68</span></a>            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D.forward-69"><a href="#SparseMultiConv3D.forward-69"><span class="linenos">69</span></a>                <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv3d</span><span class="p">(</span>
+</span><span id="SparseMultiConv3D.forward-70"><a href="#SparseMultiConv3D.forward-70"><span class="linenos">70</span></a>                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+</span><span id="SparseMultiConv3D.forward-71"><a href="#SparseMultiConv3D.forward-71"><span class="linenos">71</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;w_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="SparseMultiConv3D.forward-72"><a href="#SparseMultiConv3D.forward-72"><span class="linenos">72</span></a>                    <span class="bp">self</span><span class="o">.</span><span class="n">get_buffer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">(),</span>
+</span><span id="SparseMultiConv3D.forward-73"><a href="#SparseMultiConv3D.forward-73"><span class="linenos">73</span></a>                    <span class="n">stride</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">strides</span><span class="p">,</span>
+</span><span id="SparseMultiConv3D.forward-74"><a href="#SparseMultiConv3D.forward-74"><span class="linenos">74</span></a>                    <span class="n">padding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">padding</span>
+</span><span id="SparseMultiConv3D.forward-75"><a href="#SparseMultiConv3D.forward-75"><span class="linenos">75</span></a>                <span class="p">)</span>
+</span><span id="SparseMultiConv3D.forward-76"><a href="#SparseMultiConv3D.forward-76"><span class="linenos">76</span></a>            <span class="p">)</span>
+</span><span id="SparseMultiConv3D.forward-77"><a href="#SparseMultiConv3D.forward-77"><span class="linenos">77</span></a>        <span class="k">return</span> <span class="n">outputs</span>
 </span></pre></div>
 
 

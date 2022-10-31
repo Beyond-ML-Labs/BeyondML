@@ -25,21 +25,21 @@ class MaskedDense(torch.nn.Module):
         """
 
         super().__init__()
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         self.in_features = in_features
         self.out_features = out_features
 
         weight = torch.Tensor(
             in_features,
             out_features,
-        ).to(**self.factory_kwargs)
+        ).to(**factory_kwargs)
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w, **self.factory_kwargs)
+        self.register_buffer('w_mask', torch.ones_like(self.w, **factory_kwargs))
 
-        bias = torch.zeros(out_features, **self.factory_kwargs)
+        bias = torch.zeros(out_features, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias, **self.factory_kwargs)
+        self.register_buffer('b_mask', torch.ones_like(bias, **factory_kwargs))
 
     def forward(self, inputs):
         """
@@ -80,15 +80,15 @@ class MaskedDense(torch.nn.Module):
         b_percentile = np.percentile(b_copy, percentile)
 
         new_w_mask = torch.Tensor(
-            (w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+            (w_copy >= w_percentile).astype(int))
         new_b_mask = torch.Tensor(
-            (b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
-        self.w_mask = new_w_mask
-        self.b_mask = new_b_mask
+            (b_copy >= b_percentile).astype(int))
+        self.w_mask[:] = new_w_mask
+        self.b_mask[:] = new_b_mask
 
         self.w = torch.nn.Parameter(
-            self.w * self.w_mask
+            self.w.detach() * self.w_mask
         )
         self.b = torch.nn.Parameter(
-            self.b * self.b_mask
+            self.b.detach() * self.b_mask
         )

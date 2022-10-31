@@ -32,7 +32,7 @@ class MaskedMultiHeadAttention(torch.nn.Module):
 
         super().__init__()
 
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        factory_kwargs = {'device': device, 'dtype': dtype}
         self.embed_dim = embed_dim
         self.num_heads = num_heads
         self.dropout = dropout
@@ -44,19 +44,19 @@ class MaskedMultiHeadAttention(torch.nn.Module):
             raise ValueError('num_heads must evenly divide embed_dim')
 
         in_proj_weight = torch.Tensor(
-            3 * embed_dim, embed_dim).to(**self.factory_kwargs)
+            3 * embed_dim, embed_dim).to(**factory_kwargs)
         in_proj_weight = torch.nn.init.xavier_uniform_(in_proj_weight)
         self.in_proj_weight = torch.nn.Parameter(in_proj_weight)
-        self.in_proj_mask = torch.ones_like(
-            self.in_proj_weight, **self.factory_kwargs)
+        self.register_buffer('in_proj_weight_mask', torch.ones_like(
+            self.in_proj_weight, **factory_kwargs))
 
         self.in_proj_bias = torch.nn.Parameter(
-            torch.zeros((3 * embed_dim), **self.factory_kwargs))
-        self.in_proj_bias_mask = torch.ones_like(
-            self.in_proj_bias, **self.factory_kwargs)
+            torch.zeros((3 * embed_dim), **factory_kwargs))
+        self.register_buffer('in_proj_bias_mask', torch.ones_like(
+            self.in_proj_bias, **factory_kwargs))
 
         self.out_proj = MaskedDense(
-            embed_dim, embed_dim, **self.factory_kwargs)
+            embed_dim, embed_dim, **factory_kwargs)
         self.out_proj_weight = self.out_proj.w
         self.out_proj_weight_mask = self.out_proj.w_mask
         self.out_proj_bias = self.out_proj.b
@@ -145,14 +145,14 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         b_percentile = np.percentile(b_copy, percentile)
 
         new_w_mask = torch.Tensor(
-            (w_copy >= w_percentile).astype(int)).to(**self.factory_kwargs)
+            (w_copy >= w_percentile).astype(int))
         new_b_mask = torch.Tensor(
-            (b_copy >= b_percentile).astype(int)).to(**self.factory_kwargs)
-        self.in_proj_weight_mask = new_w_mask
-        self.in_proj_bias_mask = new_b_mask
+            (b_copy >= b_percentile).astype(int))
+        self.in_proj_weight_mask[:] = new_w_mask
+        self.in_proj_bias_mask[:] = new_b_mask
 
         self.in_proj_weight = torch.nn.Parameter(
-            self.in_proj_weight * self.in_proj_mask
+            self.in_proj_weight * self.in_proj_weight_mask
         )
         self.in_proj_bias = torch.nn.Parameter(
             self.in_proj_bias * self.in_proj_bias_mask

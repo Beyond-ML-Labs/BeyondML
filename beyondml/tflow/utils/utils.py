@@ -1,4 +1,5 @@
 from beyondml.tflow.layers import MaskedDense, MaskedConv2D, MaskedConv3D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiDense, MultiConv2D, MultiConv3D, MultiMaxPool2D, MultiMaxPool3D, SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D
+from beyondml.tflow.utils import ActiveSparsification
 import tensorflow as tf
 import numpy as np
 import warnings
@@ -943,5 +944,43 @@ def train_model_iteratively(
             callbacks=[callback],
             verbose=2
         )
+
+    return model
+
+
+def train_model(
+    model,
+    train_x,
+    train_y,
+    loss,
+    metrics,
+    optimizer,
+    cutoff,
+    batch_size=32,
+    epochs=100,
+    starting_sparsification=0,
+    max_sparsification=99,
+    sparsification_rate=5,
+    sparsification_patience=10,
+    stopping_patience=5
+):
+    model.compile(loss=loss, metrics=metrics, optimizer=optimizer)
+
+    callback = ActiveSparsification(
+        cutoff,
+        starting_sparsification=starting_sparsification,
+        max_sparsification=max_sparsification,
+        sparsification_rate=sparsification_rate,
+        sparsification_patience=sparsification_patience,
+        stopping_patience=stopping_patience
+    )
+
+    model.fit(
+        train_x,
+        train_y,
+        batch_size=batch_size,
+        epochs=epochs,
+        callbacks=[callback]
+    )
 
     return model

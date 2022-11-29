@@ -1,4 +1,4 @@
-from beyondml.tflow.layers import MaskedDense, MaskedConv2D, MaskedConv3D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiDense, MultiConv2D, MultiConv3D, MultiMaxPool2D, MultiMaxPool3D, SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D
+from beyondml.tflow.layers import MaskedDense, MaskedConv2D, MaskedConv3D, FilterLayer, SumLayer, SelectorLayer, MultiMaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiDense, MultiConv2D, MultiConv3D, MultiMaxPool2D, MultiMaxPool3D, SparseDense, SparseConv2D, SparseConv3D, SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D, MultitaskNormalization
 import tensorflow as tf
 from tensorflow.keras.callbacks import Callback
 import numpy as np
@@ -11,7 +11,8 @@ NON_MASKING_LAYERS = (MultiDense, MultiConv2D, MultiConv3D)
 SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D,
                  SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
-    (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D, MultiMaxPool3D)
+    (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D,
+     MultiMaxPool3D, MultitaskNormalization)
 
 
 class ActiveSparsification(Callback):

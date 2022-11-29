@@ -1,5 +1,6 @@
 """Custom layers to use when building MANN models"""
 
+from .MultitaskNormalization import MultitaskNormalization
 from .FilterLayer import FilterLayer
 from .SumLayer import SumLayer
 from .MaskedDense import MaskedDense

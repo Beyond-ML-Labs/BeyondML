@@ -1,4 +1,4 @@
-from beyondml.pt.layers import MaskedConv2D, MaskedConv3D, MaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiMaskedDense
+from beyondml.pt.layers import MaskedConv2D, MaskedConv3D, MaskedDense, MultiMaskedConv2D, MultiMaskedConv3D, MultiMaskedDense, MultitaskNormalization
 
 
 def prune_model(model, percentile):

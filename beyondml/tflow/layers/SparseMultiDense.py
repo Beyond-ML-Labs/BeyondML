@@ -26,8 +26,12 @@ class SparseMultiDense(Layer):
 
         """
         super().__init__(**kwargs)
-        self.w = tf.sparse.from_dense(weight)
-        self.b = tf.sparse.from_dense(bias)
+        self.w = {
+            i: tf.sparse.from_dense(weight[i]) for i in range(weight.shape[0])
+        }
+        self.b = {
+            i: tf.sparse.from_dense(bias[i]) for i in range(bias.shape[0])
+        }
         self.activation = tf.keras.activations.get(activation)
 
     def build(self, input_shape):
@@ -51,11 +55,9 @@ class SparseMultiDense(Layer):
         outputs : TensorFlow Tensor
             The outputs of the layer's logic
         """
-        weight = tf.sparse.to_dense(self.w)
-        bias = tf.sparse.to_dense(self.b)
 
         output_tensor = [
-            tf.matmul(inputs[i], weight[i]) + bias[i] for i in range(len(inputs))
+            tf.matmul(inputs[i], tf.sparse.to_dense(self.w[i])) + tf.sparse.to_dense(self.b[i]) for i in range(len(inputs))
         ]
         return [
             self.activation(tensor) for tensor in output_tensor

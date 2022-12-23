@@ -11,7 +11,9 @@ class Conv2D(torch.nn.Module):
         kernel,
         bias,
         padding='same',
-        strides=1
+        strides=1,
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -25,9 +27,10 @@ class Conv2D(torch.nn.Module):
         strides : int or tuple (default 1)
             The strides to use
         """
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
-        self.w = torch.nn.Parameter(torch.Tensor(kernel))
-        self.b = torch.nn.Parameter(torch.Tensor(bias))
+        self.w = torch.nn.Parameter(torch.Tensor(kernel).to(**factory_kwargs))
+        self.b = torch.nn.Parameter(torch.Tensor(bias).to(**factory_kwargs))
 
         self.padding = padding
         self.strides = strides

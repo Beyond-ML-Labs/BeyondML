@@ -25,3 +25,4 @@ from .MultiMaxPool3D import MultiMaxPool3D
 from .MaskedTransformerEncoderLayer import MaskedTransformerEncoderLayer
 from .MaskedTransformerDecoderLayer import MaskedTransformerDecoderLayer
 from .MaskedMultiHeadAttention import MaskedMultiHeadAttention
+from .MultitaskNormalization import MultitaskNormalization

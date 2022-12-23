@@ -31,8 +31,12 @@ class SparseMultiConv3D(Layer):
             The activation function to use
         """
         super().__init__(**kwargs)
-        self.w = tf.sparse.from_dense(filters)
-        self.b = tf.sparse.from_dense(bias)
+        self.w = {
+            i: tf.sparse.from_dense(filters[i]) for i in range(filters.shape[0])
+        }
+        self.b = {
+            i: tf.sparse.from_dense(bias[i]) for i in range(bias.shape[0])
+        }
         self.padding = padding
         self.strides = strides
         self.activation = tf.keras.activations.get(activation)
@@ -58,13 +62,11 @@ class SparseMultiConv3D(Layer):
         outputs : TensorFlow Tensor
             The outputs of the layer's logic
         """
-        weight = tf.sparse.to_dense(self.w)
-        bias = tf.sparse.to_dense(self.b)
 
         conv_outputs = [
             tf.nn.convolution(
                 inputs[i],
-                weight[i],
+                tf.sparse.to_dense(self.w[i]),
                 padding=self.padding.upper() if isinstance(
                     self.padding, str) else self.padding,
                 strides=self.strides,
@@ -72,7 +74,7 @@ class SparseMultiConv3D(Layer):
             ) for i in range(len(inputs))
         ]
         conv_outputs = [
-            conv_outputs[i] + bias[i] for i in range(len(conv_outputs))
+            conv_outputs[i] + tf.sparse.to_dense(self.b[i]) for i in range(len(conv_outputs))
         ]
         return [
             self.activation(output) for output in conv_outputs

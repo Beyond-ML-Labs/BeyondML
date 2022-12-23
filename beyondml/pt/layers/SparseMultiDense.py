@@ -9,7 +9,9 @@ class SparseMultiDense(torch.nn.Module):
     def __init__(
             self,
             weight,
-            bias
+            bias,
+            device=None,
+            dtype=None
     ):
         """
         Parameters
@@ -20,9 +22,17 @@ class SparseMultiDense(torch.nn.Module):
             The bias to use
         """
 
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
-        self.w = torch.Tensor(weight).to_sparse()
-        self.b = torch.Tensor(bias).to_sparse()
+        for i in range(weight.shape[0]):
+            self.register_buffer(
+                f'w_{i}',
+                torch.Tensor(weight[i]).to(**factory_kwargs).to_sparse()
+            )
+            self.register_buffer(
+                f'b_{i}',
+                torch.Tensor(bias[i]).to(**factory_kwargs).to_sparse()
+            )
 
     def forward(self, inputs):
         """
@@ -40,7 +50,13 @@ class SparseMultiDense(torch.nn.Module):
         """
         outputs = []
         for i in range(len(inputs)):
-            out = torch.sparse.mm(self.w[i].t(), inputs[i].t()).t()
-            out = torch.add(out, self.b[i].to_dense())
+            out = torch.sparse.mm(
+                self.get_buffer(f'w_{i}').t(),
+                inputs[i].t()
+            ).t()
+            out = torch.add(
+                out,
+                self.get_buffer(f'b_{i}').to_dense()
+            )
             outputs.append(out)
         return outputs

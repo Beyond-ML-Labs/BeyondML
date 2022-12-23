@@ -14,6 +14,8 @@ class MaskedMultiHeadAttention(torch.nn.Module):
             num_heads,
             dropout=0,
             batch_first=False,
+            device=None,
+            dtype=None
     ):
         """
         Parameters
@@ -27,8 +29,10 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         batch_first : bool (default False)
             Whether the batch dimension is first
         """
+
         super().__init__()
 
+        factory_kwargs = {'device': device, 'dtype': dtype}
         self.embed_dim = embed_dim
         self.num_heads = num_heads
         self.dropout = dropout
@@ -39,15 +43,20 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         if self.head_dim * self.num_heads != embed_dim:
             raise ValueError('num_heads must evenly divide embed_dim')
 
-        in_proj_weight = torch.Tensor(3 * embed_dim, embed_dim)
+        in_proj_weight = torch.Tensor(
+            3 * embed_dim, embed_dim).to(**factory_kwargs)
         in_proj_weight = torch.nn.init.xavier_uniform_(in_proj_weight)
         self.in_proj_weight = torch.nn.Parameter(in_proj_weight)
-        self.in_proj_mask = torch.ones_like(self.in_proj_weight)
+        self.register_buffer('in_proj_weight_mask', torch.ones_like(
+            self.in_proj_weight, **factory_kwargs))
 
-        self.in_proj_bias = torch.nn.Parameter(torch.zeros((3 * embed_dim)))
-        self.in_proj_bias_mask = torch.ones_like(self.in_proj_bias)
+        self.in_proj_bias = torch.nn.Parameter(
+            torch.zeros((3 * embed_dim), **factory_kwargs))
+        self.register_buffer('in_proj_bias_mask', torch.ones_like(
+            self.in_proj_bias, **factory_kwargs))
 
-        self.out_proj = MaskedDense(embed_dim, embed_dim)
+        self.out_proj = MaskedDense(
+            embed_dim, embed_dim, **factory_kwargs)
         self.out_proj_weight = self.out_proj.w
         self.out_proj_weight_mask = self.out_proj.w_mask
         self.out_proj_bias = self.out_proj.b
@@ -130,18 +139,20 @@ class MaskedMultiHeadAttention(torch.nn.Module):
         -----
         Acts on the layer in place
         """
-        w_copy = np.abs(self.in_proj_weight.detach().numpy())
-        b_copy = np.abs(self.in_proj_bias.detach().numpy())
+        w_copy = np.abs(self.in_proj_weight.detach().cpu().numpy())
+        b_copy = np.abs(self.in_proj_bias.detach().cpu().numpy())
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
-        self.in_proj_weight_mask = new_w_mask
-        self.in_proj_bias_mask = new_b_mask
+        new_w_mask = torch.Tensor(
+            (w_copy >= w_percentile).astype(int))
+        new_b_mask = torch.Tensor(
+            (b_copy >= b_percentile).astype(int))
+        self.in_proj_weight_mask[:] = new_w_mask
+        self.in_proj_bias_mask[:] = new_b_mask
 
         self.in_proj_weight = torch.nn.Parameter(
-            self.in_proj_weight * self.in_proj_mask
+            self.in_proj_weight * self.in_proj_weight_mask
         )
         self.in_proj_bias = torch.nn.Parameter(
             self.in_proj_bias * self.in_proj_bias_mask

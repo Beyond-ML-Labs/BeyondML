@@ -10,7 +10,9 @@ class MaskedDense(torch.nn.Module):
     def __init__(
         self,
         in_features,
-        out_features
+        out_features,
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -21,21 +23,24 @@ class MaskedDense(torch.nn.Module):
             The number of features to be output by the layer.
             Also considered the number of artificial neurons
         """
+
         super().__init__()
+        factory_kwargs = {'device': device, 'dtype': dtype}
         self.in_features = in_features
         self.out_features = out_features
 
         weight = torch.Tensor(
             in_features,
-            out_features
-        )
+            out_features,
+        ).to(**factory_kwargs)
         weight = torch.nn.init.kaiming_normal_(weight, a=np.sqrt(5))
         self.w = torch.nn.Parameter(weight)
-        self.w_mask = torch.ones_like(self.w)
+        self.register_buffer(
+            'w_mask', torch.ones_like(self.w, **factory_kwargs))
 
-        bias = torch.zeros(out_features)
+        bias = torch.zeros(out_features, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(bias)
+        self.register_buffer('b_mask', torch.ones_like(bias, **factory_kwargs))
 
     def forward(self, inputs):
         """
@@ -70,19 +75,21 @@ class MaskedDense(torch.nn.Module):
         -----
         Acts on the layer in place
         """
-        w_copy = np.abs(self.w.detach().numpy())
-        b_copy = np.abs(self.b.detach().numpy())
+        w_copy = np.abs(self.w.detach().cpu().numpy())
+        b_copy = np.abs(self.b.detach().cpu().numpy())
         w_percentile = np.percentile(w_copy, percentile)
         b_percentile = np.percentile(b_copy, percentile)
 
-        new_w_mask = torch.Tensor((w_copy >= w_percentile).astype(int))
-        new_b_mask = torch.Tensor((b_copy >= b_percentile).astype(int))
-        self.w_mask = new_w_mask
-        self.b_mask = new_b_mask
+        new_w_mask = torch.Tensor(
+            (w_copy >= w_percentile).astype(int))
+        new_b_mask = torch.Tensor(
+            (b_copy >= b_percentile).astype(int))
+        self.w_mask[:] = new_w_mask
+        self.b_mask[:] = new_b_mask
 
         self.w = torch.nn.Parameter(
-            self.w * self.w_mask
+            self.w.detach() * self.w_mask
         )
         self.b = torch.nn.Parameter(
-            self.b * self.b_mask
+            self.b.detach() * self.b_mask
         )

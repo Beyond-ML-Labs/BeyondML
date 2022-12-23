@@ -100,3 +100,8 @@ The below version numbers and changes refer to the BeyondML package
 - Added the `MaskedMultiHeadAttention`, `MaskedTransformerEncoderLayer`, and `MaskedTransformerDecoderLayer` layers to `beyondml.pt.layers` to add pruning to the transformer architecture
 - Added `MaskedConv3D`, `MultiMaskedConv3D`, `MultiConv3D`, `MultiMaxPool3D`, `SparseConv3D`, and `SparseMultiConv3D` layers to `beyondml.tflow.layers`
 - Added `MaskedConv3D`, `MultiMaskedConv3D`, `MultiConv3D`, `MultiMaxPool3D`, `SparseConv3D`, `SparseMultiConv3D`, and `MultiMaxPool2D` layers to `beyondml.pt.layers`
+
+#### Version 0.1.3
+- Added `beyondml.pt` compatibility with more native PyTorch functionality for using models on different devices and datatypes
+- Added `train_model` function to `beyondml.tflow.utils`
+- Added `MultitaskNormalization` layer to `beyondml.tflow.layers` and `beyondml.pt.layers`

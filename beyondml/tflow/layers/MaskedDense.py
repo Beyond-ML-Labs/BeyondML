@@ -124,13 +124,13 @@ class MaskedDense(Layer):
         """
         if not self.use_bias:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float),
-                 new_masks[0].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float32),
+                 new_masks[0].astype(np.float32)]
             )
         else:
             self.set_weights(
-                [self.w.numpy() * new_masks[0].astype(np.float), self.b.numpy() * new_masks[1].astype(
-                    np.float), new_masks[0].astype(np.float), new_masks[1].astype(np.float)]
+                [self.w.numpy() * new_masks[0].astype(np.float32), self.b.numpy() * new_masks[1].astype(
+                    np.float32), new_masks[0].astype(np.float32), new_masks[1].astype(np.float32)]
             )
 
     @classmethod

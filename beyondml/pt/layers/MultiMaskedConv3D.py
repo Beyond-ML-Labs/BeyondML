@@ -14,7 +14,9 @@ class MultiMaskedConv3D(torch.nn.Module):
         num_tasks,
         kernel_size=3,
         padding='same',
-        strides=1
+        strides=1,
+        device=None,
+        dtype=None
     ):
         """
         Parameters
@@ -32,6 +34,7 @@ class MultiMaskedConv3D(torch.nn.Module):
         """
 
         super().__init__()
+        factory_kwargs = {'device': device, 'dtype': dtype}
         self.in_channels = in_channels
         self.out_channels = out_channels
         self.num_tasks = num_tasks
@@ -46,14 +49,16 @@ class MultiMaskedConv3D(torch.nn.Module):
             self.kernel_size[0],
             self.kernel_size[1],
             self.kernel_size[2]
-        )
+        ).to(**factory_kwargs)
         filters = torch.nn.init.kaiming_normal_(filters, a=np.sqrt(5))
         self.w = torch.nn.Parameter(filters)
-        self.w_mask = torch.ones_like(self.w)
+        self.register_buffer(
+            'w_mask', torch.ones_like(self.w, **factory_kwargs))
 
-        bias = torch.zeros(self.num_tasks, out_channels)
+        bias = torch.zeros(self.num_tasks, out_channels, **factory_kwargs)
         self.b = torch.nn.Parameter(bias)
-        self.b_mask = torch.ones_like(self.b)
+        self.register_buffer(
+            'b_mask', torch.ones_like(self.b, **factory_kwargs))
 
     @property
     def in_channels(self):
@@ -132,8 +137,8 @@ class MultiMaskedConv3D(torch.nn.Module):
         Acts on the layer in place
         """
 
-        w_copy = np.abs(self.w.detach().numpy())
-        b_copy = np.abs(self.b.detach().numpy())
+        w_copy = np.abs(self.w.detach().cpu().numpy())
+        b_copy = np.abs(self.b.detach().cpu().numpy())
         new_w_mask = np.zeros_like(w_copy)
         new_b_mask = np.zeros_like(b_copy)
 
@@ -151,8 +156,8 @@ class MultiMaskedConv3D(torch.nn.Module):
             new_b_mask[task_num] = (
                 b_copy[task_num] >= b_percentile).astype(int)
 
-            self.w_mask = torch.Tensor(new_w_mask)
-            self.b_mask = torch.Tensor(new_b_mask)
+            self.w_mask[:] = torch.Tensor(new_w_mask)
+            self.b_mask[:] = torch.Tensor(new_b_mask)
 
             self.w = torch.nn.Parameter(
                 self.w * self.w_mask

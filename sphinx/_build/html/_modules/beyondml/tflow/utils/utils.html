@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.tflow.utils.utils &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">beyondml</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">beyondml.tflow.utils.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for beyondml.tflow.utils.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">beyondml.tflow.layers</span> <span class="kn">import</span> <span class="n">MaskedDense</span><span class="p">,</span> <span class="n">MaskedConv2D</span><span class="p">,</span> <span class="n">MaskedConv3D</span><span class="p">,</span> <span class="n">FilterLayer</span><span class="p">,</span> <span class="n">SumLayer</span><span class="p">,</span> <span class="n">SelectorLayer</span><span class="p">,</span> <span class="n">MultiMaskedDense</span><span class="p">,</span> <span class="n">MultiMaskedConv2D</span><span class="p">,</span> <span class="n">MultiMaskedConv3D</span><span class="p">,</span> <span class="n">MultiDense</span><span class="p">,</span> <span class="n">MultiConv2D</span><span class="p">,</span> <span class="n">MultiConv3D</span><span class="p">,</span> <span class="n">MultiMaxPool2D</span><span class="p">,</span> <span class="n">MultiMaxPool3D</span><span class="p">,</span> <span class="n">SparseDense</span><span class="p">,</span> <span class="n">SparseConv2D</span><span class="p">,</span> <span class="n">SparseConv3D</span><span class="p">,</span> <span class="n">SparseMultiDense</span><span class="p">,</span> <span class="n">SparseMultiConv2D</span><span class="p">,</span> <span class="n">SparseMultiConv3D</span><span class="p">,</span> <span class="n">MultitaskNormalization</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.callbacks</span> <span class="kn">import</span> <span class="n">Callback</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">MASKING_LAYERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">MaskedDense</span><span class="p">,</span> <span class="n">MaskedConv2D</span><span class="p">,</span> <span class="n">MaskedConv3D</span><span class="p">,</span>
+                  <span class="n">MultiMaskedDense</span><span class="p">,</span> <span class="n">MultiMaskedConv2D</span><span class="p">,</span> <span class="n">MultiMaskedConv3D</span><span class="p">)</span>
+<span class="n">MULTI_MASKING_LAYERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">MultiMaskedDense</span><span class="p">,</span> <span class="n">MultiMaskedConv2D</span><span class="p">,</span> <span class="n">MultiMaskedConv3D</span><span class="p">)</span>
+<span class="n">NON_MASKING_LAYERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">MultiDense</span><span class="p">,</span> <span class="n">MultiConv2D</span><span class="p">,</span> <span class="n">MultiConv3D</span><span class="p">)</span>
+<span class="n">SPARSE_LAYERS</span> <span class="o">=</span> <span class="p">(</span><span class="n">SparseDense</span><span class="p">,</span> <span class="n">SparseConv2D</span><span class="p">,</span> <span class="n">SparseConv3D</span><span class="p">,</span>
+                 <span class="n">SparseMultiDense</span><span class="p">,</span> <span class="n">SparseMultiConv2D</span><span class="p">,</span> <span class="n">SparseMultiConv3D</span><span class="p">)</span>
+<span class="n">CUSTOM_LAYERS</span> <span class="o">=</span> <span class="n">MASKING_LAYERS</span> <span class="o">+</span> <span class="n">NON_MASKING_LAYERS</span> <span class="o">+</span> <span class="n">SPARSE_LAYERS</span> <span class="o">+</span> \
+    <span class="p">(</span><span class="n">FilterLayer</span><span class="p">,</span> <span class="n">SumLayer</span><span class="p">,</span> <span class="n">SelectorLayer</span><span class="p">,</span> <span class="n">MultiMaxPool2D</span><span class="p">,</span>
+     <span class="n">MultiMaxPool3D</span><span class="p">,</span> <span class="n">MultitaskNormalization</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ActiveSparsification"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification">[docs]</a><span class="k">class</span> <span class="nc">ActiveSparsification</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models</span>
+<span class="sd">    train.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">performance_cutoff</span><span class="p">,</span>
+        <span class="n">performance_measure</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+        <span class="n">starting_sparsification</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">max_sparsification</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
+        <span class="n">sparsification_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">sparsification_patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">stopping_delta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">stopping_patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        performance_cutoff : float</span>
+<span class="sd">            The cutoff value that the performance measure must &quot;beat&quot; in order to iteratively sparsify</span>
+<span class="sd">        performance_measure : str (default &#39;auto&#39;)</span>
+<span class="sd">            The performance measure that is used in conjunction with `performance_cutoff`</span>
+<span class="sd">        starting_sparsification : int or None (default None)</span>
+<span class="sd">            The starting sparsification that the model has already been sparsified to. If `None`, then defaults to 0</span>
+<span class="sd">        max_sparsification : int (default 99)</span>
+<span class="sd">            The maximum sparsification allowed</span>
+<span class="sd">        sparsification_rate : int (default 1)</span>
+<span class="sd">            The increase in sparsification that occurs when model performance beats the performance cutoff</span>
+<span class="sd">        sparsification_patience : int (default 10)</span>
+<span class="sd">            The number of epochs the model is allowed to train for without beating the performance measure before stopping sparsification</span>
+<span class="sd">        stopping_delta : float (default 0.01)</span>
+<span class="sd">            The performance improvement that must be seen when pruning has stopped and early stopping is being considered</span>
+<span class="sd">        stopping_patience : int (default 5)</span>
+<span class="sd">            The number of epochs the model is allowed to train for without `stopping_delta` improvement before stopping training</span>
+<span class="sd">        restore_best_weights : bool (default True)</span>
+<span class="sd">            Whether to restore model best weights after training</span>
+<span class="sd">        verbose : int or bool (default 1)</span>
+<span class="sd">            Verbosity level for logging.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        - If `performance_measure` is &#39;auto&#39;, defaults to the following measures, in order: &#39;val_accuracy&#39;, &#39;val_loss&#39;, &#39;accuracy&#39;, &#39;loss&#39;</span>
+<span class="sd">        - If `performance_measure` defaults to any accuracy value, then `performance_cutoff` represents the minimum value that must be</span>
+<span class="sd">          beaten.  If `performance_measure` defaults to any loss value, then `performance_cutoff` represents the maximum value that must</span>
+<span class="sd">          be beaten</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">performance_cutoff</span> <span class="o">=</span> <span class="n">performance_cutoff</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">=</span> <span class="n">performance_measure</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">starting_sparsification</span> <span class="o">=</span> <span class="n">starting_sparsification</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_sparsification</span> <span class="o">=</span> <span class="n">max_sparsification</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span> <span class="o">=</span> <span class="n">sparsification_rate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_patience</span> <span class="o">=</span> <span class="n">sparsification_patience</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopping_delta</span> <span class="o">=</span> <span class="n">stopping_delta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stopping_patience</span> <span class="o">=</span> <span class="n">stopping_patience</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">restore_best_weights</span> <span class="o">=</span> <span class="n">restore_best_weights</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ActiveSparsification.on_train_begin"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification.on_train_begin">[docs]</a>    <span class="k">def</span> <span class="nf">on_train_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">starting_sparsification</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">starting_sparsification</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="ActiveSparsification.on_epoch_end"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification.on_epoch_end">[docs]</a>    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">==</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;val_accuracy&#39;</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">=</span> <span class="s1">&#39;val_accuracy&#39;</span>
+            <span class="k">elif</span> <span class="s1">&#39;val_loss&#39;</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">=</span> <span class="s1">&#39;val_loss&#39;</span>
+            <span class="k">elif</span> <span class="s1">&#39;accuracy&#39;</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">=</span> <span class="s1">&#39;accuracy&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span> <span class="o">=</span> <span class="s1">&#39;loss&#39;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Performance measure set to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">performance</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">performance</span>
+
+        <span class="k">if</span> <span class="s1">&#39;accuracy&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_measure</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">performance</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_cutoff</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">performance</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_sparsification</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="s1">&#39;Model cannot be sparsified further due to max sparsification parameter&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_sparsify_model</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s1">&#39;Model performance reached </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">performance</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">, sparsifying to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Model performance has not reached pruning threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span><span class="si">}</span><span class="s1"> epoch(s)&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_patience</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s1">&#39;Model performance has not reached pruning threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span><span class="si">}</span><span class="s1"> epochs, reverting to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span><span class="si">}</span><span class="s1"> sparsification and beginning early stopping&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">performance</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopping_delta</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">performance</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Model performance improved to </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Early stopping performance has not met threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span><span class="si">}</span><span class="s1"> epochs&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopping_patience</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">restore_best_weights</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="s1">&#39;Model performance has not met early stopping criteria. Stopping training&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stop_training</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">performance</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_cutoff</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">performance</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_sparsification</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="s1">&#39;Model cannot be sparsified further due to max sparsification parameter&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_sparsify_model</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">=</span> <span class="mi">0</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s1">&#39;Model performance reached </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">performance</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">, sparsifying to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Model performance has not reached pruning threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span><span class="si">}</span><span class="s1"> epoch(s)&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sparsification_patience</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">pruning</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="sa">f</span><span class="s1">&#39;Model performance has not reached pruning threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prune_wait</span><span class="si">}</span><span class="s1"> epochs, reverting to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">sparsification_rate</span><span class="si">}</span><span class="s1"> sparsification and beginning early stopping&#39;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">performance</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopping_delta</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">best</span> <span class="o">=</span> <span class="n">performance</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Model performance improved to </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s1">&#39;Early stopping performance has not met threshold for </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span><span class="si">}</span><span class="s1"> epochs&#39;</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stop_wait</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopping_patience</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">restore_best_weights</span><span class="p">:</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_weights</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span>
+                                <span class="s1">&#39;Model performance has not met early stopping criteria. Stopping training&#39;</span><span class="p">)</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">stop_training</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="nf">_sparsify_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">percentage</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Function to sparsify the model&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">(),</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">get_custom_objects</span><span class="p">())</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span>
+            <span class="n">mask_model</span><span class="p">(</span>
+                <span class="n">new_model</span><span class="p">,</span>
+                <span class="n">percentage</span><span class="p">,</span>
+                <span class="n">method</span><span class="o">=</span><span class="s1">&#39;magnitude&#39;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+        <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_masking_gradients</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">y</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtain masking layer gradients with respect to the tasks presented</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : tf.keras Model</span>
+<span class="sd">        The model to get the gradients of</span>
+<span class="sd">    x : np.array or array-like</span>
+<span class="sd">        The input data</span>
+<span class="sd">    y : np.array or array-like</span>
+<span class="sd">        The true output</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    masking_gradients : list</span>
+<span class="sd">        A list of gradients for the masking weights for the model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Check outputs</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s1">&#39;Error in output shapes. If any tasks have a single output, please reshape the value using the `.reshape(-1, 1)` method&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s1">&#39;Error in output shapes. If your task has a single output, please reshape the value using the `.reshape(-1, 1)` method&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Grab the weights for the masking layers</span>
+    <span class="n">masking_weights</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">trainable_weights</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Setup and obtain the losses</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">loss</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">losses</span><span class="p">):</span>
+            <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">losses</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span>
+            <span class="n">loss</span><span class="p">)</span> <span class="k">else</span> <span class="n">loss</span> <span class="k">for</span> <span class="n">loss</span> <span class="ow">in</span> <span class="n">losses</span><span class="p">]</span>
+
+    <span class="c1"># Grab the gradients for the specified weights</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">raw_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="n">masking_weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gradients</span>
+
+
+<div class="viewcode-block" id="get_custom_objects"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.get_custom_objects">[docs]</a><span class="k">def</span> <span class="nf">get_custom_objects</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a dictionary of custom objects (layers) to use when loading models trained using this package&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="nb">zip</span><span class="p">(</span>
+            <span class="p">[</span><span class="s1">&#39;MaskedDense&#39;</span><span class="p">,</span> <span class="s1">&#39;MaskedConv2D&#39;</span><span class="p">,</span> <span class="s1">&#39;MaskedConv3D&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiMaskedDense&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiMaskedConv2D&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiMaskedConv3D&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiDense&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;MultiConv2D&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiConv3D&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseDense&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseConv2D&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseConv3D&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseMultiDense&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseMultiConv2D&#39;</span><span class="p">,</span> <span class="s1">&#39;SparseMultiConv3D&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;FilterLayer&#39;</span><span class="p">,</span> <span class="s1">&#39;SumLayer&#39;</span><span class="p">,</span> <span class="s1">&#39;SelectorLayer&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiMaxPool2D&#39;</span><span class="p">,</span> <span class="s1">&#39;MultiMaxPool3D&#39;</span><span class="p">],</span>
+            <span class="n">CUSTOM_LAYERS</span>
+        <span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="mask_model"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.mask_model">[docs]</a><span class="k">def</span> <span class="nf">mask_model</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">percentile</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s1">&#39;gradients&#39;</span><span class="p">,</span>
+        <span class="n">exclusive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mask the multitask model for training respective using the gradients for the tasks at hand</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : keras model with MANN masking layers</span>
+<span class="sd">        The model to be masked</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        Percentile to use in masking. Any weights less than the `percentile` value will be made zero</span>
+<span class="sd">    method : str (default &#39;gradients&#39;)</span>
+<span class="sd">        One of either &#39;gradients&#39; or &#39;magnitude&#39; - the method for how to identify weights to mask</span>
+<span class="sd">        If method is &#39;gradients&#39;, utilizes the gradients with respect to the passed x and y variables</span>
+<span class="sd">        to identify the subnetwork to activate for each task</span>
+<span class="sd">        If method is &#39;magnitude&#39;, uses the magnitude of the weights to identify the subnetwork to activate for each task</span>
+<span class="sd">    exclusive : bool (default True)</span>
+<span class="sd">        Whether to restrict previously-used weight indices for each task. If `True`, this identifies disjoint subsets of</span>
+<span class="sd">        weights within the layer which perform the tasks requested.</span>
+<span class="sd">    x : list of np.ndarray or array-like</span>
+<span class="sd">        The training data input values, ignored if &quot;method&quot; is &#39;magnitude&#39;</span>
+<span class="sd">    y : list of np.ndarray or array-like</span>
+<span class="sd">        The training data output values, ignored if &quot;method&quot; is &#39;magnitude&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Check method</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;gradients&#39;</span><span class="p">,</span> <span class="s1">&#39;magnitude&#39;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;method must be one of &#39;gradients&#39;, &#39;magnitude&#39;, got </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Get the gradients</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;gradients&#39;</span><span class="p">:</span>
+        <span class="n">grads</span> <span class="o">=</span> <span class="n">_get_masking_gradients</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">x</span><span class="p">,</span>
+            <span class="n">y</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Work to identify the right weights if exclusive</span>
+        <span class="k">if</span> <span class="n">exclusive</span><span class="p">:</span>
+            <span class="n">gradient_idx</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s1">&#39;mask_model does not effectively support models with models as layers if method is &quot;gradients&quot;. Please set method to &quot;magnitude&quot;&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MULTI_MASKING_LAYERS</span><span class="p">):</span>
+                        <span class="n">layer_grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+                                       <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">[</span><span class="n">gradient_idx</span><span class="p">]]</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[(</span><span class="n">grad</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+                            <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">layer_grads</span><span class="p">]</span>
+                        <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">layer_grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                                       <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">[</span><span class="n">gradient_idx</span><span class="p">]]</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[]</span>
+                        <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">layer_grads</span><span class="p">:</span>
+                            <span class="n">new_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                            <span class="n">used_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+                            <span class="k">for</span> <span class="n">task_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                                <span class="n">grad</span><span class="p">[</span><span class="n">task_idx</span><span class="p">][</span><span class="n">used_weights</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                                <span class="n">new_mask</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">grad</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+                                    <span class="n">grad</span><span class="p">[</span><span class="n">task_idx</span><span class="p">],</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                                <span class="n">used_weights</span> <span class="o">+=</span> <span class="n">new_mask</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span>
+                            <span class="n">new_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_mask</span><span class="p">)</span>
+                        <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+                    <span class="n">gradient_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># Work to identify the right weights if not exclusive</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">gradient_idx</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s1">&#39;mask_model does not effectively support models with models as layers if method is &quot;gradients&quot;. Please set method to &quot;magnitude&quot;&#39;</span><span class="p">,</span> <span class="ne">RuntimeWarning</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MULTI_MASKING_LAYERS</span><span class="p">):</span>
+                        <span class="n">layer_grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                                       <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">[</span><span class="n">gradient_idx</span><span class="p">]]</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[(</span><span class="n">grad</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+                            <span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">layer_grads</span><span class="p">]</span>
+                        <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">layer_grads</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                                       <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">[</span><span class="n">gradient_idx</span><span class="p">]]</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[]</span>
+                        <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">layer_grads</span><span class="p">:</span>
+                            <span class="n">new_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">task_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                                <span class="n">new_mask</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">grad</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+                                    <span class="n">grad</span><span class="p">[</span><span class="n">task_idx</span><span class="p">],</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                            <span class="n">new_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_mask</span><span class="p">)</span>
+                        <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+                    <span class="n">gradient_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Do this is method is &quot;magnitude&quot;</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;magnitude&#39;</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MULTI_MASKING_LAYERS</span><span class="p">):</span>
+                    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                               <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">]</span>
+                    <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="p">(</span><span class="n">weight</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span>
+                    <span class="p">]</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+                               <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">exclusive</span><span class="p">:</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                                     <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">weight_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)):</span>
+                            <span class="k">for</span> <span class="n">task_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                                <span class="n">new_masks</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+                                    <span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">],</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                                     <span class="k">for</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">weights</span><span class="p">]</span>
+                        <span class="k">for</span> <span class="n">weight_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">weights</span><span class="p">)):</span>
+                            <span class="k">for</span> <span class="n">task_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                                <span class="n">exclusive_weight</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+                                    <span class="mi">1</span> <span class="o">-</span> <span class="n">new_masks</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][:</span><span class="n">task_idx</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+                                <span class="n">new_masks</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">exclusive_weight</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+                                    <span class="n">weights</span><span class="p">[</span><span class="n">weight_idx</span><span class="p">][</span><span class="n">task_idx</span><span class="p">],</span> <span class="n">percentile</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+                <span class="n">mask_model</span><span class="p">(</span>
+                    <span class="n">layer</span><span class="p">,</span>
+                    <span class="n">percentile</span><span class="p">,</span>
+                    <span class="n">method</span><span class="p">,</span>
+                    <span class="n">exclusive</span>
+                <span class="p">)</span>
+
+    <span class="c1"># Compile the model again so the effects take place</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">model</span></div>
+
+
+<span class="k">def</span> <span class="nf">_replace_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace the model config to remove masking layers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layer_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;MaskedConv2D&#39;</span><span class="p">:</span> <span class="s1">&#39;Conv2D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MaskedConv3D&#39;</span><span class="p">:</span> <span class="s1">&#39;Conv3D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MaskedDense&#39;</span><span class="p">:</span> <span class="s1">&#39;Dense&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiMaskedConv2D&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiConv2D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiMaskedConv3D&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiConv3D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiMaskedDense&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiDense&#39;</span>
+    <span class="p">}</span>
+    <span class="n">model_classes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Functional&#39;</span><span class="p">,</span> <span class="s1">&#39;Sequential&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">layer_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer_mapping</span><span class="p">[</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span>
+            <span class="p">]</span>
+            <span class="k">del</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">][</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model_classes</span><span class="p">:</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_replace_config</span><span class="p">(</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">config</span>
+
+
+<span class="k">def</span> <span class="nf">_create_masking_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace the model config to add masking layers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">layer_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Conv2D&#39;</span><span class="p">:</span> <span class="s1">&#39;MaskedConv2D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Conv3D&#39;</span><span class="p">:</span> <span class="s1">&#39;MaskedConv3D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Dense&#39;</span><span class="p">:</span> <span class="s1">&#39;MaskedDense&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiConv2D&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiMaskedConv2D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiConv3D&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiMaskedConv3D&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;MultiDense&#39;</span><span class="p">:</span> <span class="s1">&#39;MultiMaskedDense&#39;</span>
+    <span class="p">}</span>
+    <span class="n">model_classes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Functional&#39;</span><span class="p">,</span> <span class="s1">&#39;Sequential&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">layer_mapping</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer_mapping</span><span class="p">[</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span>
+            <span class="p">]</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">][</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span>
+                <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ones&#39;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model_classes</span><span class="p">:</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_create_masking_config</span><span class="p">(</span>
+                <span class="n">config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">config</span>
+
+
+<span class="k">def</span> <span class="nf">_quantize_model_config</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Change the dtype of the model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">model_classes</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Functional&#39;</span><span class="p">,</span> <span class="s1">&#39;Sequential&#39;</span><span class="p">)</span>
+
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">])):</span>
+        <span class="k">if</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model_classes</span><span class="p">:</span>
+            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_quantize_model_config</span><span class="p">(</span>
+                <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">][</span><span class="s1">&#39;dtype&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dtype</span>
+    <span class="k">return</span> <span class="n">new_config</span>
+
+
+<span class="k">def</span> <span class="nf">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">old_model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace the weights of a newly created model with the weights (sans masks) of an old model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">)):</span>
+        <span class="c1"># Recursion in case the model contains other models</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+            <span class="n">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="c1"># If not masking layers, simply replace weights</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+
+        <span class="c1"># If masking layers, replace only the required weights</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n_weights</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span>
+                <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[:</span><span class="n">n_weights</span><span class="p">])</span>
+
+    <span class="c1"># Compile and return the model</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_model</span>
+
+
+<span class="k">def</span> <span class="nf">_replace_masking_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">old_model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Replace the weights of a newly created model with the weights (adding masks) of an old model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">)):</span>
+        <span class="c1"># Recursion in case the model contains other models</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+            <span class="n">_replace_masking_weights</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="c1"># If not masking layers, simply replace weights</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+
+        <span class="c1"># If masking layers, replace the weights and have all ones as the masks</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n_weights</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">())</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()[</span><span class="n">n_weights</span><span class="p">:])</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="c1"># Compile and return the model</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_model</span>
+
+
+<div class="viewcode-block" id="remove_layer_masks"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.remove_layer_masks">[docs]</a><span class="k">def</span> <span class="nf">remove_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a trained model from using Masking layers to using non-masking layers</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to be converted</span>
+<span class="sd">    additional_custom_objects : dict or None (default None)</span>
+<span class="sd">        Additional custom layers to use</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    new_model : TensorFlow Keras model</span>
+<span class="sd">        The converted model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">custom_objects</span> <span class="o">=</span> <span class="n">get_custom_objects</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">additional_custom_objects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">custom_objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_custom_objects</span><span class="p">)</span>
+
+    <span class="c1"># Replace the config of the model</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">_replace_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="c1"># Create the new model</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span>
+            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span>
+            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Replace the weights of the new model to be equivalent to the old model</span>
+    <span class="n">new_model</span> <span class="o">=</span> <span class="n">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="c1"># Make the new model not trainable and compile the model for good measure</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_model</span></div>
+
+
+<div class="viewcode-block" id="add_layer_masks"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.add_layer_masks">[docs]</a><span class="k">def</span> <span class="nf">add_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a trained model from one that does not have masking weights to one that does have</span>
+<span class="sd">    masking weights</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to be converted</span>
+<span class="sd">    additional_custom_objects : dict or None (default None)</span>
+<span class="sd">        Additional custom layers to use</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    new_model : TensorFlow Keras model</span>
+<span class="sd">        The converted model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">custom_objects</span> <span class="o">=</span> <span class="n">get_custom_objects</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">additional_custom_objects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">custom_objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_custom_objects</span><span class="p">)</span>
+
+    <span class="c1"># Replace the config of the model</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">_create_masking_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+
+    <span class="c1"># Create the new model</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span>
+            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span>
+            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Replace the weights of the new model</span>
+    <span class="n">new_model</span> <span class="o">=</span> <span class="n">_replace_masking_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="c1"># Compile and return the model</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_model</span></div>
+
+
+<div class="viewcode-block" id="quantize_model"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.quantize_model">[docs]</a><span class="k">def</span> <span class="nf">quantize_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply model quantization</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras Model</span>
+<span class="sd">        The model to quantize</span>
+<span class="sd">    dtype : str or TensorFlow datatype (default &#39;float16&#39;)</span>
+<span class="sd">        The datatype to quantize to</span>
+<span class="sd">    additional_custom_objects : None or dict (default None)</span>
+<span class="sd">        Additional custom  objects to use to instantiate the model</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    new_model : TensorFlow Keras Model</span>
+<span class="sd">        The quantized model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Grab the configuration from the original model</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+
+    <span class="c1"># Grab the weights from the original model as well</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+
+    <span class="c1"># Change the weights to have the new datatype</span>
+    <span class="n">new_weights</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">weights</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Change the config to get the quantized configuration</span>
+    <span class="n">new_config</span> <span class="o">=</span> <span class="n">_quantize_model_config</span><span class="p">(</span><span class="n">model_config</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+    <span class="c1"># Instantiate the new model from the new config</span>
+    <span class="n">custom_objects</span> <span class="o">=</span> <span class="n">get_custom_objects</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">additional_custom_objects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">custom_objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_custom_objects</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">,</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span><span class="p">)</span>
+
+    <span class="c1"># Set the weights of the new model</span>
+    <span class="n">new_model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">new_weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_model</span></div>
+
+
+<span class="k">def</span> <span class="nf">_get_masking_weights</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the masking weights of a model</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to get the masking weights of</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    weights : list of TensorFlow tensors</span>
+<span class="sd">        The requested weights</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">weights</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">)</span>
+    <span class="p">]</span>
+
+
+<div class="viewcode-block" id="get_task_masking_gradients"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.get_task_masking_gradients">[docs]</a><span class="k">def</span> <span class="nf">get_task_masking_gradients</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">task_num</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the gradients of masking weights within a model</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to retrieve the gradients of</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - This function should only be run *before* the model has been trained</span>
+<span class="sd">        or used to predict.  There is an unknown bug related to TensorFlow which</span>
+<span class="sd">        is leading to incorrect results after initial training</span>
+<span class="sd">    - When running this function, randomized input and output data is sent</span>
+<span class="sd">        through the model to retrieve gradients respective to each task. If</span>
+<span class="sd">        the model is compiled using `sparse_categorical_crossentropy&#39; loss,</span>
+<span class="sd">        this will break this function&#39;s functionality. As a result, please</span>
+<span class="sd">        use `categorical_crossentropy` (or even better, `mse`) before running this function. After</span>
+<span class="sd">        retrieving gradients, the model can be recompiled with whatever parameters are desired.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    gradients : list of TensorFlow tensors</span>
+<span class="sd">        The gradients of the masking weights of the model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Figure out the number of tasks</span>
+    <span class="n">output_shapes</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">output_shape</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output_shapes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">num_tasks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_shapes</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">num_tasks</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Get the loss weights</span>
+    <span class="k">if</span> <span class="n">num_tasks</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
+        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Get the masking weights</span>
+    <span class="n">masking_weights</span> <span class="o">=</span> <span class="n">_get_masking_weights</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="c1"># Configure inputs</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">input_shapes</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">input_shape</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">input_shapes</span><span class="p">:</span>
+            <span class="n">new_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">new_shape</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">new_shape</span><span class="p">))</span>
+
+    <span class="c1"># Configure outputs</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">output_shapes</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">output_shape</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output_shapes</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">output_shapes</span><span class="p">:</span>
+            <span class="n">new_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">new_shape</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_shape</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">output_shapes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">new_shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">new_shape</span><span class="p">))</span>
+
+    <span class="c1"># Configure the losses</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">loss</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
+    <span class="n">losses</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span> <span class="k">for</span> <span class="n">loss</span> <span class="ow">in</span> <span class="n">losses</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Get the gradients of the weights wrt the task</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">raw_preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">loss_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">losses</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">raw_preds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">loss_weights</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">))]</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss_values</span><span class="p">,</span> <span class="n">masking_weights</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">gradients</span></div>
+
+
+<div class="viewcode-block" id="mask_task_weights"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.mask_task_weights">[docs]</a><span class="k">def</span> <span class="nf">mask_task_weights</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">task_masking_gradients</span><span class="p">,</span>
+    <span class="n">percentile</span><span class="p">,</span>
+    <span class="n">respect_previous_tasks</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to be masked</span>
+<span class="sd">    task_masking_gradients : list of TensorFlow tensors</span>
+<span class="sd">        The gradients for the specific task requested</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        The percentile to mask/prune</span>
+<span class="sd">    respect_previous_tasks : bool (default True)</span>
+<span class="sd">        Whether to respect the weights used for previous tasks and not use them</span>
+<span class="sd">        for subsequent tasks</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    masked_model : TensorFlow Keras model</span>
+<span class="sd">        The masked model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get the actual weights to be able to set them</span>
+    <span class="n">masking_weights</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Iterate through each of the layers of the model, keeping track of the index of which masking layer has been achieved</span>
+    <span class="n">masking_idx</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
+
+            <span class="c1"># Set the new masks to be masked</span>
+            <span class="n">new_masks</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="c1"># Different procedures if multi masking layer vs single masking layer</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">MULTI_MASKING_LAYERS</span><span class="p">):</span>
+
+                <span class="c1"># Check for all of the weights in the list of weights (corresponding to gradients)</span>
+                <span class="k">for</span> <span class="n">weight_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">task_masking_gradients</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])):</span>
+
+                    <span class="c1"># Set the weight and gradient values so it&#39;s easier to follow</span>
+                    <span class="n">weight</span> <span class="o">=</span> <span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span><span class="p">]</span>
+                    <span class="n">gradient</span> <span class="o">=</span> <span class="n">task_masking_gradients</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span><span class="p">]</span>
+
+                    <span class="c1"># If gradient is None, then the value is a mask</span>
+                    <span class="n">task_idx_num</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="k">if</span> <span class="n">gradient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                        <span class="c1"># Figure out which task index is the right one</span>
+                        <span class="k">for</span> <span class="n">task_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">gradient</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+                            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">gradient</span><span class="p">[</span><span class="n">task_idx</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+                                <span class="n">task_idx_num</span> <span class="o">=</span> <span class="n">task_idx</span>
+
+                        <span class="k">if</span> <span class="n">task_idx_num</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="c1"># Get the new weight for that task only</span>
+                            <span class="n">task_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">task_idx_num</span><span class="p">])</span>
+
+                            <span class="c1"># Enforce respecting previous-task weights</span>
+                            <span class="k">if</span> <span class="n">respect_previous_tasks</span> <span class="ow">and</span> <span class="n">task_idx_num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">task_weight</span><span class="p">[(</span><span class="n">weight</span><span class="p">[:</span><span class="n">task_idx_num</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+                                    <span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+
+                            <span class="c1"># Get the new mask</span>
+                            <span class="n">weight_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">task_weight</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span>
+                                <span class="n">task_weight</span><span class="p">,</span> <span class="n">percentile</span><span class="p">))</span>
+
+                            <span class="c1"># Find the existing mask and set the value of only the task-specific part</span>
+                            <span class="n">layer_mask</span> <span class="o">=</span> <span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span>
+                                <span class="nb">len</span><span class="p">(</span><span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+                            <span class="n">layer_mask</span><span class="p">[</span><span class="n">task_idx_num</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight_mask</span>
+
+                            <span class="c1"># Append the new mask</span>
+                            <span class="n">new_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer_mask</span><span class="p">)</span>
+
+            <span class="c1"># If the layer is a single masking layer</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">weight_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">task_masking_gradients</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">])):</span>
+
+                    <span class="c1"># Assign the weight and the gradient for this specific layer, for sanity</span>
+                    <span class="n">weight</span> <span class="o">=</span> <span class="n">masking_weights</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span><span class="p">]</span>
+                    <span class="n">gradient</span> <span class="o">=</span> <span class="n">task_masking_gradients</span><span class="p">[</span><span class="n">masking_idx</span><span class="p">][</span><span class="n">weight_num</span><span class="p">]</span>
+
+                    <span class="c1"># If gradient is None, then the weight is a mask</span>
+                    <span class="k">if</span> <span class="n">gradient</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+                        <span class="c1"># Only proceed if the gradient exists</span>
+                        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">gradient</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+                            <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+                            <span class="n">weight_mask</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="n">weight</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">percentile</span><span class="p">))</span>
+                            <span class="n">new_masks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weight_mask</span><span class="p">)</span>
+
+            <span class="c1"># If new masks have been identified (it&#39;s possible that this did not occur), set the new masks for that layer</span>
+            <span class="k">if</span> <span class="n">new_masks</span> <span class="o">!=</span> <span class="p">[]:</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">set_masks</span><span class="p">(</span><span class="n">new_masks</span><span class="p">)</span>
+
+            <span class="c1"># Lastly, increase the masking index by 1</span>
+            <span class="n">masking_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Compile the model again and return it</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="train_model_iteratively"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.train_model_iteratively">[docs]</a><span class="k">def</span> <span class="nf">train_model_iteratively</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">task_gradients</span><span class="p">,</span>
+    <span class="n">train_x</span><span class="p">,</span>
+    <span class="n">train_y</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="p">,</span>
+    <span class="n">delta</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">losses</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">starting_pruning</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">pruning_rate</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">patience</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Train a model iteratively on each task, first obtaining</span>
+<span class="sd">    baseline performance on each task and then iteratively</span>
+<span class="sd">    training and pruning each task as far back as possible while</span>
+<span class="sd">    maintaining acceptable performance on each task</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : TensorFlow Keras model</span>
+<span class="sd">        The model to be trained</span>
+<span class="sd">    task_gradients : list of TensorFlow tensors</span>
+<span class="sd">        Gradients for each task, output from the `get_task_masking_gradients` function</span>
+<span class="sd">    train_x : list of numpy arrays, TensorFlow Datasets, or other</span>
+<span class="sd">              data types models can train with</span>
+<span class="sd">        The input data to use to train on</span>
+<span class="sd">    train_y : list of numpy arrays, TensorFlow Datasets, or other</span>
+<span class="sd">              data types model can train with</span>
+<span class="sd">        The output data to use to train on</span>
+<span class="sd">    validation_split : float, or list of float</span>
+<span class="sd">        The proportion of data to use for validation</span>
+<span class="sd">    delta : float</span>
+<span class="sd">        The tolerance between validation losses to be considered &quot;acceptable&quot;</span>
+<span class="sd">        performance to continue</span>
+<span class="sd">    batch_size : int</span>
+<span class="sd">        The batch size to train with</span>
+<span class="sd">    losses : str, list, or Keras loss function</span>
+<span class="sd">        The loss or losses to use when training</span>
+<span class="sd">    optimizer : str, list, or Keras optimizer</span>
+<span class="sd">        The optimizer to use when training (default &#39;adam&#39;)</span>
+<span class="sd">    starting_pruning : int or list of int (default 0)</span>
+<span class="sd">        The starting pruning rate to use for each task</span>
+<span class="sd">    pruning_rate : int or list of int (default [10, 5, 2, 1])</span>
+<span class="sd">        The pruning rate to use</span>
+<span class="sd">    patience : int (default 5)</span>
+<span class="sd">        The patience for number of epochs to wait for performance to improve sufficiently</span>
+<span class="sd">    max_epochs : int or list of int (default 100)</span>
+<span class="sd">        The maximum number of epochs to use for training each task</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Get some information about the training procedure, including the number of tasks</span>
+    <span class="c1"># and the gradients for each task</span>
+    <span class="n">num_tasks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span>
+
+    <span class="c1"># Keep track of the amount of the model currently used</span>
+    <span class="n">amount_used</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="c1"># Start the training iterations</span>
+    <span class="k">for</span> <span class="n">task_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_tasks</span><span class="p">):</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training task </span><span class="si">{</span><span class="n">task_num</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Get the starting task pruning rate for the current task</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">starting_pruning</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">task_start_pruning</span> <span class="o">=</span> <span class="n">starting_pruning</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">task_start_pruning</span> <span class="o">=</span> <span class="n">starting_pruning</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
+
+        <span class="c1"># Get the current pruning rate</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pruning_rate</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">current_pruning_rate</span> <span class="o">=</span> <span class="n">pruning_rate</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_pruning_rate</span> <span class="o">=</span> <span class="n">pruning_rate</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
+
+        <span class="c1"># Configure the current validation split</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">validation_split</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="n">current_validation_split</span> <span class="o">=</span> <span class="n">validation_split</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_validation_split</span> <span class="o">=</span> <span class="n">validation_split</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
+
+        <span class="c1"># Configure the loss weights</span>
+        <span class="n">loss_weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_tasks</span>
+        <span class="n">loss_weights</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Configure the epochs</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">current_epochs</span> <span class="o">=</span> <span class="n">max_epochs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_epochs</span> <span class="o">=</span> <span class="n">max_epochs</span><span class="p">[</span><span class="n">task_num</span><span class="p">]</span>
+
+        <span class="c1"># Compile the model</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+            <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="p">,</span>
+            <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+            <span class="n">loss_weights</span><span class="o">=</span><span class="n">loss_weights</span><span class="p">,</span>
+            <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Train the model initially</span>
+        <span class="n">callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span>
+            <span class="n">min_delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span>
+            <span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">,</span>
+            <span class="n">restore_best_weights</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+            <span class="n">train_y</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">epochs</span><span class="o">=</span><span class="n">current_epochs</span><span class="p">,</span>
+            <span class="n">validation_split</span><span class="o">=</span><span class="n">current_validation_split</span><span class="p">,</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">],</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Retrieve the validation loss and current best weights</span>
+        <span class="n">best_loss</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
+        <span class="n">best_weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+
+        <span class="c1"># Training loop for the task at hand</span>
+        <span class="n">current_wait</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">task_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">current_prune</span> <span class="o">=</span> <span class="n">task_start_pruning</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">current_prune</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">task_start_pruning</span><span class="p">,</span> <span class="n">amount_used</span><span class="p">)</span>
+        <span class="n">keep_training</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">just_started</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># If pruning needs to occur, do it</span>
+        <span class="k">if</span> <span class="n">current_prune</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pruning task to </span><span class="si">{</span><span class="n">current_prune</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">mask_task_weights</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">task_gradients</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+                <span class="n">current_prune</span>
+            <span class="p">)</span>
+
+        <span class="c1"># keep_training indicates that training is to occur</span>
+        <span class="k">while</span> <span class="n">keep_training</span><span class="p">:</span>
+
+            <span class="c1"># First prune the model to the next pruning rate</span>
+            <span class="k">if</span> <span class="n">current_prune</span> <span class="o">+</span> <span class="n">current_pruning_rate</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+
+                <span class="c1"># Check if the training just started</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">just_started</span><span class="p">:</span>
+                    <span class="c1"># Increase the pruning rate</span>
+                    <span class="n">current_prune</span> <span class="o">+=</span> <span class="n">current_pruning_rate</span>
+                    <span class="n">model</span> <span class="o">=</span> <span class="n">mask_task_weights</span><span class="p">(</span>
+                        <span class="n">model</span><span class="p">,</span>
+                        <span class="n">task_gradients</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+                        <span class="n">current_prune</span>
+                    <span class="p">)</span>
+
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pruning task to </span><span class="si">{</span><span class="n">current_prune</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">just_started</span> <span class="o">=</span> <span class="kc">False</span>
+
+                <span class="c1"># Recompile the model</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+                    <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="p">,</span>
+                    <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+                    <span class="n">loss_weights</span><span class="o">=</span><span class="n">loss_weights</span><span class="p">,</span>
+                    <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Train the model with the new pruning rate</span>
+                <span class="k">while</span> <span class="n">current_wait</span> <span class="o">&lt;</span> <span class="n">patience</span><span class="p">:</span>
+
+                    <span class="c1"># Fit the model for a single epoch</span>
+                    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+                        <span class="n">train_x</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+                        <span class="n">train_y</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+                        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                        <span class="n">validation_split</span><span class="o">=</span><span class="n">current_validation_split</span><span class="p">,</span>
+                        <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span>
+                    <span class="p">)</span>
+
+                    <span class="c1"># Get the new loss</span>
+                    <span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="c1"># If loss is within acceptable range, grab the best weights and</span>
+                    <span class="c1"># reassign the best loss. Otherwise, increase current wait</span>
+                    <span class="k">if</span> <span class="n">loss</span> <span class="o">&lt;</span> <span class="n">best_loss</span> <span class="o">+</span> <span class="n">delta</span><span class="p">:</span>
+                        <span class="n">best_weights</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+                        <span class="n">best_loss</span> <span class="o">=</span> <span class="n">loss</span>
+                        <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">current_wait</span> <span class="o">+=</span> <span class="mi">1</span>
+
+                <span class="c1"># If pruning was not successful, restore best pruning rate</span>
+                <span class="k">if</span> <span class="n">current_wait</span> <span class="o">==</span> <span class="n">patience</span> <span class="ow">or</span> <span class="n">current_prune</span> <span class="o">+</span> <span class="n">current_pruning_rate</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+                    <span class="n">keep_training</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">keep_training</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># Record how much of the model has been used</span>
+        <span class="k">if</span> <span class="n">task_num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">amount_used</span> <span class="o">-=</span> <span class="n">current_prune</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">amount_used</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">current_prune</span>
+
+        <span class="c1"># Now that current wait has been reached, restore best weights</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">best_weights</span><span class="p">)</span>
+
+        <span class="c1"># Recompile the model</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+            <span class="n">loss</span><span class="o">=</span><span class="n">losses</span><span class="p">,</span>
+            <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+            <span class="n">loss_weights</span><span class="o">=</span><span class="n">loss_weights</span><span class="p">,</span>
+            <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Fit using the new best weights</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="n">train_x</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+            <span class="n">train_y</span><span class="p">[</span><span class="n">task_num</span><span class="p">],</span>
+            <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+            <span class="n">epochs</span><span class="o">=</span><span class="n">current_epochs</span><span class="p">,</span>
+            <span class="n">validation_split</span><span class="o">=</span><span class="n">current_validation_split</span><span class="p">,</span>
+            <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">],</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="train_model"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.train_model">[docs]</a><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">train_x</span><span class="p">,</span>
+    <span class="n">train_y</span><span class="p">,</span>
+    <span class="n">loss</span><span class="p">,</span>
+    <span class="n">metrics</span><span class="p">,</span>
+    <span class="n">optimizer</span><span class="p">,</span>
+    <span class="n">cutoff</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">starting_sparsification</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">max_sparsification</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
+    <span class="n">sparsification_rate</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">sparsification_patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">stopping_patience</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">)</span>
+
+    <span class="n">callback</span> <span class="o">=</span> <span class="n">ActiveSparsification</span><span class="p">(</span>
+        <span class="n">cutoff</span><span class="p">,</span>
+        <span class="n">starting_sparsification</span><span class="o">=</span><span class="n">starting_sparsification</span><span class="p">,</span>
+        <span class="n">max_sparsification</span><span class="o">=</span><span class="n">max_sparsification</span><span class="p">,</span>
+        <span class="n">sparsification_rate</span><span class="o">=</span><span class="n">sparsification_rate</span><span class="p">,</span>
+        <span class="n">sparsification_patience</span><span class="o">=</span><span class="n">sparsification_patience</span><span class="p">,</span>
+        <span class="n">stopping_patience</span><span class="o">=</span><span class="n">stopping_patience</span>
+    <span class="p">)</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">train_x</span><span class="p">,</span>
+        <span class="n">train_y</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">callback</span><span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

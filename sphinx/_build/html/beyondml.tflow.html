@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.tflow package &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="beyondml.tflow.layers package" href="beyondml.tflow.layers.html" />
+    <link rel="prev" title="beyondml.pt.utils package" href="beyondml.pt.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">beyondml</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="beyondml.html">beyondml package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="beyondml.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="beyondml.pt.html">beyondml.pt package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">beyondml.tflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.html#module-beyondml">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
+      <li class="breadcrumb-item active">beyondml.tflow package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/beyondml.tflow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="beyondml-tflow-package">
+<h1>beyondml.tflow package<a class="headerlink" href="#beyondml-tflow-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="beyondml.tflow.layers.html">beyondml.tflow.layers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.FilterLayer">beyondml.tflow.layers.FilterLayer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer"><code class="docutils literal notranslate"><span class="pre">FilterLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer.call"><code class="docutils literal notranslate"><span class="pre">FilterLayer.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer.from_config"><code class="docutils literal notranslate"><span class="pre">FilterLayer.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer.get_config"><code class="docutils literal notranslate"><span class="pre">FilterLayer.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer.turn_off"><code class="docutils literal notranslate"><span class="pre">FilterLayer.turn_off()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.FilterLayer.FilterLayer.turn_on"><code class="docutils literal notranslate"><span class="pre">FilterLayer.turn_on()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MaskedConv2D">beyondml.tflow.layers.MaskedConv2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.build"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.call"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.from_config"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.get_config"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.kernel_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.set_masks"><code class="docutils literal notranslate"><span class="pre">MaskedConv2D.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MaskedConv3D">beyondml.tflow.layers.MaskedConv3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.build"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.call"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.from_config"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.get_config"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.kernel_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.set_masks"><code class="docutils literal notranslate"><span class="pre">MaskedConv3D.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MaskedDense">beyondml.tflow.layers.MaskedDense module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense"><code class="docutils literal notranslate"><span class="pre">MaskedDense</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense.build"><code class="docutils literal notranslate"><span class="pre">MaskedDense.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense.call"><code class="docutils literal notranslate"><span class="pre">MaskedDense.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense.from_config"><code class="docutils literal notranslate"><span class="pre">MaskedDense.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense.get_config"><code class="docutils literal notranslate"><span class="pre">MaskedDense.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MaskedDense.MaskedDense.set_masks"><code class="docutils literal notranslate"><span class="pre">MaskedDense.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiConv2D">beyondml.tflow.layers.MultiConv2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D"><code class="docutils literal notranslate"><span class="pre">MultiConv2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D.build"><code class="docutils literal notranslate"><span class="pre">MultiConv2D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D.call"><code class="docutils literal notranslate"><span class="pre">MultiConv2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiConv2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiConv2D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv2D.MultiConv2D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MultiConv2D.kernel_size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiConv3D">beyondml.tflow.layers.MultiConv3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D"><code class="docutils literal notranslate"><span class="pre">MultiConv3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D.build"><code class="docutils literal notranslate"><span class="pre">MultiConv3D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D.call"><code class="docutils literal notranslate"><span class="pre">MultiConv3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiConv3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiConv3D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiConv3D.MultiConv3D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MultiConv3D.kernel_size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiDense">beyondml.tflow.layers.MultiDense module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiDense.MultiDense"><code class="docutils literal notranslate"><span class="pre">MultiDense</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiDense.MultiDense.build"><code class="docutils literal notranslate"><span class="pre">MultiDense.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiDense.MultiDense.call"><code class="docutils literal notranslate"><span class="pre">MultiDense.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiDense.MultiDense.from_config"><code class="docutils literal notranslate"><span class="pre">MultiDense.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiDense.MultiDense.get_config"><code class="docutils literal notranslate"><span class="pre">MultiDense.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiMaskedConv2D">beyondml.tflow.layers.MultiMaskedConv2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.build"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.call"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.kernel_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.set_masks"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv2D.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiMaskedConv3D">beyondml.tflow.layers.MultiMaskedConv3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.build"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.call"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.kernel_size</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.set_masks"><code class="docutils literal notranslate"><span class="pre">MultiMaskedConv3D.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiMaskedDense">beyondml.tflow.layers.MultiMaskedDense module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.build"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.call"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.from_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.get_config"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.set_masks"><code class="docutils literal notranslate"><span class="pre">MultiMaskedDense.set_masks()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiMaxPool2D">beyondml.tflow.layers.MultiMaxPool2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.call"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool2D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultiMaxPool3D">beyondml.tflow.layers.MultiMaxPool3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.call"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.from_config"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.get_config"><code class="docutils literal notranslate"><span class="pre">MultiMaxPool3D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.MultitaskNormalization">beyondml.tflow.layers.MultitaskNormalization module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization"><code class="docutils literal notranslate"><span class="pre">MultitaskNormalization</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build"><code class="docutils literal notranslate"><span class="pre">MultitaskNormalization.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.call"><code class="docutils literal notranslate"><span class="pre">MultitaskNormalization.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.from_config"><code class="docutils literal notranslate"><span class="pre">MultitaskNormalization.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.get_config"><code class="docutils literal notranslate"><span class="pre">MultitaskNormalization.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SelectorLayer">beyondml.tflow.layers.SelectorLayer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SelectorLayer.SelectorLayer"><code class="docutils literal notranslate"><span class="pre">SelectorLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SelectorLayer.SelectorLayer.call"><code class="docutils literal notranslate"><span class="pre">SelectorLayer.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SelectorLayer.SelectorLayer.from_config"><code class="docutils literal notranslate"><span class="pre">SelectorLayer.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SelectorLayer.SelectorLayer.get_config"><code class="docutils literal notranslate"><span class="pre">SelectorLayer.get_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SelectorLayer.SelectorLayer.sel_index"><code class="docutils literal notranslate"><span class="pre">SelectorLayer.sel_index</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseConv2D">beyondml.tflow.layers.SparseConv2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D"><code class="docutils literal notranslate"><span class="pre">SparseConv2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D.build"><code class="docutils literal notranslate"><span class="pre">SparseConv2D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D.call"><code class="docutils literal notranslate"><span class="pre">SparseConv2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_config"><code class="docutils literal notranslate"><span class="pre">SparseConv2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseConv2D.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv2D.SparseConv2D.get_config"><code class="docutils literal notranslate"><span class="pre">SparseConv2D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseConv3D">beyondml.tflow.layers.SparseConv3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D"><code class="docutils literal notranslate"><span class="pre">SparseConv3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D.build"><code class="docutils literal notranslate"><span class="pre">SparseConv3D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D.call"><code class="docutils literal notranslate"><span class="pre">SparseConv3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_config"><code class="docutils literal notranslate"><span class="pre">SparseConv3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseConv3D.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseConv3D.SparseConv3D.get_config"><code class="docutils literal notranslate"><span class="pre">SparseConv3D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseDense">beyondml.tflow.layers.SparseDense module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense"><code class="docutils literal notranslate"><span class="pre">SparseDense</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense.build"><code class="docutils literal notranslate"><span class="pre">SparseDense.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense.call"><code class="docutils literal notranslate"><span class="pre">SparseDense.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense.from_config"><code class="docutils literal notranslate"><span class="pre">SparseDense.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseDense.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseDense.SparseDense.get_config"><code class="docutils literal notranslate"><span class="pre">SparseDense.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseMultiConv2D">beyondml.tflow.layers.SparseMultiConv2D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.build"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.call"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.get_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv2D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseMultiConv3D">beyondml.tflow.layers.SparseMultiConv3D module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.build"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.call"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.get_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiConv3D.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SparseMultiDense">beyondml.tflow.layers.SparseMultiDense module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.build"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.call"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_layer"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense.from_layer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.get_config"><code class="docutils literal notranslate"><span class="pre">SparseMultiDense.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers.SumLayer">beyondml.tflow.layers.SumLayer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SumLayer.SumLayer"><code class="docutils literal notranslate"><span class="pre">SumLayer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SumLayer.SumLayer.call"><code class="docutils literal notranslate"><span class="pre">SumLayer.call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SumLayer.SumLayer.from_config"><code class="docutils literal notranslate"><span class="pre">SumLayer.from_config()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.layers.html#beyondml.tflow.layers.SumLayer.SumLayer.get_config"><code class="docutils literal notranslate"><span class="pre">SumLayer.get_config()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.layers.html#module-beyondml.tflow.layers">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="beyondml.tflow.utils.html">beyondml.tflow.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.utils.html#module-beyondml.tflow.utils.transformer">beyondml.tflow.utils.transformer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.transformer.build_token_position_embedding_block"><code class="docutils literal notranslate"><span class="pre">build_token_position_embedding_block()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.transformer.build_transformer_block"><code class="docutils literal notranslate"><span class="pre">build_transformer_block()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.utils.html#module-beyondml.tflow.utils.utils">beyondml.tflow.utils.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification"><code class="docutils literal notranslate"><span class="pre">ActiveSparsification</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification.on_epoch_end"><code class="docutils literal notranslate"><span class="pre">ActiveSparsification.on_epoch_end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.ActiveSparsification.on_train_begin"><code class="docutils literal notranslate"><span class="pre">ActiveSparsification.on_train_begin()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.add_layer_masks"><code class="docutils literal notranslate"><span class="pre">add_layer_masks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.get_custom_objects"><code class="docutils literal notranslate"><span class="pre">get_custom_objects()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.get_task_masking_gradients"><code class="docutils literal notranslate"><span class="pre">get_task_masking_gradients()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.mask_model"><code class="docutils literal notranslate"><span class="pre">mask_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.mask_task_weights"><code class="docutils literal notranslate"><span class="pre">mask_task_weights()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.quantize_model"><code class="docutils literal notranslate"><span class="pre">quantize_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.remove_layer_masks"><code class="docutils literal notranslate"><span class="pre">remove_layer_masks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.tflow.utils.html#beyondml.tflow.utils.utils.train_model_iteratively"><code class="docutils literal notranslate"><span class="pre">train_model_iteratively()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="beyondml.tflow.utils.html#module-beyondml.tflow.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-beyondml.tflow">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-beyondml.tflow" title="Permalink to this heading"></a></h2>
+<p>## TensorFlow compatibility for building MANN models.</p>
+<p>The <cite>beyondml.tflow</cite> package contains two subpackages, <cite>beyondml.tflow.layers</cite> and <cite>beyondml.tflow.utils</cite>, which contain
+the functionality to create and train MANN layers within TensorFlow. For individuals who are
+familiar with the former name of this package, <cite>mann</cite>, backwards compatibility can be achieved
+(assuming only TensorFlow support is needed), by replacing the following line of code:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">mann</span>
+</pre></div>
+</div>
+<p>with the following line:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">beyondml.tflow</span> <span class="k">as</span> <span class="nn">mann</span>
+</pre></div>
+</div>
+<p>in all existing scripts.</p>
+<p>Within the <cite>layers</cite> package, there is current functionality for the the following layers:
+- <cite>beyondml.tflow.layers.FilterLayer</cite>
+- <cite>beyondml.tflow.layers.MaskedConv2D</cite>
+- <cite>beyondml.tflow.layers.MaskedDense</cite>
+- <cite>beyondml.tflow.layers.MultiConv2D</cite>
+- <cite>beyondml.tflow.layers.MultiDense</cite>
+- <cite>beyondml.tflow.layers.MultiMaskedConv2D</cite>
+- <cite>beyondml.tflow.layers.MultiMaskedDense</cite>
+- <cite>beyondml.tflow.layers.MultiMaxPool2D</cite>
+- <cite>beyondml.tflow.layers.SelectorLayer</cite>
+- <cite>beyondml.tflow.layers.SumLayer</cite>
+- <cite>beyondml.tflow.layers.SparseDense</cite>
+- <cite>beyondml.tflow.layers.SparseConv</cite>
+- <cite>beyondml.tflow.layers.SparseMultiDense</cite>
+- <cite>beyondml.tflow.layers.SparseMultiConv</cite></p>
+<p><strong>Note that with any of the sparse layers (such as the `SparseDense` layer), any model which
+utilizes these layers will not be loadable using the traditional `load_model` functions available
+in TensorFlow. Instead, the model should be saved using either joblib or pickle.</strong></p>
+<p>Within the <cite>utils</cite> package, there are the current functions and classes:
+- <cite>ActiveSparsification</cite>
+- <cite>build_transformer_block</cite>
+- <cite>build_token_position_embedding_block</cite>
+- <cite>get_custom_objects</cite>
+- <cite>mask_model</cite>
+- <cite>remove_layer_masks</cite>
+- <cite>add_layer_masks</cite>
+- <cite>quantize_model</cite>
+- <cite>get_task_masking_gradients</cite>
+- <cite>mask_task_weights</cite>
+- <cite>train_model_iteratively</cite></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="beyondml.pt.utils.html" class="btn btn-neutral float-left" title="beyondml.pt.utils package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="beyondml.tflow.layers.html" class="btn btn-neutral float-right" title="beyondml.tflow.layers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

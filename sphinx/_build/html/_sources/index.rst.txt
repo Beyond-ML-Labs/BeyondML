@@ -5,8 +5,8 @@
 
 .. image:: images/BeyondML_horizontal-color.png
    :align: center
+   :width: 400
 
-|
 |
 
 Welcome to BeyondML's documentation!

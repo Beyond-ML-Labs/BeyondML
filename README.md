@@ -105,3 +105,6 @@ The below version numbers and changes refer to the BeyondML package
 - Added `beyondml.pt` compatibility with more native PyTorch functionality for using models on different devices and datatypes
 - Added `train_model` function to `beyondml.tflow.utils`
 - Added `MultitaskNormalization` layer to `beyondml.tflow.layers` and `beyondml.pt.layers`
+
+#### Version 0.1.4
+- Updated documentation to use Sphinx

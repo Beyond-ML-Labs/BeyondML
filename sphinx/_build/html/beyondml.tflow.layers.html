@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.tflow.layers package &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="beyondml.tflow.utils package" href="beyondml.tflow.utils.html" />
+    <link rel="prev" title="beyondml.tflow package" href="beyondml.tflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">beyondml</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="beyondml.html">beyondml package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="beyondml.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="beyondml.pt.html">beyondml.pt package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="beyondml.tflow.html">beyondml.tflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.html#module-beyondml">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.tflow.html">beyondml.tflow package</a></li>
+      <li class="breadcrumb-item active">beyondml.tflow.layers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/beyondml.tflow.layers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="beyondml-tflow-layers-package">
+<h1>beyondml.tflow.layers package<a class="headerlink" href="#beyondml-tflow-layers-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-beyondml.tflow.layers.FilterLayer">
+<span id="beyondml-tflow-layers-filterlayer-module"></span><h2>beyondml.tflow.layers.FilterLayer module<a class="headerlink" href="#module-beyondml.tflow.layers.FilterLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.FilterLayer.</span></span><span class="sig-name descname"><span class="pre">FilterLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Layer which filters inputs based on status of <cite>on</cite> or <cite>off</cite></p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a model with just a FilterLayer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter_layer</span> <span class="o">=</span> <span class="n">mann</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">FilterLayer</span><span class="p">()(</span><span class="n">input_layer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">input_layer</span><span class="p">,</span> <span class="n">filter_layer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Call the model with the layer turned on</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">array([[0., 1., 2., 3., 4., 5., 6., 7., 8., 9.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Turn off the FilterLayer and call it again</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">turn_off</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Model must be recompiled after turning the layer on or off</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">array([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]], dtype=float32)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer.turn_off">
+<span class="sig-name descname"><span class="pre">turn_off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.turn_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.turn_off" title="Permalink to this definition"></a></dt>
+<dd><p>Turn the layer <cite>off</cite> so inputs are destroyed and all-zero tensors are output</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.FilterLayer.FilterLayer.turn_on">
+<span class="sig-name descname"><span class="pre">turn_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.turn_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.turn_on" title="Permalink to this definition"></a></dt>
+<dd><p>Turn the layer <cite>on</cite> so inputs are returned unchanged as outputs</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MaskedConv2D">
+<span id="beyondml-tflow-layers-maskedconv2d-module"></span><h2>beyondml.tflow.layers.MaskedConv2D module<a class="headerlink" href="#module-beyondml.tflow.layers.MaskedConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MaskedConv2D.</span></span><span class="sig-name descname"><span class="pre">MaskedConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked 2-dimensional convolutional layer. For full documentation of the convolutional architecture, see the
+TensorFlow Keras Convolutional2D layer documentation.</p>
+<p>This layer implements masking consistent with the BeyondML API to support developing sparse models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.set_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Set the masks for the layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MaskedConv3D">
+<span id="beyondml-tflow-layers-maskedconv3d-module"></span><h2>beyondml.tflow.layers.MaskedConv3D module<a class="headerlink" href="#module-beyondml.tflow.layers.MaskedConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MaskedConv3D.</span></span><span class="sig-name descname"><span class="pre">MaskedConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked 3-dimensional convolutional layer. For full documentation of the
+convolutional architecture, see the TensorFlow Keras Convolutional3D layer documentation.</p>
+<p>This layer implements masking consistent with the BeyondML API to support
+developing sparse models</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.set_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Set the masks for the layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MaskedDense">
+<span id="beyondml-tflow-layers-maskeddense-module"></span><h2>beyondml.tflow.layers.MaskedDense module<a class="headerlink" href="#module-beyondml.tflow.layers.MaskedDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MaskedDense.</span></span><span class="sig-name descname"><span class="pre">MaskedDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked fully connected layer. For full documentation of the fully-connected architecture, see the
+TensorFlow Keras Dense layer documentation.</p>
+<p>This layer implements masking consistent with the BeyondML API to support developing sparse models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MaskedDense.MaskedDense.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.set_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Set the masks for the layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiConv2D">
+<span id="beyondml-tflow-layers-multiconv2d-module"></span><h2>beyondml.tflow.layers.MultiConv2D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiConv2D.</span></span><span class="sig-name descname"><span class="pre">MultiConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask 2-dimensional convolutional layer</p>
+<p>This layer implements multiple stacks of convolutional weights to account for different ways individual
+neurons activate for various tasks. It is expected that to train using the RSN2 algorithm that MultiMaskedConv2D
+layers be used during training and then those layers be converted to this layer type.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv2D.MultiConv2D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiConv3D">
+<span id="beyondml-tflow-layers-multiconv3d-module"></span><h2>beyondml.tflow.layers.MultiConv3D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiConv3D.</span></span><span class="sig-name descname"><span class="pre">MultiConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask 3-dimensional convolutional layer</p>
+<p>This layer implements multiple stacks of convolutional weights to account for different ways individual
+neurons activate for various tasks. It is expected that to train using the RSN2 algorithm that MultiMaskedConv3D
+layers be used during training and then those layers be converted to this layer type.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiConv3D.MultiConv3D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiDense">
+<span id="beyondml-tflow-layers-multidense-module"></span><h2>beyondml.tflow.layers.MultiDense module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiDense.MultiDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiDense.</span></span><span class="sig-name descname"><span class="pre">MultiDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask fully connected layer</p>
+<p>This layer implements multiple stacks of fully connected weights to account for different
+ways neurons can activate for various tasks. It is expected that to train using the RSN2 algorithm
+that MultiMaskedDense layers be used during training and then those layers be converted to this layer type.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiDense.MultiDense.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiDense.MultiDense.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiDense.MultiDense.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiDense.MultiDense.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiMaskedConv2D">
+<span id="beyondml-tflow-layers-multimaskedconv2d-module"></span><h2>beyondml.tflow.layers.MultiMaskedConv2D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiMaskedConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiMaskedConv2D.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked multitask 2-dimensional convolutional layer. This layer implements
+multiple stacks of the convolutional architecture and implements masking consistent
+with the BeyondML API to support developing sparse multitask models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.set_masks" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiMaskedConv3D">
+<span id="beyondml-tflow-layers-multimaskedconv3d-module"></span><h2>beyondml.tflow.layers.MultiMaskedConv3D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiMaskedConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiMaskedConv3D.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked multitask 3-dimensional convoluational layer. This layer implements
+multiple stacks of the convolutional architecture and implements masking
+consistent with the BeyondML API to support developing sparse multitask models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.set_masks" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiMaskedDense">
+<span id="beyondml-tflow-layers-multimaskeddense-module"></span><h2>beyondml.tflow.layers.MultiMaskedDense module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiMaskedDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiMaskedDense.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Masked multitask fully connected layer. This layer implements multiple stacks
+of the fully-connected architecture and implements masking with the BeyondML API
+to support developing sparse multitask models.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.set_masks">
+<span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.set_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Set the masks for the layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiMaxPool2D">
+<span id="beyondml-tflow-layers-multimaxpool2d-module"></span><h2>beyondml.tflow.layers.MultiMaxPool2D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiMaxPool2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiMaxPool2D.</span></span><span class="sig-name descname"><span class="pre">MultiMaxPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool2D.html#MultiMaxPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask Max Pooling Layer. This layer implements the Max Pooling algorithm
+across multiple inputs for developing multitask models</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool2D.html#MultiMaxPool2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool2D.html#MultiMaxPool2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool2D.html#MultiMaxPool2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultiMaxPool3D">
+<span id="beyondml-tflow-layers-multimaxpool3d-module"></span><h2>beyondml.tflow.layers.MultiMaxPool3D module<a class="headerlink" href="#module-beyondml.tflow.layers.MultiMaxPool3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultiMaxPool3D.</span></span><span class="sig-name descname"><span class="pre">MultiMaxPool3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool3D.html#MultiMaxPool3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask 3D Max Pooling Layer. This layer implements the Max Pooling
+algorithm across multiple inputs for developing multitask models</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool3D.html#MultiMaxPool3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool3D.html#MultiMaxPool3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool3D.html#MultiMaxPool3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.MultitaskNormalization">
+<span id="beyondml-tflow-layers-multitasknormalization-module"></span><h2>beyondml.tflow.layers.MultitaskNormalization module<a class="headerlink" href="#module-beyondml.tflow.layers.MultitaskNormalization" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.MultitaskNormalization.</span></span><span class="sig-name descname"><span class="pre">MultitaskNormalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Multitask layer which normalizes all inputs to sum to 1</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build" title="Permalink to this definition"></a></dt>
+<dd><p>Creates the variables of the layer (optional, for subclass implementers).</p>
+<p>This is a method that implementers of subclasses of <cite>Layer</cite> or <cite>Model</cite>
+can override if they need a state-creation step in-between
+layer instantiation and layer call. It is invoked automatically before
+the first execution of <cite>call()</cite>.</p>
+<p>This is typically used to create the weights of <cite>Layer</cite> subclasses
+(at the discretion of the subclass implementer).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>input_shape</strong> – Instance of <cite>TensorShape</cite>, or list of instances of
+<cite>TensorShape</cite> if the layer expects a list of inputs
+(one instance per input).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SelectorLayer">
+<span id="beyondml-tflow-layers-selectorlayer-module"></span><h2>beyondml.tflow.layers.SelectorLayer module<a class="headerlink" href="#module-beyondml.tflow.layers.SelectorLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SelectorLayer.SelectorLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SelectorLayer.</span></span><span class="sig-name descname"><span class="pre">SelectorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SelectorLayer.html#SelectorLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Layer which selects individual inputs</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a model with two inputs and one SelectorLayer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">selector</span> <span class="o">=</span> <span class="n">mann</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">SelectorLayer</span><span class="p">(</span><span class="mi">1</span><span class="p">)([</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">])</span> <span class="c1"># 1 here indicates to select the second input and return it</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">([</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">],</span> <span class="n">selector</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Call the model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data2</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">])</span>
+<span class="go">array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16., 18.]], dtype=float32)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SelectorLayer.SelectorLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SelectorLayer.html#SelectorLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SelectorLayer.SelectorLayer.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SelectorLayer.html#SelectorLayer.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SelectorLayer.SelectorLayer.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SelectorLayer.html#SelectorLayer.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SelectorLayer.SelectorLayer.sel_index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sel_index</span></span><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer.sel_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseConv2D">
+<span id="beyondml-tflow-layers-sparseconv2d-module"></span><h2>beyondml.tflow.layers.SparseConv2D module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseConv2D.</span></span><span class="sig-name descname"><span class="pre">SparseConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the Convolutional layer. If used in a model,
+must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv2D.SparseConv2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseConv3D">
+<span id="beyondml-tflow-layers-sparseconv3d-module"></span><h2>beyondml.tflow.layers.SparseConv3D module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseConv3D.</span></span><span class="sig-name descname"><span class="pre">SparseConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the Convolutional layer. If used in a model,
+must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseConv3D.SparseConv3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseDense">
+<span id="beyondml-tflow-layers-sparsedense-module"></span><h2>beyondml.tflow.layers.SparseDense module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseDense.</span></span><span class="sig-name descname"><span class="pre">SparseDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the Dense layer. If used in a model, must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseDense.SparseDense.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseMultiConv2D">
+<span id="beyondml-tflow-layers-sparsemulticonv2d-module"></span><h2>beyondml.tflow.layers.SparseMultiConv2D module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseMultiConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseMultiConv2D.</span></span><span class="sig-name descname"><span class="pre">SparseMultiConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the MultiConv layer. If used in a model, must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shapes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseMultiConv3D">
+<span id="beyondml-tflow-layers-sparsemulticonv3d-module"></span><h2>beyondml.tflow.layers.SparseMultiConv3D module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseMultiConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseMultiConv3D.</span></span><span class="sig-name descname"><span class="pre">SparseMultiConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the MultiConv layer. If used in a model, must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SparseMultiDense">
+<span id="beyondml-tflow-layers-sparsemultidense-module"></span><h2>beyondml.tflow.layers.SparseMultiDense module<a class="headerlink" href="#module-beyondml.tflow.layers.SparseMultiDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SparseMultiDense.</span></span><span class="sig-name descname"><span class="pre">SparseMultiDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Sparse implementation of the MultiDense layer. If used in a model, must be saved and loaded via pickle</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.build" title="Permalink to this definition"></a></dt>
+<dd><p>Build the layer in preparation to be trained or called. Should not be called directly,
+but rather is called when the layer is added to a model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_layer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_layer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.from_layer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_layer" title="Permalink to this definition"></a></dt>
+<dd><p>Create a layer from an instance of another layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers.SumLayer">
+<span id="beyondml-tflow-layers-sumlayer-module"></span><h2>beyondml.tflow.layers.SumLayer module<a class="headerlink" href="#module-beyondml.tflow.layers.SumLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SumLayer.SumLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.layers.SumLayer.</span></span><span class="sig-name descname"><span class="pre">SumLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SumLayer.html#SumLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SumLayer.SumLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code></p>
+<p>Layer which adds all inputs together. All inputs must have compatible shapes</p>
+<p>Example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a model with just a SumLayer and two inputs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_layer</span> <span class="o">=</span> <span class="n">mann</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">SumLayer</span><span class="p">()([</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">([</span><span class="n">input_1</span><span class="p">,</span> <span class="n">input_2</span><span class="p">],</span> <span class="n">sum_layer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Call the model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">data</span><span class="p">,</span> <span class="n">data</span><span class="p">])</span>
+<span class="go">array([[ 0.,  2.,  4.,  6.,  8., 10., 12., 14., 16., 18.]], dtype=float32)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SumLayer.SumLayer.call">
+<span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SumLayer.html#SumLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SumLayer.SumLayer.call" title="Permalink to this definition"></a></dt>
+<dd><p>This is where the layer’s logic lives and is called upon inputs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SumLayer.SumLayer.from_config">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SumLayer.html#SumLayer.from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SumLayer.SumLayer.from_config" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a layer from its config.</p>
+<p>This method is the reverse of <cite>get_config</cite>,
+capable of instantiating the same layer from the config
+dictionary. It does not handle layer connectivity
+(handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
+output of get_config.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A layer instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.layers.SumLayer.SumLayer.get_config">
+<span class="sig-name descname"><span class="pre">get_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SumLayer.html#SumLayer.get_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SumLayer.SumLayer.get_config" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the config of the layer.</p>
+<p>A layer config is a Python dictionary (serializable)
+containing the configuration of a layer.
+The same layer can be reinstantiated later
+(without its trained weights) from this configuration.</p>
+<p>The config of a layer does not include connectivity
+information, nor the layer class name. These are handled
+by <cite>Network</cite> (one layer of abstraction above).</p>
+<p>Note that <cite>get_config()</cite> does not guarantee to return a fresh copy of
+dict every time it is called. The callers should make a copy of the
+returned dict if they want to modify it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Python dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.layers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-beyondml.tflow.layers" title="Permalink to this heading"></a></h2>
+<p>Custom layers to use when building MANN models</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="beyondml.tflow.html" class="btn btn-neutral float-left" title="beyondml.tflow package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="beyondml.tflow.utils.html" class="btn btn-neutral float-right" title="beyondml.tflow.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

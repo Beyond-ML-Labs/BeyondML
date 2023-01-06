@@ -1,0 +1,621 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{ActiveSparsification}\spxextra{class in beyondml.tflow.utils.utils}, 
+		\hyperpage{41}
+  \item \spxentry{add\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{41}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{beyondml}
+    \subitem \spxentry{module}, \hyperpage{45}
+  \item \spxentry{beyondml.pt}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{beyondml.pt.layers}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{beyondml.pt.layers.Conv2D}
+    \subitem \spxentry{module}, \hyperpage{3}
+  \item \spxentry{beyondml.pt.layers.Conv3D}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{beyondml.pt.layers.Dense}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{beyondml.pt.layers.FilterLayer}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{beyondml.pt.layers.MaskedConv2D}
+    \subitem \spxentry{module}, \hyperpage{5}
+  \item \spxentry{beyondml.pt.layers.MaskedConv3D}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{beyondml.pt.layers.MaskedDense}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{beyondml.pt.layers.MaskedMultiHeadAttention}
+    \subitem \spxentry{module}, \hyperpage{7}
+  \item \spxentry{beyondml.pt.layers.MaskedTransformerDecoderLayer}
+    \subitem \spxentry{module}, \hyperpage{8}
+  \item \spxentry{beyondml.pt.layers.MaskedTransformerEncoderLayer}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{beyondml.pt.layers.MultiConv2D}
+    \subitem \spxentry{module}, \hyperpage{11}
+  \item \spxentry{beyondml.pt.layers.MultiConv3D}
+    \subitem \spxentry{module}, \hyperpage{11}
+  \item \spxentry{beyondml.pt.layers.MultiDense}
+    \subitem \spxentry{module}, \hyperpage{12}
+  \item \spxentry{beyondml.pt.layers.MultiMaskedConv2D}
+    \subitem \spxentry{module}, \hyperpage{12}
+  \item \spxentry{beyondml.pt.layers.MultiMaskedConv3D}
+    \subitem \spxentry{module}, \hyperpage{13}
+  \item \spxentry{beyondml.pt.layers.MultiMaskedDense}
+    \subitem \spxentry{module}, \hyperpage{13}
+  \item \spxentry{beyondml.pt.layers.MultiMaxPool2D}
+    \subitem \spxentry{module}, \hyperpage{14}
+  \item \spxentry{beyondml.pt.layers.MultiMaxPool3D}
+    \subitem \spxentry{module}, \hyperpage{14}
+  \item \spxentry{beyondml.pt.layers.MultitaskNormalization}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{beyondml.pt.layers.SelectorLayer}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{beyondml.pt.layers.SparseConv2D}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{beyondml.pt.layers.SparseConv3D}
+    \subitem \spxentry{module}, \hyperpage{16}
+  \item \spxentry{beyondml.pt.layers.SparseDense}
+    \subitem \spxentry{module}, \hyperpage{16}
+  \item \spxentry{beyondml.pt.layers.SparseMultiConv2D}
+    \subitem \spxentry{module}, \hyperpage{16}
+  \item \spxentry{beyondml.pt.layers.SparseMultiConv3D}
+    \subitem \spxentry{module}, \hyperpage{17}
+  \item \spxentry{beyondml.pt.layers.SparseMultiDense}
+    \subitem \spxentry{module}, \hyperpage{17}
+  \item \spxentry{beyondml.pt.utils}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{beyondml.pt.utils.utils}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{beyondml.tflow}
+    \subitem \spxentry{module}, \hyperpage{44}
+  \item \spxentry{beyondml.tflow.layers}
+    \subitem \spxentry{module}, \hyperpage{40}
+  \item \spxentry{beyondml.tflow.layers.FilterLayer}
+    \subitem \spxentry{module}, \hyperpage{19}
+  \item \spxentry{beyondml.tflow.layers.MaskedConv2D}
+    \subitem \spxentry{module}, \hyperpage{20}
+  \item \spxentry{beyondml.tflow.layers.MaskedConv3D}
+    \subitem \spxentry{module}, \hyperpage{21}
+  \item \spxentry{beyondml.tflow.layers.MaskedDense}
+    \subitem \spxentry{module}, \hyperpage{22}
+  \item \spxentry{beyondml.tflow.layers.MultiConv2D}
+    \subitem \spxentry{module}, \hyperpage{23}
+  \item \spxentry{beyondml.tflow.layers.MultiConv3D}
+    \subitem \spxentry{module}, \hyperpage{24}
+  \item \spxentry{beyondml.tflow.layers.MultiDense}
+    \subitem \spxentry{module}, \hyperpage{25}
+  \item \spxentry{beyondml.tflow.layers.MultiMaskedConv2D}
+    \subitem \spxentry{module}, \hyperpage{26}
+  \item \spxentry{beyondml.tflow.layers.MultiMaskedConv3D}
+    \subitem \spxentry{module}, \hyperpage{27}
+  \item \spxentry{beyondml.tflow.layers.MultiMaskedDense}
+    \subitem \spxentry{module}, \hyperpage{28}
+  \item \spxentry{beyondml.tflow.layers.MultiMaxPool2D}
+    \subitem \spxentry{module}, \hyperpage{29}
+  \item \spxentry{beyondml.tflow.layers.MultiMaxPool3D}
+    \subitem \spxentry{module}, \hyperpage{30}
+  \item \spxentry{beyondml.tflow.layers.MultitaskNormalization}
+    \subitem \spxentry{module}, \hyperpage{30}
+  \item \spxentry{beyondml.tflow.layers.SelectorLayer}
+    \subitem \spxentry{module}, \hyperpage{31}
+  \item \spxentry{beyondml.tflow.layers.SparseConv2D}
+    \subitem \spxentry{module}, \hyperpage{33}
+  \item \spxentry{beyondml.tflow.layers.SparseConv3D}
+    \subitem \spxentry{module}, \hyperpage{34}
+  \item \spxentry{beyondml.tflow.layers.SparseDense}
+    \subitem \spxentry{module}, \hyperpage{35}
+  \item \spxentry{beyondml.tflow.layers.SparseMultiConv2D}
+    \subitem \spxentry{module}, \hyperpage{36}
+  \item \spxentry{beyondml.tflow.layers.SparseMultiConv3D}
+    \subitem \spxentry{module}, \hyperpage{37}
+  \item \spxentry{beyondml.tflow.layers.SparseMultiDense}
+    \subitem \spxentry{module}, \hyperpage{38}
+  \item \spxentry{beyondml.tflow.layers.SumLayer}
+    \subitem \spxentry{module}, \hyperpage{39}
+  \item \spxentry{beyondml.tflow.utils}
+    \subitem \spxentry{module}, \hyperpage{44}
+  \item \spxentry{beyondml.tflow.utils.transformer}
+    \subitem \spxentry{module}, \hyperpage{40}
+  \item \spxentry{beyondml.tflow.utils.utils}
+    \subitem \spxentry{module}, \hyperpage{41}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{20}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{21}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{22}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}, 
+		\hyperpage{23}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}, 
+		\hyperpage{24}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}, 
+		\hyperpage{25}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{26}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{27}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{28}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}, 
+		\hyperpage{30}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}, 
+		\hyperpage{33}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}, 
+		\hyperpage{34}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}, 
+		\hyperpage{35}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}, 
+		\hyperpage{36}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}, 
+		\hyperpage{37}
+  \item \spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}, 
+		\hyperpage{38}
+  \item \spxentry{build\_token\_position\_embedding\_block()}\spxextra{in module beyondml.tflow.utils.transformer}, 
+		\hyperpage{40}
+  \item \spxentry{build\_transformer\_block()}\spxextra{in module beyondml.tflow.utils.transformer}, 
+		\hyperpage{40}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{19}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{20}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{21}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{22}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}, 
+		\hyperpage{23}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}, 
+		\hyperpage{24}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}, 
+		\hyperpage{25}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{26}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{27}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{28}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method}, 
+		\hyperpage{29}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method}, 
+		\hyperpage{30}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}, 
+		\hyperpage{31}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer method}, 
+		\hyperpage{32}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}, 
+		\hyperpage{33}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}, 
+		\hyperpage{34}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}, 
+		\hyperpage{35}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}, 
+		\hyperpage{36}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}, 
+		\hyperpage{37}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}, 
+		\hyperpage{38}
+  \item \spxentry{call()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer method}, \hyperpage{39}
+  \item \spxentry{Conv2D}\spxextra{class in beyondml.pt.layers.Conv2D}, \hyperpage{3}
+  \item \spxentry{Conv3D}\spxextra{class in beyondml.pt.layers.Conv3D}, \hyperpage{4}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{Dense}\spxextra{class in beyondml.pt.layers.Dense}, \hyperpage{4}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{FilterLayer}\spxextra{class in beyondml.pt.layers.FilterLayer}, \hyperpage{4}
+  \item \spxentry{FilterLayer}\spxextra{class in beyondml.tflow.layers.FilterLayer}, \hyperpage{19}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.Conv2D.Conv2D method}, \hyperpage{3}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.Conv3D.Conv3D method}, \hyperpage{4}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.Dense.Dense method}, \hyperpage{4}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{4}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{5}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{6}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{6}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method}, 
+		\hyperpage{7}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method}, 
+		\hyperpage{9}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method}, 
+		\hyperpage{11}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv2D.MultiConv2D method}, 
+		\hyperpage{11}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv3D.MultiConv3D method}, 
+		\hyperpage{11}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiDense.MultiDense method}, 
+		\hyperpage{12}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{12}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{13}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{13}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D method}, 
+		\hyperpage{14}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D method}, 
+		\hyperpage{14}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization method}, 
+		\hyperpage{15}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SelectorLayer.SelectorLayer method}, 
+		\hyperpage{15}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseConv2D.SparseConv2D method}, 
+		\hyperpage{15}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseConv3D.SparseConv3D method}, 
+		\hyperpage{16}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseDense.SparseDense method}, 
+		\hyperpage{16}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D method}, 
+		\hyperpage{16}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D method}, 
+		\hyperpage{17}
+  \item \spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiDense.SparseMultiDense method}, 
+		\hyperpage{17}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer class method}, 
+		\hyperpage{20}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D class method}, 
+		\hyperpage{21}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D class method}, 
+		\hyperpage{22}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense class method}, 
+		\hyperpage{23}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D class method}, 
+		\hyperpage{24}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D class method}, 
+		\hyperpage{24}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense class method}, 
+		\hyperpage{25}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D class method}, 
+		\hyperpage{26}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D class method}, 
+		\hyperpage{27}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense class method}, 
+		\hyperpage{28}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D class method}, 
+		\hyperpage{29}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D class method}, 
+		\hyperpage{30}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization class method}, 
+		\hyperpage{31}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer class method}, 
+		\hyperpage{32}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D class method}, 
+		\hyperpage{33}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D class method}, 
+		\hyperpage{34}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense class method}, 
+		\hyperpage{35}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method}, 
+		\hyperpage{36}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method}, 
+		\hyperpage{37}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method}, 
+		\hyperpage{38}
+  \item \spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer class method}, 
+		\hyperpage{39}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D class method}, 
+		\hyperpage{33}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D class method}, 
+		\hyperpage{34}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense class method}, 
+		\hyperpage{35}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method}, 
+		\hyperpage{36}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method}, 
+		\hyperpage{37}
+  \item \spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method}, 
+		\hyperpage{38}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{20}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{22}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}, 
+		\hyperpage{24}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}, 
+		\hyperpage{25}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}, 
+		\hyperpage{26}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{26}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{28}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method}, 
+		\hyperpage{30}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}, 
+		\hyperpage{31}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer method}, 
+		\hyperpage{32}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}, 
+		\hyperpage{33}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}, 
+		\hyperpage{34}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}, 
+		\hyperpage{35}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}, 
+		\hyperpage{36}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}, 
+		\hyperpage{37}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}, 
+		\hyperpage{38}
+  \item \spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer method}, 
+		\hyperpage{39}
+  \item \spxentry{get\_custom\_objects()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{41}
+  \item \spxentry{get\_task\_masking\_gradients()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{41}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{in\_channels}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}, 
+		\hyperpage{5}
+  \item \spxentry{in\_channels}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}, 
+		\hyperpage{6}
+  \item \spxentry{in\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}, 
+		\hyperpage{12}
+  \item \spxentry{in\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}, 
+		\hyperpage{13}
+  \item \spxentry{is\_on}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer property}, 
+		\hyperpage{5}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}, 
+		\hyperpage{5}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}, 
+		\hyperpage{6}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}, 
+		\hyperpage{12}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}, 
+		\hyperpage{13}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D property}, 
+		\hyperpage{21}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D property}, 
+		\hyperpage{22}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D property}, 
+		\hyperpage{24}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D property}, 
+		\hyperpage{25}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D property}, 
+		\hyperpage{27}
+  \item \spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D property}, 
+		\hyperpage{28}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{mask\_model()}\spxextra{in module beyondml.tflow.utils.utils}, \hyperpage{42}
+  \item \spxentry{mask\_task\_weights()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{42}
+  \item \spxentry{MaskedConv2D}\spxextra{class in beyondml.pt.layers.MaskedConv2D}, \hyperpage{5}
+  \item \spxentry{MaskedConv2D}\spxextra{class in beyondml.tflow.layers.MaskedConv2D}, 
+		\hyperpage{20}
+  \item \spxentry{MaskedConv3D}\spxextra{class in beyondml.pt.layers.MaskedConv3D}, \hyperpage{6}
+  \item \spxentry{MaskedConv3D}\spxextra{class in beyondml.tflow.layers.MaskedConv3D}, 
+		\hyperpage{21}
+  \item \spxentry{MaskedDense}\spxextra{class in beyondml.pt.layers.MaskedDense}, \hyperpage{6}
+  \item \spxentry{MaskedDense}\spxextra{class in beyondml.tflow.layers.MaskedDense}, \hyperpage{22}
+  \item \spxentry{MaskedMultiHeadAttention}\spxextra{class in beyondml.pt.layers.MaskedMultiHeadAttention}, 
+		\hyperpage{7}
+  \item \spxentry{MaskedTransformerDecoderLayer}\spxextra{class in beyondml.pt.layers.MaskedTransformerDecoderLayer}, 
+		\hyperpage{8}
+  \item \spxentry{MaskedTransformerEncoderLayer}\spxextra{class in beyondml.pt.layers.MaskedTransformerEncoderLayer}, 
+		\hyperpage{9}
+  \item \spxentry{module}
+    \subitem \spxentry{beyondml}, \hyperpage{45}
+    \subitem \spxentry{beyondml.pt}, \hyperpage{18}
+    \subitem \spxentry{beyondml.pt.layers}, \hyperpage{18}
+    \subitem \spxentry{beyondml.pt.layers.Conv2D}, \hyperpage{3}
+    \subitem \spxentry{beyondml.pt.layers.Conv3D}, \hyperpage{4}
+    \subitem \spxentry{beyondml.pt.layers.Dense}, \hyperpage{4}
+    \subitem \spxentry{beyondml.pt.layers.FilterLayer}, \hyperpage{4}
+    \subitem \spxentry{beyondml.pt.layers.MaskedConv2D}, \hyperpage{5}
+    \subitem \spxentry{beyondml.pt.layers.MaskedConv3D}, \hyperpage{6}
+    \subitem \spxentry{beyondml.pt.layers.MaskedDense}, \hyperpage{6}
+    \subitem \spxentry{beyondml.pt.layers.MaskedMultiHeadAttention}, \hyperpage{7}
+    \subitem \spxentry{beyondml.pt.layers.MaskedTransformerDecoderLayer}, \hyperpage{8}
+    \subitem \spxentry{beyondml.pt.layers.MaskedTransformerEncoderLayer}, \hyperpage{9}
+    \subitem \spxentry{beyondml.pt.layers.MultiConv2D}, \hyperpage{11}
+    \subitem \spxentry{beyondml.pt.layers.MultiConv3D}, \hyperpage{11}
+    \subitem \spxentry{beyondml.pt.layers.MultiDense}, \hyperpage{12}
+    \subitem \spxentry{beyondml.pt.layers.MultiMaskedConv2D}, \hyperpage{12}
+    \subitem \spxentry{beyondml.pt.layers.MultiMaskedConv3D}, \hyperpage{13}
+    \subitem \spxentry{beyondml.pt.layers.MultiMaskedDense}, \hyperpage{13}
+    \subitem \spxentry{beyondml.pt.layers.MultiMaxPool2D}, \hyperpage{14}
+    \subitem \spxentry{beyondml.pt.layers.MultiMaxPool3D}, \hyperpage{14}
+    \subitem \spxentry{beyondml.pt.layers.MultitaskNormalization}, \hyperpage{15}
+    \subitem \spxentry{beyondml.pt.layers.SelectorLayer}, \hyperpage{15}
+    \subitem \spxentry{beyondml.pt.layers.SparseConv2D}, \hyperpage{15}
+    \subitem \spxentry{beyondml.pt.layers.SparseConv3D}, \hyperpage{16}
+    \subitem \spxentry{beyondml.pt.layers.SparseDense}, \hyperpage{16}
+    \subitem \spxentry{beyondml.pt.layers.SparseMultiConv2D}, \hyperpage{16}
+    \subitem \spxentry{beyondml.pt.layers.SparseMultiConv3D}, \hyperpage{17}
+    \subitem \spxentry{beyondml.pt.layers.SparseMultiDense}, \hyperpage{17}
+    \subitem \spxentry{beyondml.pt.utils}, \hyperpage{18}
+    \subitem \spxentry{beyondml.pt.utils.utils}, \hyperpage{18}
+    \subitem \spxentry{beyondml.tflow}, \hyperpage{44}
+    \subitem \spxentry{beyondml.tflow.layers}, \hyperpage{40}
+    \subitem \spxentry{beyondml.tflow.layers.FilterLayer}, \hyperpage{19}
+    \subitem \spxentry{beyondml.tflow.layers.MaskedConv2D}, \hyperpage{20}
+    \subitem \spxentry{beyondml.tflow.layers.MaskedConv3D}, \hyperpage{21}
+    \subitem \spxentry{beyondml.tflow.layers.MaskedDense}, \hyperpage{22}
+    \subitem \spxentry{beyondml.tflow.layers.MultiConv2D}, \hyperpage{23}
+    \subitem \spxentry{beyondml.tflow.layers.MultiConv3D}, \hyperpage{24}
+    \subitem \spxentry{beyondml.tflow.layers.MultiDense}, \hyperpage{25}
+    \subitem \spxentry{beyondml.tflow.layers.MultiMaskedConv2D}, \hyperpage{26}
+    \subitem \spxentry{beyondml.tflow.layers.MultiMaskedConv3D}, \hyperpage{27}
+    \subitem \spxentry{beyondml.tflow.layers.MultiMaskedDense}, \hyperpage{28}
+    \subitem \spxentry{beyondml.tflow.layers.MultiMaxPool2D}, \hyperpage{29}
+    \subitem \spxentry{beyondml.tflow.layers.MultiMaxPool3D}, \hyperpage{30}
+    \subitem \spxentry{beyondml.tflow.layers.MultitaskNormalization}, \hyperpage{30}
+    \subitem \spxentry{beyondml.tflow.layers.SelectorLayer}, \hyperpage{31}
+    \subitem \spxentry{beyondml.tflow.layers.SparseConv2D}, \hyperpage{33}
+    \subitem \spxentry{beyondml.tflow.layers.SparseConv3D}, \hyperpage{34}
+    \subitem \spxentry{beyondml.tflow.layers.SparseDense}, \hyperpage{35}
+    \subitem \spxentry{beyondml.tflow.layers.SparseMultiConv2D}, \hyperpage{36}
+    \subitem \spxentry{beyondml.tflow.layers.SparseMultiConv3D}, \hyperpage{37}
+    \subitem \spxentry{beyondml.tflow.layers.SparseMultiDense}, \hyperpage{38}
+    \subitem \spxentry{beyondml.tflow.layers.SumLayer}, \hyperpage{39}
+    \subitem \spxentry{beyondml.tflow.utils}, \hyperpage{44}
+    \subitem \spxentry{beyondml.tflow.utils.transformer}, \hyperpage{40}
+    \subitem \spxentry{beyondml.tflow.utils.utils}, \hyperpage{41}
+  \item \spxentry{MultiConv2D}\spxextra{class in beyondml.pt.layers.MultiConv2D}, \hyperpage{11}
+  \item \spxentry{MultiConv2D}\spxextra{class in beyondml.tflow.layers.MultiConv2D}, \hyperpage{23}
+  \item \spxentry{MultiConv3D}\spxextra{class in beyondml.pt.layers.MultiConv3D}, \hyperpage{11}
+  \item \spxentry{MultiConv3D}\spxextra{class in beyondml.tflow.layers.MultiConv3D}, \hyperpage{24}
+  \item \spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}, \hyperpage{12}
+  \item \spxentry{MultiDense}\spxextra{class in beyondml.tflow.layers.MultiDense}, \hyperpage{25}
+  \item \spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv2D}, 
+		\hyperpage{12}
+  \item \spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.tflow.layers.MultiMaskedConv2D}, 
+		\hyperpage{26}
+  \item \spxentry{MultiMaskedConv3D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv3D}, 
+		\hyperpage{13}
+  \item \spxentry{MultiMaskedConv3D}\spxextra{class in beyondml.tflow.layers.MultiMaskedConv3D}, 
+		\hyperpage{27}
+  \item \spxentry{MultiMaskedDense}\spxextra{class in beyondml.pt.layers.MultiMaskedDense}, 
+		\hyperpage{13}
+  \item \spxentry{MultiMaskedDense}\spxextra{class in beyondml.tflow.layers.MultiMaskedDense}, 
+		\hyperpage{28}
+  \item \spxentry{MultiMaxPool2D}\spxextra{class in beyondml.pt.layers.MultiMaxPool2D}, 
+		\hyperpage{14}
+  \item \spxentry{MultiMaxPool2D}\spxextra{class in beyondml.tflow.layers.MultiMaxPool2D}, 
+		\hyperpage{29}
+  \item \spxentry{MultiMaxPool3D}\spxextra{class in beyondml.pt.layers.MultiMaxPool3D}, 
+		\hyperpage{14}
+  \item \spxentry{MultiMaxPool3D}\spxextra{class in beyondml.tflow.layers.MultiMaxPool3D}, 
+		\hyperpage{30}
+  \item \spxentry{MultitaskNormalization}\spxextra{class in beyondml.pt.layers.MultitaskNormalization}, 
+		\hyperpage{15}
+  \item \spxentry{MultitaskNormalization}\spxextra{class in beyondml.tflow.layers.MultitaskNormalization}, 
+		\hyperpage{30}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{on\_epoch\_end()}\spxextra{beyondml.tflow.utils.utils.ActiveSparsification method}, 
+		\hyperpage{41}
+  \item \spxentry{on\_train\_begin()}\spxextra{beyondml.tflow.utils.utils.ActiveSparsification method}, 
+		\hyperpage{41}
+  \item \spxentry{out\_channels}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}, 
+		\hyperpage{5}
+  \item \spxentry{out\_channels}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}, 
+		\hyperpage{6}
+  \item \spxentry{out\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}, 
+		\hyperpage{12}
+  \item \spxentry{out\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}, 
+		\hyperpage{13}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{5}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{6}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{6}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method}, 
+		\hyperpage{7}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method}, 
+		\hyperpage{9}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method}, 
+		\hyperpage{11}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{12}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{13}
+  \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{14}
+  \item \spxentry{prune\_model()}\spxextra{in module beyondml.pt.utils.utils}, \hyperpage{18}
+
+  \indexspace
+  \bigletter Q
+  \item \spxentry{quantize\_model()}\spxextra{in module beyondml.tflow.utils.utils}, \hyperpage{43}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{remove\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{43}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{sel\_index}\spxextra{beyondml.pt.layers.SelectorLayer.SelectorLayer property}, 
+		\hyperpage{15}
+  \item \spxentry{sel\_index}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer property}, 
+		\hyperpage{32}
+  \item \spxentry{SelectorLayer}\spxextra{class in beyondml.pt.layers.SelectorLayer}, 
+		\hyperpage{15}
+  \item \spxentry{SelectorLayer}\spxextra{class in beyondml.tflow.layers.SelectorLayer}, 
+		\hyperpage{31}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}, 
+		\hyperpage{21}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}, 
+		\hyperpage{22}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}, 
+		\hyperpage{23}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
+		\hyperpage{27}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
+		\hyperpage{28}
+  \item \spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}, 
+		\hyperpage{29}
+  \item \spxentry{SparseConv2D}\spxextra{class in beyondml.pt.layers.SparseConv2D}, \hyperpage{15}
+  \item \spxentry{SparseConv2D}\spxextra{class in beyondml.tflow.layers.SparseConv2D}, 
+		\hyperpage{33}
+  \item \spxentry{SparseConv3D}\spxextra{class in beyondml.pt.layers.SparseConv3D}, \hyperpage{16}
+  \item \spxentry{SparseConv3D}\spxextra{class in beyondml.tflow.layers.SparseConv3D}, 
+		\hyperpage{34}
+  \item \spxentry{SparseDense}\spxextra{class in beyondml.pt.layers.SparseDense}, \hyperpage{16}
+  \item \spxentry{SparseDense}\spxextra{class in beyondml.tflow.layers.SparseDense}, \hyperpage{35}
+  \item \spxentry{SparseMultiConv2D}\spxextra{class in beyondml.pt.layers.SparseMultiConv2D}, 
+		\hyperpage{16}
+  \item \spxentry{SparseMultiConv2D}\spxextra{class in beyondml.tflow.layers.SparseMultiConv2D}, 
+		\hyperpage{36}
+  \item \spxentry{SparseMultiConv3D}\spxextra{class in beyondml.pt.layers.SparseMultiConv3D}, 
+		\hyperpage{17}
+  \item \spxentry{SparseMultiConv3D}\spxextra{class in beyondml.tflow.layers.SparseMultiConv3D}, 
+		\hyperpage{37}
+  \item \spxentry{SparseMultiDense}\spxextra{class in beyondml.pt.layers.SparseMultiDense}, 
+		\hyperpage{17}
+  \item \spxentry{SparseMultiDense}\spxextra{class in beyondml.tflow.layers.SparseMultiDense}, 
+		\hyperpage{38}
+  \item \spxentry{SumLayer}\spxextra{class in beyondml.tflow.layers.SumLayer}, \hyperpage{39}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{train\_model()}\spxextra{in module beyondml.tflow.utils.utils}, \hyperpage{43}
+  \item \spxentry{train\_model\_iteratively()}\spxextra{in module beyondml.tflow.utils.utils}, 
+		\hyperpage{43}
+  \item \spxentry{turn\_off()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{5}
+  \item \spxentry{turn\_off()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{20}
+  \item \spxentry{turn\_on()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{5}
+  \item \spxentry{turn\_on()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}, 
+		\hyperpage{20}
+
+\end{sphinxtheindex}

@@ -1,0 +1,77 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}Installation}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}beyondml}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}beyondml package}{3}{subsection.1.1.1}%
+\contentsline {subsubsection}{Subpackages}{3}{subsubsection*.3}%
+\contentsline {paragraph}{beyondml.pt package}{3}{paragraph*.4}%
+\contentsline {subparagraph}{Subpackages}{3}{subparagraph*.5}%
+\contentsline {subparagraph}{beyondml.pt.layers package}{3}{subparagraph*.6}%
+\contentsline {subparagraph}{Submodules}{3}{subparagraph*.7}%
+\contentsline {subparagraph}{beyondml.pt.layers.Conv2D module}{3}{subparagraph*.8}%
+\contentsline {subparagraph}{beyondml.pt.layers.Conv3D module}{4}{subparagraph*.11}%
+\contentsline {subparagraph}{beyondml.pt.layers.Dense module}{4}{subparagraph*.14}%
+\contentsline {subparagraph}{beyondml.pt.layers.FilterLayer module}{4}{subparagraph*.17}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedConv2D module}{5}{subparagraph*.23}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedConv3D module}{6}{subparagraph*.30}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedDense module}{6}{subparagraph*.37}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedMultiHeadAttention module}{7}{subparagraph*.41}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedTransformerDecoderLayer module}{8}{subparagraph*.45}%
+\contentsline {subparagraph}{beyondml.pt.layers.MaskedTransformerEncoderLayer module}{9}{subparagraph*.49}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiConv2D module}{11}{subparagraph*.53}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiConv3D module}{11}{subparagraph*.56}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiDense module}{12}{subparagraph*.59}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedConv2D module}{12}{subparagraph*.62}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedConv3D module}{13}{subparagraph*.69}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedDense module}{13}{subparagraph*.76}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiMaxPool2D module}{14}{subparagraph*.80}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiMaxPool3D module}{14}{subparagraph*.83}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultitaskNormalization module}{15}{subparagraph*.86}%
+\contentsline {subparagraph}{beyondml.pt.layers.SelectorLayer module}{15}{subparagraph*.89}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseConv2D module}{15}{subparagraph*.93}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseConv3D module}{16}{subparagraph*.96}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseDense module}{16}{subparagraph*.99}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseMultiConv2D module}{16}{subparagraph*.102}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseMultiConv3D module}{17}{subparagraph*.105}%
+\contentsline {subparagraph}{beyondml.pt.layers.SparseMultiDense module}{17}{subparagraph*.108}%
+\contentsline {subparagraph}{Module contents}{18}{subparagraph*.111}%
+\contentsline {subparagraph}{beyondml.pt.utils package}{18}{subparagraph*.112}%
+\contentsline {subparagraph}{Submodules}{18}{subparagraph*.113}%
+\contentsline {subparagraph}{beyondml.pt.utils.utils module}{18}{subparagraph*.114}%
+\contentsline {subparagraph}{Module contents}{18}{subparagraph*.116}%
+\contentsline {subparagraph}{Module contents}{18}{subparagraph*.117}%
+\contentsline {paragraph}{beyondml.tflow package}{19}{paragraph*.118}%
+\contentsline {subparagraph}{Subpackages}{19}{subparagraph*.119}%
+\contentsline {subparagraph}{beyondml.tflow.layers package}{19}{subparagraph*.120}%
+\contentsline {subparagraph}{Submodules}{19}{subparagraph*.121}%
+\contentsline {subparagraph}{beyondml.tflow.layers.FilterLayer module}{19}{subparagraph*.122}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MaskedConv2D module}{20}{subparagraph*.129}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MaskedConv3D module}{21}{subparagraph*.137}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MaskedDense module}{22}{subparagraph*.145}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiConv2D module}{23}{subparagraph*.152}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiConv3D module}{24}{subparagraph*.159}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiDense module}{25}{subparagraph*.166}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiMaskedConv2D module}{26}{subparagraph*.172}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiMaskedConv3D module}{27}{subparagraph*.180}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiMaskedDense module}{28}{subparagraph*.188}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiMaxPool2D module}{29}{subparagraph*.195}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultiMaxPool3D module}{30}{subparagraph*.200}%
+\contentsline {subparagraph}{beyondml.tflow.layers.MultitaskNormalization module}{30}{subparagraph*.205}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SelectorLayer module}{31}{subparagraph*.211}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseConv2D module}{33}{subparagraph*.217}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseConv3D module}{34}{subparagraph*.224}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseDense module}{35}{subparagraph*.231}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseMultiConv2D module}{36}{subparagraph*.238}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseMultiConv3D module}{37}{subparagraph*.245}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SparseMultiDense module}{38}{subparagraph*.252}%
+\contentsline {subparagraph}{beyondml.tflow.layers.SumLayer module}{39}{subparagraph*.259}%
+\contentsline {subparagraph}{Module contents}{40}{subparagraph*.264}%
+\contentsline {subparagraph}{beyondml.tflow.utils package}{40}{subparagraph*.265}%
+\contentsline {subparagraph}{Submodules}{40}{subparagraph*.266}%
+\contentsline {subparagraph}{beyondml.tflow.utils.transformer module}{40}{subparagraph*.267}%
+\contentsline {subparagraph}{beyondml.tflow.utils.utils module}{41}{subparagraph*.270}%
+\contentsline {subparagraph}{Module contents}{44}{subparagraph*.283}%
+\contentsline {subparagraph}{Module contents}{44}{subparagraph*.284}%
+\contentsline {subsubsection}{Module contents}{45}{subsubsection*.285}%
+\contentsline {chapter}{\numberline {2}Changelog}{47}{chapter.2}%
+\contentsline {chapter}{Python Module Index}{49}{section*.286}%
+\contentsline {chapter}{Index}{51}{section*.287}%

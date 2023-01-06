@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.pt.utils.utils &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">beyondml</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">beyondml.pt.utils.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for beyondml.pt.utils.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">beyondml.pt.layers</span> <span class="kn">import</span> <span class="n">MaskedConv2D</span><span class="p">,</span> <span class="n">MaskedConv3D</span><span class="p">,</span> <span class="n">MaskedDense</span><span class="p">,</span> <span class="n">MultiMaskedConv2D</span><span class="p">,</span> <span class="n">MultiMaskedConv3D</span><span class="p">,</span> <span class="n">MultiMaskedDense</span><span class="p">,</span> <span class="n">MultitaskNormalization</span>
+
+
+<div class="viewcode-block" id="prune_model"><a class="viewcode-back" href="../../../../beyondml.pt.utils.html#beyondml.pt.utils.utils.prune_model">[docs]</a><span class="k">def</span> <span class="nf">prune_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">percentile</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Prune a compatible model</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : PyTorch model</span>
+<span class="sd">        A model that has been developed to have a `.layers` property containing layers to be pruned</span>
+<span class="sd">    percentile : int</span>
+<span class="sd">        An integer between 0 and 99 which corresponds to how much to prune the model</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pruned_model : PyTorch model</span>
+<span class="sd">        The pruned model</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    - The model input **must** have a `.layers` property to be able to function. Only layers within the</span>
+<span class="sd">      `.layers` property which are recognized as prunable are pruned, via their own `.prune()` method</span>
+<span class="sd">    - Also acts on the model in place, but returns the model for ease of use</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">compatible_layers</span> <span class="o">=</span> <span class="p">(</span><span class="n">MaskedConv2D</span><span class="p">,</span> <span class="n">MaskedConv3D</span><span class="p">,</span> <span class="n">MaskedDense</span><span class="p">,</span>
+                         <span class="n">MultiMaskedConv2D</span><span class="p">,</span> <span class="n">MultiMaskedConv3D</span><span class="p">,</span> <span class="n">MultiMaskedDense</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">compatible_layers</span><span class="p">):</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">percentile</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s1">&#39;Input model does not have a `.layers` attribute. Please make sure to add that attribute</span><span class="se">\</span>
+<span class="s1">        to the model class in order to use this function&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

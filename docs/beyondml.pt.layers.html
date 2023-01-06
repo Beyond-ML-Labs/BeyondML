@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.pt.layers package &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="beyondml.pt.utils package" href="beyondml.pt.utils.html" />
+    <link rel="prev" title="beyondml.pt package" href="beyondml.pt.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">beyondml</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="beyondml.html">beyondml package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="beyondml.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="beyondml.pt.html">beyondml.pt package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="beyondml.tflow.html">beyondml.tflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.html#module-beyondml">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.pt.html">beyondml.pt package</a></li>
+      <li class="breadcrumb-item active">beyondml.pt.layers package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/beyondml.pt.layers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="beyondml-pt-layers-package">
+<h1>beyondml.pt.layers package<a class="headerlink" href="#beyondml-pt-layers-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-beyondml.pt.layers.Conv2D">
+<span id="beyondml-pt-layers-conv2d-module"></span><h2>beyondml.pt.layers.Conv2D module<a class="headerlink" href="#module-beyondml.pt.layers.Conv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Conv2D.Conv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.Conv2D.</span></span><span class="sig-name descname"><span class="pre">Conv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Conv2D.html#Conv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Conv2D.Conv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Convolutional 2D layer initialized directly with weights, rather than with hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Conv2D.Conv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Conv2D.html#Conv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Conv2D.Conv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.Conv3D">
+<span id="beyondml-pt-layers-conv3d-module"></span><h2>beyondml.pt.layers.Conv3D module<a class="headerlink" href="#module-beyondml.pt.layers.Conv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Conv3D.Conv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.Conv3D.</span></span><span class="sig-name descname"><span class="pre">Conv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Conv3D.html#Conv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Conv3D.Conv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Convolutional 3D layer initialized directly with weights, rather than with hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Conv3D.Conv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Conv3D.html#Conv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Conv3D.Conv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.Dense">
+<span id="beyondml-pt-layers-dense-module"></span><h2>beyondml.pt.layers.Dense module<a class="headerlink" href="#module-beyondml.pt.layers.Dense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Dense.Dense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.Dense.</span></span><span class="sig-name descname"><span class="pre">Dense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Dense.html#Dense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Dense.Dense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Fully-connected layer initialized directly with weights, rather than hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.Dense.Dense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/Dense.html#Dense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.Dense.Dense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.FilterLayer">
+<span id="beyondml-pt-layers-filterlayer-module"></span><h2>beyondml.pt.layers.FilterLayer module<a class="headerlink" href="#module-beyondml.pt.layers.FilterLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.FilterLayer.FilterLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.FilterLayer.</span></span><span class="sig-name descname"><span class="pre">FilterLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_on</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/FilterLayer.html#FilterLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.FilterLayer.FilterLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Layer which filters input data, either returning values or all zeros depending on state</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.FilterLayer.FilterLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/FilterLayer.html#FilterLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.FilterLayer.FilterLayer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.FilterLayer.FilterLayer.is_on">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_on</span></span><a class="headerlink" href="#beyondml.pt.layers.FilterLayer.FilterLayer.is_on" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.FilterLayer.FilterLayer.turn_off">
+<span class="sig-name descname"><span class="pre">turn_off</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/FilterLayer.html#FilterLayer.turn_off"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.FilterLayer.FilterLayer.turn_off" title="Permalink to this definition"></a></dt>
+<dd><p>Turn off the layer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.FilterLayer.FilterLayer.turn_on">
+<span class="sig-name descname"><span class="pre">turn_on</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/FilterLayer.html#FilterLayer.turn_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.FilterLayer.FilterLayer.turn_on" title="Permalink to this definition"></a></dt>
+<dd><p>Turn on the layer</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedConv2D">
+<span id="beyondml-pt-layers-maskedconv2d-module"></span><h2>beyondml.pt.layers.MaskedConv2D module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedConv2D.</span></span><span class="sig-name descname"><span class="pre">MaskedConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv2D.html#MaskedConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Masked 2D Convolutional layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv2D.html#MaskedConv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D.in_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D.in_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D.out_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D.out_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv2D.MaskedConv2D.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv2D.html#MaskedConv2D.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv2D.MaskedConv2D.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedConv3D">
+<span id="beyondml-pt-layers-maskedconv3d-module"></span><h2>beyondml.pt.layers.MaskedConv3D module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedConv3D.</span></span><span class="sig-name descname"><span class="pre">MaskedConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv3D.html#MaskedConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Masked 3D Convolutional layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv3D.html#MaskedConv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D.in_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D.in_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D.out_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D.out_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedConv3D.MaskedConv3D.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedConv3D.html#MaskedConv3D.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedConv3D.MaskedConv3D.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s masks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedDense">
+<span id="beyondml-pt-layers-maskeddense-module"></span><h2>beyondml.pt.layers.MaskedDense module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedDense.MaskedDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedDense.</span></span><span class="sig-name descname"><span class="pre">MaskedDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedDense.html#MaskedDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedDense.MaskedDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Masked fully-connected layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedDense.MaskedDense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedDense.html#MaskedDense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedDense.MaskedDense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedDense.MaskedDense.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedDense.html#MaskedDense.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedDense.MaskedDense.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedMultiHeadAttention">
+<span id="beyondml-pt-layers-maskedmultiheadattention-module"></span><h2>beyondml.pt.layers.MaskedMultiHeadAttention module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedMultiHeadAttention" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedMultiHeadAttention.</span></span><span class="sig-name descname"><span class="pre">MaskedMultiHeadAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedMultiHeadAttention.html#MaskedMultiHeadAttention"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Masked Multi-Headed Attention Layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_padding_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">need_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attn_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">average_attn_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedMultiHeadAttention.html#MaskedMultiHeadAttention.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>query</strong> (<em>torch Tensor</em>) – Query tensor</p></li>
+<li><p><strong>key</strong> (<em>torch Tensor</em>) – Key tensor</p></li>
+<li><p><strong>value</strong> (<em>torch Tensor</em>) – Value tensor</p></li>
+<li><p><strong>key_padding_mask</strong> (<em>None</em><em> or </em><em>torch Tensor</em><em> (</em><em>default None</em><em>)</em>) – If specified, a mask indicating which elements in <code class="docutils literal notranslate"><span class="pre">key</span></code> to ignore</p></li>
+<li><p><strong>need_weights</strong> (<em>Bool</em><em> (</em><em>default True</em><em>)</em>) – If specified, returns <code class="docutils literal notranslate"><span class="pre">attn_output_weights</span></code> as well as <code class="docutils literal notranslate"><span class="pre">attn_outputs</span></code></p></li>
+<li><p><strong>attn_mask</strong> (<em>None</em><em> or </em><em>torch Tensor</em><em> (</em><em>default None</em><em>)</em>) – If specified, a 2D or 3D mask preventing attention</p></li>
+<li><p><strong>average_attn_weights</strong> (<em>Bool</em><em> (</em><em>default True</em><em>)</em>) – If True, indicates that returned <code class="docutils literal notranslate"><span class="pre">attn_weights</span></code> should be averaged across heads</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedMultiHeadAttention.html#MaskedMultiHeadAttention.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be made inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedTransformerDecoderLayer">
+<span id="beyondml-pt-layers-maskedtransformerdecoderlayer-module"></span><h2>beyondml.pt.layers.MaskedTransformerDecoderLayer module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedTransformerDecoderLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedTransformerDecoderLayer.</span></span><span class="sig-name descname"><span class="pre">MaskedTransformerDecoderLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">d_model:</span> <span class="pre">int,</span> <span class="pre">nhead:</span> <span class="pre">int,</span> <span class="pre">dim_feedforward:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2048,</span> <span class="pre">dropout:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.1,</span> <span class="pre">activation:</span> <span class="pre">~typing.Union[str,</span> <span class="pre">~typing.Callable[[~torch.Tensor],</span> <span class="pre">~torch.Tensor]]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">relu&gt;,</span> <span class="pre">layer_norm_eps:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1e-05,</span> <span class="pre">batch_first:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">norm_first:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">device=None,</span> <span class="pre">dtype=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerDecoderLayer.html#MaskedTransformerDecoderLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>TransformerDecoderLayer is made up of self-attn, multi-head-attn and feedforward network.
+This standard decoder layer is based on the paper “Attention Is All You Need”.
+:param d_model: the number of expected features in the input (required).
+:param nhead: the number of heads in the multiheadattention models (required).
+:param dim_feedforward: the dimension of the feedforward network model (default=2048).
+:param dropout: the dropout value (default=0.1).
+:param activation: the activation function of the intermediate layer, can be a string</p>
+<blockquote>
+<div><p>(“relu” or “gelu”) or a unary callable. Default: relu</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer_norm_eps</strong> – the eps value in layer normalization components (default=1e-5).</p></li>
+<li><p><strong>batch_first</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the input and output tensors are provided
+as (batch, seq, feature). Default: <code class="docutils literal notranslate"><span class="pre">False</span></code> (seq, batch, feature).</p></li>
+<li><p><strong>norm_first</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, layer norm is done prior to self attention, multihead
+attention and feedforward operations, respectively. Otherwise it’s done after.
+Default: <code class="docutils literal notranslate"><span class="pre">False</span></code> (after).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tgt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerDecoderLayer.html#MaskedTransformerDecoderLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Pass the inputs (and mask) through the decoder layer.
+:param tgt: the sequence to the decoder layer.
+:param memory: the sequence from the last layer of the encoder.</p>
+<dl class="simple">
+<dt>Shape:</dt><dd><p>see the docs in Pytorch Transformer class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerDecoderLayer.html#MaskedTransformerDecoderLayer.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.prune" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MaskedTransformerEncoderLayer">
+<span id="beyondml-pt-layers-maskedtransformerencoderlayer-module"></span><h2>beyondml.pt.layers.MaskedTransformerEncoderLayer module<a class="headerlink" href="#module-beyondml.pt.layers.MaskedTransformerEncoderLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MaskedTransformerEncoderLayer.</span></span><span class="sig-name descname"><span class="pre">MaskedTransformerEncoderLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">d_model:</span> <span class="pre">int,</span> <span class="pre">nhead:</span> <span class="pre">int,</span> <span class="pre">dim_feedforward:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">2048,</span> <span class="pre">dropout:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.1,</span> <span class="pre">activation:</span> <span class="pre">~typing.Union[str,</span> <span class="pre">~typing.Callable[[~torch.Tensor],</span> <span class="pre">~torch.Tensor]]</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">relu&gt;,</span> <span class="pre">layer_norm_eps:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">1e-05,</span> <span class="pre">batch_first:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">norm_first:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False,</span> <span class="pre">device=None,</span> <span class="pre">dtype=None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerEncoderLayer.html#MaskedTransformerEncoderLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>TransformerEncoderLayer is made up of self-attn and feedforward network.
+:param d_model: the number of expected features in the input (required).
+:param nhead: the number of heads in the multiheadattention models (required).
+:param dim_feedforward: the dimension of the feedforward network model (default=2048).
+:param dropout: the dropout value (default=0.1).
+:param activation: the activation function of the intermediate layer, can be a string</p>
+<blockquote>
+<div><p>(“relu” or “gelu”) or a unary callable. Default: relu</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer_norm_eps</strong> – the eps value in layer normalization components (default=1e-5).</p></li>
+<li><p><strong>batch_first</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the input and output tensors are provided
+as (batch, seq, feature). Default: <code class="docutils literal notranslate"><span class="pre">False</span></code> (seq, batch, feature).</p></li>
+<li><p><strong>norm_first</strong> – if <code class="docutils literal notranslate"><span class="pre">True</span></code>, layer norm is done prior to attention and feedforward
+operations, respectivaly. Otherwise it’s done after. Default: <code class="docutils literal notranslate"><span class="pre">False</span></code> (after).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerEncoderLayer.html#MaskedTransformerEncoderLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Pass the input through the encoder layer.
+:param src: the sequence to the encoder layer (required).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MaskedTransformerEncoderLayer.html#MaskedTransformerEncoderLayer.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.prune" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiConv2D">
+<span id="beyondml-pt-layers-multiconv2d-module"></span><h2>beyondml.pt.layers.MultiConv2D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiConv2D.MultiConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiConv2D.</span></span><span class="sig-name descname"><span class="pre">MultiConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiConv2D.html#MultiConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiConv2D.MultiConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multi- 2D Convolutional layer initialized with weights rather than hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiConv2D.MultiConv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiConv2D.html#MultiConv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiConv2D.MultiConv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiConv3D">
+<span id="beyondml-pt-layers-multiconv3d-module"></span><h2>beyondml.pt.layers.MultiConv3D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiConv3D.MultiConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiConv3D.</span></span><span class="sig-name descname"><span class="pre">MultiConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiConv3D.html#MultiConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiConv3D.MultiConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multitask 3D Convolutional layer initialized with weights rather than with hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiConv3D.MultiConv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiConv3D.html#MultiConv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiConv3D.MultiConv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiDense">
+<span id="beyondml-pt-layers-multidense-module"></span><h2>beyondml.pt.layers.MultiDense module<a class="headerlink" href="#module-beyondml.pt.layers.MultiDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiDense.MultiDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiDense.</span></span><span class="sig-name descname"><span class="pre">MultiDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiDense.html#MultiDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiDense.MultiDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multi-Fully-Connected layer initialized with weights rather than hyperparameters</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiDense.MultiDense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiDense.html#MultiDense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiDense.MultiDense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiMaskedConv2D">
+<span id="beyondml-pt-layers-multimaskedconv2d-module"></span><h2>beyondml.pt.layers.MultiMaskedConv2D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiMaskedConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiMaskedConv2D.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv2D.html#MultiMaskedConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multi 2D Convolutional layer which supports masking and pruning</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.in_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.in_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.out_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.out_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiMaskedConv3D">
+<span id="beyondml-pt-layers-multimaskedconv3d-module"></span><h2>beyondml.pt.layers.MultiMaskedConv3D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiMaskedConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiMaskedConv3D.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv3D.html#MultiMaskedConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Masked Multitask 3D Convolutional layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.in_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">in_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.in_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kernel_size</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.out_channels">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">out_channels</span></span><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.out_channels" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s masks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiMaskedDense">
+<span id="beyondml-pt-layers-multimaskeddense-module"></span><h2>beyondml.pt.layers.MultiMaskedDense module<a class="headerlink" href="#module-beyondml.pt.layers.MultiMaskedDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiMaskedDense.</span></span><span class="sig-name descname"><span class="pre">MultiMaskedDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_tasks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedDense.html#MultiMaskedDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multi-Fully-Connected layer which supports masking and pruning</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedDense.html#MultiMaskedDense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.prune">
+<span class="sig-name descname"><span class="pre">prune</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaskedDense.html#MultiMaskedDense.prune"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.prune" title="Permalink to this definition"></a></dt>
+<dd><p>Prune the layer by updating the layer’s mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>percentile</strong> (<em>int</em>) – Integer between 0 and 99 which represents the proportion of weights to be inactive</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Acts on the layer in place</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiMaxPool2D">
+<span id="beyondml-pt-layers-multimaxpool2d-module"></span><h2>beyondml.pt.layers.MultiMaxPool2D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiMaxPool2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiMaxPool2D.</span></span><span class="sig-name descname"><span class="pre">MultiMaxPool2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaxPool2D.html#MultiMaxPool2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multitask implementation of 2-dimensional Max Pooling layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaxPool2D.html#MultiMaxPool2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultiMaxPool3D">
+<span id="beyondml-pt-layers-multimaxpool3d-module"></span><h2>beyondml.pt.layers.MultiMaxPool3D module<a class="headerlink" href="#module-beyondml.pt.layers.MultiMaxPool3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultiMaxPool3D.</span></span><span class="sig-name descname"><span class="pre">MultiMaxPool3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stride</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dilation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaxPool3D.html#MultiMaxPool3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Multitask implementation of 2-dimensional Max Pooling layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultiMaxPool3D.html#MultiMaxPool3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.MultitaskNormalization">
+<span id="beyondml-pt-layers-multitasknormalization-module"></span><h2>beyondml.pt.layers.MultitaskNormalization module<a class="headerlink" href="#module-beyondml.pt.layers.MultitaskNormalization" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.MultitaskNormalization.</span></span><span class="sig-name descname"><span class="pre">MultitaskNormalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultitaskNormalization.html#MultitaskNormalization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Layer which normalizes a set of inputs to sum to 1</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/MultitaskNormalization.html#MultitaskNormalization.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em><em> or </em><em>list</em><em> of </em><em>Tensors</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor or list of Tensors</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SelectorLayer">
+<span id="beyondml-pt-layers-selectorlayer-module"></span><h2>beyondml.pt.layers.SelectorLayer module<a class="headerlink" href="#module-beyondml.pt.layers.SelectorLayer" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SelectorLayer.SelectorLayer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SelectorLayer.</span></span><span class="sig-name descname"><span class="pre">SelectorLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sel_index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SelectorLayer.html#SelectorLayer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SelectorLayer.SelectorLayer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Layer which selects an individual input based on index and only returns that one</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SelectorLayer.SelectorLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SelectorLayer.html#SelectorLayer.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SelectorLayer.SelectorLayer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SelectorLayer.SelectorLayer.sel_index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sel_index</span></span><a class="headerlink" href="#beyondml.pt.layers.SelectorLayer.SelectorLayer.sel_index" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseConv2D">
+<span id="beyondml-pt-layers-sparseconv2d-module"></span><h2>beyondml.pt.layers.SparseConv2D module<a class="headerlink" href="#module-beyondml.pt.layers.SparseConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseConv2D.SparseConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseConv2D.</span></span><span class="sig-name descname"><span class="pre">SparseConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseConv2D.html#SparseConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseConv2D.SparseConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse implementation of a 2D Convolutional layer, expected to be converted from a
+trained, pruned layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseConv2D.SparseConv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseConv2D.html#SparseConv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseConv2D.SparseConv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseConv3D">
+<span id="beyondml-pt-layers-sparseconv3d-module"></span><h2>beyondml.pt.layers.SparseConv3D module<a class="headerlink" href="#module-beyondml.pt.layers.SparseConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseConv3D.SparseConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseConv3D.</span></span><span class="sig-name descname"><span class="pre">SparseConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseConv3D.html#SparseConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseConv3D.SparseConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse 3D Convolutional layer, expected to be converted from a
+trained, pruned layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseConv3D.SparseConv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseConv3D.html#SparseConv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseConv3D.SparseConv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseDense">
+<span id="beyondml-pt-layers-sparsedense-module"></span><h2>beyondml.pt.layers.SparseDense module<a class="headerlink" href="#module-beyondml.pt.layers.SparseDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseDense.SparseDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseDense.</span></span><span class="sig-name descname"><span class="pre">SparseDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseDense.html#SparseDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseDense.SparseDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse implementation of a fully-connected layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseDense.SparseDense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseDense.html#SparseDense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseDense.SparseDense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseMultiConv2D">
+<span id="beyondml-pt-layers-sparsemulticonv2d-module"></span><h2>beyondml.pt.layers.SparseMultiConv2D module<a class="headerlink" href="#module-beyondml.pt.layers.SparseMultiConv2D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseMultiConv2D.</span></span><span class="sig-name descname"><span class="pre">SparseMultiConv2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiConv2D.html#SparseMultiConv2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse implementation of a Multi 2D Convolutional layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiConv2D.html#SparseMultiConv2D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseMultiConv3D">
+<span id="beyondml-pt-layers-sparsemulticonv3d-module"></span><h2>beyondml.pt.layers.SparseMultiConv3D module<a class="headerlink" href="#module-beyondml.pt.layers.SparseMultiConv3D" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseMultiConv3D.</span></span><span class="sig-name descname"><span class="pre">SparseMultiConv3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiConv3D.html#SparseMultiConv3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse implementation of a Multitask 3D Convolutional layer, expected to be converted from a
+trained, pruned layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiConv3D.html#SparseMultiConv3D.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers.SparseMultiDense">
+<span id="beyondml-pt-layers-sparsemultidense-module"></span><h2>beyondml.pt.layers.SparseMultiDense module<a class="headerlink" href="#module-beyondml.pt.layers.SparseMultiDense" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiDense.SparseMultiDense">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.pt.layers.SparseMultiDense.</span></span><span class="sig-name descname"><span class="pre">SparseMultiDense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiDense.html#SparseMultiDense"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiDense.SparseMultiDense" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Sparse implementation of the Multi-Fully-Connected layer</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.pt.layers.SparseMultiDense.SparseMultiDense.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/pt/layers/SparseMultiDense.html#SparseMultiDense.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.pt.layers.SparseMultiDense.SparseMultiDense.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Call the layer on input data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Inputs to call the layer’s logic on</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>results</strong> – The results of the layer’s logic</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beyondml.pt.layers">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-beyondml.pt.layers" title="Permalink to this heading"></a></h2>
+<p>Layers compatible with PyTorch models</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="beyondml.pt.html" class="btn btn-neutral float-left" title="beyondml.pt package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="beyondml.pt.utils.html" class="btn btn-neutral float-right" title="beyondml.pt.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

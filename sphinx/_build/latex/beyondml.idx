@@ -1,0 +1,327 @@
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.Conv2D@\spxentry{beyondml.pt.layers.Conv2D}|hyperpage}{3}
+\indexentry{beyondml.pt.layers.Conv2D@\spxentry{beyondml.pt.layers.Conv2D}!module@\spxentry{module}|hyperpage}{3}
+\indexentry{Conv2D (class in beyondml.pt.layers.Conv2D)@\spxentry{Conv2D}\spxextra{class in beyondml.pt.layers.Conv2D}|hyperpage}{3}
+\indexentry{forward() (beyondml.pt.layers.Conv2D.Conv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.Conv2D.Conv2D method}|hyperpage}{3}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.Conv3D@\spxentry{beyondml.pt.layers.Conv3D}|hyperpage}{4}
+\indexentry{beyondml.pt.layers.Conv3D@\spxentry{beyondml.pt.layers.Conv3D}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{Conv3D (class in beyondml.pt.layers.Conv3D)@\spxentry{Conv3D}\spxextra{class in beyondml.pt.layers.Conv3D}|hyperpage}{4}
+\indexentry{forward() (beyondml.pt.layers.Conv3D.Conv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.Conv3D.Conv3D method}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.Dense@\spxentry{beyondml.pt.layers.Dense}|hyperpage}{4}
+\indexentry{beyondml.pt.layers.Dense@\spxentry{beyondml.pt.layers.Dense}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{Dense (class in beyondml.pt.layers.Dense)@\spxentry{Dense}\spxextra{class in beyondml.pt.layers.Dense}|hyperpage}{4}
+\indexentry{forward() (beyondml.pt.layers.Dense.Dense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.Dense.Dense method}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.FilterLayer@\spxentry{beyondml.pt.layers.FilterLayer}|hyperpage}{4}
+\indexentry{beyondml.pt.layers.FilterLayer@\spxentry{beyondml.pt.layers.FilterLayer}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{FilterLayer (class in beyondml.pt.layers.FilterLayer)@\spxentry{FilterLayer}\spxextra{class in beyondml.pt.layers.FilterLayer}|hyperpage}{4}
+\indexentry{forward() (beyondml.pt.layers.FilterLayer.FilterLayer method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}|hyperpage}{4}
+\indexentry{is\_on (beyondml.pt.layers.FilterLayer.FilterLayer property)@\spxentry{is\_on}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer property}|hyperpage}{5}
+\indexentry{turn\_off() (beyondml.pt.layers.FilterLayer.FilterLayer method)@\spxentry{turn\_off()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}|hyperpage}{5}
+\indexentry{turn\_on() (beyondml.pt.layers.FilterLayer.FilterLayer method)@\spxentry{turn\_on()}\spxextra{beyondml.pt.layers.FilterLayer.FilterLayer method}|hyperpage}{5}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedConv2D@\spxentry{beyondml.pt.layers.MaskedConv2D}|hyperpage}{5}
+\indexentry{beyondml.pt.layers.MaskedConv2D@\spxentry{beyondml.pt.layers.MaskedConv2D}!module@\spxentry{module}|hyperpage}{5}
+\indexentry{MaskedConv2D (class in beyondml.pt.layers.MaskedConv2D)@\spxentry{MaskedConv2D}\spxextra{class in beyondml.pt.layers.MaskedConv2D}|hyperpage}{5}
+\indexentry{forward() (beyondml.pt.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{5}
+\indexentry{in\_channels (beyondml.pt.layers.MaskedConv2D.MaskedConv2D property)@\spxentry{in\_channels}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}|hyperpage}{5}
+\indexentry{kernel\_size (beyondml.pt.layers.MaskedConv2D.MaskedConv2D property)@\spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}|hyperpage}{5}
+\indexentry{out\_channels (beyondml.pt.layers.MaskedConv2D.MaskedConv2D property)@\spxentry{out\_channels}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D property}|hyperpage}{5}
+\indexentry{prune() (beyondml.pt.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{5}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedConv3D@\spxentry{beyondml.pt.layers.MaskedConv3D}|hyperpage}{6}
+\indexentry{beyondml.pt.layers.MaskedConv3D@\spxentry{beyondml.pt.layers.MaskedConv3D}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{MaskedConv3D (class in beyondml.pt.layers.MaskedConv3D)@\spxentry{MaskedConv3D}\spxextra{class in beyondml.pt.layers.MaskedConv3D}|hyperpage}{6}
+\indexentry{forward() (beyondml.pt.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{6}
+\indexentry{in\_channels (beyondml.pt.layers.MaskedConv3D.MaskedConv3D property)@\spxentry{in\_channels}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}|hyperpage}{6}
+\indexentry{kernel\_size (beyondml.pt.layers.MaskedConv3D.MaskedConv3D property)@\spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}|hyperpage}{6}
+\indexentry{out\_channels (beyondml.pt.layers.MaskedConv3D.MaskedConv3D property)@\spxentry{out\_channels}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D property}|hyperpage}{6}
+\indexentry{prune() (beyondml.pt.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedDense@\spxentry{beyondml.pt.layers.MaskedDense}|hyperpage}{6}
+\indexentry{beyondml.pt.layers.MaskedDense@\spxentry{beyondml.pt.layers.MaskedDense}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{MaskedDense (class in beyondml.pt.layers.MaskedDense)@\spxentry{MaskedDense}\spxextra{class in beyondml.pt.layers.MaskedDense}|hyperpage}{6}
+\indexentry{forward() (beyondml.pt.layers.MaskedDense.MaskedDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedDense.MaskedDense method}|hyperpage}{6}
+\indexentry{prune() (beyondml.pt.layers.MaskedDense.MaskedDense method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedDense.MaskedDense method}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedMultiHeadAttention@\spxentry{beyondml.pt.layers.MaskedMultiHeadAttention}|hyperpage}{7}
+\indexentry{beyondml.pt.layers.MaskedMultiHeadAttention@\spxentry{beyondml.pt.layers.MaskedMultiHeadAttention}!module@\spxentry{module}|hyperpage}{7}
+\indexentry{MaskedMultiHeadAttention (class in beyondml.pt.layers.MaskedMultiHeadAttention)@\spxentry{MaskedMultiHeadAttention}\spxextra{class in beyondml.pt.layers.MaskedMultiHeadAttention}|hyperpage}{7}
+\indexentry{forward() (beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method}|hyperpage}{7}
+\indexentry{prune() (beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention method}|hyperpage}{7}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedTransformerDecoderLayer@\spxentry{beyondml.pt.layers.MaskedTransformerDecoderLayer}|hyperpage}{8}
+\indexentry{beyondml.pt.layers.MaskedTransformerDecoderLayer@\spxentry{beyondml.pt.layers.MaskedTransformerDecoderLayer}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{MaskedTransformerDecoderLayer (class in beyondml.pt.layers.MaskedTransformerDecoderLayer)@\spxentry{MaskedTransformerDecoderLayer}\spxextra{class in beyondml.pt.layers.MaskedTransformerDecoderLayer}|hyperpage}{8}
+\indexentry{forward() (beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method}|hyperpage}{9}
+\indexentry{prune() (beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer method}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MaskedTransformerEncoderLayer@\spxentry{beyondml.pt.layers.MaskedTransformerEncoderLayer}|hyperpage}{9}
+\indexentry{beyondml.pt.layers.MaskedTransformerEncoderLayer@\spxentry{beyondml.pt.layers.MaskedTransformerEncoderLayer}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{MaskedTransformerEncoderLayer (class in beyondml.pt.layers.MaskedTransformerEncoderLayer)@\spxentry{MaskedTransformerEncoderLayer}\spxextra{class in beyondml.pt.layers.MaskedTransformerEncoderLayer}|hyperpage}{9}
+\indexentry{forward() (beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method}|hyperpage}{11}
+\indexentry{prune() (beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer method}|hyperpage}{11}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiConv2D@\spxentry{beyondml.pt.layers.MultiConv2D}|hyperpage}{11}
+\indexentry{beyondml.pt.layers.MultiConv2D@\spxentry{beyondml.pt.layers.MultiConv2D}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{MultiConv2D (class in beyondml.pt.layers.MultiConv2D)@\spxentry{MultiConv2D}\spxextra{class in beyondml.pt.layers.MultiConv2D}|hyperpage}{11}
+\indexentry{forward() (beyondml.pt.layers.MultiConv2D.MultiConv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv2D.MultiConv2D method}|hyperpage}{11}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiConv3D@\spxentry{beyondml.pt.layers.MultiConv3D}|hyperpage}{11}
+\indexentry{beyondml.pt.layers.MultiConv3D@\spxentry{beyondml.pt.layers.MultiConv3D}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{MultiConv3D (class in beyondml.pt.layers.MultiConv3D)@\spxentry{MultiConv3D}\spxextra{class in beyondml.pt.layers.MultiConv3D}|hyperpage}{11}
+\indexentry{forward() (beyondml.pt.layers.MultiConv3D.MultiConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv3D.MultiConv3D method}|hyperpage}{11}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}|hyperpage}{12}
+\indexentry{beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}!module@\spxentry{module}|hyperpage}{12}
+\indexentry{MultiDense (class in beyondml.pt.layers.MultiDense)@\spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}|hyperpage}{12}
+\indexentry{forward() (beyondml.pt.layers.MultiDense.MultiDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiDense.MultiDense method}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaskedConv2D@\spxentry{beyondml.pt.layers.MultiMaskedConv2D}|hyperpage}{12}
+\indexentry{beyondml.pt.layers.MultiMaskedConv2D@\spxentry{beyondml.pt.layers.MultiMaskedConv2D}!module@\spxentry{module}|hyperpage}{12}
+\indexentry{MultiMaskedConv2D (class in beyondml.pt.layers.MultiMaskedConv2D)@\spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv2D}|hyperpage}{12}
+\indexentry{forward() (beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{12}
+\indexentry{in\_channels (beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property)@\spxentry{in\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}|hyperpage}{12}
+\indexentry{kernel\_size (beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property)@\spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}|hyperpage}{12}
+\indexentry{out\_channels (beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property)@\spxentry{out\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D property}|hyperpage}{12}
+\indexentry{prune() (beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaskedConv3D@\spxentry{beyondml.pt.layers.MultiMaskedConv3D}|hyperpage}{13}
+\indexentry{beyondml.pt.layers.MultiMaskedConv3D@\spxentry{beyondml.pt.layers.MultiMaskedConv3D}!module@\spxentry{module}|hyperpage}{13}
+\indexentry{MultiMaskedConv3D (class in beyondml.pt.layers.MultiMaskedConv3D)@\spxentry{MultiMaskedConv3D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv3D}|hyperpage}{13}
+\indexentry{forward() (beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{13}
+\indexentry{in\_channels (beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property)@\spxentry{in\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}|hyperpage}{13}
+\indexentry{kernel\_size (beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property)@\spxentry{kernel\_size}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}|hyperpage}{13}
+\indexentry{out\_channels (beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property)@\spxentry{out\_channels}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D property}|hyperpage}{13}
+\indexentry{prune() (beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaskedDense@\spxentry{beyondml.pt.layers.MultiMaskedDense}|hyperpage}{13}
+\indexentry{beyondml.pt.layers.MultiMaskedDense@\spxentry{beyondml.pt.layers.MultiMaskedDense}!module@\spxentry{module}|hyperpage}{13}
+\indexentry{MultiMaskedDense (class in beyondml.pt.layers.MultiMaskedDense)@\spxentry{MultiMaskedDense}\spxextra{class in beyondml.pt.layers.MultiMaskedDense}|hyperpage}{13}
+\indexentry{forward() (beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{13}
+\indexentry{prune() (beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaxPool2D@\spxentry{beyondml.pt.layers.MultiMaxPool2D}|hyperpage}{14}
+\indexentry{beyondml.pt.layers.MultiMaxPool2D@\spxentry{beyondml.pt.layers.MultiMaxPool2D}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{MultiMaxPool2D (class in beyondml.pt.layers.MultiMaxPool2D)@\spxentry{MultiMaxPool2D}\spxextra{class in beyondml.pt.layers.MultiMaxPool2D}|hyperpage}{14}
+\indexentry{forward() (beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D method}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaxPool3D@\spxentry{beyondml.pt.layers.MultiMaxPool3D}|hyperpage}{14}
+\indexentry{beyondml.pt.layers.MultiMaxPool3D@\spxentry{beyondml.pt.layers.MultiMaxPool3D}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{MultiMaxPool3D (class in beyondml.pt.layers.MultiMaxPool3D)@\spxentry{MultiMaxPool3D}\spxextra{class in beyondml.pt.layers.MultiMaxPool3D}|hyperpage}{14}
+\indexentry{forward() (beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D method}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultitaskNormalization@\spxentry{beyondml.pt.layers.MultitaskNormalization}|hyperpage}{15}
+\indexentry{beyondml.pt.layers.MultitaskNormalization@\spxentry{beyondml.pt.layers.MultitaskNormalization}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{MultitaskNormalization (class in beyondml.pt.layers.MultitaskNormalization)@\spxentry{MultitaskNormalization}\spxextra{class in beyondml.pt.layers.MultitaskNormalization}|hyperpage}{15}
+\indexentry{forward() (beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization method}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SelectorLayer@\spxentry{beyondml.pt.layers.SelectorLayer}|hyperpage}{15}
+\indexentry{beyondml.pt.layers.SelectorLayer@\spxentry{beyondml.pt.layers.SelectorLayer}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{SelectorLayer (class in beyondml.pt.layers.SelectorLayer)@\spxentry{SelectorLayer}\spxextra{class in beyondml.pt.layers.SelectorLayer}|hyperpage}{15}
+\indexentry{forward() (beyondml.pt.layers.SelectorLayer.SelectorLayer method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SelectorLayer.SelectorLayer method}|hyperpage}{15}
+\indexentry{sel\_index (beyondml.pt.layers.SelectorLayer.SelectorLayer property)@\spxentry{sel\_index}\spxextra{beyondml.pt.layers.SelectorLayer.SelectorLayer property}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseConv2D@\spxentry{beyondml.pt.layers.SparseConv2D}|hyperpage}{15}
+\indexentry{beyondml.pt.layers.SparseConv2D@\spxentry{beyondml.pt.layers.SparseConv2D}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{SparseConv2D (class in beyondml.pt.layers.SparseConv2D)@\spxentry{SparseConv2D}\spxextra{class in beyondml.pt.layers.SparseConv2D}|hyperpage}{15}
+\indexentry{forward() (beyondml.pt.layers.SparseConv2D.SparseConv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseConv2D.SparseConv2D method}|hyperpage}{15}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseConv3D@\spxentry{beyondml.pt.layers.SparseConv3D}|hyperpage}{16}
+\indexentry{beyondml.pt.layers.SparseConv3D@\spxentry{beyondml.pt.layers.SparseConv3D}!module@\spxentry{module}|hyperpage}{16}
+\indexentry{SparseConv3D (class in beyondml.pt.layers.SparseConv3D)@\spxentry{SparseConv3D}\spxextra{class in beyondml.pt.layers.SparseConv3D}|hyperpage}{16}
+\indexentry{forward() (beyondml.pt.layers.SparseConv3D.SparseConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseConv3D.SparseConv3D method}|hyperpage}{16}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseDense@\spxentry{beyondml.pt.layers.SparseDense}|hyperpage}{16}
+\indexentry{beyondml.pt.layers.SparseDense@\spxentry{beyondml.pt.layers.SparseDense}!module@\spxentry{module}|hyperpage}{16}
+\indexentry{SparseDense (class in beyondml.pt.layers.SparseDense)@\spxentry{SparseDense}\spxextra{class in beyondml.pt.layers.SparseDense}|hyperpage}{16}
+\indexentry{forward() (beyondml.pt.layers.SparseDense.SparseDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseDense.SparseDense method}|hyperpage}{16}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseMultiConv2D@\spxentry{beyondml.pt.layers.SparseMultiConv2D}|hyperpage}{16}
+\indexentry{beyondml.pt.layers.SparseMultiConv2D@\spxentry{beyondml.pt.layers.SparseMultiConv2D}!module@\spxentry{module}|hyperpage}{16}
+\indexentry{SparseMultiConv2D (class in beyondml.pt.layers.SparseMultiConv2D)@\spxentry{SparseMultiConv2D}\spxextra{class in beyondml.pt.layers.SparseMultiConv2D}|hyperpage}{16}
+\indexentry{forward() (beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D method}|hyperpage}{16}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseMultiConv3D@\spxentry{beyondml.pt.layers.SparseMultiConv3D}|hyperpage}{17}
+\indexentry{beyondml.pt.layers.SparseMultiConv3D@\spxentry{beyondml.pt.layers.SparseMultiConv3D}!module@\spxentry{module}|hyperpage}{17}
+\indexentry{SparseMultiConv3D (class in beyondml.pt.layers.SparseMultiConv3D)@\spxentry{SparseMultiConv3D}\spxextra{class in beyondml.pt.layers.SparseMultiConv3D}|hyperpage}{17}
+\indexentry{forward() (beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D method}|hyperpage}{17}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.SparseMultiDense@\spxentry{beyondml.pt.layers.SparseMultiDense}|hyperpage}{17}
+\indexentry{beyondml.pt.layers.SparseMultiDense@\spxentry{beyondml.pt.layers.SparseMultiDense}!module@\spxentry{module}|hyperpage}{17}
+\indexentry{SparseMultiDense (class in beyondml.pt.layers.SparseMultiDense)@\spxentry{SparseMultiDense}\spxextra{class in beyondml.pt.layers.SparseMultiDense}|hyperpage}{17}
+\indexentry{forward() (beyondml.pt.layers.SparseMultiDense.SparseMultiDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.SparseMultiDense.SparseMultiDense method}|hyperpage}{17}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers@\spxentry{beyondml.pt.layers}|hyperpage}{18}
+\indexentry{beyondml.pt.layers@\spxentry{beyondml.pt.layers}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!beyondml.pt.utils.utils@\spxentry{beyondml.pt.utils.utils}|hyperpage}{18}
+\indexentry{beyondml.pt.utils.utils@\spxentry{beyondml.pt.utils.utils}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{prune\_model() (in module beyondml.pt.utils.utils)@\spxentry{prune\_model()}\spxextra{in module beyondml.pt.utils.utils}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!beyondml.pt.utils@\spxentry{beyondml.pt.utils}|hyperpage}{18}
+\indexentry{beyondml.pt.utils@\spxentry{beyondml.pt.utils}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!beyondml.pt@\spxentry{beyondml.pt}|hyperpage}{18}
+\indexentry{beyondml.pt@\spxentry{beyondml.pt}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.FilterLayer@\spxentry{beyondml.tflow.layers.FilterLayer}|hyperpage}{19}
+\indexentry{beyondml.tflow.layers.FilterLayer@\spxentry{beyondml.tflow.layers.FilterLayer}!module@\spxentry{module}|hyperpage}{19}
+\indexentry{FilterLayer (class in beyondml.tflow.layers.FilterLayer)@\spxentry{FilterLayer}\spxextra{class in beyondml.tflow.layers.FilterLayer}|hyperpage}{19}
+\indexentry{call() (beyondml.tflow.layers.FilterLayer.FilterLayer method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}|hyperpage}{19}
+\indexentry{from\_config() (beyondml.tflow.layers.FilterLayer.FilterLayer class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer class method}|hyperpage}{20}
+\indexentry{get\_config() (beyondml.tflow.layers.FilterLayer.FilterLayer method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}|hyperpage}{20}
+\indexentry{turn\_off() (beyondml.tflow.layers.FilterLayer.FilterLayer method)@\spxentry{turn\_off()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}|hyperpage}{20}
+\indexentry{turn\_on() (beyondml.tflow.layers.FilterLayer.FilterLayer method)@\spxentry{turn\_on()}\spxextra{beyondml.tflow.layers.FilterLayer.FilterLayer method}|hyperpage}{20}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MaskedConv2D@\spxentry{beyondml.tflow.layers.MaskedConv2D}|hyperpage}{20}
+\indexentry{beyondml.tflow.layers.MaskedConv2D@\spxentry{beyondml.tflow.layers.MaskedConv2D}!module@\spxentry{module}|hyperpage}{20}
+\indexentry{MaskedConv2D (class in beyondml.tflow.layers.MaskedConv2D)@\spxentry{MaskedConv2D}\spxextra{class in beyondml.tflow.layers.MaskedConv2D}|hyperpage}{20}
+\indexentry{build() (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{20}
+\indexentry{call() (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{20}
+\indexentry{from\_config() (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D class method}|hyperpage}{21}
+\indexentry{get\_config() (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{21}
+\indexentry{kernel\_size (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D property}|hyperpage}{21}
+\indexentry{set\_masks() (beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedConv2D.MaskedConv2D method}|hyperpage}{21}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MaskedConv3D@\spxentry{beyondml.tflow.layers.MaskedConv3D}|hyperpage}{21}
+\indexentry{beyondml.tflow.layers.MaskedConv3D@\spxentry{beyondml.tflow.layers.MaskedConv3D}!module@\spxentry{module}|hyperpage}{21}
+\indexentry{MaskedConv3D (class in beyondml.tflow.layers.MaskedConv3D)@\spxentry{MaskedConv3D}\spxextra{class in beyondml.tflow.layers.MaskedConv3D}|hyperpage}{21}
+\indexentry{build() (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{21}
+\indexentry{call() (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{21}
+\indexentry{from\_config() (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D class method}|hyperpage}{22}
+\indexentry{get\_config() (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{22}
+\indexentry{kernel\_size (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D property}|hyperpage}{22}
+\indexentry{set\_masks() (beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedConv3D.MaskedConv3D method}|hyperpage}{22}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MaskedDense@\spxentry{beyondml.tflow.layers.MaskedDense}|hyperpage}{22}
+\indexentry{beyondml.tflow.layers.MaskedDense@\spxentry{beyondml.tflow.layers.MaskedDense}!module@\spxentry{module}|hyperpage}{22}
+\indexentry{MaskedDense (class in beyondml.tflow.layers.MaskedDense)@\spxentry{MaskedDense}\spxextra{class in beyondml.tflow.layers.MaskedDense}|hyperpage}{22}
+\indexentry{build() (beyondml.tflow.layers.MaskedDense.MaskedDense method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}|hyperpage}{22}
+\indexentry{call() (beyondml.tflow.layers.MaskedDense.MaskedDense method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}|hyperpage}{22}
+\indexentry{from\_config() (beyondml.tflow.layers.MaskedDense.MaskedDense class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense class method}|hyperpage}{23}
+\indexentry{get\_config() (beyondml.tflow.layers.MaskedDense.MaskedDense method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}|hyperpage}{23}
+\indexentry{set\_masks() (beyondml.tflow.layers.MaskedDense.MaskedDense method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MaskedDense.MaskedDense method}|hyperpage}{23}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiConv2D@\spxentry{beyondml.tflow.layers.MultiConv2D}|hyperpage}{23}
+\indexentry{beyondml.tflow.layers.MultiConv2D@\spxentry{beyondml.tflow.layers.MultiConv2D}!module@\spxentry{module}|hyperpage}{23}
+\indexentry{MultiConv2D (class in beyondml.tflow.layers.MultiConv2D)@\spxentry{MultiConv2D}\spxextra{class in beyondml.tflow.layers.MultiConv2D}|hyperpage}{23}
+\indexentry{build() (beyondml.tflow.layers.MultiConv2D.MultiConv2D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}|hyperpage}{23}
+\indexentry{call() (beyondml.tflow.layers.MultiConv2D.MultiConv2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}|hyperpage}{23}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiConv2D.MultiConv2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D class method}|hyperpage}{24}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiConv2D.MultiConv2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D method}|hyperpage}{24}
+\indexentry{kernel\_size (beyondml.tflow.layers.MultiConv2D.MultiConv2D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiConv2D.MultiConv2D property}|hyperpage}{24}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiConv3D@\spxentry{beyondml.tflow.layers.MultiConv3D}|hyperpage}{24}
+\indexentry{beyondml.tflow.layers.MultiConv3D@\spxentry{beyondml.tflow.layers.MultiConv3D}!module@\spxentry{module}|hyperpage}{24}
+\indexentry{MultiConv3D (class in beyondml.tflow.layers.MultiConv3D)@\spxentry{MultiConv3D}\spxextra{class in beyondml.tflow.layers.MultiConv3D}|hyperpage}{24}
+\indexentry{build() (beyondml.tflow.layers.MultiConv3D.MultiConv3D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}|hyperpage}{24}
+\indexentry{call() (beyondml.tflow.layers.MultiConv3D.MultiConv3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}|hyperpage}{24}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiConv3D.MultiConv3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D class method}|hyperpage}{24}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiConv3D.MultiConv3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D method}|hyperpage}{25}
+\indexentry{kernel\_size (beyondml.tflow.layers.MultiConv3D.MultiConv3D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiConv3D.MultiConv3D property}|hyperpage}{25}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiDense@\spxentry{beyondml.tflow.layers.MultiDense}|hyperpage}{25}
+\indexentry{beyondml.tflow.layers.MultiDense@\spxentry{beyondml.tflow.layers.MultiDense}!module@\spxentry{module}|hyperpage}{25}
+\indexentry{MultiDense (class in beyondml.tflow.layers.MultiDense)@\spxentry{MultiDense}\spxextra{class in beyondml.tflow.layers.MultiDense}|hyperpage}{25}
+\indexentry{build() (beyondml.tflow.layers.MultiDense.MultiDense method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}|hyperpage}{25}
+\indexentry{call() (beyondml.tflow.layers.MultiDense.MultiDense method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}|hyperpage}{25}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiDense.MultiDense class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense class method}|hyperpage}{25}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiDense.MultiDense method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiDense.MultiDense method}|hyperpage}{26}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiMaskedConv2D@\spxentry{beyondml.tflow.layers.MultiMaskedConv2D}|hyperpage}{26}
+\indexentry{beyondml.tflow.layers.MultiMaskedConv2D@\spxentry{beyondml.tflow.layers.MultiMaskedConv2D}!module@\spxentry{module}|hyperpage}{26}
+\indexentry{MultiMaskedConv2D (class in beyondml.tflow.layers.MultiMaskedConv2D)@\spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.tflow.layers.MultiMaskedConv2D}|hyperpage}{26}
+\indexentry{build() (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{26}
+\indexentry{call() (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{26}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D class method}|hyperpage}{26}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{26}
+\indexentry{kernel\_size (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D property}|hyperpage}{27}
+\indexentry{set\_masks() (beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D method}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiMaskedConv3D@\spxentry{beyondml.tflow.layers.MultiMaskedConv3D}|hyperpage}{27}
+\indexentry{beyondml.tflow.layers.MultiMaskedConv3D@\spxentry{beyondml.tflow.layers.MultiMaskedConv3D}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{MultiMaskedConv3D (class in beyondml.tflow.layers.MultiMaskedConv3D)@\spxentry{MultiMaskedConv3D}\spxextra{class in beyondml.tflow.layers.MultiMaskedConv3D}|hyperpage}{27}
+\indexentry{build() (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{27}
+\indexentry{call() (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{27}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D class method}|hyperpage}{27}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{27}
+\indexentry{kernel\_size (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D property)@\spxentry{kernel\_size}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D property}|hyperpage}{28}
+\indexentry{set\_masks() (beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D method}|hyperpage}{28}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiMaskedDense@\spxentry{beyondml.tflow.layers.MultiMaskedDense}|hyperpage}{28}
+\indexentry{beyondml.tflow.layers.MultiMaskedDense@\spxentry{beyondml.tflow.layers.MultiMaskedDense}!module@\spxentry{module}|hyperpage}{28}
+\indexentry{MultiMaskedDense (class in beyondml.tflow.layers.MultiMaskedDense)@\spxentry{MultiMaskedDense}\spxextra{class in beyondml.tflow.layers.MultiMaskedDense}|hyperpage}{28}
+\indexentry{build() (beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{28}
+\indexentry{call() (beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{28}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense class method}|hyperpage}{28}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{28}
+\indexentry{set\_masks() (beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{set\_masks()}\spxextra{beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiMaxPool2D@\spxentry{beyondml.tflow.layers.MultiMaxPool2D}|hyperpage}{29}
+\indexentry{beyondml.tflow.layers.MultiMaxPool2D@\spxentry{beyondml.tflow.layers.MultiMaxPool2D}!module@\spxentry{module}|hyperpage}{29}
+\indexentry{MultiMaxPool2D (class in beyondml.tflow.layers.MultiMaxPool2D)@\spxentry{MultiMaxPool2D}\spxextra{class in beyondml.tflow.layers.MultiMaxPool2D}|hyperpage}{29}
+\indexentry{call() (beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method}|hyperpage}{29}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D class method}|hyperpage}{29}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D method}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultiMaxPool3D@\spxentry{beyondml.tflow.layers.MultiMaxPool3D}|hyperpage}{30}
+\indexentry{beyondml.tflow.layers.MultiMaxPool3D@\spxentry{beyondml.tflow.layers.MultiMaxPool3D}!module@\spxentry{module}|hyperpage}{30}
+\indexentry{MultiMaxPool3D (class in beyondml.tflow.layers.MultiMaxPool3D)@\spxentry{MultiMaxPool3D}\spxextra{class in beyondml.tflow.layers.MultiMaxPool3D}|hyperpage}{30}
+\indexentry{call() (beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method}|hyperpage}{30}
+\indexentry{from\_config() (beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D class method}|hyperpage}{30}
+\indexentry{get\_config() (beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D method}|hyperpage}{30}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.MultitaskNormalization@\spxentry{beyondml.tflow.layers.MultitaskNormalization}|hyperpage}{30}
+\indexentry{beyondml.tflow.layers.MultitaskNormalization@\spxentry{beyondml.tflow.layers.MultitaskNormalization}!module@\spxentry{module}|hyperpage}{30}
+\indexentry{MultitaskNormalization (class in beyondml.tflow.layers.MultitaskNormalization)@\spxentry{MultitaskNormalization}\spxextra{class in beyondml.tflow.layers.MultitaskNormalization}|hyperpage}{30}
+\indexentry{build() (beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}|hyperpage}{30}
+\indexentry{call() (beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}|hyperpage}{31}
+\indexentry{from\_config() (beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization class method}|hyperpage}{31}
+\indexentry{get\_config() (beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization method}|hyperpage}{31}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SelectorLayer@\spxentry{beyondml.tflow.layers.SelectorLayer}|hyperpage}{31}
+\indexentry{beyondml.tflow.layers.SelectorLayer@\spxentry{beyondml.tflow.layers.SelectorLayer}!module@\spxentry{module}|hyperpage}{31}
+\indexentry{SelectorLayer (class in beyondml.tflow.layers.SelectorLayer)@\spxentry{SelectorLayer}\spxextra{class in beyondml.tflow.layers.SelectorLayer}|hyperpage}{31}
+\indexentry{call() (beyondml.tflow.layers.SelectorLayer.SelectorLayer method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer method}|hyperpage}{32}
+\indexentry{from\_config() (beyondml.tflow.layers.SelectorLayer.SelectorLayer class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer class method}|hyperpage}{32}
+\indexentry{get\_config() (beyondml.tflow.layers.SelectorLayer.SelectorLayer method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer method}|hyperpage}{32}
+\indexentry{sel\_index (beyondml.tflow.layers.SelectorLayer.SelectorLayer property)@\spxentry{sel\_index}\spxextra{beyondml.tflow.layers.SelectorLayer.SelectorLayer property}|hyperpage}{32}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseConv2D@\spxentry{beyondml.tflow.layers.SparseConv2D}|hyperpage}{33}
+\indexentry{beyondml.tflow.layers.SparseConv2D@\spxentry{beyondml.tflow.layers.SparseConv2D}!module@\spxentry{module}|hyperpage}{33}
+\indexentry{SparseConv2D (class in beyondml.tflow.layers.SparseConv2D)@\spxentry{SparseConv2D}\spxextra{class in beyondml.tflow.layers.SparseConv2D}|hyperpage}{33}
+\indexentry{build() (beyondml.tflow.layers.SparseConv2D.SparseConv2D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}|hyperpage}{33}
+\indexentry{call() (beyondml.tflow.layers.SparseConv2D.SparseConv2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}|hyperpage}{33}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseConv2D.SparseConv2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D class method}|hyperpage}{33}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseConv2D.SparseConv2D class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D class method}|hyperpage}{33}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseConv2D.SparseConv2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseConv2D.SparseConv2D method}|hyperpage}{33}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseConv3D@\spxentry{beyondml.tflow.layers.SparseConv3D}|hyperpage}{34}
+\indexentry{beyondml.tflow.layers.SparseConv3D@\spxentry{beyondml.tflow.layers.SparseConv3D}!module@\spxentry{module}|hyperpage}{34}
+\indexentry{SparseConv3D (class in beyondml.tflow.layers.SparseConv3D)@\spxentry{SparseConv3D}\spxextra{class in beyondml.tflow.layers.SparseConv3D}|hyperpage}{34}
+\indexentry{build() (beyondml.tflow.layers.SparseConv3D.SparseConv3D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}|hyperpage}{34}
+\indexentry{call() (beyondml.tflow.layers.SparseConv3D.SparseConv3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}|hyperpage}{34}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseConv3D.SparseConv3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D class method}|hyperpage}{34}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseConv3D.SparseConv3D class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D class method}|hyperpage}{34}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseConv3D.SparseConv3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseConv3D.SparseConv3D method}|hyperpage}{34}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseDense@\spxentry{beyondml.tflow.layers.SparseDense}|hyperpage}{35}
+\indexentry{beyondml.tflow.layers.SparseDense@\spxentry{beyondml.tflow.layers.SparseDense}!module@\spxentry{module}|hyperpage}{35}
+\indexentry{SparseDense (class in beyondml.tflow.layers.SparseDense)@\spxentry{SparseDense}\spxextra{class in beyondml.tflow.layers.SparseDense}|hyperpage}{35}
+\indexentry{build() (beyondml.tflow.layers.SparseDense.SparseDense method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}|hyperpage}{35}
+\indexentry{call() (beyondml.tflow.layers.SparseDense.SparseDense method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}|hyperpage}{35}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseDense.SparseDense class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense class method}|hyperpage}{35}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseDense.SparseDense class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense class method}|hyperpage}{35}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseDense.SparseDense method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseDense.SparseDense method}|hyperpage}{35}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseMultiConv2D@\spxentry{beyondml.tflow.layers.SparseMultiConv2D}|hyperpage}{36}
+\indexentry{beyondml.tflow.layers.SparseMultiConv2D@\spxentry{beyondml.tflow.layers.SparseMultiConv2D}!module@\spxentry{module}|hyperpage}{36}
+\indexentry{SparseMultiConv2D (class in beyondml.tflow.layers.SparseMultiConv2D)@\spxentry{SparseMultiConv2D}\spxextra{class in beyondml.tflow.layers.SparseMultiConv2D}|hyperpage}{36}
+\indexentry{build() (beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}|hyperpage}{36}
+\indexentry{call() (beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}|hyperpage}{36}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method}|hyperpage}{36}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D class method}|hyperpage}{36}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D method}|hyperpage}{36}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseMultiConv3D@\spxentry{beyondml.tflow.layers.SparseMultiConv3D}|hyperpage}{37}
+\indexentry{beyondml.tflow.layers.SparseMultiConv3D@\spxentry{beyondml.tflow.layers.SparseMultiConv3D}!module@\spxentry{module}|hyperpage}{37}
+\indexentry{SparseMultiConv3D (class in beyondml.tflow.layers.SparseMultiConv3D)@\spxentry{SparseMultiConv3D}\spxextra{class in beyondml.tflow.layers.SparseMultiConv3D}|hyperpage}{37}
+\indexentry{build() (beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}|hyperpage}{37}
+\indexentry{call() (beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}|hyperpage}{37}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method}|hyperpage}{37}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D class method}|hyperpage}{37}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D method}|hyperpage}{37}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SparseMultiDense@\spxentry{beyondml.tflow.layers.SparseMultiDense}|hyperpage}{38}
+\indexentry{beyondml.tflow.layers.SparseMultiDense@\spxentry{beyondml.tflow.layers.SparseMultiDense}!module@\spxentry{module}|hyperpage}{38}
+\indexentry{SparseMultiDense (class in beyondml.tflow.layers.SparseMultiDense)@\spxentry{SparseMultiDense}\spxextra{class in beyondml.tflow.layers.SparseMultiDense}|hyperpage}{38}
+\indexentry{build() (beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method)@\spxentry{build()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}|hyperpage}{38}
+\indexentry{call() (beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}|hyperpage}{38}
+\indexentry{from\_config() (beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method}|hyperpage}{38}
+\indexentry{from\_layer() (beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method)@\spxentry{from\_layer()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense class method}|hyperpage}{38}
+\indexentry{get\_config() (beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SparseMultiDense.SparseMultiDense method}|hyperpage}{38}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers.SumLayer@\spxentry{beyondml.tflow.layers.SumLayer}|hyperpage}{39}
+\indexentry{beyondml.tflow.layers.SumLayer@\spxentry{beyondml.tflow.layers.SumLayer}!module@\spxentry{module}|hyperpage}{39}
+\indexentry{SumLayer (class in beyondml.tflow.layers.SumLayer)@\spxentry{SumLayer}\spxextra{class in beyondml.tflow.layers.SumLayer}|hyperpage}{39}
+\indexentry{call() (beyondml.tflow.layers.SumLayer.SumLayer method)@\spxentry{call()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer method}|hyperpage}{39}
+\indexentry{from\_config() (beyondml.tflow.layers.SumLayer.SumLayer class method)@\spxentry{from\_config()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer class method}|hyperpage}{39}
+\indexentry{get\_config() (beyondml.tflow.layers.SumLayer.SumLayer method)@\spxentry{get\_config()}\spxextra{beyondml.tflow.layers.SumLayer.SumLayer method}|hyperpage}{39}
+\indexentry{module@\spxentry{module}!beyondml.tflow.layers@\spxentry{beyondml.tflow.layers}|hyperpage}{40}
+\indexentry{beyondml.tflow.layers@\spxentry{beyondml.tflow.layers}!module@\spxentry{module}|hyperpage}{40}
+\indexentry{module@\spxentry{module}!beyondml.tflow.utils.transformer@\spxentry{beyondml.tflow.utils.transformer}|hyperpage}{40}
+\indexentry{beyondml.tflow.utils.transformer@\spxentry{beyondml.tflow.utils.transformer}!module@\spxentry{module}|hyperpage}{40}
+\indexentry{build\_token\_position\_embedding\_block() (in module beyondml.tflow.utils.transformer)@\spxentry{build\_token\_position\_embedding\_block()}\spxextra{in module beyondml.tflow.utils.transformer}|hyperpage}{40}
+\indexentry{build\_transformer\_block() (in module beyondml.tflow.utils.transformer)@\spxentry{build\_transformer\_block()}\spxextra{in module beyondml.tflow.utils.transformer}|hyperpage}{40}
+\indexentry{module@\spxentry{module}!beyondml.tflow.utils.utils@\spxentry{beyondml.tflow.utils.utils}|hyperpage}{41}
+\indexentry{beyondml.tflow.utils.utils@\spxentry{beyondml.tflow.utils.utils}!module@\spxentry{module}|hyperpage}{41}
+\indexentry{ActiveSparsification (class in beyondml.tflow.utils.utils)@\spxentry{ActiveSparsification}\spxextra{class in beyondml.tflow.utils.utils}|hyperpage}{41}
+\indexentry{on\_epoch\_end() (beyondml.tflow.utils.utils.ActiveSparsification method)@\spxentry{on\_epoch\_end()}\spxextra{beyondml.tflow.utils.utils.ActiveSparsification method}|hyperpage}{41}
+\indexentry{on\_train\_begin() (beyondml.tflow.utils.utils.ActiveSparsification method)@\spxentry{on\_train\_begin()}\spxextra{beyondml.tflow.utils.utils.ActiveSparsification method}|hyperpage}{41}
+\indexentry{add\_layer\_masks() (in module beyondml.tflow.utils.utils)@\spxentry{add\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{41}
+\indexentry{get\_custom\_objects() (in module beyondml.tflow.utils.utils)@\spxentry{get\_custom\_objects()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{41}
+\indexentry{get\_task\_masking\_gradients() (in module beyondml.tflow.utils.utils)@\spxentry{get\_task\_masking\_gradients()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{41}
+\indexentry{mask\_model() (in module beyondml.tflow.utils.utils)@\spxentry{mask\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{42}
+\indexentry{mask\_task\_weights() (in module beyondml.tflow.utils.utils)@\spxentry{mask\_task\_weights()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{42}
+\indexentry{quantize\_model() (in module beyondml.tflow.utils.utils)@\spxentry{quantize\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{remove\_layer\_masks() (in module beyondml.tflow.utils.utils)@\spxentry{remove\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{train\_model() (in module beyondml.tflow.utils.utils)@\spxentry{train\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{train\_model\_iteratively() (in module beyondml.tflow.utils.utils)@\spxentry{train\_model\_iteratively()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{module@\spxentry{module}!beyondml.tflow.utils@\spxentry{beyondml.tflow.utils}|hyperpage}{44}
+\indexentry{beyondml.tflow.utils@\spxentry{beyondml.tflow.utils}!module@\spxentry{module}|hyperpage}{44}
+\indexentry{module@\spxentry{module}!beyondml.tflow@\spxentry{beyondml.tflow}|hyperpage}{44}
+\indexentry{beyondml.tflow@\spxentry{beyondml.tflow}!module@\spxentry{module}|hyperpage}{44}
+\indexentry{module@\spxentry{module}!beyondml@\spxentry{beyondml}|hyperpage}{45}
+\indexentry{beyondml@\spxentry{beyondml}!module@\spxentry{module}|hyperpage}{45}

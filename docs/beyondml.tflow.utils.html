@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>beyondml.tflow.utils package &mdash; BeyondML  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="beyondml.tflow.layers package" href="beyondml.tflow.layers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> BeyondML
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">beyondml</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="beyondml.html">beyondml package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="beyondml.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="beyondml.pt.html">beyondml.pt package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="beyondml.tflow.html">beyondml.tflow package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="beyondml.html#module-beyondml">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BeyondML</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
+          <li class="breadcrumb-item"><a href="beyondml.tflow.html">beyondml.tflow package</a></li>
+      <li class="breadcrumb-item active">beyondml.tflow.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/beyondml.tflow.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="beyondml-tflow-utils-package">
+<h1>beyondml.tflow.utils package<a class="headerlink" href="#beyondml-tflow-utils-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-beyondml.tflow.utils.transformer">
+<span id="beyondml-tflow-utils-transformer-module"></span><h2>beyondml.tflow.utils.transformer module<a class="headerlink" href="#module-beyondml.tflow.utils.transformer" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.transformer.build_token_position_embedding_block">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.transformer.</span></span><span class="sig-name descname"><span class="pre">build_token_position_embedding_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vocab_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/transformer.html#build_token_position_embedding_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.transformer.build_token_position_embedding_block" title="Permalink to this definition"></a></dt>
+<dd><p>Builds a token and position embedding block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sequence_length</strong> (<em>int</em>) – The length of each sequence</p></li>
+<li><p><strong>vocab_size</strong> (<em>int</em>) – The size of the vocabulary used</p></li>
+<li><p><strong>embed_dim</strong> (<em>int</em>) – The desired embedding dimension</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>embedding_block</strong> – The embedding block, which can be used alone or
+as a layer in another model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow keras Functional model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.transformer.build_transformer_block">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.transformer.</span></span><span class="sig-name descname"><span class="pre">build_transformer_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neurons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/transformer.html#build_transformer_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.transformer.build_transformer_block" title="Permalink to this definition"></a></dt>
+<dd><p>Build a Transformer Block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_shape</strong> (<em>int</em><em> or </em><em>tuple</em><em> of </em><em>int</em>) – The input shape for the model to use</p></li>
+<li><p><strong>embed_dim</strong> (<em>int</em>) – The dimension of the embedding</p></li>
+<li><p><strong>num_heads</strong> (<em>int</em>) – The number of attention heads to use</p></li>
+<li><p><strong>neurons</strong> (<em>int</em>) – The number of hidden neurons to use in the hidden layer</p></li>
+<li><p><strong>dropout_rate</strong> (<em>float</em><em> (</em><em>default 0.1</em><em>)</em>) – Rate at which dropout is applied</p></li>
+<li><p><strong>value_dim</strong> (<em>int</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – The dimension to use for the <cite>value</cite> matrix, if provided</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformer_block</strong> – The transformer block, which can then be used alone or as
+a layer in another model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow keras Functional model</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.utils.utils">
+<span id="beyondml-tflow-utils-utils-module"></span><h2>beyondml.tflow.utils.utils module<a class="headerlink" href="#module-beyondml.tflow.utils.utils" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.ActiveSparsification">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">ActiveSparsification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">performance_cutoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">performance_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_sparsification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sparsification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparsification_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparsification_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopping_delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restore_best_weights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#ActiveSparsification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.ActiveSparsification" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Callback</span></code></p>
+<p>Keras-compatible callback object which enables active sparsification, allowing for increased sparsification as models
+train.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.ActiveSparsification.on_epoch_end">
+<span class="sig-name descname"><span class="pre">on_epoch_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#ActiveSparsification.on_epoch_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.ActiveSparsification.on_epoch_end" title="Permalink to this definition"></a></dt>
+<dd><p>Called at the end of an epoch.</p>
+<p>Subclasses should override for any actions to run. This function should
+only be called during TRAIN mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epoch</strong> – Integer, index of epoch.</p></li>
+<li><p><strong>logs</strong> – Dict, metric results for this training epoch, and for the
+validation epoch if validation is performed. Validation result
+keys are prefixed with <cite>val_</cite>. For training epoch, the values of
+the <cite>Model</cite>’s metrics are returned. Example:
+<cite>{‘loss’: 0.2, ‘accuracy’: 0.7}</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.ActiveSparsification.on_train_begin">
+<span class="sig-name descname"><span class="pre">on_train_begin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#ActiveSparsification.on_train_begin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.ActiveSparsification.on_train_begin" title="Permalink to this definition"></a></dt>
+<dd><p>Called at the beginning of training.</p>
+<p>Subclasses should override for any actions to run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logs</strong> – Dict. Currently no data is passed to this argument for this
+method but that may change in the future.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.add_layer_masks">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">add_layer_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#add_layer_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.add_layer_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a trained model from one that does not have masking weights to one that does have
+masking weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be converted</p></li>
+<li><p><strong>additional_custom_objects</strong> (<em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Additional custom layers to use</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>new_model</strong> – The converted model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Keras model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.get_custom_objects">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_custom_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#get_custom_objects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.get_custom_objects" title="Permalink to this definition"></a></dt>
+<dd><p>Return a dictionary of custom objects (layers) to use when loading models trained using this package</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.get_task_masking_gradients">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_task_masking_gradients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#get_task_masking_gradients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.get_task_masking_gradients" title="Permalink to this definition"></a></dt>
+<dd><p>Get the gradients of masking weights within a model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to retrieve the gradients of</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>This function should only be run <em>before</em> the model has been trained</dt><dd><p>or used to predict.  There is an unknown bug related to TensorFlow which
+is leading to incorrect results after initial training</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>When running this function, randomized input and output data is sent</dt><dd><p>through the model to retrieve gradients respective to each task. If
+the model is compiled using <cite>sparse_categorical_crossentropy’ loss,
+this will break this function’s functionality. As a result, please
+use `categorical_crossentropy</cite> (or even better, <cite>mse</cite>) before running this function. After
+retrieving gradients, the model can be recompiled with whatever parameters are desired.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>gradients</strong> – The gradients of the masking weights of the model</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>list of TensorFlow tensors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.mask_model">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">mask_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gradients'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#mask_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.mask_model" title="Permalink to this definition"></a></dt>
+<dd><p>Mask the multitask model for training respective using the gradients for the tasks at hand</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>keras model with MANN masking layers</em>) – The model to be masked</p></li>
+<li><p><strong>percentile</strong> (<em>int</em>) – Percentile to use in masking. Any weights less than the <cite>percentile</cite> value will be made zero</p></li>
+<li><p><strong>method</strong> (<em>str</em><em> (</em><em>default 'gradients'</em><em>)</em>) – One of either ‘gradients’ or ‘magnitude’ - the method for how to identify weights to mask
+If method is ‘gradients’, utilizes the gradients with respect to the passed x and y variables
+to identify the subnetwork to activate for each task
+If method is ‘magnitude’, uses the magnitude of the weights to identify the subnetwork to activate for each task</p></li>
+<li><p><strong>exclusive</strong> (<em>bool</em><em> (</em><em>default True</em><em>)</em>) – Whether to restrict previously-used weight indices for each task. If <cite>True</cite>, this identifies disjoint subsets of
+weights within the layer which perform the tasks requested.</p></li>
+<li><p><strong>x</strong> (<em>list</em><em> of </em><em>np.ndarray</em><em> or </em><em>array-like</em>) – The training data input values, ignored if “method” is ‘magnitude’</p></li>
+<li><p><strong>y</strong> (<em>list</em><em> of </em><em>np.ndarray</em><em> or </em><em>array-like</em>) – The training data output values, ignored if “method” is ‘magnitude’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.mask_task_weights">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">mask_task_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_masking_gradients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respect_previous_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#mask_task_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.mask_task_weights" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be masked</p></li>
+<li><p><strong>task_masking_gradients</strong> (<em>list</em><em> of </em><em>TensorFlow tensors</em>) – The gradients for the specific task requested</p></li>
+<li><p><strong>percentile</strong> (<em>int</em>) – The percentile to mask/prune</p></li>
+<li><p><strong>respect_previous_tasks</strong> (<em>bool</em><em> (</em><em>default True</em><em>)</em>) – Whether to respect the weights used for previous tasks and not use them
+for subsequent tasks</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>masked_model</strong> – The masked model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Keras model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.quantize_model">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">quantize_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float16'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#quantize_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.quantize_model" title="Permalink to this definition"></a></dt>
+<dd><p>Apply model quantization</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>TensorFlow Keras Model</em>) – The model to quantize</p></li>
+<li><p><strong>dtype</strong> (<em>str</em><em> or </em><em>TensorFlow datatype</em><em> (</em><em>default 'float16'</em><em>)</em>) – The datatype to quantize to</p></li>
+<li><p><strong>additional_custom_objects</strong> (<em>None</em><em> or </em><em>dict</em><em> (</em><em>default None</em><em>)</em>) – Additional custom  objects to use to instantiate the model</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>new_model</strong> – The quantized model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Keras Model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.remove_layer_masks">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">remove_layer_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#remove_layer_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.remove_layer_masks" title="Permalink to this definition"></a></dt>
+<dd><p>Convert a trained model from using Masking layers to using non-masking layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be converted</p></li>
+<li><p><strong>additional_custom_objects</strong> (<em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Additional custom layers to use</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>new_model</strong> – The converted model</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>TensorFlow Keras model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.train_model">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_sparsification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_sparsification</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparsification_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparsification_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.train_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beyondml.tflow.utils.utils.train_model_iteratively">
+<span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">train_model_iteratively</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_gradients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">validation_split</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">losses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'adam'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_pruning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pruning_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#train_model_iteratively"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.train_model_iteratively" title="Permalink to this definition"></a></dt>
+<dd><p>Train a model iteratively on each task, first obtaining
+baseline performance on each task and then iteratively
+training and pruning each task as far back as possible while
+maintaining acceptable performance on each task</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be trained</p></li>
+<li><p><strong>task_gradients</strong> (<em>list</em><em> of </em><em>TensorFlow tensors</em>) – Gradients for each task, output from the <cite>get_task_masking_gradients</cite> function</p></li>
+<li><p><strong>train_x</strong> (<em>list</em><em> of </em><em>numpy arrays</em><em>, </em><em>TensorFlow Datasets</em><em>, or </em><em>other</em>) – data types models can train with
+The input data to use to train on</p></li>
+<li><p><strong>train_y</strong> (<em>list</em><em> of </em><em>numpy arrays</em><em>, </em><em>TensorFlow Datasets</em><em>, or </em><em>other</em>) – data types model can train with
+The output data to use to train on</p></li>
+<li><p><strong>validation_split</strong> (<em>float</em><em>, or </em><em>list</em><em> of </em><em>float</em>) – The proportion of data to use for validation</p></li>
+<li><p><strong>delta</strong> (<em>float</em>) – The tolerance between validation losses to be considered “acceptable”
+performance to continue</p></li>
+<li><p><strong>batch_size</strong> (<em>int</em>) – The batch size to train with</p></li>
+<li><p><strong>losses</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>Keras loss function</em>) – The loss or losses to use when training</p></li>
+<li><p><strong>optimizer</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>Keras optimizer</em>) – The optimizer to use when training (default ‘adam’)</p></li>
+<li><p><strong>starting_pruning</strong> (<em>int</em><em> or </em><em>list</em><em> of </em><em>int</em><em> (</em><em>default 0</em><em>)</em>) – The starting pruning rate to use for each task</p></li>
+<li><p><strong>pruning_rate</strong> (<em>int</em><em> or </em><em>list</em><em> of </em><em>int</em><em> (</em><em>default</em><em> [</em><em>10</em><em>, </em><em>5</em><em>, </em><em>2</em><em>, </em><em>1</em><em>]</em><em>)</em>) – The pruning rate to use</p></li>
+<li><p><strong>patience</strong> (<em>int</em><em> (</em><em>default 5</em><em>)</em>) – The patience for number of epochs to wait for performance to improve sufficiently</p></li>
+<li><p><strong>max_epochs</strong> (<em>int</em><em> or </em><em>list</em><em> of </em><em>int</em><em> (</em><em>default 100</em><em>)</em>) – The maximum number of epochs to use for training each task</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-beyondml.tflow.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-beyondml.tflow.utils" title="Permalink to this heading"></a></h2>
+<p>Some utilities to use when building, loading, and training MANN models</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="beyondml.tflow.layers.html" class="btn btn-neutral float-left" title="beyondml.tflow.layers package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, BeyondML Labs.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

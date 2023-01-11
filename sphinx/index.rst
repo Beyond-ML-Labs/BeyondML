@@ -17,6 +17,8 @@ compatible with `TensorFlow <https://tensorflow.org>`_ and `PyTorch <https://pyt
 This package contains custom layers and utilities to facilitate the training and optimization of models
 using the Reduction of Sub-Network Neuroplasticity (RSN2) training procedure developed by `AI Squared, Inc <https://squared.ai>`_.
 
+:download:`View this Documentation in PDF Format <./_build/latex/beyondml.pdf>`
+
 Installation
 ************
 

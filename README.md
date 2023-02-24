@@ -2,7 +2,7 @@
 
 # BeyondML (formerly MANN)
 
-[![Documentation](https://badgen.net/badge/icon/Documentation?icon=chrome&label)](https://beyond-ml-labs.github.io/BeyondML/beyondml.html)
+[![Documentation](https://badgen.net/badge/icon/Documentation?icon=chrome&label)](https://beyond-ml-labs.github.io/BeyondML/index.html)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/6190/badge)](https://bestpractices.coreinfrastructure.org/projects/6190)
 [![PyPI version](https://badge.fury.io/py/beyondml.svg)](https://badge.fury.io/py/beyondml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)

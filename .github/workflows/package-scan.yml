@@ -1,0 +1,36 @@
+# This workflow will install Python dependencies and scan package and all dependencies with pip-audit
+
+
+name: Package scan
+
+on:
+  push:
+    branches: [ "main", "staging" ]
+  pull_request:
+    branches: [ "main", "staging" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip setuptools
+        python -m pip install flake8 pytest pip-audit
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f additional_requirements.txt ]; then pip install -r additional_requirements.txt; fi
+        python -m pip install ./
+    - name: Audit
+      run: |
+        pip-audit

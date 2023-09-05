@@ -455,9 +455,10 @@ def _replace_config(config):
             new_config['layers'][i]['class_name'] = layer_mapping[
                 new_config['layers'][i]['class_name']
             ]
-            new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
-                orig_class_name, layer_mapping[orig_class_name]
-            )
+            if new_config['layers'][i].get('module'):
+                new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
+                    orig_class_name, layer_mapping[orig_class_name]
+                )
         elif new_config['layers'][i]['class_name'] in model_classes:
             new_config['layers'][i]['config'] = _replace_config(
                 new_config['layers'][i]['config'])
@@ -486,9 +487,10 @@ def _create_masking_config(config):
             new_config['layers'][i]['class_name'] = layer_mapping[
                 new_config['layers'][i]['class_name']
             ]
-            new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
-                orig_class_name, layer_mapping[orig_class_name]
-            )
+            if new_config['layers'][i].get('module'):
+                new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
+                    orig_class_name, layer_mapping[orig_class_name]
+                )
             new_config['layers'][i]['config']['mask_initializer'] = tf.keras.initializers.serialize(
                 tf.keras.initializers.get('ones')
             )

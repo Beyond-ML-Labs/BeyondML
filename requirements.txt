@@ -1,2 +1,2 @@
-tensorflow>=2.4
+tensorflow<2.13
 torch

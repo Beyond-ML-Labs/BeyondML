@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-tensorflow<2.13
-=======
 tensorflow>=2.4
->>>>>>> parent of 9d6a358 (adding tensorrt to requirements)
 torch

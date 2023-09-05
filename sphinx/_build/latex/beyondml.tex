@@ -10,6 +10,8 @@
 %% let collapsible pdf bookmarks panel have high depth per default
 \PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
+\PassOptionsToPackage{booktabs}{sphinx}
+\PassOptionsToPackage{colorrows}{sphinx}
 
 \PassOptionsToPackage{warn}{textcomp}
 \usepackage[utf8]{inputenc}
@@ -62,7 +64,7 @@
 
 
 \title{BeyondML}
-\date{Jan 11, 2023}
+\date{Sep 05, 2023}
 \release{}
 \author{BeyondML Labs}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -151,7 +153,7 @@ pip\PYG{+w}{ }install\PYG{+w}{ }git+https://github.com/beyond\PYGZhy{}ml\PYGZhy{
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Conv2D.Conv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Conv2D.}}\sphinxbfcode{\sphinxupquote{Conv2D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Conv2D.}}\sphinxbfcode{\sphinxupquote{Conv2D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -163,7 +165,7 @@ Convolutional 2D layer initialized directly with weights, rather than with hyper
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Conv2D.Conv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -195,7 +197,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Conv3D.Conv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Conv3D.}}\sphinxbfcode{\sphinxupquote{Conv3D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Conv3D.}}\sphinxbfcode{\sphinxupquote{Conv3D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -207,7 +209,7 @@ Convolutional 3D layer initialized directly with weights, rather than with hyper
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Conv3D.Conv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -239,7 +241,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Dense.Dense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Dense.}}\sphinxbfcode{\sphinxupquote{Dense}}}{\emph{\DUrole{n}{weight}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.Dense.}}\sphinxbfcode{\sphinxupquote{Dense}}}{\sphinxparam{\DUrole{n,n}{weight}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -251,7 +253,7 @@ Fully\sphinxhyphen{}connected layer initialized directly with weights, rather th
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.Dense.Dense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -283,7 +285,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.FilterLayer.FilterLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.FilterLayer.}}\sphinxbfcode{\sphinxupquote{FilterLayer}}}{\emph{\DUrole{n}{is\_on}\DUrole{o}{=}\DUrole{default_value}{True}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.FilterLayer.}}\sphinxbfcode{\sphinxupquote{FilterLayer}}}{\sphinxparam{\DUrole{n,n}{is\_on}\DUrole{o,o}{=}\DUrole{default_value}{True}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -295,7 +297,7 @@ Layer which filters input data, either returning values or all zeros depending o
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.FilterLayer.FilterLayer.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -321,7 +323,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.FilterLayer.FilterLayer.is_on}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{is\_on}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{is\_on}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -360,7 +362,7 @@ Turn on the layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MaskedConv2D}}}{\emph{\DUrole{n}{in\_channels}}, \emph{\DUrole{n}{out\_channels}}, \emph{\DUrole{n}{kernel\_size}\DUrole{o}{=}\DUrole{default_value}{3}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MaskedConv2D}}}{\sphinxparam{\DUrole{n,n}{in\_channels}}, \sphinxparam{\DUrole{n,n}{out\_channels}}, \sphinxparam{\DUrole{n,n}{kernel\_size}\DUrole{o,o}{=}\DUrole{default_value}{3}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -372,7 +374,7 @@ Masked 2D Convolutional layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -398,7 +400,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D.in_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -407,7 +409,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -416,7 +418,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D.out_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -425,7 +427,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv2D.MaskedConv2D.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s mask
@@ -453,7 +455,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MaskedConv3D}}}{\emph{\DUrole{n}{in\_channels}}, \emph{\DUrole{n}{out\_channels}}, \emph{\DUrole{n}{kernel\_size}\DUrole{o}{=}\DUrole{default_value}{3}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MaskedConv3D}}}{\sphinxparam{\DUrole{n,n}{in\_channels}}, \sphinxparam{\DUrole{n,n}{out\_channels}}, \sphinxparam{\DUrole{n,n}{kernel\_size}\DUrole{o,o}{=}\DUrole{default_value}{3}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -465,7 +467,7 @@ Masked 3D Convolutional layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -491,7 +493,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D.in_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -500,7 +502,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -509,7 +511,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D.out_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -518,7 +520,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedConv3D.MaskedConv3D.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s masks
@@ -546,7 +548,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedDense.MaskedDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedDense.}}\sphinxbfcode{\sphinxupquote{MaskedDense}}}{\emph{\DUrole{n}{in\_features}}, \emph{\DUrole{n}{out\_features}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedDense.}}\sphinxbfcode{\sphinxupquote{MaskedDense}}}{\sphinxparam{\DUrole{n,n}{in\_features}}, \sphinxparam{\DUrole{n,n}{out\_features}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -558,7 +560,7 @@ Masked fully\sphinxhyphen{}connected layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedDense.MaskedDense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -584,7 +586,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedDense.MaskedDense.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s mask
@@ -612,7 +614,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedMultiHeadAttention.}}\sphinxbfcode{\sphinxupquote{MaskedMultiHeadAttention}}}{\emph{\DUrole{n}{embed\_dim}}, \emph{\DUrole{n}{num\_heads}}, \emph{\DUrole{n}{dropout}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{batch\_first}\DUrole{o}{=}\DUrole{default_value}{False}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedMultiHeadAttention.}}\sphinxbfcode{\sphinxupquote{MaskedMultiHeadAttention}}}{\sphinxparam{\DUrole{n,n}{embed\_dim}}, \sphinxparam{\DUrole{n,n}{num\_heads}}, \sphinxparam{\DUrole{n,n}{dropout}\DUrole{o,o}{=}\DUrole{default_value}{0}}, \sphinxparam{\DUrole{n,n}{batch\_first}\DUrole{o,o}{=}\DUrole{default_value}{False}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -624,7 +626,7 @@ Masked Multi\sphinxhyphen{}Headed Attention Layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{query}}, \emph{\DUrole{n}{key}}, \emph{\DUrole{n}{value}}, \emph{\DUrole{n}{key\_padding\_mask}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{need\_weights}\DUrole{o}{=}\DUrole{default_value}{True}}, \emph{\DUrole{n}{attn\_mask}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{average\_attn\_weights}\DUrole{o}{=}\DUrole{default_value}{True}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{query}}, \sphinxparam{\DUrole{n,n}{key}}, \sphinxparam{\DUrole{n,n}{value}}, \sphinxparam{\DUrole{n,n}{key\_padding\_mask}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{need\_weights}\DUrole{o,o}{=}\DUrole{default_value}{True}}, \sphinxparam{\DUrole{n,n}{attn\_mask}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{average\_attn\_weights}\DUrole{o,o}{=}\DUrole{default_value}{True}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -669,7 +671,7 @@ Call the layer on input data
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedMultiHeadAttention.MaskedMultiHeadAttention.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s mask
@@ -697,7 +699,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedTransformerDecoderLayer.}}\sphinxbfcode{\sphinxupquote{MaskedTransformerDecoderLayer}}}{\emph{d\_model: int, nhead: int, dim\_feedforward: int = 2048, dropout: float = 0.1, activation: \textasciitilde{}typing.Union{[}str, \textasciitilde{}typing.Callable{[}{[}\textasciitilde{}torch.Tensor{]}, \textasciitilde{}torch.Tensor{]}{]} = \textless{}function relu\textgreater{}, layer\_norm\_eps: float = 1e\sphinxhyphen{}05, batch\_first: bool = False, norm\_first: bool = False, device=None, dtype=None}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedTransformerDecoderLayer.}}\sphinxbfcode{\sphinxupquote{MaskedTransformerDecoderLayer}}}{\sphinxparam{d\_model: int, nhead: int, dim\_feedforward: int = 2048, dropout: float = 0.1, activation: str | \textasciitilde{}typing.Callable{[}{[}\textasciitilde{}torch.Tensor{]}, \textasciitilde{}torch.Tensor{]} = \textless{}function relu\textgreater{}, layer\_norm\_eps: float = 1e\sphinxhyphen{}05, batch\_first: bool = False, norm\_first: bool = False, device=None, dtype=None}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -740,7 +742,7 @@ Default: \sphinxcode{\sphinxupquote{False}} (after).
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{tgt}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Tensor}}, \emph{\DUrole{n}{memory}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Tensor}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{tgt}\DUrole{p,p}{:}\DUrole{w,w}{  }\DUrole{n,n}{Tensor}}, \sphinxparam{\DUrole{n,n}{memory}\DUrole{p,p}{:}\DUrole{w,w}{  }\DUrole{n,n}{Tensor}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Pass the inputs (and mask) through the decoder layer.
@@ -760,7 +762,7 @@ see the docs in Pytorch Transformer class.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerDecoderLayer.MaskedTransformerDecoderLayer.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -775,7 +777,7 @@ see the docs in Pytorch Transformer class.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedTransformerEncoderLayer.}}\sphinxbfcode{\sphinxupquote{MaskedTransformerEncoderLayer}}}{\emph{d\_model: int, nhead: int, dim\_feedforward: int = 2048, dropout: float = 0.1, activation: \textasciitilde{}typing.Union{[}str, \textasciitilde{}typing.Callable{[}{[}\textasciitilde{}torch.Tensor{]}, \textasciitilde{}torch.Tensor{]}{]} = \textless{}function relu\textgreater{}, layer\_norm\_eps: float = 1e\sphinxhyphen{}05, batch\_first: bool = False, norm\_first: bool = False, device=None, dtype=None}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MaskedTransformerEncoderLayer.}}\sphinxbfcode{\sphinxupquote{MaskedTransformerEncoderLayer}}}{\sphinxparam{d\_model: int, nhead: int, dim\_feedforward: int = 2048, dropout: float = 0.1, activation: str | \textasciitilde{}typing.Callable{[}{[}\textasciitilde{}torch.Tensor{]}, \textasciitilde{}torch.Tensor{]} = \textless{}function relu\textgreater{}, layer\_norm\_eps: float = 1e\sphinxhyphen{}05, batch\_first: bool = False, norm\_first: bool = False, device=None, dtype=None}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -816,7 +818,7 @@ operations, respectivaly. Otherwise it’s done after. Default: \sphinxcode{\sph
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{src}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Tensor}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{src}\DUrole{p,p}{:}\DUrole{w,w}{  }\DUrole{n,n}{Tensor}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Pass the input through the encoder layer.
@@ -829,7 +831,7 @@ Pass the input through the encoder layer.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MaskedTransformerEncoderLayer.MaskedTransformerEncoderLayer.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -844,7 +846,7 @@ Pass the input through the encoder layer.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiConv2D.MultiConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiConv2D.}}\sphinxbfcode{\sphinxupquote{MultiConv2D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiConv2D.}}\sphinxbfcode{\sphinxupquote{MultiConv2D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -856,7 +858,7 @@ Multi\sphinxhyphen{} 2D Convolutional layer initialized with weights rather than
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiConv2D.MultiConv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -888,7 +890,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiConv3D.MultiConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiConv3D.}}\sphinxbfcode{\sphinxupquote{MultiConv3D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiConv3D.}}\sphinxbfcode{\sphinxupquote{MultiConv3D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -900,7 +902,7 @@ Multitask 3D Convolutional layer initialized with weights rather than with hyper
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiConv3D.MultiConv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -932,7 +934,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiDense.MultiDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiDense.}}\sphinxbfcode{\sphinxupquote{MultiDense}}}{\emph{\DUrole{n}{weight}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiDense.}}\sphinxbfcode{\sphinxupquote{MultiDense}}}{\sphinxparam{\DUrole{n,n}{weight}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -944,7 +946,7 @@ Multi\sphinxhyphen{}Fully\sphinxhyphen{}Connected layer initialized with weights
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiDense.MultiDense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -976,7 +978,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv2D}}}{\emph{\DUrole{n}{in\_channels}}, \emph{\DUrole{n}{out\_channels}}, \emph{\DUrole{n}{num\_tasks}}, \emph{\DUrole{n}{kernel\_size}\DUrole{o}{=}\DUrole{default_value}{3}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv2D}}}{\sphinxparam{\DUrole{n,n}{in\_channels}}, \sphinxparam{\DUrole{n,n}{out\_channels}}, \sphinxparam{\DUrole{n,n}{num\_tasks}}, \sphinxparam{\DUrole{n,n}{kernel\_size}\DUrole{o,o}{=}\DUrole{default_value}{3}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -988,7 +990,7 @@ Multi 2D Convolutional layer which supports masking and pruning
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1014,7 +1016,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.in_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1023,7 +1025,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1032,7 +1034,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.out_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1041,7 +1043,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s mask
@@ -1069,7 +1071,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv3D}}}{\emph{\DUrole{n}{in\_channels}}, \emph{\DUrole{n}{out\_channels}}, \emph{\DUrole{n}{num\_tasks}}, \emph{\DUrole{n}{kernel\_size}\DUrole{o}{=}\DUrole{default_value}{3}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv3D}}}{\sphinxparam{\DUrole{n,n}{in\_channels}}, \sphinxparam{\DUrole{n,n}{out\_channels}}, \sphinxparam{\DUrole{n,n}{num\_tasks}}, \sphinxparam{\DUrole{n,n}{kernel\_size}\DUrole{o,o}{=}\DUrole{default_value}{3}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1081,7 +1083,7 @@ Masked Multitask 3D Convolutional layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1107,7 +1109,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.in_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{in\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1116,7 +1118,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1125,7 +1127,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.out_channels}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{out\_channels}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1134,7 +1136,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s masks
@@ -1162,7 +1164,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedDense.}}\sphinxbfcode{\sphinxupquote{MultiMaskedDense}}}{\emph{\DUrole{n}{in\_features}}, \emph{\DUrole{n}{out\_features}}, \emph{\DUrole{n}{num\_tasks}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaskedDense.}}\sphinxbfcode{\sphinxupquote{MultiMaskedDense}}}{\sphinxparam{\DUrole{n,n}{in\_features}}, \sphinxparam{\DUrole{n,n}{out\_features}}, \sphinxparam{\DUrole{n,n}{num\_tasks}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1174,7 +1176,7 @@ Multi\sphinxhyphen{}Fully\sphinxhyphen{}Connected layer which supports masking a
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1200,7 +1202,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense.prune}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{prune}}}{\sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune the layer by updating the layer’s mask
@@ -1228,7 +1230,7 @@ Acts on the layer in place
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaxPool2D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool2D}}}{\emph{\DUrole{n}{kernel\_size}}, \emph{\DUrole{n}{stride}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{dilation}\DUrole{o}{=}\DUrole{default_value}{1}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaxPool2D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool2D}}}{\sphinxparam{\DUrole{n,n}{kernel\_size}}, \sphinxparam{\DUrole{n,n}{stride}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{0}}, \sphinxparam{\DUrole{n,n}{dilation}\DUrole{o,o}{=}\DUrole{default_value}{1}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1240,7 +1242,7 @@ Multitask implementation of 2\sphinxhyphen{}dimensional Max Pooling layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaxPool2D.MultiMaxPool2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1272,7 +1274,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaxPool3D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool3D}}}{\emph{\DUrole{n}{kernel\_size}}, \emph{\DUrole{n}{stride}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{dilation}\DUrole{o}{=}\DUrole{default_value}{1}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultiMaxPool3D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool3D}}}{\sphinxparam{\DUrole{n,n}{kernel\_size}}, \sphinxparam{\DUrole{n,n}{stride}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{0}}, \sphinxparam{\DUrole{n,n}{dilation}\DUrole{o,o}{=}\DUrole{default_value}{1}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1284,7 +1286,7 @@ Multitask implementation of 2\sphinxhyphen{}dimensional Max Pooling layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultiMaxPool3D.MultiMaxPool3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1316,7 +1318,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultitaskNormalization.}}\sphinxbfcode{\sphinxupquote{MultitaskNormalization}}}{\emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.MultitaskNormalization.}}\sphinxbfcode{\sphinxupquote{MultitaskNormalization}}}{\sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1328,7 +1330,7 @@ Layer which normalizes a set of inputs to sum to 1
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.MultitaskNormalization.MultitaskNormalization.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1360,7 +1362,7 @@ torch.Tensor or list of Tensors
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SelectorLayer.SelectorLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SelectorLayer.}}\sphinxbfcode{\sphinxupquote{SelectorLayer}}}{\emph{\DUrole{n}{sel\_index}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SelectorLayer.}}\sphinxbfcode{\sphinxupquote{SelectorLayer}}}{\sphinxparam{\DUrole{n,n}{sel\_index}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1372,7 +1374,7 @@ Layer which selects an individual input based on index and only returns that one
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SelectorLayer.SelectorLayer.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1398,7 +1400,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SelectorLayer.SelectorLayer.sel_index}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{sel\_index}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{sel\_index}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -1413,7 +1415,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseConv2D.SparseConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseConv2D.}}\sphinxbfcode{\sphinxupquote{SparseConv2D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseConv2D.}}\sphinxbfcode{\sphinxupquote{SparseConv2D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1426,7 +1428,7 @@ trained, pruned layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseConv2D.SparseConv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1458,7 +1460,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseConv3D.SparseConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseConv3D.}}\sphinxbfcode{\sphinxupquote{SparseConv3D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseConv3D.}}\sphinxbfcode{\sphinxupquote{SparseConv3D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1471,7 +1473,7 @@ trained, pruned layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseConv3D.SparseConv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1503,7 +1505,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseDense.SparseDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseDense.}}\sphinxbfcode{\sphinxupquote{SparseDense}}}{\emph{\DUrole{n}{weight}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseDense.}}\sphinxbfcode{\sphinxupquote{SparseDense}}}{\sphinxparam{\DUrole{n,n}{weight}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1515,7 +1517,7 @@ Sparse implementation of a fully\sphinxhyphen{}connected layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseDense.SparseDense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1547,7 +1549,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiConv2D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv2D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiConv2D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv2D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1559,7 +1561,7 @@ Sparse implementation of a Multi 2D Convolutional layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiConv2D.SparseMultiConv2D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1591,7 +1593,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiConv3D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv3D}}}{\emph{\DUrole{n}{kernel}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{padding}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \emph{\DUrole{n}{strides}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiConv3D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv3D}}}{\sphinxparam{\DUrole{n,n}{kernel}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{padding}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}same\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{strides}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1604,7 +1606,7 @@ trained, pruned layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiConv3D.SparseMultiConv3D.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1636,7 +1638,7 @@ torch.Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiDense.SparseMultiDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiDense.}}\sphinxbfcode{\sphinxupquote{SparseMultiDense}}}{\emph{\DUrole{n}{weight}}, \emph{\DUrole{n}{bias}}, \emph{\DUrole{n}{device}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.pt.layers.SparseMultiDense.}}\sphinxbfcode{\sphinxupquote{SparseMultiDense}}}{\sphinxparam{\DUrole{n,n}{weight}}, \sphinxparam{\DUrole{n,n}{bias}}, \sphinxparam{\DUrole{n,n}{device}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Module}}
@@ -1648,7 +1650,7 @@ Sparse implementation of the Multi\sphinxhyphen{}Fully\sphinxhyphen{}Connected l
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.layers:beyondml.pt.layers.SparseMultiDense.SparseMultiDense.forward}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{forward}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Call the layer on input data
@@ -1694,7 +1696,7 @@ Layers compatible with PyTorch models
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.pt.utils:beyondml.pt.utils.utils.prune_model}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.pt.utils.utils.}}\sphinxbfcode{\sphinxupquote{prune\_model}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{percentile}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.pt.utils.utils.}}\sphinxbfcode{\sphinxupquote{prune\_model}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{percentile}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Prune a compatible model
@@ -1805,7 +1807,7 @@ utilizing each of the \sphinxtitleref{.prune()} methods of the layers provided.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.FilterLayer.FilterLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.FilterLayer.}}\sphinxbfcode{\sphinxupquote{FilterLayer}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.FilterLayer.}}\sphinxbfcode{\sphinxupquote{FilterLayer}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -1838,7 +1840,7 @@ Example:
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.FilterLayer.FilterLayer.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -1864,7 +1866,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.FilterLayer.FilterLayer.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -1957,7 +1959,7 @@ Turn the layer \sphinxtitleref{on} so inputs are returned unchanged as outputs
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MaskedConv2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MaskedConv2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -1973,7 +1975,7 @@ This layer implements masking consistent with the BeyondML API to support develo
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -1986,7 +1988,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2012,7 +2014,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2075,7 +2077,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2084,7 +2086,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Set the masks for the layer
@@ -2108,7 +2110,7 @@ Set the masks for the layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MaskedConv3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MaskedConv3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2125,7 +2127,7 @@ developing sparse models
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2138,7 +2140,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2164,7 +2166,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2227,7 +2229,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2236,7 +2238,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Set the masks for the layer
@@ -2260,7 +2262,7 @@ Set the masks for the layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedDense.MaskedDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedDense.}}\sphinxbfcode{\sphinxupquote{MaskedDense}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MaskedDense.}}\sphinxbfcode{\sphinxupquote{MaskedDense}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2276,7 +2278,7 @@ This layer implements masking consistent with the BeyondML API to support develo
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedDense.MaskedDense.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2289,7 +2291,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedDense.MaskedDense.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2315,7 +2317,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedDense.MaskedDense.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2378,7 +2380,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MaskedDense.MaskedDense.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Set the masks for the layer
@@ -2402,7 +2404,7 @@ Set the masks for the layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv2D.MultiConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiConv2D.}}\sphinxbfcode{\sphinxupquote{MultiConv2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiConv2D.}}\sphinxbfcode{\sphinxupquote{MultiConv2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2419,7 +2421,7 @@ layers be used during training and then those layers be converted to this layer 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv2D.MultiConv2D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2432,7 +2434,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv2D.MultiConv2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2458,7 +2460,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv2D.MultiConv2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2521,7 +2523,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv2D.MultiConv2D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2536,7 +2538,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv3D.MultiConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiConv3D.}}\sphinxbfcode{\sphinxupquote{MultiConv3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiConv3D.}}\sphinxbfcode{\sphinxupquote{MultiConv3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2553,7 +2555,7 @@ layers be used during training and then those layers be converted to this layer 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv3D.MultiConv3D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2566,7 +2568,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv3D.MultiConv3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2592,7 +2594,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv3D.MultiConv3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2655,7 +2657,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiConv3D.MultiConv3D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2670,7 +2672,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiDense.MultiDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiDense.}}\sphinxbfcode{\sphinxupquote{MultiDense}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiDense.}}\sphinxbfcode{\sphinxupquote{MultiDense}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2687,7 +2689,7 @@ that MultiMaskedDense layers be used during training and then those layers be co
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiDense.MultiDense.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2700,7 +2702,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiDense.MultiDense.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2726,7 +2728,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiDense.MultiDense.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2795,7 +2797,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedConv2D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2809,7 +2811,7 @@ with the BeyondML API to support developing sparse multitask models.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2822,7 +2824,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2848,7 +2850,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -2911,7 +2913,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2920,7 +2922,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -2935,7 +2937,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedConv3D.}}\sphinxbfcode{\sphinxupquote{MultiMaskedConv3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -2949,7 +2951,7 @@ consistent with the BeyondML API to support developing sparse multitask models.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -2962,7 +2964,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -2988,7 +2990,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3051,7 +3053,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.kernel_size}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{kernel\_size}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -3060,7 +3062,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -3075,7 +3077,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedDense.}}\sphinxbfcode{\sphinxupquote{MultiMaskedDense}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaskedDense.}}\sphinxbfcode{\sphinxupquote{MultiMaskedDense}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3089,7 +3091,7 @@ to support developing sparse multitask models.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -3102,7 +3104,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3128,7 +3130,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3191,7 +3193,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.set_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\emph{\DUrole{n}{new\_masks}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{set\_masks}}}{\sphinxparam{\DUrole{n,n}{new\_masks}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Set the masks for the layer
@@ -3215,7 +3217,7 @@ Set the masks for the layer
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaxPool2D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaxPool2D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3228,7 +3230,7 @@ across multiple inputs for developing multitask models
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3254,7 +3256,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3323,7 +3325,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaxPool3D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultiMaxPool3D.}}\sphinxbfcode{\sphinxupquote{MultiMaxPool3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3336,7 +3338,7 @@ algorithm across multiple inputs for developing multitask models
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3362,7 +3364,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3431,7 +3433,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultitaskNormalization.}}\sphinxbfcode{\sphinxupquote{MultitaskNormalization}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.MultitaskNormalization.}}\sphinxbfcode{\sphinxupquote{MultitaskNormalization}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3443,10 +3445,10 @@ Multitask layer which normalizes all inputs to sum to 1
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Creates the variables of the layer (optional, for subclass implementers).
+Creates the variables of the layer (for subclass implementers).
 
 \sphinxAtStartPar
 This is a method that implementers of subclasses of \sphinxtitleref{Layer} or \sphinxtitleref{Model}
@@ -3473,7 +3475,7 @@ This is typically used to create the weights of \sphinxtitleref{Layer} subclasse
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3499,7 +3501,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3568,7 +3570,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SelectorLayer.SelectorLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SelectorLayer.}}\sphinxbfcode{\sphinxupquote{SelectorLayer}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SelectorLayer.}}\sphinxbfcode{\sphinxupquote{SelectorLayer}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3597,7 +3599,7 @@ Example:
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SelectorLayer.SelectorLayer.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3623,7 +3625,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SelectorLayer.SelectorLayer.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3686,7 +3688,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SelectorLayer.SelectorLayer.sel_index}}
 \pysigstartsignatures
-\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{sel\_index}}}
+\pysigline{\sphinxbfcode{\sphinxupquote{property\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{sel\_index}}}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -3701,7 +3703,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv2D.SparseConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseConv2D.}}\sphinxbfcode{\sphinxupquote{SparseConv2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseConv2D.}}\sphinxbfcode{\sphinxupquote{SparseConv2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3714,7 +3716,7 @@ must be saved and loaded via pickle
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv2D.SparseConv2D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -3727,7 +3729,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv2D.SparseConv2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3753,7 +3755,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3782,7 +3784,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv2D.SparseConv2D.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -3834,7 +3836,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv3D.SparseConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseConv3D.}}\sphinxbfcode{\sphinxupquote{SparseConv3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseConv3D.}}\sphinxbfcode{\sphinxupquote{SparseConv3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3847,7 +3849,7 @@ must be saved and loaded via pickle
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv3D.SparseConv3D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -3860,7 +3862,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv3D.SparseConv3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -3886,7 +3888,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -3915,7 +3917,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseConv3D.SparseConv3D.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -3967,7 +3969,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseDense.SparseDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseDense.}}\sphinxbfcode{\sphinxupquote{SparseDense}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseDense.}}\sphinxbfcode{\sphinxupquote{SparseDense}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -3979,7 +3981,7 @@ Sparse implementation of the Dense layer. If used in a model, must be saved and 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseDense.SparseDense.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -3992,7 +3994,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseDense.SparseDense.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -4018,7 +4020,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseDense.SparseDense.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -4047,7 +4049,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseDense.SparseDense.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -4099,7 +4101,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiConv2D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv2D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiConv2D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv2D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -4111,7 +4113,7 @@ Sparse implementation of the MultiConv layer. If used in a model, must be saved 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shapes}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shapes}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -4124,7 +4126,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -4150,7 +4152,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -4179,7 +4181,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -4231,7 +4233,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiConv3D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv3D}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiConv3D.}}\sphinxbfcode{\sphinxupquote{SparseMultiConv3D}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -4243,7 +4245,7 @@ Sparse implementation of the MultiConv layer. If used in a model, must be saved 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -4256,7 +4258,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -4282,7 +4284,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -4311,7 +4313,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -4363,7 +4365,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiDense.SparseMultiDense}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiDense.}}\sphinxbfcode{\sphinxupquote{SparseMultiDense}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SparseMultiDense.}}\sphinxbfcode{\sphinxupquote{SparseMultiDense}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -4375,7 +4377,7 @@ Sparse implementation of the MultiDense layer. If used in a model, must be saved
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.build}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\emph{\DUrole{n}{input\_shape}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{build}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build the layer in preparation to be trained or called. Should not be called directly,
@@ -4388,7 +4390,7 @@ but rather is called when the layer is added to a model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -4414,7 +4416,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -4443,7 +4445,7 @@ A layer instance.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.from_layer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\emph{\DUrole{n}{layer}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_layer}}}{\sphinxparam{\DUrole{n,n}{layer}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Create a layer from an instance of another layer
@@ -4495,7 +4497,7 @@ Python dictionary.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SumLayer.SumLayer}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SumLayer.}}\sphinxbfcode{\sphinxupquote{SumLayer}}}{\emph{\DUrole{o}{*}\DUrole{n}{args}}, \emph{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.layers.SumLayer.}}\sphinxbfcode{\sphinxupquote{SumLayer}}}{\sphinxparam{\DUrole{o,o}{*}\DUrole{n,n}{args}}, \sphinxparam{\DUrole{o,o}{**}\DUrole{n,n}{kwargs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Layer}}
@@ -4523,7 +4525,7 @@ Example:
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SumLayer.SumLayer.call}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\emph{\DUrole{n}{inputs}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{call}}}{\sphinxparam{\DUrole{n,n}{inputs}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 This is where the layer’s logic lives and is called upon inputs
@@ -4549,7 +4551,7 @@ TensorFlow Tensor
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.layers:beyondml.tflow.layers.SumLayer.SumLayer.from_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\emph{\DUrole{n}{config}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{classmethod\DUrole{w,w}{  }}}\sphinxbfcode{\sphinxupquote{from\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Creates a layer from its config.
@@ -4632,7 +4634,7 @@ Custom layers to use when building MANN models
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.transformer.build_token_position_embedding_block}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.transformer.}}\sphinxbfcode{\sphinxupquote{build\_token\_position\_embedding\_block}}}{\emph{\DUrole{n}{sequence\_length}}, \emph{\DUrole{n}{vocab\_size}}, \emph{\DUrole{n}{embed\_dim}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.transformer.}}\sphinxbfcode{\sphinxupquote{build\_token\_position\_embedding\_block}}}{\sphinxparam{\DUrole{n,n}{sequence\_length}}, \sphinxparam{\DUrole{n,n}{vocab\_size}}, \sphinxparam{\DUrole{n,n}{embed\_dim}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Builds a token and position embedding block
@@ -4670,7 +4672,7 @@ TensorFlow keras Functional model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.transformer.build_transformer_block}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.transformer.}}\sphinxbfcode{\sphinxupquote{build\_transformer\_block}}}{\emph{\DUrole{n}{input\_shape}}, \emph{\DUrole{n}{embed\_dim}}, \emph{\DUrole{n}{num\_heads}}, \emph{\DUrole{n}{neurons}}, \emph{\DUrole{n}{dropout\_rate}\DUrole{o}{=}\DUrole{default_value}{0.1}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.transformer.}}\sphinxbfcode{\sphinxupquote{build\_transformer\_block}}}{\sphinxparam{\DUrole{n,n}{input\_shape}}, \sphinxparam{\DUrole{n,n}{embed\_dim}}, \sphinxparam{\DUrole{n,n}{num\_heads}}, \sphinxparam{\DUrole{n,n}{neurons}}, \sphinxparam{\DUrole{n,n}{dropout\_rate}\DUrole{o,o}{=}\DUrole{default_value}{0.1}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Build a Transformer Block
@@ -4723,7 +4725,7 @@ TensorFlow keras Functional model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.ActiveSparsification}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{ActiveSparsification}}}{\emph{\DUrole{n}{performance\_cutoff}}, \emph{\DUrole{n}{performance\_measure}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}auto\textquotesingle{}}}, \emph{\DUrole{n}{starting\_sparsification}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{max\_sparsification}\DUrole{o}{=}\DUrole{default_value}{99}}, \emph{\DUrole{n}{sparsification\_rate}\DUrole{o}{=}\DUrole{default_value}{1}}, \emph{\DUrole{n}{sparsification\_patience}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{stopping\_delta}\DUrole{o}{=}\DUrole{default_value}{0.01}}, \emph{\DUrole{n}{stopping\_patience}\DUrole{o}{=}\DUrole{default_value}{5}}, \emph{\DUrole{n}{restore\_best\_weights}\DUrole{o}{=}\DUrole{default_value}{True}}, \emph{\DUrole{n}{verbose}\DUrole{o}{=}\DUrole{default_value}{1}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w,w}{  }}}\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{ActiveSparsification}}}{\sphinxparam{\DUrole{n,n}{performance\_cutoff}}, \sphinxparam{\DUrole{n,n}{performance\_measure}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}auto\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{starting\_sparsification}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{max\_sparsification}\DUrole{o,o}{=}\DUrole{default_value}{99}}, \sphinxparam{\DUrole{n,n}{sparsification\_rate}\DUrole{o,o}{=}\DUrole{default_value}{1}}, \sphinxparam{\DUrole{n,n}{sparsification\_patience}\DUrole{o,o}{=}\DUrole{default_value}{10}}, \sphinxparam{\DUrole{n,n}{stopping\_delta}\DUrole{o,o}{=}\DUrole{default_value}{0.01}}, \sphinxparam{\DUrole{n,n}{stopping\_patience}\DUrole{o,o}{=}\DUrole{default_value}{5}}, \sphinxparam{\DUrole{n,n}{restore\_best\_weights}\DUrole{o,o}{=}\DUrole{default_value}{True}}, \sphinxparam{\DUrole{n,n}{verbose}\DUrole{o,o}{=}\DUrole{default_value}{1}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Bases: \sphinxcode{\sphinxupquote{Callback}}
@@ -4736,7 +4738,7 @@ train.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.ActiveSparsification.on_epoch_end}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_epoch\_end}}}{\emph{\DUrole{n}{epoch}}, \emph{\DUrole{n}{logs}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_epoch\_end}}}{\sphinxparam{\DUrole{n,n}{epoch}}, \sphinxparam{\DUrole{n,n}{logs}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Called at the end of an epoch.
@@ -4769,7 +4771,7 @@ the \sphinxtitleref{Model}’s metrics are returned. Example:
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.ActiveSparsification.on_train_begin}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_train\_begin}}}{\emph{\DUrole{n}{logs}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{on\_train\_begin}}}{\sphinxparam{\DUrole{n,n}{logs}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Called at the beginning of training.
@@ -4794,7 +4796,7 @@ method but that may change in the future.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.add_layer_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{add\_layer\_masks}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{additional\_custom\_objects}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{add\_layer\_masks}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{additional\_custom\_objects}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Convert a trained model from one that does not have masking weights to one that does have
@@ -4840,7 +4842,7 @@ Return a dictionary of custom objects (layers) to use when loading models traine
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.get_task_masking_gradients}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{get\_task\_masking\_gradients}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{task\_num}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{get\_task\_masking\_gradients}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{task\_num}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Get the gradients of masking weights within a model
@@ -4890,7 +4892,7 @@ list of TensorFlow tensors
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.mask_model}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{mask\_model}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{percentile}}, \emph{\DUrole{n}{method}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}gradients\textquotesingle{}}}, \emph{\DUrole{n}{exclusive}\DUrole{o}{=}\DUrole{default_value}{True}}, \emph{\DUrole{n}{x}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{y}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{mask\_model}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{percentile}}, \sphinxparam{\DUrole{n,n}{method}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}gradients\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{exclusive}\DUrole{o,o}{=}\DUrole{default_value}{True}}, \sphinxparam{\DUrole{n,n}{x}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{y}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Mask the multitask model for training respective using the gradients for the tasks at hand
@@ -4935,7 +4937,7 @@ weights within the layer which perform the tasks requested.
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.mask_task_weights}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{mask\_task\_weights}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{task\_masking\_gradients}}, \emph{\DUrole{n}{percentile}}, \emph{\DUrole{n}{respect\_previous\_tasks}\DUrole{o}{=}\DUrole{default_value}{True}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{mask\_task\_weights}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{task\_masking\_gradients}}, \sphinxparam{\DUrole{n,n}{percentile}}, \sphinxparam{\DUrole{n,n}{respect\_previous\_tasks}\DUrole{o,o}{=}\DUrole{default_value}{True}}}{}
 \pysigstopsignatures\begin{quote}\begin{description}
 \sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
@@ -4974,7 +4976,7 @@ TensorFlow Keras model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.quantize_model}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{quantize\_model}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{dtype}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}float16\textquotesingle{}}}, \emph{\DUrole{n}{additional\_custom\_objects}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{quantize\_model}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{dtype}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}float16\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{additional\_custom\_objects}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Apply model quantization
@@ -5011,7 +5013,7 @@ TensorFlow Keras Model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.remove_layer_masks}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{remove\_layer\_masks}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{additional\_custom\_objects}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{remove\_layer\_masks}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{additional\_custom\_objects}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Convert a trained model from using Masking layers to using non\sphinxhyphen{}masking layers
@@ -5044,7 +5046,7 @@ TensorFlow Keras model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.train_model}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{train\_model}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{train\_x}}, \emph{\DUrole{n}{train\_y}}, \emph{\DUrole{n}{loss}}, \emph{\DUrole{n}{metrics}}, \emph{\DUrole{n}{optimizer}}, \emph{\DUrole{n}{cutoff}}, \emph{\DUrole{n}{batch\_size}\DUrole{o}{=}\DUrole{default_value}{32}}, \emph{\DUrole{n}{epochs}\DUrole{o}{=}\DUrole{default_value}{100}}, \emph{\DUrole{n}{starting\_sparsification}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{max\_sparsification}\DUrole{o}{=}\DUrole{default_value}{99}}, \emph{\DUrole{n}{sparsification\_rate}\DUrole{o}{=}\DUrole{default_value}{5}}, \emph{\DUrole{n}{sparsification\_patience}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{stopping\_patience}\DUrole{o}{=}\DUrole{default_value}{5}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{train\_model}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{train\_x}}, \sphinxparam{\DUrole{n,n}{train\_y}}, \sphinxparam{\DUrole{n,n}{loss}}, \sphinxparam{\DUrole{n,n}{metrics}}, \sphinxparam{\DUrole{n,n}{optimizer}}, \sphinxparam{\DUrole{n,n}{cutoff}}, \sphinxparam{\DUrole{n,n}{batch\_size}\DUrole{o,o}{=}\DUrole{default_value}{32}}, \sphinxparam{\DUrole{n,n}{epochs}\DUrole{o,o}{=}\DUrole{default_value}{100}}, \sphinxparam{\DUrole{n,n}{starting\_sparsification}\DUrole{o,o}{=}\DUrole{default_value}{0}}, \sphinxparam{\DUrole{n,n}{max\_sparsification}\DUrole{o,o}{=}\DUrole{default_value}{99}}, \sphinxparam{\DUrole{n,n}{sparsification\_rate}\DUrole{o,o}{=}\DUrole{default_value}{5}}, \sphinxparam{\DUrole{n,n}{sparsification\_patience}\DUrole{o,o}{=}\DUrole{default_value}{10}}, \sphinxparam{\DUrole{n,n}{stopping\_patience}\DUrole{o,o}{=}\DUrole{default_value}{5}}}{}
 \pysigstopsignatures
 \end{fulllineitems}
 
@@ -5053,7 +5055,7 @@ TensorFlow Keras model
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.train_model_iteratively}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{train\_model\_iteratively}}}{\emph{\DUrole{n}{model}}, \emph{\DUrole{n}{task\_gradients}}, \emph{\DUrole{n}{train\_x}}, \emph{\DUrole{n}{train\_y}}, \emph{\DUrole{n}{validation\_split}}, \emph{\DUrole{n}{delta}}, \emph{\DUrole{n}{batch\_size}}, \emph{\DUrole{n}{losses}}, \emph{\DUrole{n}{optimizer}\DUrole{o}{=}\DUrole{default_value}{\textquotesingle{}adam\textquotesingle{}}}, \emph{\DUrole{n}{metrics}\DUrole{o}{=}\DUrole{default_value}{None}}, \emph{\DUrole{n}{starting\_pruning}\DUrole{o}{=}\DUrole{default_value}{0}}, \emph{\DUrole{n}{pruning\_rate}\DUrole{o}{=}\DUrole{default_value}{10}}, \emph{\DUrole{n}{patience}\DUrole{o}{=}\DUrole{default_value}{5}}, \emph{\DUrole{n}{max\_epochs}\DUrole{o}{=}\DUrole{default_value}{100}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{train\_model\_iteratively}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{task\_gradients}}, \sphinxparam{\DUrole{n,n}{train\_x}}, \sphinxparam{\DUrole{n,n}{train\_y}}, \sphinxparam{\DUrole{n,n}{validation\_split}}, \sphinxparam{\DUrole{n,n}{delta}}, \sphinxparam{\DUrole{n,n}{batch\_size}}, \sphinxparam{\DUrole{n,n}{losses}}, \sphinxparam{\DUrole{n,n}{optimizer}\DUrole{o,o}{=}\DUrole{default_value}{\textquotesingle{}adam\textquotesingle{}}}, \sphinxparam{\DUrole{n,n}{metrics}\DUrole{o,o}{=}\DUrole{default_value}{None}}, \sphinxparam{\DUrole{n,n}{starting\_pruning}\DUrole{o,o}{=}\DUrole{default_value}{0}}, \sphinxparam{\DUrole{n,n}{pruning\_rate}\DUrole{o,o}{=}\DUrole{default_value}{10}}, \sphinxparam{\DUrole{n,n}{patience}\DUrole{o,o}{=}\DUrole{default_value}{5}}, \sphinxparam{\DUrole{n,n}{max\_epochs}\DUrole{o,o}{=}\DUrole{default_value}{100}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
 Train a model iteratively on each task, first obtaining
@@ -5288,6 +5290,24 @@ Added \sphinxtitleref{MultitaskNormalization} layer to \sphinxtitleref{beyondml.
 \item {} 
 \sphinxAtStartPar
 Updated documentation to use Sphinx
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{Version 0.1.5}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Updated requirements to use newer version of TensorFlow
+
+\item {} 
+\sphinxAtStartPar
+Fixed errors with changes to types of \sphinxtitleref{input\_shape} in TensorFlow Keras layers
+
+\item {} 
+\sphinxAtStartPar
+Fixed errors resulting from model/configuration changes with TensorFlow
 
 \end{itemize}
 

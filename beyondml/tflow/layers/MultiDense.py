@@ -49,12 +49,13 @@ class MultiDense(Layer):
         Build the layer in preparation to be trained or called. Should not be called directly,
         but rather is called when the layer is added to a model
         """
-        input_shape = [
-            tuple(shape.as_list()) for shape in input_shape
-        ]
-        if len(set(input_shape)) != 1:
-            raise ValueError(
-                f'All input shapes must be equal, got {input_shape}')
+        try:
+            input_shape = [
+                tuple(shape.as_list()) for shape in input_shape
+            ]
+        except AttributeError:
+            # Sometimes, input shapes come as tuples already
+            pass
 
         simplified_shape = input_shape[0]
 

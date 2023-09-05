@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>beyondml.tflow.layers package &mdash; BeyondML  documentation</title>
@@ -11,10 +11,9 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> BeyondML
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BeyondML
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -68,7 +71,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
           <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
           <li class="breadcrumb-item"><a href="beyondml.tflow.html">beyondml.tflow package</a></li>
@@ -117,13 +120,13 @@
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/FilterLayer.html#FilterLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.FilterLayer.FilterLayer.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -138,11 +141,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -163,7 +166,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -205,13 +208,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -226,11 +229,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -251,7 +254,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -267,7 +270,7 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv2D.html#MaskedConv2D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv2D.MaskedConv2D.set_masks" title="Permalink to this definition"></a></dt>
 <dd><p>Set the masks for the layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
 </dd>
 </dl>
@@ -298,13 +301,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -319,11 +322,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -344,7 +347,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -360,7 +363,7 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedConv3D.html#MaskedConv3D.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedConv3D.MaskedConv3D.set_masks" title="Permalink to this definition"></a></dt>
 <dd><p>Set the masks for the layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
 </dd>
 </dl>
@@ -390,13 +393,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -411,11 +414,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -436,7 +439,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -447,7 +450,7 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MaskedDense.html#MaskedDense.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MaskedDense.MaskedDense.set_masks" title="Permalink to this definition"></a></dt>
 <dd><p>Set the masks for the layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
 </dd>
 </dl>
@@ -478,13 +481,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv2D.html#MultiConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv2D.MultiConv2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -499,11 +502,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -524,7 +527,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -560,13 +563,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiConv3D.html#MultiConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiConv3D.MultiConv3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -581,11 +584,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -606,7 +609,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -642,13 +645,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiDense.html#MultiDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiDense.MultiDense.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -663,11 +666,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -688,7 +691,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -718,13 +721,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv2D.html#MultiMaskedConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv2D.MultiMaskedConv2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -739,11 +742,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -764,7 +767,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -804,13 +807,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedConv3D.html#MultiMaskedConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedConv3D.MultiMaskedConv3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -825,11 +828,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -850,7 +853,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -890,13 +893,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -911,11 +914,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -936,7 +939,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -947,7 +950,7 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">set_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_masks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaskedDense.html#MultiMaskedDense.set_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaskedDense.MultiMaskedDense.set_masks" title="Permalink to this definition"></a></dt>
 <dd><p>Set the masks for the layer</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>new_masks</strong> (<em>list</em><em> of </em><em>arrays</em><em> or </em><em>array-likes</em>) – The new masks to set for the layer</p>
 </dd>
 </dl>
@@ -969,13 +972,13 @@ across multiple inputs for developing multitask models</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool2D.html#MultiMaxPool2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool2D.MultiMaxPool2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -990,11 +993,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1015,7 +1018,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1037,13 +1040,13 @@ algorithm across multiple inputs for developing multitask models</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultiMaxPool3D.html#MultiMaxPool3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultiMaxPool3D.MultiMaxPool3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1058,11 +1061,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1083,7 +1086,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1102,7 +1105,7 @@ returned dict if they want to modify it.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.build" title="Permalink to this definition"></a></dt>
-<dd><p>Creates the variables of the layer (optional, for subclass implementers).</p>
+<dd><p>Creates the variables of the layer (for subclass implementers).</p>
 <p>This is a method that implementers of subclasses of <cite>Layer</cite> or <cite>Model</cite>
 can override if they need a state-creation step in-between
 layer instantiation and layer call. It is invoked automatically before
@@ -1110,7 +1113,7 @@ the first execution of <cite>call()</cite>.</p>
 <p>This is typically used to create the weights of <cite>Layer</cite> subclasses
 (at the discretion of the subclass implementer).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>input_shape</strong> – Instance of <cite>TensorShape</cite>, or list of instances of
 <cite>TensorShape</cite> if the layer expects a list of inputs
 (one instance per input).</p>
@@ -1123,13 +1126,13 @@ the first execution of <cite>call()</cite>.</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/MultitaskNormalization.html#MultitaskNormalization.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.MultitaskNormalization.MultitaskNormalization.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1144,11 +1147,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1169,7 +1172,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1204,13 +1207,13 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SelectorLayer.html#SelectorLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SelectorLayer.SelectorLayer.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1225,11 +1228,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1250,7 +1253,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1284,13 +1287,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv2D.html#SparseConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv2D.SparseConv2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1305,11 +1308,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1336,7 +1339,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1365,13 +1368,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseConv3D.html#SparseConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseConv3D.SparseConv3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1386,11 +1389,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1417,7 +1420,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1445,13 +1448,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseDense.html#SparseDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseDense.SparseDense.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1466,11 +1469,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1497,7 +1500,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1525,13 +1528,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv2D.html#SparseMultiConv2D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv2D.SparseMultiConv2D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1546,11 +1549,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1577,7 +1580,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1605,13 +1608,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiConv3D.html#SparseMultiConv3D.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiConv3D.SparseMultiConv3D.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1626,11 +1629,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1657,7 +1660,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1685,13 +1688,13 @@ but rather is called when the layer is added to a model</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SparseMultiDense.html#SparseMultiDense.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SparseMultiDense.SparseMultiDense.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1706,11 +1709,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1737,7 +1740,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>
@@ -1771,13 +1774,13 @@ returned dict if they want to modify it.</p>
 <span class="sig-name descname"><span class="pre">call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/layers/SumLayer.html#SumLayer.call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.layers.SumLayer.SumLayer.call" title="Permalink to this definition"></a></dt>
 <dd><p>This is where the layer’s logic lives and is called upon inputs</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>inputs</strong> (<em>TensorFlow Tensor</em><em> or </em><em>Tensor-like</em>) – The inputs to the layer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>outputs</strong> – The outputs of the layer’s logic</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Tensor</p>
 </dd>
 </dl>
@@ -1792,11 +1795,11 @@ capable of instantiating the same layer from the config
 dictionary. It does not handle layer connectivity
 (handled by Network), nor weights (handled by <cite>set_weights</cite>).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> – A Python dictionary, typically the
 output of get_config.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A layer instance.</p>
 </dd>
 </dl>
@@ -1817,7 +1820,7 @@ by <cite>Network</cite> (one layer of abstraction above).</p>
 dict every time it is called. The callers should make a copy of the
 returned dict if they want to modify it.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Python dictionary.</p>
 </dd>
 </dl>

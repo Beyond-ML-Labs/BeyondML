@@ -61,10 +61,10 @@
 \indexentry{beyondml.pt.layers.MultiConv3D@\spxentry{beyondml.pt.layers.MultiConv3D}!module@\spxentry{module}|hyperpage}{11}
 \indexentry{MultiConv3D (class in beyondml.pt.layers.MultiConv3D)@\spxentry{MultiConv3D}\spxextra{class in beyondml.pt.layers.MultiConv3D}|hyperpage}{11}
 \indexentry{forward() (beyondml.pt.layers.MultiConv3D.MultiConv3D method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv3D.MultiConv3D method}|hyperpage}{11}
-\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}|hyperpage}{12}
-\indexentry{beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}!module@\spxentry{module}|hyperpage}{12}
-\indexentry{MultiDense (class in beyondml.pt.layers.MultiDense)@\spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}|hyperpage}{12}
-\indexentry{forward() (beyondml.pt.layers.MultiDense.MultiDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiDense.MultiDense method}|hyperpage}{12}
+\indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}|hyperpage}{11}
+\indexentry{beyondml.pt.layers.MultiDense@\spxentry{beyondml.pt.layers.MultiDense}!module@\spxentry{module}|hyperpage}{11}
+\indexentry{MultiDense (class in beyondml.pt.layers.MultiDense)@\spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}|hyperpage}{11}
+\indexentry{forward() (beyondml.pt.layers.MultiDense.MultiDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiDense.MultiDense method}|hyperpage}{11}
 \indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaskedConv2D@\spxentry{beyondml.pt.layers.MultiMaskedConv2D}|hyperpage}{12}
 \indexentry{beyondml.pt.layers.MultiMaskedConv2D@\spxentry{beyondml.pt.layers.MultiMaskedConv2D}!module@\spxentry{module}|hyperpage}{12}
 \indexentry{MultiMaskedConv2D (class in beyondml.pt.layers.MultiMaskedConv2D)@\spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv2D}|hyperpage}{12}
@@ -85,7 +85,7 @@
 \indexentry{beyondml.pt.layers.MultiMaskedDense@\spxentry{beyondml.pt.layers.MultiMaskedDense}!module@\spxentry{module}|hyperpage}{13}
 \indexentry{MultiMaskedDense (class in beyondml.pt.layers.MultiMaskedDense)@\spxentry{MultiMaskedDense}\spxextra{class in beyondml.pt.layers.MultiMaskedDense}|hyperpage}{13}
 \indexentry{forward() (beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{13}
-\indexentry{prune() (beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{14}
+\indexentry{prune() (beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method)@\spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}|hyperpage}{13}
 \indexentry{module@\spxentry{module}!beyondml.pt.layers.MultiMaxPool2D@\spxentry{beyondml.pt.layers.MultiMaxPool2D}|hyperpage}{14}
 \indexentry{beyondml.pt.layers.MultiMaxPool2D@\spxentry{beyondml.pt.layers.MultiMaxPool2D}!module@\spxentry{module}|hyperpage}{14}
 \indexentry{MultiMaxPool2D (class in beyondml.pt.layers.MultiMaxPool2D)@\spxentry{MultiMaxPool2D}\spxextra{class in beyondml.pt.layers.MultiMaxPool2D}|hyperpage}{14}

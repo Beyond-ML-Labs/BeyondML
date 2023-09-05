@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>beyondml.tflow.utils package &mdash; BeyondML  documentation</title>
@@ -11,10 +11,9 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -28,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> BeyondML
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BeyondML
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -67,7 +70,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="modules.html">beyondml</a></li>
           <li class="breadcrumb-item"><a href="beyondml.html">beyondml package</a></li>
           <li class="breadcrumb-item"><a href="beyondml.tflow.html">beyondml.tflow package</a></li>
@@ -93,18 +96,18 @@
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.transformer.</span></span><span class="sig-name descname"><span class="pre">build_token_position_embedding_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sequence_length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vocab_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/transformer.html#build_token_position_embedding_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.transformer.build_token_position_embedding_block" title="Permalink to this definition"></a></dt>
 <dd><p>Builds a token and position embedding block</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sequence_length</strong> (<em>int</em>) – The length of each sequence</p></li>
 <li><p><strong>vocab_size</strong> (<em>int</em>) – The size of the vocabulary used</p></li>
 <li><p><strong>embed_dim</strong> (<em>int</em>) – The desired embedding dimension</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>embedding_block</strong> – The embedding block, which can be used alone or
 as a layer in another model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow keras Functional model</p>
 </dd>
 </dl>
@@ -115,7 +118,7 @@ as a layer in another model</p>
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.transformer.</span></span><span class="sig-name descname"><span class="pre">build_transformer_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_heads</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neurons</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout_rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/transformer.html#build_transformer_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.transformer.build_transformer_block" title="Permalink to this definition"></a></dt>
 <dd><p>Build a Transformer Block</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input_shape</strong> (<em>int</em><em> or </em><em>tuple</em><em> of </em><em>int</em>) – The input shape for the model to use</p></li>
 <li><p><strong>embed_dim</strong> (<em>int</em>) – The dimension of the embedding</p></li>
@@ -125,11 +128,11 @@ as a layer in another model</p>
 <li><p><strong>value_dim</strong> (<em>int</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – The dimension to use for the <cite>value</cite> matrix, if provided</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>transformer_block</strong> – The transformer block, which can then be used alone or as
 a layer in another model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow keras Functional model</p>
 </dd>
 </dl>
@@ -151,7 +154,7 @@ train.</p>
 <p>Subclasses should override for any actions to run. This function should
 only be called during TRAIN mode.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>epoch</strong> – Integer, index of epoch.</p></li>
 <li><p><strong>logs</strong> – Dict, metric results for this training epoch, and for the
@@ -170,7 +173,7 @@ the <cite>Model</cite>’s metrics are returned. Example:
 <dd><p>Called at the beginning of training.</p>
 <p>Subclasses should override for any actions to run.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>logs</strong> – Dict. Currently no data is passed to this argument for this
 method but that may change in the future.</p>
 </dd>
@@ -185,16 +188,16 @@ method but that may change in the future.</p>
 <dd><p>Convert a trained model from one that does not have masking weights to one that does have
 masking weights</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be converted</p></li>
 <li><p><strong>additional_custom_objects</strong> (<em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Additional custom layers to use</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>new_model</strong> – The converted model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Keras model</p>
 </dd>
 </dl>
@@ -211,7 +214,7 @@ masking weights</p>
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">get_task_masking_gradients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#get_task_masking_gradients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.get_task_masking_gradients" title="Permalink to this definition"></a></dt>
 <dd><p>Get the gradients of masking weights within a model</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to retrieve the gradients of</p>
 </dd>
 </dl>
@@ -234,10 +237,10 @@ retrieving gradients, the model can be recompiled with whatever parameters are d
 </li>
 </ul>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>gradients</strong> – The gradients of the masking weights of the model</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>list of TensorFlow tensors</p>
 </dd>
 </dl>
@@ -248,7 +251,7 @@ retrieving gradients, the model can be recompiled with whatever parameters are d
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">mask_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gradients'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclusive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#mask_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.mask_model" title="Permalink to this definition"></a></dt>
 <dd><p>Mask the multitask model for training respective using the gradients for the tasks at hand</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>keras model with MANN masking layers</em>) – The model to be masked</p></li>
 <li><p><strong>percentile</strong> (<em>int</em>) – Percentile to use in masking. Any weights less than the <cite>percentile</cite> value will be made zero</p></li>
@@ -269,7 +272,7 @@ weights within the layer which perform the tasks requested.</p></li>
 <dt class="sig sig-object py" id="beyondml.tflow.utils.utils.mask_task_weights">
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">mask_task_weights</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_masking_gradients</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percentile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">respect_previous_tasks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#mask_task_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.mask_task_weights" title="Permalink to this definition"></a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be masked</p></li>
 <li><p><strong>task_masking_gradients</strong> (<em>list</em><em> of </em><em>TensorFlow tensors</em>) – The gradients for the specific task requested</p></li>
@@ -278,10 +281,10 @@ weights within the layer which perform the tasks requested.</p></li>
 for subsequent tasks</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>masked_model</strong> – The masked model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Keras model</p>
 </dd>
 </dl>
@@ -292,17 +295,17 @@ for subsequent tasks</p></li>
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">quantize_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'float16'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#quantize_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.quantize_model" title="Permalink to this definition"></a></dt>
 <dd><p>Apply model quantization</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>TensorFlow Keras Model</em>) – The model to quantize</p></li>
 <li><p><strong>dtype</strong> (<em>str</em><em> or </em><em>TensorFlow datatype</em><em> (</em><em>default 'float16'</em><em>)</em>) – The datatype to quantize to</p></li>
 <li><p><strong>additional_custom_objects</strong> (<em>None</em><em> or </em><em>dict</em><em> (</em><em>default None</em><em>)</em>) – Additional custom  objects to use to instantiate the model</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>new_model</strong> – The quantized model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Keras Model</p>
 </dd>
 </dl>
@@ -313,16 +316,16 @@ for subsequent tasks</p></li>
 <span class="sig-prename descclassname"><span class="pre">beyondml.tflow.utils.utils.</span></span><span class="sig-name descname"><span class="pre">remove_layer_masks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional_custom_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beyondml/tflow/utils/utils.html#remove_layer_masks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beyondml.tflow.utils.utils.remove_layer_masks" title="Permalink to this definition"></a></dt>
 <dd><p>Convert a trained model from using Masking layers to using non-masking layers</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be converted</p></li>
 <li><p><strong>additional_custom_objects</strong> (<em>dict</em><em> or </em><em>None</em><em> (</em><em>default None</em><em>)</em>) – Additional custom layers to use</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>new_model</strong> – The converted model</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>TensorFlow Keras model</p>
 </dd>
 </dl>
@@ -341,7 +344,7 @@ baseline performance on each task and then iteratively
 training and pruning each task as far back as possible while
 maintaining acceptable performance on each task</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>TensorFlow Keras model</em>) – The model to be trained</p></li>
 <li><p><strong>task_gradients</strong> (<em>list</em><em> of </em><em>TensorFlow tensors</em>) – Gradients for each task, output from the <cite>get_task_masking_gradients</cite> function</p></li>

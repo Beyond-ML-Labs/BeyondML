@@ -1,4 +1,4 @@
-import numpy as np
+
 import tensorflow as tf
 from tensorflow.keras.layers import Layer
 
@@ -72,12 +72,13 @@ class MultiConv2D(Layer):
         Build the layer in preparation to be trained or called. Should not be called directly,
         but rather is called when the layer is added to a model
         """
-        input_shape = [
-            tuple(shape.as_list()) for shape in input_shape
-        ]
-        if len(set(input_shape)) != 1:
-            raise ValueError(
-                f'All input shapes must be equal, got {input_shape}')
+        try:
+            input_shape = [
+                tuple(shape.as_list()) for shape in input_shape
+            ]
+        except AttributeError:
+            # Sometimes, input shapes come as tuples already
+            pass
 
         simplified_shape = input_shape[0]
 
@@ -125,7 +126,6 @@ class MultiConv2D(Layer):
             conv_outputs = [
                 conv_outputs[i] + self.b[i] for i in range(len(conv_outputs))
             ]
-            conv_outputs = np.add(conv_outputs,self.b).tolist()
         return [self.activation(output) for output in conv_outputs]
 
     def get_config(self):

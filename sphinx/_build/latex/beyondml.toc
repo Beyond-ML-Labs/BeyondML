@@ -19,7 +19,7 @@
 \contentsline {subparagraph}{beyondml.pt.layers.MaskedTransformerEncoderLayer module}{9}{subparagraph*.49}%
 \contentsline {subparagraph}{beyondml.pt.layers.MultiConv2D module}{11}{subparagraph*.53}%
 \contentsline {subparagraph}{beyondml.pt.layers.MultiConv3D module}{11}{subparagraph*.56}%
-\contentsline {subparagraph}{beyondml.pt.layers.MultiDense module}{12}{subparagraph*.59}%
+\contentsline {subparagraph}{beyondml.pt.layers.MultiDense module}{11}{subparagraph*.59}%
 \contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedConv2D module}{12}{subparagraph*.62}%
 \contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedConv3D module}{13}{subparagraph*.69}%
 \contentsline {subparagraph}{beyondml.pt.layers.MultiMaskedDense module}{13}{subparagraph*.76}%

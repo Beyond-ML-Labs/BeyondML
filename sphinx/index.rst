@@ -61,3 +61,5 @@ Changelog
    - Updated documentation to use Sphinx
 - Version 0.1.5
    - Updated requirements to use newer version of TensorFlow
+   - Fixed errors with changes to types of `input_shape` in TensorFlow Keras layers
+   - Fixed errors resulting from model/configuration changes with TensorFlow

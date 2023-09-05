@@ -10,10 +10,9 @@
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
-        <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -26,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../../index.html" class="icon icon-home"> BeyondML
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            BeyondML
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -54,7 +57,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
       <li class="breadcrumb-item active">beyondml.tflow.layers.MultiDense</li>
       <li class="wy-breadcrumbs-aside">
@@ -117,12 +120,13 @@
 <span class="sd">        Build the layer in preparation to be trained or called. Should not be called directly,</span>
 <span class="sd">        but rather is called when the layer is added to a model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">input_shape</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">())</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">input_shape</span>
-        <span class="p">]</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">input_shape</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;All input shapes must be equal, got </span><span class="si">{</span><span class="n">input_shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">input_shape</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">())</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">input_shape</span>
+            <span class="p">]</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># Sometimes, input shapes come as tuples already</span>
+            <span class="k">pass</span>
 
         <span class="n">simplified_shape</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 

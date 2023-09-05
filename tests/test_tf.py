@@ -154,7 +154,7 @@ def test_tf_layer_functionality():
 
 def test_save_load(tmp_path):
     model = build_model()
-    save_path = os.path.join(tmp_path, 'test.h5')
+    save_path = os.path.join(tmp_path, 'test.keras')
     model.save(save_path)
     tf.keras.models.load_model(
         save_path,

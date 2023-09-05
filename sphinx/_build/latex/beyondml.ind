@@ -43,7 +43,7 @@
   \item \spxentry{beyondml.pt.layers.MultiConv3D}
     \subitem \spxentry{module}, \hyperpage{11}
   \item \spxentry{beyondml.pt.layers.MultiDense}
-    \subitem \spxentry{module}, \hyperpage{12}
+    \subitem \spxentry{module}, \hyperpage{11}
   \item \spxentry{beyondml.pt.layers.MultiMaskedConv2D}
     \subitem \spxentry{module}, \hyperpage{12}
   \item \spxentry{beyondml.pt.layers.MultiMaskedConv3D}
@@ -239,7 +239,7 @@
   \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiConv3D.MultiConv3D method}, 
 		\hyperpage{11}
   \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiDense.MultiDense method}, 
-		\hyperpage{12}
+		\hyperpage{11}
   \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv2D.MultiMaskedConv2D method}, 
 		\hyperpage{12}
   \item \spxentry{forward()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
@@ -441,7 +441,7 @@
     \subitem \spxentry{beyondml.pt.layers.MaskedTransformerEncoderLayer}, \hyperpage{9}
     \subitem \spxentry{beyondml.pt.layers.MultiConv2D}, \hyperpage{11}
     \subitem \spxentry{beyondml.pt.layers.MultiConv3D}, \hyperpage{11}
-    \subitem \spxentry{beyondml.pt.layers.MultiDense}, \hyperpage{12}
+    \subitem \spxentry{beyondml.pt.layers.MultiDense}, \hyperpage{11}
     \subitem \spxentry{beyondml.pt.layers.MultiMaskedConv2D}, \hyperpage{12}
     \subitem \spxentry{beyondml.pt.layers.MultiMaskedConv3D}, \hyperpage{13}
     \subitem \spxentry{beyondml.pt.layers.MultiMaskedDense}, \hyperpage{13}
@@ -487,7 +487,7 @@
   \item \spxentry{MultiConv2D}\spxextra{class in beyondml.tflow.layers.MultiConv2D}, \hyperpage{23}
   \item \spxentry{MultiConv3D}\spxextra{class in beyondml.pt.layers.MultiConv3D}, \hyperpage{11}
   \item \spxentry{MultiConv3D}\spxextra{class in beyondml.tflow.layers.MultiConv3D}, \hyperpage{24}
-  \item \spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}, \hyperpage{12}
+  \item \spxentry{MultiDense}\spxextra{class in beyondml.pt.layers.MultiDense}, \hyperpage{11}
   \item \spxentry{MultiDense}\spxextra{class in beyondml.tflow.layers.MultiDense}, \hyperpage{25}
   \item \spxentry{MultiMaskedConv2D}\spxextra{class in beyondml.pt.layers.MultiMaskedConv2D}, 
 		\hyperpage{12}
@@ -548,7 +548,7 @@
   \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedConv3D.MultiMaskedConv3D method}, 
 		\hyperpage{13}
   \item \spxentry{prune()}\spxextra{beyondml.pt.layers.MultiMaskedDense.MultiMaskedDense method}, 
-		\hyperpage{14}
+		\hyperpage{13}
   \item \spxentry{prune\_model()}\spxextra{in module beyondml.pt.utils.utils}, \hyperpage{18}
 
   \indexspace

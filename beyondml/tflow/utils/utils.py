@@ -12,6 +12,7 @@ SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D,
                  SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
     (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D,
+    
      MultiMaxPool3D, MultitaskNormalization)
 
 
@@ -436,6 +437,8 @@ def _replace_config(config):
     Replace the model config to remove masking layers
     """
 
+    new_config = config.copy()
+
     layer_mapping = {
         'MaskedConv2D': 'Conv2D',
         'MaskedConv3D': 'Conv3D',
@@ -446,22 +449,26 @@ def _replace_config(config):
     }
     model_classes = ('Functional', 'Sequential')
 
-    for i in range(len(config['layers'])):
-        if config['layers'][i]['class_name'] in layer_mapping.keys():
-            config['layers'][i]['class_name'] = layer_mapping[
-                config['layers'][i]['class_name']
+    for i in range(len(new_config['layers'])):
+        if new_config['layers'][i]['class_name'] in layer_mapping.keys():
+            orig_class_name = new_config['layers'][i]['class_name']
+            new_config['layers'][i]['class_name'] = layer_mapping[
+                new_config['layers'][i]['class_name']
             ]
-            del config['layers'][i]['config']['mask_initializer']
-        elif config['layers'][i]['class_name'] in model_classes:
-            config['layers'][i]['config'] = _replace_config(
-                config['layers'][i]['config'])
-    return config
+            new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
+                orig_class_name, layer_mapping[orig_class_name]
+            )
+        elif new_config['layers'][i]['class_name'] in model_classes:
+            new_config['layers'][i]['config'] = _replace_config(
+                new_config['layers'][i]['config'])
+    return new_config
 
 
 def _create_masking_config(config):
     """
     Replace the model config to add masking layers
     """
+    new_config = config.copy()
 
     layer_mapping = {
         'Conv2D': 'MaskedConv2D',
@@ -473,18 +480,22 @@ def _create_masking_config(config):
     }
     model_classes = ('Functional', 'Sequential')
 
-    for i in range(len(config['layers'])):
-        if config['layers'][i]['class_name'] in layer_mapping.keys():
-            config['layers'][i]['class_name'] = layer_mapping[
-                config['layers'][i]['class_name']
+    for i in range(len(new_config['layers'])):
+        if new_config['layers'][i]['class_name'] in layer_mapping.keys():
+            orig_class_name = new_config['layers'][i]['class_name']
+            new_config['layers'][i]['class_name'] = layer_mapping[
+                new_config['layers'][i]['class_name']
             ]
-            config['layers'][i]['config']['mask_initializer'] = tf.keras.initializers.serialize(
+            new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
+                orig_class_name, layer_mapping[orig_class_name]
+            )
+            new_config['layers'][i]['config']['mask_initializer'] = tf.keras.initializers.serialize(
                 tf.keras.initializers.get('ones')
             )
-        elif config['layers'][i]['class_name'] in model_classes:
-            config['layers'][i]['config'] = _create_masking_config(
-                config['layers'][i]['config'])
-    return config
+        elif new_config['layers'][i]['class_name'] in model_classes:
+            new_config['layers'][i]['config'] = _create_masking_config(
+                new_config['layers'][i]['config'])
+    return new_config
 
 
 def _quantize_model_config(config, dtype='float16'):
@@ -579,6 +590,8 @@ def remove_layer_masks(model, additional_custom_objects=None):
     # Replace the config of the model
     config = model.get_config()
     new_config = _replace_config(config)
+    print(config)
+    print(new_config)
 
     # Create the new model
     try:

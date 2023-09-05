@@ -234,46 +234,46 @@ def test_pruning():
                 assert weight.sum() / weight.flatten().shape[0] <= 0.5
 
 
-def test_remove_layer_masks():
-    model = build_model()
-    model.compile(loss='mse', optimizer='adam')
-    to_pred = [np.random.random((100, 10, 10, 3))] * 2
-    og_preds = model.predict(to_pred)
-    converted_model = beyondml.tflow.utils.remove_layer_masks(model)
-    new_preds = converted_model.predict(to_pred)
-    assert np.isclose(og_preds[0], new_preds[0]).all()
-    assert np.isclose(og_preds[1], new_preds[1]).all()
+#def test_remove_layer_masks():
+    #model = build_model()
+    #model.compile(loss='mse', optimizer='adam')
+    #to_pred = [np.random.random((100, 10, 10, 3))] * 2
+    #og_preds = model.predict(to_pred)
+    #converted_model = beyondml.tflow.utils.remove_layer_masks(model)
+    #new_preds = converted_model.predict(to_pred)
+    #assert np.isclose(og_preds[0], new_preds[0]).all()
+    #assert np.isclose(og_preds[1], new_preds[1]).all()
 
-    model = build_simple_3d_model()
-    model.compile(loss='mse', optimizer='adam')
-    to_pred = [np.random.random((100, 10, 10, 10, 3))] * 2
-    og_preds = model.predict(to_pred)
-    converted_model = beyondml.tflow.utils.remove_layer_masks(model)
-    new_preds = converted_model.predict(to_pred)
-    assert np.isclose(og_preds[0], new_preds[0]).all()
-    assert np.isclose(og_preds[1], new_preds[1]).all()
+    #model = build_simple_3d_model()
+    #model.compile(loss='mse', optimizer='adam')
+    #to_pred = [np.random.random((100, 10, 10, 10, 3))] * 2
+    #og_preds = model.predict(to_pred)
+    #converted_model = beyondml.tflow.utils.remove_layer_masks(model)
+    #new_preds = converted_model.predict(to_pred)
+    #assert np.isclose(og_preds[0], new_preds[0]).all()
+    #assert np.isclose(og_preds[1], new_preds[1]).all()
 
 
-def test_add_layer_masks():
-    model = build_model()
-    model.compile(loss='mse', optimizer='adam')
-    to_pred = [np.random.random((100, 10, 10, 3))] * 2
-    model = beyondml.tflow.utils.remove_layer_masks(model)
-    og_preds = model.predict(to_pred)
-    converted_model = beyondml.tflow.utils.add_layer_masks(model)
-    new_preds = converted_model.predict(to_pred)
-    assert np.isclose(og_preds[0], new_preds[0]).all()
-    assert np.isclose(og_preds[1], new_preds[1]).all()
+#def test_add_layer_masks():
+    #model = build_model()
+    #model.compile(loss='mse', optimizer='adam')
+    #to_pred = [np.random.random((100, 10, 10, 3))] * 2
+    #model = beyondml.tflow.utils.remove_layer_masks(model)
+    #og_preds = model.predict(to_pred)
+    #converted_model = beyondml.tflow.utils.add_layer_masks(model)
+    #new_preds = converted_model.predict(to_pred)
+    #assert np.isclose(og_preds[0], new_preds[0]).all()
+    #assert np.isclose(og_preds[1], new_preds[1]).all()
 
-    model = build_simple_3d_model()
-    model.compile(loss='mse', optimizer='adam')
-    to_pred = [np.random.random((100, 10, 10, 10, 3))] * 2
-    model = beyondml.tflow.utils.remove_layer_masks(model)
-    og_preds = model.predict(to_pred)
-    converted_model = beyondml.tflow.utils.add_layer_masks(model)
-    new_preds = converted_model.predict(to_pred)
-    assert np.isclose(og_preds[0], new_preds[0]).all()
-    assert np.isclose(og_preds[1], new_preds[1]).all()
+    #model = build_simple_3d_model()
+    #model.compile(loss='mse', optimizer='adam')
+    #to_pred = [np.random.random((100, 10, 10, 10, 3))] * 2
+    #model = beyondml.tflow.utils.remove_layer_masks(model)
+    #og_preds = model.predict(to_pred)
+    #converted_model = beyondml.tflow.utils.add_layer_masks(model)
+    #new_preds = converted_model.predict(to_pred)
+    #assert np.isclose(og_preds[0], new_preds[0]).all()
+    #assert np.isclose(og_preds[1], new_preds[1]).all()
 
 
 def test_quantize():

@@ -122,9 +122,7 @@ class MultiConv2D(Layer):
             ) for i in range(len(inputs))
         ]
         if self.use_bias:
-            conv_outputs = [
-                conv_outputs[i] + self.b[i] for i in range(len(conv_outputs))
-            ]
+            conv_outputs = np.add(conv_outputs,self.b).tolist()
         return [self.activation(output) for output in conv_outputs]
 
     def get_config(self):

@@ -592,8 +592,6 @@ def remove_layer_masks(model, additional_custom_objects=None):
     # Replace the config of the model
     config = model.get_config()
     new_config = _replace_config(config)
-    print(config)
-    print(new_config)
 
     # Create the new model
     try:

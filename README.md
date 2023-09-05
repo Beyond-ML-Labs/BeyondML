@@ -108,3 +108,6 @@ The below version numbers and changes refer to the BeyondML package
 
 #### Version 0.1.4
 - Updated documentation to use Sphinx
+
+#### Version 0.1.5
+- Updated requirements to use newer version of TensorFlow

@@ -59,3 +59,5 @@ Changelog
    - Added `MultitaskNormalization` layer to `beyondml.tflow.layers` and `beyondml.pt.layers`
 - Version 0.1.4
    - Updated documentation to use Sphinx
+- Version 0.1.5
+   - Updated requirements to use newer version of TensorFlow

@@ -12,7 +12,7 @@ SPARSE_LAYERS = (SparseDense, SparseConv2D, SparseConv3D,
                  SparseMultiDense, SparseMultiConv2D, SparseMultiConv3D)
 CUSTOM_LAYERS = MASKING_LAYERS + NON_MASKING_LAYERS + SPARSE_LAYERS + \
     (FilterLayer, SumLayer, SelectorLayer, MultiMaxPool2D,
-    
+
      MultiMaxPool3D, MultitaskNormalization)
 
 
@@ -458,7 +458,7 @@ def _replace_config(config):
             if new_config['layers'][i].get('module'):
                 new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
                     orig_class_name, layer_mapping[orig_class_name]
-                )
+                ).replace('beyondml.tflow.layers', 'tensorflow.keras.layers')
         elif new_config['layers'][i]['class_name'] in model_classes:
             new_config['layers'][i]['config'] = _replace_config(
                 new_config['layers'][i]['config'])

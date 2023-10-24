@@ -459,6 +459,8 @@ def _replace_config(config):
                 new_config['layers'][i]['module'] = new_config['layers'][i]['module'].replace(
                     orig_class_name, layer_mapping[orig_class_name]
                 ).replace('beyondml.tflow.layers', 'tensorflow.keras.layers')
+            if new_config['layers'][i]['config'].get('mask_initializer'):
+                del new_config['layers'][i]['config']['mask_initializer']
         elif new_config['layers'][i]['class_name'] in model_classes:
             new_config['layers'][i]['config'] = _replace_config(
                 new_config['layers'][i]['config'])

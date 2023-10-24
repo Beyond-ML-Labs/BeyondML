@@ -316,7 +316,8 @@
 \indexentry{mask\_model() (in module beyondml.tflow.utils.utils)@\spxentry{mask\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{42}
 \indexentry{mask\_task\_weights() (in module beyondml.tflow.utils.utils)@\spxentry{mask\_task\_weights()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{42}
 \indexentry{quantize\_model() (in module beyondml.tflow.utils.utils)@\spxentry{quantize\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
-\indexentry{remove\_layer\_masks() (in module beyondml.tflow.utils.utils)@\spxentry{remove\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{replace\_config() (in module beyondml.tflow.utils.utils)@\spxentry{replace\_config()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
+\indexentry{replace\_weights() (in module beyondml.tflow.utils.utils)@\spxentry{replace\_weights()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
 \indexentry{train\_model() (in module beyondml.tflow.utils.utils)@\spxentry{train\_model()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
 \indexentry{train\_model\_iteratively() (in module beyondml.tflow.utils.utils)@\spxentry{train\_model\_iteratively()}\spxextra{in module beyondml.tflow.utils.utils}|hyperpage}{43}
 \indexentry{module@\spxentry{module}!beyondml.tflow.utils@\spxentry{beyondml.tflow.utils}|hyperpage}{44}

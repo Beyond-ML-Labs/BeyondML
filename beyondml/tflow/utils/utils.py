@@ -432,7 +432,7 @@ def mask_model(
     return model
 
 
-def _replace_config(config):
+def replace_config(config):
     """
     Replace the model config to remove masking layers
     """
@@ -462,7 +462,7 @@ def _replace_config(config):
             if new_config['layers'][i]['config'].get('mask_initializer'):
                 del new_config['layers'][i]['config']['mask_initializer']
         elif new_config['layers'][i]['class_name'] in model_classes:
-            new_config['layers'][i]['config'] = _replace_config(
+            new_config['layers'][i]['config'] = replace_config(
                 new_config['layers'][i]['config'])
     return new_config
 
@@ -519,7 +519,7 @@ def _quantize_model_config(config, dtype='float16'):
     return new_config
 
 
-def _replace_weights(new_model, old_model):
+def replace_weights(new_model, old_model):
     """
     Replace the weights of a newly created model with the weights (sans masks) of an old model
     """
@@ -527,7 +527,7 @@ def _replace_weights(new_model, old_model):
     for i in range(len(new_model.layers)):
         # Recursion in case the model contains other models
         if isinstance(new_model.layers[i], tf.keras.models.Model):
-            _replace_weights(new_model.layers[i], old_model.layers[i])
+            replace_weights(new_model.layers[i], old_model.layers[i])
 
         # If not masking layers, simply replace weights
         elif not isinstance(old_model.layers[i], MASKING_LAYERS):
@@ -566,52 +566,6 @@ def _replace_masking_weights(new_model, old_model):
             new_model.layers[i].set_weights(weights)
 
     # Compile and return the model
-    new_model.compile()
-    return new_model
-
-
-def remove_layer_masks(model, additional_custom_objects=None):
-    """
-    Convert a trained model from using Masking layers to using non-masking layers
-
-    Parameters
-    ----------
-    model : TensorFlow Keras model
-        The model to be converted
-    additional_custom_objects : dict or None (default None)
-        Additional custom layers to use
-
-    Returns
-    -------
-    new_model : TensorFlow Keras model
-        The converted model
-    """
-
-    custom_objects = get_custom_objects()
-    if additional_custom_objects is not None:
-        custom_objects.update(additional_custom_objects)
-
-    # Replace the config of the model
-    config = model.get_config()
-    new_config = _replace_config(config)
-
-    # Create the new model
-    try:
-        new_model = tf.keras.models.Model().from_config(
-            new_config,
-            custom_objects=custom_objects
-        )
-    except Exception:
-        new_model = tf.keras.models.Sequential().from_config(
-            new_config,
-            custom_objects=custom_objects
-        )
-
-    # Replace the weights of the new model to be equivalent to the old model
-    new_model = _replace_weights(new_model, model)
-
-    # Make the new model not trainable and compile the model for good measure
-    new_model.trainable = False
     new_model.compile()
     return new_model
 

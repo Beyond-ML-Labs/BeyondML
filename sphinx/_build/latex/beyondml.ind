@@ -557,7 +557,8 @@
 
   \indexspace
   \bigletter R
-  \item \spxentry{remove\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}, 
+  \item \spxentry{replace\_config()}\spxextra{in module beyondml.tflow.utils.utils}, \hyperpage{43}
+  \item \spxentry{replace\_weights()}\spxextra{in module beyondml.tflow.utils.utils}, 
 		\hyperpage{43}
 
   \indexspace

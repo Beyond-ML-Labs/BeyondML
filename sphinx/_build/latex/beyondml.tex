@@ -64,7 +64,7 @@
 
 
 \title{BeyondML}
-\date{Sep 05, 2023}
+\date{Oct 24, 2023}
 \release{}
 \author{BeyondML Labs}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5008,36 +5008,27 @@ TensorFlow Keras Model
 
 \end{fulllineitems}
 
-\index{remove\_layer\_masks() (in module beyondml.tflow.utils.utils)@\spxentry{remove\_layer\_masks()}\spxextra{in module beyondml.tflow.utils.utils}}
+\index{replace\_config() (in module beyondml.tflow.utils.utils)@\spxentry{replace\_config()}\spxextra{in module beyondml.tflow.utils.utils}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.remove_layer_masks}}
+\phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.replace_config}}
 \pysigstartsignatures
-\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{remove\_layer\_masks}}}{\sphinxparam{\DUrole{n,n}{model}}, \sphinxparam{\DUrole{n,n}{additional\_custom\_objects}\DUrole{o,o}{=}\DUrole{default_value}{None}}}{}
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{replace\_config}}}{\sphinxparam{\DUrole{n,n}{config}}}{}
 \pysigstopsignatures
 \sphinxAtStartPar
-Convert a trained model from using Masking layers to using non\sphinxhyphen{}masking layers
-\begin{quote}\begin{description}
-\sphinxlineitem{Parameters}\begin{itemize}
-\item {} 
+Replace the model config to remove masking layers
+
+\end{fulllineitems}
+
+\index{replace\_weights() (in module beyondml.tflow.utils.utils)@\spxentry{replace\_weights()}\spxextra{in module beyondml.tflow.utils.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{beyondml.tflow.utils:beyondml.tflow.utils.utils.replace_weights}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{beyondml.tflow.utils.utils.}}\sphinxbfcode{\sphinxupquote{replace\_weights}}}{\sphinxparam{\DUrole{n,n}{new\_model}}, \sphinxparam{\DUrole{n,n}{old\_model}}}{}
+\pysigstopsignatures
 \sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{model}} (\sphinxstyleliteralemphasis{\sphinxupquote{TensorFlow Keras model}}) \textendash{} The model to be converted
-
-\item {} 
-\sphinxAtStartPar
-\sphinxstyleliteralstrong{\sphinxupquote{additional\_custom\_objects}} (\sphinxstyleliteralemphasis{\sphinxupquote{dict}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{None}}\sphinxstyleliteralemphasis{\sphinxupquote{ (}}\sphinxstyleliteralemphasis{\sphinxupquote{default None}}\sphinxstyleliteralemphasis{\sphinxupquote{)}}) \textendash{} Additional custom layers to use
-
-\end{itemize}
-
-\sphinxlineitem{Returns}
-\sphinxAtStartPar
-\sphinxstylestrong{new\_model} \textendash{} The converted model
-
-\sphinxlineitem{Return type}
-\sphinxAtStartPar
-TensorFlow Keras model
-
-\end{description}\end{quote}
+Replace the weights of a newly created model with the weights (sans masks) of an old model
 
 \end{fulllineitems}
 
@@ -5308,6 +5299,16 @@ Fixed errors with changes to types of \sphinxtitleref{input\_shape} in TensorFlo
 \item {} 
 \sphinxAtStartPar
 Fixed errors resulting from model/configuration changes with TensorFlow
+
+\end{itemize}
+
+\end{description}
+
+\item {} \begin{description}
+\sphinxlineitem{Version 0.1.6}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Fixed issues with converting between masked and unmasked models in TensorFlow
 
 \end{itemize}
 

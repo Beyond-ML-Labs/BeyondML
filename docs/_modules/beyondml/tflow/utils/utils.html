@@ -83,7 +83,7 @@
                  <span class="n">SparseMultiDense</span><span class="p">,</span> <span class="n">SparseMultiConv2D</span><span class="p">,</span> <span class="n">SparseMultiConv3D</span><span class="p">)</span>
 <span class="n">CUSTOM_LAYERS</span> <span class="o">=</span> <span class="n">MASKING_LAYERS</span> <span class="o">+</span> <span class="n">NON_MASKING_LAYERS</span> <span class="o">+</span> <span class="n">SPARSE_LAYERS</span> <span class="o">+</span> \
     <span class="p">(</span><span class="n">FilterLayer</span><span class="p">,</span> <span class="n">SumLayer</span><span class="p">,</span> <span class="n">SelectorLayer</span><span class="p">,</span> <span class="n">MultiMaxPool2D</span><span class="p">,</span>
-    
+
      <span class="n">MultiMaxPool3D</span><span class="p">,</span> <span class="n">MultitaskNormalization</span><span class="p">)</span>
 
 
@@ -503,7 +503,7 @@
     <span class="k">return</span> <span class="n">model</span></div>
 
 
-<span class="k">def</span> <span class="nf">_replace_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_config"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.replace_config">[docs]</a><span class="k">def</span> <span class="nf">replace_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace the model config to remove masking layers</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -526,13 +526,16 @@
             <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer_mapping</span><span class="p">[</span>
                 <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span>
             <span class="p">]</span>
-            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="n">orig_class_name</span><span class="p">,</span> <span class="n">layer_mapping</span><span class="p">[</span><span class="n">orig_class_name</span><span class="p">]</span>
-            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">):</span>
+                <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">orig_class_name</span><span class="p">,</span> <span class="n">layer_mapping</span><span class="p">[</span><span class="n">orig_class_name</span><span class="p">]</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;beyondml.tflow.layers&#39;</span><span class="p">,</span> <span class="s1">&#39;tensorflow.keras.layers&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">):</span>
+                <span class="k">del</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">][</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">model_classes</span><span class="p">:</span>
-            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_replace_config</span><span class="p">(</span>
+            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">replace_config</span><span class="p">(</span>
                 <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">new_config</span>
+    <span class="k">return</span> <span class="n">new_config</span></div>
 
 
 <span class="k">def</span> <span class="nf">_create_masking_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
@@ -557,9 +560,10 @@
             <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer_mapping</span><span class="p">[</span>
                 <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;class_name&#39;</span><span class="p">]</span>
             <span class="p">]</span>
-            <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="n">orig_class_name</span><span class="p">,</span> <span class="n">layer_mapping</span><span class="p">[</span><span class="n">orig_class_name</span><span class="p">]</span>
-            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;module&#39;</span><span class="p">):</span>
+                <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;module&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                    <span class="n">orig_class_name</span><span class="p">,</span> <span class="n">layer_mapping</span><span class="p">[</span><span class="n">orig_class_name</span><span class="p">]</span>
+                <span class="p">)</span>
             <span class="n">new_config</span><span class="p">[</span><span class="s1">&#39;layers&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;config&#39;</span><span class="p">][</span><span class="s1">&#39;mask_initializer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span>
                 <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ones&#39;</span><span class="p">)</span>
             <span class="p">)</span>
@@ -586,7 +590,7 @@
     <span class="k">return</span> <span class="n">new_config</span>
 
 
-<span class="k">def</span> <span class="nf">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">old_model</span><span class="p">):</span>
+<div class="viewcode-block" id="replace_weights"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.replace_weights">[docs]</a><span class="k">def</span> <span class="nf">replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">old_model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Replace the weights of a newly created model with the weights (sans masks) of an old model</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -594,7 +598,7 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">)):</span>
         <span class="c1"># Recursion in case the model contains other models</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-            <span class="n">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
         <span class="c1"># If not masking layers, simply replace weights</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">old_model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">MASKING_LAYERS</span><span class="p">):</span>
@@ -608,7 +612,7 @@
 
     <span class="c1"># Compile and return the model</span>
     <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">new_model</span>
+    <span class="k">return</span> <span class="n">new_model</span></div>
 
 
 <span class="k">def</span> <span class="nf">_replace_masking_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">old_model</span><span class="p">):</span>
@@ -635,54 +639,6 @@
     <span class="c1"># Compile and return the model</span>
     <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">new_model</span>
-
-
-<div class="viewcode-block" id="remove_layer_masks"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.remove_layer_masks">[docs]</a><span class="k">def</span> <span class="nf">remove_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Convert a trained model from using Masking layers to using non-masking layers</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    model : TensorFlow Keras model</span>
-<span class="sd">        The model to be converted</span>
-<span class="sd">    additional_custom_objects : dict or None (default None)</span>
-<span class="sd">        Additional custom layers to use</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    new_model : TensorFlow Keras model</span>
-<span class="sd">        The converted model</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">custom_objects</span> <span class="o">=</span> <span class="n">get_custom_objects</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">additional_custom_objects</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">custom_objects</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_custom_objects</span><span class="p">)</span>
-
-    <span class="c1"># Replace the config of the model</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
-    <span class="n">new_config</span> <span class="o">=</span> <span class="n">_replace_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">new_config</span><span class="p">)</span>
-
-    <span class="c1"># Create the new model</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
-            <span class="n">new_config</span><span class="p">,</span>
-            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
-        <span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="n">new_model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span>
-            <span class="n">new_config</span><span class="p">,</span>
-            <span class="n">custom_objects</span><span class="o">=</span><span class="n">custom_objects</span>
-        <span class="p">)</span>
-
-    <span class="c1"># Replace the weights of the new model to be equivalent to the old model</span>
-    <span class="n">new_model</span> <span class="o">=</span> <span class="n">_replace_weights</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-
-    <span class="c1"># Make the new model not trainable and compile the model for good measure</span>
-    <span class="n">new_model</span><span class="o">.</span><span class="n">trainable</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="n">new_model</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">new_model</span></div>
 
 
 <div class="viewcode-block" id="add_layer_masks"><a class="viewcode-back" href="../../../../beyondml.tflow.utils.html#beyondml.tflow.utils.utils.add_layer_masks">[docs]</a><span class="k">def</span> <span class="nf">add_layer_masks</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">additional_custom_objects</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

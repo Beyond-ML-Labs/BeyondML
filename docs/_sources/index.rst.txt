@@ -63,3 +63,5 @@ Changelog
    - Updated requirements to use newer version of TensorFlow
    - Fixed errors with changes to types of `input_shape` in TensorFlow Keras layers
    - Fixed errors resulting from model/configuration changes with TensorFlow
+- Version 0.1.6
+   - Fixed issues with converting between masked and unmasked models in TensorFlow

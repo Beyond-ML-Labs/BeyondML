@@ -113,6 +113,8 @@
 
         <span class="nb">super</span><span class="p">(</span><span class="n">MaskedTransformerDecoderLayer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation</span> <span class="o">=</span> <span class="n">activation</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">self_attn</span> <span class="o">=</span> <span class="n">MaskedMultiHeadAttention</span><span class="p">(</span>
             <span class="n">d_model</span><span class="p">,</span>
             <span class="n">nhead</span><span class="p">,</span>
@@ -158,12 +160,13 @@
         <span class="n">x</span> <span class="o">=</span> <span class="n">tgt</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sa_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mha_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ff_block</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">memory</span><span class="p">)</span></div>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ff_block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
 
     <span class="c1"># self-attention block</span>
 
     <span class="k">def</span> <span class="nf">_sa_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-                  <span class="n">attn_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">key_padding_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+                  <span class="n">attn_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">key_padding_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">self_attn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span>
                            <span class="n">attn_mask</span><span class="o">=</span><span class="n">attn_mask</span><span class="p">,</span>
                            <span class="n">key_padding_mask</span><span class="o">=</span><span class="n">key_padding_mask</span><span class="p">,</span>
@@ -172,7 +175,7 @@
 
     <span class="c1"># multihead attention block</span>
     <span class="k">def</span> <span class="nf">_mha_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">mem</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-                   <span class="n">attn_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">key_padding_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+                   <span class="n">attn_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">key_padding_mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">multihead_attn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mem</span><span class="p">,</span> <span class="n">mem</span><span class="p">,</span>
                                 <span class="n">attn_mask</span><span class="o">=</span><span class="n">attn_mask</span><span class="p">,</span>
                                 <span class="n">key_padding_mask</span><span class="o">=</span><span class="n">key_padding_mask</span><span class="p">,</span>

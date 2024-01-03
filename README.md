@@ -116,3 +116,6 @@ The below version numbers and changes refer to the BeyondML package
 
 #### Version 0.1.6
 - Fixed issues with converting between masked and unmasked models in TensorFlow
+
+#### Version 0.1.7
+- Updated Pytorch implementation of Transformer-based architectures

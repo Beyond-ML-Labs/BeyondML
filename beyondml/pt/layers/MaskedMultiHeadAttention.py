@@ -107,18 +107,19 @@ class MaskedMultiHeadAttention(torch.nn.Module):
                     1, 0) for x in (query, key, value)]
 
         attn_output, attn_output_weights = torch.nn.functional.multi_head_attention_forward(
-            query,
-            key,
-            value,
-            self.embed_dim,
-            self.num_heads,
-            self.in_proj_weight * self.in_proj_weight_mask,
-            self.in_proj_bias * self.in_proj_bias_mask,
-            training=self.training,
-            key_padding_mask=key_padding_mask,
-            need_weights=need_weights,
-            attn_mask=attn_mask,
-            average_attn_weights=average_attn_weights
+            query=query,
+            key=key,
+            value=value,
+            embed_dim_to_check=self.embed_dim,
+            num_heads=self.num_heads,
+            in_proj_weight=self.in_proj_weight * self.in_proj_weight_mask,
+            in_proj_bias=self.in_proj_bias * self.in_proj_bias_mask,
+            bias_k=None,
+            bias_v=None,
+            add_zero_attn=False,
+            dropout_p=self.dropout,
+            out_proj_weight=self.out_proj_weight * self.out_proj_weight_mask,
+            out_proj_bias=self.out_proj_bias * self.out_proj_bias_mask
         )
 
         if self.batch_first and is_batched:

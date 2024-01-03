@@ -58,7 +58,7 @@ class MaskedDense(torch.nn.Module):
         """
         weight = self.w * self.w_mask
         bias = self.b * self.b_mask
-        out = torch.mm(inputs, weight)
+        out = torch.matmul(inputs, weight)
         out = torch.add(out, bias)
         return out
 

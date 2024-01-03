@@ -24,13 +24,13 @@ Installation
 
 This package is available through `Pypi <https://pypi.org>`_ and can be installed by running the following command:
 
-.. code-block:: bash
+.. code-block::
 
    pip install beyondml
 
 Alternatively, the latest version of the software can be installed directly from GitHub using the following command:
 
-.. code-block:: bash
+.. code-block::
 
    pip install git+https://github.com/beyond-ml-labs/beyondml
 
@@ -65,3 +65,5 @@ Changelog
    - Fixed errors resulting from model/configuration changes with TensorFlow
 - Version 0.1.6
    - Fixed issues with converting between masked and unmasked models in TensorFlow
+- Version 0.1.7
+   - Updated Pytorch implementation of Transformer-based architectures

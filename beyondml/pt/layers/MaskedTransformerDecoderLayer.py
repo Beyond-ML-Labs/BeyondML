@@ -42,6 +42,8 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
 
         super(MaskedTransformerDecoderLayer, self).__init__()
 
+        self.activation = activation
+
         self.self_attn = MaskedMultiHeadAttention(
             d_model,
             nhead,
@@ -87,12 +89,13 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
         x = tgt
         x = self._sa_block(x, memory)
         x = self._mha_block(x, memory)
-        x = self._ff_block(x, memory)
+        x = self._ff_block(x)
+        return x
 
     # self-attention block
 
     def _sa_block(self, x: Tensor,
-                  attn_mask: Optional[Tensor], key_padding_mask: Optional[Tensor]) -> Tensor:
+                  attn_mask: Optional[Tensor] = None, key_padding_mask: Optional[Tensor] = None) -> Tensor:
         x = self.self_attn(x, x, x,
                            attn_mask=attn_mask,
                            key_padding_mask=key_padding_mask,
@@ -101,7 +104,7 @@ class MaskedTransformerDecoderLayer(torch.nn.Module):
 
     # multihead attention block
     def _mha_block(self, x: Tensor, mem: Tensor,
-                   attn_mask: Optional[Tensor], key_padding_mask: Optional[Tensor]) -> Tensor:
+                   attn_mask: Optional[Tensor] = None, key_padding_mask: Optional[Tensor] = None) -> Tensor:
         x = self.multihead_attn(x, mem, mem,
                                 attn_mask=attn_mask,
                                 key_padding_mask=key_padding_mask,

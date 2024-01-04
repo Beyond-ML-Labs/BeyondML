@@ -40,6 +40,9 @@ class MaskedTransformerEncoderLayer(torch.nn.Module):
                  ) -> None:
         factory_kwargs = {'device': device, 'dtype': dtype}
         super(MaskedTransformerEncoderLayer, self).__init__()
+
+        self.activation = activation
+
         self.self_attn = MaskedMultiHeadAttention(
             d_model,
             nhead,
